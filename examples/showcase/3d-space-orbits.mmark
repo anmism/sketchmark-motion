@@ -1,0 +1,61 @@
+---
+canvas: 960x540
+bg: #030712
+fps: 60
+perspective: 860
+vanish: 480 260
+$orbit: #38bdf8
+$planet: #60a5fa
+$moon: #e5e7eb
+$sun: #fbbf24
+---
+
+# 3D Space Orbits
+# Spheres, torus orbit tracks, and billboard labels for explainer-style science graphics.
+
+@group system | 0s - 12s
+  x: 480
+  y: 265
+  rotateX: -24deg
+  rotateY: -10deg -> 20deg -> -10deg over 10s ease-in-out
+
+torus orbitA major:150 tube:2 segments:48 tubeSegments:4 fill:$orbit parent:system | 0s - 12s
+  rotateX: 90deg
+  opacity: 0.35
+
+torus orbitB major:220 tube:2 segments:56 tubeSegments:4 fill:#a78bfa parent:system | 0s - 12s
+  rotateX: 90deg
+  opacity: 0.25
+
+sphere sun r:48 segments:18 rings:9 fill:$sun stroke:#ffffff14 strokeWidth:1 parent:system | 0s - 12s
+  rotateY: 0deg -> 360deg over 8s linear
+  topFill: #fef3c7
+  middleFill: #fbbf24
+  bottomFill: #b45309
+
+@group planetOrbit parent:system | 0s - 12s
+  rotateY: 0deg -> 360deg over 7s linear
+
+sphere planet r:28 segments:14 rings:8 fill:$planet parent:planetOrbit | 0s - 12s
+  x: 150
+  rotateY: 0deg -> 360deg over 3s linear
+  topFill: #bfdbfe
+  bottomFill: #1e3a8a
+
+@group moonOrbit parent:planetOrbit | 0s - 12s
+  x: 150
+  rotateY: 0deg -> 360deg over 2s linear
+
+sphere moon r:10 segments:10 rings:6 fill:$moon parent:moonOrbit | 0s - 12s
+  x: 44
+
+text sunLabel "ORBIT SYSTEM" font:Roboto size:34 fill:#ffffff weight:bold | 0s - 12s
+  x: 480
+  y: 70
+
+text planetLabel "billboard labels stay readable" font:Roboto size:15 fill:#cbd5e1 parent:system | 0s - 12s
+  x: -170
+  y: 130
+  z: 40
+  billboard: screen
+  depthBias: 80

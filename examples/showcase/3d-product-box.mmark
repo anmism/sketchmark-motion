@@ -1,0 +1,183 @@
+---
+canvas: 800x600
+bg: #0f172a
+fps: 60
+perspective: 800
+vanish: 400 280
+$boxW: 160
+$boxH: 200
+$boxD: 80
+$primary: #8b5cf6
+$secondary: #6366f1
+$accent: #22d3ee
+$dark: #1e1b4b
+$light: #c4b5fd
+---
+
+# 3D Product Box Showcase
+# Rotating package reveal with floating elements
+
+= Intro | 0s - 2s =
+
+text headline "Introducing" font:Roboto size:24 fill:#94a3b8 weight:bold | 0s - 10s
+  x: 400
+  y: 80
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text brand "ProMax 3D" font:Roboto size:48 fill:#ffffff weight:bold | 0.3s - 10s
+  x: 400
+  y: 130
+  opacity: 0 -> 1 over 0.8s ease-out
+  y: 145 -> 130 over 0.8s ease-out
+
+= Box Reveal | 1s - 10s =
+
+# Spotlight glow behind box
+circle glow r:180 fill:$primary | 1s - 10s
+  x: 400
+  y: 300
+  opacity: 0 -> 0.15 over 1s ease-out
+  blur: 60
+
+# Main rotating product box group
+@group productBox | 1s - 10s
+  x: 400
+  y: 300
+  rotateX: -12deg
+  rotateY: -30deg -> 30deg -> -30deg over 6s ease-in-out
+  scale: 0.3 -> 1 over 1.2s ease-out
+  opacity: 0 -> 1 over 0.5s
+
+# Front face - main branding
+rect boxFront w:$boxW h:$boxH fill:$primary parent:productBox | 1s - 10s
+  z: 40
+  cornerRadius: 4
+
+text frontLogo "PRO" font:Roboto size:36 fill:#ffffff weight:bold parent:productBox | 1s - 10s
+  z: 41
+  y: -30
+
+text frontSub "MAX" font:Roboto size:24 fill:$light parent:productBox | 1s - 10s
+  z: 41
+  y: 10
+
+rect frontStripe w:120 h:4 fill:$accent parent:productBox | 1s - 10s
+  z: 41
+  y: 45
+
+text frontTag "PREMIUM" font:Roboto size:12 fill:$light parent:productBox | 1s - 10s
+  z: 41
+  y: 70
+
+# Back face
+rect boxBack w:$boxW h:$boxH fill:$dark parent:productBox | 1s - 10s
+  z: -40
+  rotateY: 180deg
+  cornerRadius: 4
+
+# Right face
+rect boxRight w:$boxD h:$boxH fill:$secondary parent:productBox | 1s - 10s
+  x: 80
+  rotateY: 90deg
+  cornerRadius: 4
+
+# Left face
+rect boxLeft w:$boxD h:$boxH fill:$secondary parent:productBox | 1s - 10s
+  x: -80
+  rotateY: -90deg
+  cornerRadius: 4
+
+# Top face
+rect boxTop w:$boxW h:$boxD fill:$light parent:productBox | 1s - 10s
+  y: -100
+  rotateX: -90deg
+  cornerRadius: 4
+
+# Bottom face
+rect boxBottom w:$boxW h:$boxD fill:$dark parent:productBox | 1s - 10s
+  y: 100
+  rotateX: 90deg
+  cornerRadius: 4
+
+= Floating Features | 3s - 10s =
+
+# Feature badges floating around the box
+@group badge1 | 3s - 10s
+  x: 580
+  y: 220
+  rotateY: 0deg -> 10deg -> 0deg over 3s ease-in-out
+
+rect badge1Bg w:100 h:36 fill:#1e293b cornerRadius:18 parent:badge1 | 3s - 10s
+  opacity: 0 -> 1 over 0.5s ease-out
+  stroke: $accent
+  strokeWidth: 1
+
+text badge1Text "4K Ready" font:Roboto size:12 fill:#ffffff parent:badge1 | 3s - 10s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+@group badge2 | 3.3s - 10s
+  x: 220
+  y: 240
+  rotateY: 0deg -> -10deg -> 0deg over 3.5s ease-in-out
+
+rect badge2Bg w:90 h:36 fill:#1e293b cornerRadius:18 parent:badge2 | 3.3s - 10s
+  opacity: 0 -> 1 over 0.5s ease-out
+  stroke: $primary
+  strokeWidth: 1
+
+text badge2Text "Wireless" font:Roboto size:12 fill:#ffffff parent:badge2 | 3.3s - 10s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+@group badge3 | 3.6s - 10s
+  x: 600
+  y: 380
+  rotateY: 0deg -> 8deg -> 0deg over 2.8s ease-in-out
+
+rect badge3Bg w:80 h:36 fill:#1e293b cornerRadius:18 parent:badge3 | 3.6s - 10s
+  opacity: 0 -> 1 over 0.5s ease-out
+  stroke: $light
+  strokeWidth: 1
+
+text badge3Text "Fast" font:Roboto size:12 fill:#ffffff parent:badge3 | 3.6s - 10s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+= Particles | 2s - 10s =
+
+# Floating sparkle particles
+circle spark1 r:3 fill:$accent | 2s - 10s
+  x: f(t) = 300 + 20 * sin(t * 2)
+  y: f(t) = 200 + 15 * cos(t * 1.5)
+  opacity: f(t) = 0.4 + 0.4 * sin(t * 3)
+
+circle spark2 r:2 fill:$light | 2.2s - 10s
+  x: f(t) = 500 + 25 * cos(t * 1.8)
+  y: f(t) = 350 + 20 * sin(t * 2.2)
+  opacity: f(t) = 0.3 + 0.4 * sin(t * 2.5)
+
+circle spark3 r:2.5 fill:$primary | 2.4s - 10s
+  x: f(t) = 250 + 18 * sin(t * 2.5)
+  y: f(t) = 380 + 12 * cos(t * 1.8)
+  opacity: f(t) = 0.35 + 0.35 * sin(t * 2.8)
+
+circle spark4 r:2 fill:$accent | 2.6s - 10s
+  x: f(t) = 550 + 22 * cos(t * 2)
+  y: f(t) = 250 + 18 * sin(t * 2.4)
+  opacity: f(t) = 0.4 + 0.3 * sin(t * 3.2)
+
+= CTA | 5s - 10s =
+
+rect ctaBtn w:180 h:50 fill:$primary cornerRadius:25 | 5s - 10s
+  x: 400
+  y: 520
+  opacity: 0 -> 1 over 0.6s ease-out
+  scale: 0.8 -> 1 over 0.5s ease-out
+
+text ctaText "Shop Now" font:Roboto size:18 fill:#ffffff weight:bold | 5.2s - 10s
+  x: 400
+  y: 520
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text price "299" font:Roboto size:14 fill:#94a3b8 | 5.4s - 10s
+  x: 400
+  y: 560
+  opacity: 0 -> 1 over 0.5s ease-out

@@ -1,0 +1,244 @@
+---
+canvas: 800x500
+bg: #0a0a1a
+fps: 30
+$accent: #22d3ee
+$fire: #f97316
+$purple: #a855f7
+$green: #34d399
+$white: #e2e8f0
+$muted: #64748b
+$panel: #1f2937
+---
+
+# === Reusable @motion definitions ===
+
+@motion fadeIn(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion slideUp(dist=40, dur=0.6s)
+  y: f(t) = $dist * (1 - min(1, t / ($dur / 1000)))
+
+@motion pulse(speed=0.3s)
+  scale: 0.95 -> 1.05 over $speed ease-in-out
+
+# === Reusable @draw component ===
+
+@draw badge(color=$accent, size=16, x=0, y=0)
+  circle bg r:$size fill:$color
+    x: $x
+    y: $y
+
+# === Scene 1: Starfield + Title (0-3s) ===
+
+# Gradient sky background
+rect sky w:800 h:500 fill:linear(0, 0, 0, 500, #0a0a1a, 0, #1e293b, 1) | 0s - 10s
+  x: 400
+  y: 250
+
+# Twinkling star particles
+@emitter stars | 0s - 10s
+  template: circle r:2 fill:$white
+  spawn: 5/s
+  lifetime: 3s
+  x: random(50, 750)
+  y: random(30, 200)
+  vx: 0
+  vy: 0
+  opacity: 0 -> 1 over life
+  scale: 0.5 -> 1 over life
+
+# Countdown text with typewriter draw + keyframe scale
+text countdown "3" font:Roboto size:72 fill:$accent weight:bold | 0s - 1s
+  x: 400
+  y: 250
+  draw: 0 -> 1 over 0.3s linear
+  scale: 1.5 at 0s, 1 at 0.3s ease-out, 0.8 at 0.8s ease-in
+  opacity: 1 -> 0 over 0.2s
+
+text countdown2 "2" font:Roboto size:72 fill:$accent weight:bold | 1s - 2s
+  x: 400
+  y: 250
+  scale: 0.5 -> 1 over 0.3s spring(stiffness:180, damping:12)
+  opacity: 1 -> 0 over 0.2s
+
+text countdown1 "1" font:Roboto size:72 fill:$fire weight:bold | 2s - 3s
+  x: 400
+  y: 250
+  scale: 0.5 -> 1 over 0.3s spring(stiffness:200, damping:10)
+  opacity: 1 -> 0 over 0.2s
+
+# === Scene 2: Launchpad + Rocket Group (0-10s) ===
+
+# Ground with rounded corners
+rect ground w:800 h:80 fill:#1a2e1a cornerRadius:[0, 0, 0, 0] | 0s - 10s
+  x: 400
+  y: 460
+
+# Launch tower
+rect tower w:8 h:140 fill:#374151 | 0s - 6s
+  x: 170
+  y: 390
+  opacity: 1 -> 0.3 over 2s
+
+# Mountain silhouette path
+path mountains d:"M 0 420 L 100 380 L 200 400 L 350 350 L 450 390 L 550 360 L 650 380 L 800 420 L 800 500 L 0 500 Z" fill:#111827 | 0s - 10s
+  x: 0
+  y: 0
+  anchor: top-left
+
+# Rocket parts (individual elements sharing trajectory)
+rect rocketBody w:24 h:70 fill:$white cornerRadius:4 | 2.5s - 10s
+  x: 200
+  y: f(t) = 380 - 30 * t * t
+
+circle rocketNose r:12 fill:$white | 2.5s - 10s
+  x: 200
+  y: f(t) = 345 - 30 * t * t
+
+rect rocketFin1 w:12 h:20 fill:$muted | 2.5s - 10s
+  x: 186
+  y: f(t) = 410 - 30 * t * t
+
+rect rocketFin2 w:12 h:20 fill:$muted | 2.5s - 10s
+  x: 214
+  y: f(t) = 410 - 30 * t * t
+
+circle rocketWindow r:5 fill:$accent | 2.5s - 10s
+  x: 200
+  y: f(t) = 370 - 30 * t * t
+
+# === Scene 3: Ignition Effects (2.5-6s) ===
+
+# Fire emitter with over-life color transition + emitOn line
+@emitter exhaust | 2.5s - 8s
+  template: circle r:7 fill:$fire
+  spawn: 60/s
+  lifetime: 0.6s
+  emitOn: line(190, 420, 210, 420)
+  vx: random(-15, 15)
+  vy: random(40, 100)
+  turbulence: 10
+  opacity: 1 -> 0 over life
+  scale: 1 -> 0.3 over life
+  fill: #ff6b35 -> #fbbf24 over life
+
+# Smoke cloud emitter
+@emitter smoke | 2.5s - 5s
+  template: circle r:25 fill:#4b5563
+  spawn: 10/s
+  lifetime: 2.5s
+  emitOn: line(170, 440, 230, 440)
+  vx: random(-30, 30)
+  vy: random(-10, 10)
+  turbulence: 20
+  opacity: 0.5 -> 0 over life
+  scale: 0.5 -> 3 over life
+
+# === Scene 4: Speed lines + HUD (3-8s) ===
+
+# Speed lines with repeat + dashArray
+line speedline x1:50 y1:0 x2:50 y2:500 stroke:$accent strokeWidth:1 strokeCap:round | 4s - 8s
+  repeat: 6
+  repeatOffset: x:120 delay:0.1s opacity:-0.1
+  opacity: 0.4 -> 0 over 2s
+  dashArray: [20, 40]
+  dashOffset: 0 -> 300 over 2s linear
+
+# HUD circular gauge with drawStart/drawEnd animation
+circle gauge r:30 fill:none stroke:$green strokeWidth:3 | 3s - 10s
+  x: 720
+  y: 70
+  drawStart: 0
+  drawEnd: 0 -> 0.75 over 3s ease-out
+  fadeIn(0.3s)
+
+text gaugeLabel "ALT" font:Roboto size:10 fill:$muted | 3s - 10s
+  x: 720
+  y: 70
+  fadeIn(0.5s)
+
+# Ellipse thruster indicator
+ellipse thruster rx:20 ry:8 fill:none stroke:$fire strokeWidth:2 | 3s - 10s
+  x: 720
+  y: 130
+  draw: 0 -> 1 over 1s ease-out
+  opacity: f(t) = 0.5 + 0.3 * sin(t * 8)
+
+# Badge draw call
+badge alert color:$fire size:12 x:720 y:180 | 5s - 7s
+
+# === Scene 5: Debris + Ring Emitter (6-9s) ===
+
+# Stage separation ring burst
+@emitter separation | 6s - 7s
+  template: circle r:3 fill:$purple
+  spawn: 80/s
+  lifetime: 1s
+  emitOn: circle(200, 180, 30)
+  vx: random(-60, 60)
+  vy: random(-60, 60)
+  opacity: 0.9 -> 0 over life
+  scale: 1 -> 0.2 over life
+
+# Falling debris on motionPath with auto-rotate
+rect debris1 w:12 h:4 fill:$muted anchor:center | 6s - 9s
+  motionPath: "M 200 200 C 180 250, 150 350, 120 450"
+  motionProgress: 0 -> 1 over 2.5s ease-in
+  motionRotate: auto
+  opacity: 1 -> 0.3 over 2s
+
+rect debris2 w:10 h:5 fill:$muted anchor:center | 6.2s - 9s
+  motionPath: "M 200 200 C 230 280, 260 380, 290 460"
+  motionProgress: 0 -> 1 over 2.3s ease-in
+  motionRotate: auto
+  opacity: 1 -> 0.2 over 2s
+
+# === Scene 6: Success Panel (7.5-10s) ===
+
+# Panel with rounded corners + mask
+rect panel w:300 h:80 fill:$panel stroke:$accent strokeWidth:2 cornerRadius:12 | 7.5s - 10s
+  x: 400
+  y: 250
+  scale: 0.5 -> 1 over 0.5s spring(stiffness:160, damping:14)
+  fadeIn(0.3s)
+
+text success "LAUNCH SUCCESS" font:Roboto size:22 fill:$accent weight:bold | 7.8s - 10s
+  x: 400
+  y: 245
+  letterSpacing: 2
+  fadeIn(0.4s)
+  shadow: 0 0 16 #22d3ee
+
+text subtitle "All systems nominal" font:Roboto size:12 fill:$muted | 8s - 10s
+  x: 400
+  y: 270
+  fadeIn(0.5s)
+
+# Brightness flash on success
+rect flash w:800 h:500 fill:#fff | 7.5s - 8.5s
+  x: 400
+  y: 250
+  comp: screen
+  opacity: 0.4 -> 0 over 0.8s ease-out
+
+# Celebratory confetti
+@emitter confetti | 8s - 10s
+  template: rect w:6 h:10 fill:$accent
+  spawn: 30/s
+  lifetime: 2s
+  x: random(200, 600)
+  y: 180
+  vx: random(-60, 60)
+  vy: random(40, 120)
+  gravity: 80
+  opacity: random(0.6, 1)
+  scale: random(0.5, 1.2)
+
+# === Wiggle floating element ===
+
+circle floater r:6 fill:$purple | 0s - 10s
+  x: wiggle(1.5, 30, base:80, seed:1)
+  y: wiggle(2, 20, base:80, seed:2)
+  opacity: 0.6
+  shadow: 0 0 12 #a855f7

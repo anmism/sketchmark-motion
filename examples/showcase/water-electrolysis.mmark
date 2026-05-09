@@ -1,0 +1,153 @@
+---
+canvas: 800x500
+bg: #0a0a1a
+fps: 24
+$cathode: #60a5fa
+$anode: #f87171
+$water: #38bdf8
+$h2: #a78bfa
+$o2: #4ade80
+$bubble: #ffffff
+$text: #e2e8f0
+$muted: #64748b
+$wire: #fbbf24
+---
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion bubble-rise(dur=3s)
+  opacity: 0.8 -> 0 over $dur ease-out
+
+text title "Electrolysis of Water" font:Roboto size:24 fill:$text weight:bold | 0s - 10s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text equation "2H₂O → 2H₂ + O₂" font:Roboto size:14 fill:$muted | 0.3s - 10s
+  x: 400
+  y: 58
+  fade-in(0.4s)
+
+rect beaker w:300 h:220 fill:#0c1929 rx:4 | 0s - 10s
+  x: 400
+  y: 300
+
+rect beaker-rim w:320 h:8 fill:#334155 rx:3 | 0s - 10s
+  x: 400
+  y: 195
+
+rect water-body w:296 h:200 fill:#0f2847 | 0s - 10s
+  x: 400
+  y: 310
+
+rect cathode-rod w:12 h:160 fill:$cathode | 0s - 10s
+  x: 320
+  y: 300
+
+rect anode-rod w:12 h:160 fill:$anode | 0s - 10s
+  x: 480
+  y: 300
+
+text minus "-" font:Roboto size:24 fill:$cathode weight:bold | 0s - 10s
+  x: 320
+  y: 200
+
+text plus "+" font:Roboto size:24 fill:$anode weight:bold | 0s - 10s
+  x: 480
+  y: 200
+
+rect wire-l w:120 h:3 fill:$wire | 0s - 10s
+  x: 260
+  y: 160
+
+rect wire-r w:120 h:3 fill:$wire | 0s - 10s
+  x: 540
+  y: 160
+
+rect battery w:60 h:30 fill:#374151 rx:4 | 0s - 10s
+  x: 400
+  y: 160
+
+text batt-label "DC" font:Roboto size:11 fill:$wire | 0s - 10s
+  x: 400
+  y: 160
+
+rect wire-top w:240 h:3 fill:$wire | 0s - 10s
+  x: 400
+  y: 145
+
+circle h-bubble1 r:4 fill:$h2 | 1s - 10s
+  x: 318
+  y: f(t) = 350 - 30 * t
+  opacity: f(t) = 0.8 - 0.1 * t
+
+circle h-bubble2 r:3 fill:$h2 | 1.5s - 10s
+  x: 322
+  y: f(t) = 340 - 25 * t
+  opacity: f(t) = 0.7 - 0.1 * t
+
+circle h-bubble3 r:5 fill:$h2 | 2s - 10s
+  x: 316
+  y: f(t) = 360 - 28 * t
+  opacity: f(t) = 0.8 - 0.1 * t
+
+circle h-bubble4 r:3 fill:$h2 | 2.5s - 10s
+  x: 324
+  y: f(t) = 345 - 32 * t
+  opacity: f(t) = 0.7 - 0.1 * t
+
+circle h-bubble5 r:4 fill:$h2 | 3s - 10s
+  x: 319
+  y: f(t) = 355 - 26 * t
+  opacity: f(t) = 0.8 - 0.1 * t
+
+circle o-bubble1 r:5 fill:$o2 | 1.2s - 10s
+  x: 478
+  y: f(t) = 355 - 22 * t
+  opacity: f(t) = 0.8 - 0.1 * t
+
+circle o-bubble2 r:4 fill:$o2 | 2s - 10s
+  x: 482
+  y: f(t) = 345 - 20 * t
+  opacity: f(t) = 0.7 - 0.1 * t
+
+circle o-bubble3 r:6 fill:$o2 | 2.8s - 10s
+  x: 476
+  y: f(t) = 360 - 24 * t
+  opacity: f(t) = 0.8 - 0.1 * t
+
+text cathode-lbl "Cathode" font:Roboto size:11 fill:$cathode | 0.5s - 10s
+  x: 320
+  y: 420
+  fade-in(0.3s)
+
+text anode-lbl "Anode" font:Roboto size:11 fill:$anode | 0.5s - 10s
+  x: 480
+  y: 420
+  fade-in(0.3s)
+
+text h2-label "H₂" font:Roboto size:14 fill:$h2 weight:bold | 1.5s - 10s
+  x: 320
+  y: 440
+  fade-in(0.4s)
+
+text o2-label "O₂" font:Roboto size:14 fill:$o2 weight:bold | 1.5s - 10s
+  x: 480
+  y: 440
+  fade-in(0.4s)
+
+text half1 "Cathode: 2H₂O + 2e⁻ → H₂ + 2OH⁻" font:Roboto size:11 fill:$cathode | 2s - 10s
+  x: 170
+  y: 470
+  fade-in(0.4s)
+
+text half2 "Anode: 2H₂O → O₂ + 4H⁺ + 4e⁻" font:Roboto size:11 fill:$anode | 3s - 10s
+  x: 620
+  y: 470
+  fade-in(0.4s)
+
+text ratio "Volume ratio H₂ : O₂ = 2 : 1" font:Roboto size:12 fill:$text | 5s - 10s
+  x: 400
+  y: 470
+  fade-in(0.5s)

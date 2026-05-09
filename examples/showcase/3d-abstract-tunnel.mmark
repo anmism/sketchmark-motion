@@ -1,0 +1,47 @@
+---
+canvas: 960x540
+bg: #050816
+fps: 60
+perspective: 700
+vanish: 480 270
+$cyan: #22d3ee
+$violet: #8b5cf6
+$pink: #f472b6
+---
+
+# 3D Abstract Tunnel
+# Repeated torus rings create a kinetic tunnel bumper.
+
+@group tunnel | 0s - 8s
+  x: 480
+  y: 270
+  rotateX: 0deg
+  rotateY: 0deg -> 18deg -> 0deg over 8s ease-in-out
+
+torus ring0 major:160 tube:5 segments:40 tubeSegments:4 fill:$cyan parent:tunnel | 0s - 8s
+  z: -260 -> 120 over 4s linear
+  scale: 0.35 -> 1.15 over 4s linear
+  opacity: 0 -> 0.75 -> 0 over 4s ease-in-out
+
+torus ring1 major:160 tube:5 segments:40 tubeSegments:4 fill:$violet parent:tunnel | 1s - 8s
+  z: -260 -> 120 over 4s linear
+  scale: 0.35 -> 1.15 over 4s linear
+  opacity: 0 -> 0.75 -> 0 over 4s ease-in-out
+
+torus ring2 major:160 tube:5 segments:40 tubeSegments:4 fill:$pink parent:tunnel | 2s - 8s
+  z: -260 -> 120 over 4s linear
+  scale: 0.35 -> 1.15 over 4s linear
+  opacity: 0 -> 0.75 -> 0 over 4s ease-in-out
+
+torus ring3 major:160 tube:5 segments:40 tubeSegments:4 fill:$cyan parent:tunnel | 3s - 8s
+  z: -260 -> 120 over 4s linear
+  scale: 0.35 -> 1.15 over 4s linear
+  opacity: 0 -> 0.75 -> 0 over 4s ease-in-out
+
+path3d streakA d:"M-250,-80,-240 C-80,-20,-80 80,20,60 250,80,160" fill:none stroke:#ffffff66 strokeWidth:4 parent:tunnel | 0s - 8s
+  drawStart: 0 -> 1 over 3s linear
+  drawEnd: 0.1 -> 1 over 3s linear
+
+text title "ABSTRACT TUNNEL" font:Roboto size:38 fill:#ffffff weight:bold | 0s - 8s
+  x: 480
+  y: 462

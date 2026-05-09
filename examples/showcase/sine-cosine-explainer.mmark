@@ -1,0 +1,359 @@
+---
+canvas: 800x500
+bg: #1a1a2e
+fps: 30
+$circle: #4a4a6a
+$point: #ff6b6b
+$sine: #4ecdc4
+$cosine: #ffe66d
+$guide: #3a3a5a
+$text: #e0e0e0
+$axis: #5a5a7a
+---
+
+# === Title ===
+text title content:"Sine & Cosine from Circular Motion" fill:$text fontSize:24 fontWeight:bold | 0s - 12s
+  x: 400
+  y: 35
+
+# === Unit circle area ===
+
+# Axes for circle
+line circleAxisX stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 100
+  y1: 250
+  x2: 300
+  y2: 250
+
+line circleAxisY stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 200
+  y1: 150
+  x2: 200
+  y2: 350
+
+# Main circle
+circle unitCircle r:80 fill:none stroke:$circle strokeWidth:2 | 0s - 12s
+  x: 200
+  y: 250
+
+# Labels
+text labelRadius content:"r = 1" fill:$text fontSize:12 | 0s - 12s
+  x: 255
+  y: 200
+
+text labelAngle content:"θ" fill:$text fontSize:14 | 0s - 12s
+  x: 225
+  y: 240
+
+# Radius line (rotating)
+line radius stroke:$point strokeWidth:3 | 0s - 12s
+  x1: 200
+  y1: 250
+  x2: f(t) = 200 + 80 * cos(t * 0.524)
+  y2: f(t) = 250 - 80 * sin(t * 0.524)
+
+# Rotating point on circle
+circle rotatingPoint r:8 fill:$point | 0s - 12s
+  x: f(t) = 200 + 80 * cos(t * 0.524)
+  y: f(t) = 250 - 80 * sin(t * 0.524)
+
+# === Projection lines ===
+
+# Horizontal projection to y-axis (shows sine value)
+line projToYAxis stroke:$sine strokeWidth:2 opacity:0.6 | 0s - 12s
+  x1: f(t) = 200 + 80 * cos(t * 0.524)
+  y1: f(t) = 250 - 80 * sin(t * 0.524)
+  x2: 200
+  y2: f(t) = 250 - 80 * sin(t * 0.524)
+
+# Vertical projection to x-axis (shows cosine value)
+line projToXAxis stroke:$cosine strokeWidth:2 opacity:0.6 | 0s - 12s
+  x1: f(t) = 200 + 80 * cos(t * 0.524)
+  y1: f(t) = 250 - 80 * sin(t * 0.524)
+  x2: f(t) = 200 + 80 * cos(t * 0.524)
+  y2: 250
+
+# Sine value on y-axis (small circle)
+circle sineMarker r:5 fill:$sine | 0s - 12s
+  x: 200
+  y: f(t) = 250 - 80 * sin(t * 0.524)
+
+# Cosine value on x-axis (small circle)
+circle cosMarker r:5 fill:$cosine | 0s - 12s
+  x: f(t) = 200 + 80 * cos(t * 0.524)
+  y: 250
+
+# === Sine wave graph ===
+
+# Graph background
+rect sineGraphBg w:420 h:160 fill:#22223a cornerRadius:8 | 0s - 12s
+  x: 560
+  y: 145
+
+text sineLabel content:"sin(θ)" fill:$sine fontSize:16 fontWeight:bold | 0s - 12s
+  x: 560
+  y: 58
+
+# Sine axis
+line sineAxisX stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 350
+  y1: 145
+  x2: 780
+  y2: 145
+
+line sineAxisY stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 350
+  y1: 70
+  x2: 350
+  y2: 220
+
+# Sine +1/-1 labels
+text sinePlus1 content:"+1" fill:$text fontSize:10 | 0s - 12s
+  x: 338
+  y: 75
+
+text sineMinus1 content:"-1" fill:$text fontSize:10 | 0s - 12s
+  x: 338
+  y: 218
+
+# Sine wave using multiple line segments (accurate)
+line sineS1 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 350
+  y1: 145
+  x2: 386
+  y2: f(t) = 145 - 70 * sin(1 * 0.524)
+
+line sineS2 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 386
+  y1: f(t) = 145 - 70 * sin(1 * 0.524)
+  x2: 422
+  y2: f(t) = 145 - 70 * sin(2 * 0.524)
+
+line sineS3 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 422
+  y1: f(t) = 145 - 70 * sin(2 * 0.524)
+  x2: 458
+  y2: f(t) = 145 - 70 * sin(3 * 0.524)
+
+line sineS4 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 458
+  y1: f(t) = 145 - 70 * sin(3 * 0.524)
+  x2: 494
+  y2: f(t) = 145 - 70 * sin(4 * 0.524)
+
+line sineS5 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 494
+  y1: f(t) = 145 - 70 * sin(4 * 0.524)
+  x2: 530
+  y2: f(t) = 145 - 70 * sin(5 * 0.524)
+
+line sineS6 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 530
+  y1: f(t) = 145 - 70 * sin(5 * 0.524)
+  x2: 566
+  y2: f(t) = 145 - 70 * sin(6 * 0.524)
+
+line sineS7 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 566
+  y1: f(t) = 145 - 70 * sin(6 * 0.524)
+  x2: 602
+  y2: f(t) = 145 - 70 * sin(7 * 0.524)
+
+line sineS8 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 602
+  y1: f(t) = 145 - 70 * sin(7 * 0.524)
+  x2: 638
+  y2: f(t) = 145 - 70 * sin(8 * 0.524)
+
+line sineS9 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 638
+  y1: f(t) = 145 - 70 * sin(8 * 0.524)
+  x2: 674
+  y2: f(t) = 145 - 70 * sin(9 * 0.524)
+
+line sineS10 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 674
+  y1: f(t) = 145 - 70 * sin(9 * 0.524)
+  x2: 710
+  y2: f(t) = 145 - 70 * sin(10 * 0.524)
+
+line sineS11 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 710
+  y1: f(t) = 145 - 70 * sin(10 * 0.524)
+  x2: 746
+  y2: f(t) = 145 - 70 * sin(11 * 0.524)
+
+line sineS12 stroke:$sine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 746
+  y1: f(t) = 145 - 70 * sin(11 * 0.524)
+  x2: 782
+  y2: f(t) = 145 - 70 * sin(12 * 0.524)
+
+# Moving point on sine wave
+circle sinePoint r:6 fill:$sine | 0s - 12s
+  x: f(t) = 350 + t * 36
+  y: f(t) = 145 - 70 * sin(t * 0.524)
+
+# Vertical line at sine point
+line sineVertical stroke:$sine strokeWidth:1 opacity:0.5 | 0s - 12s
+  x1: f(t) = 350 + t * 36
+  y1: 145
+  x2: f(t) = 350 + t * 36
+  y2: f(t) = 145 - 70 * sin(t * 0.524)
+
+# === Cosine wave graph ===
+
+# Graph background
+rect cosGraphBg w:420 h:160 fill:#22223a cornerRadius:8 | 0s - 12s
+  x: 560
+  y: 355
+
+text cosLabel content:"cos(θ)" fill:$cosine fontSize:16 fontWeight:bold | 0s - 12s
+  x: 560
+  y: 268
+
+# Cosine axis
+line cosAxisX stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 350
+  y1: 355
+  x2: 780
+  y2: 355
+
+line cosAxisY stroke:$axis strokeWidth:1 | 0s - 12s
+  x1: 350
+  y1: 280
+  x2: 350
+  y2: 430
+
+# Cosine +1/-1 labels
+text cosPlus1 content:"+1" fill:$text fontSize:10 | 0s - 12s
+  x: 338
+  y: 285
+
+text cosMinus1 content:"-1" fill:$text fontSize:10 | 0s - 12s
+  x: 338
+  y: 428
+
+# Cosine wave using multiple line segments (accurate)
+line cosS1 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 350
+  y1: f(t) = 355 - 70 * cos(0 * 0.524)
+  x2: 386
+  y2: f(t) = 355 - 70 * cos(1 * 0.524)
+
+line cosS2 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 386
+  y1: f(t) = 355 - 70 * cos(1 * 0.524)
+  x2: 422
+  y2: f(t) = 355 - 70 * cos(2 * 0.524)
+
+line cosS3 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 422
+  y1: f(t) = 355 - 70 * cos(2 * 0.524)
+  x2: 458
+  y2: f(t) = 355 - 70 * cos(3 * 0.524)
+
+line cosS4 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 458
+  y1: f(t) = 355 - 70 * cos(3 * 0.524)
+  x2: 494
+  y2: f(t) = 355 - 70 * cos(4 * 0.524)
+
+line cosS5 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 494
+  y1: f(t) = 355 - 70 * cos(4 * 0.524)
+  x2: 530
+  y2: f(t) = 355 - 70 * cos(5 * 0.524)
+
+line cosS6 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 530
+  y1: f(t) = 355 - 70 * cos(5 * 0.524)
+  x2: 566
+  y2: f(t) = 355 - 70 * cos(6 * 0.524)
+
+line cosS7 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 566
+  y1: f(t) = 355 - 70 * cos(6 * 0.524)
+  x2: 602
+  y2: f(t) = 355 - 70 * cos(7 * 0.524)
+
+line cosS8 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 602
+  y1: f(t) = 355 - 70 * cos(7 * 0.524)
+  x2: 638
+  y2: f(t) = 355 - 70 * cos(8 * 0.524)
+
+line cosS9 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 638
+  y1: f(t) = 355 - 70 * cos(8 * 0.524)
+  x2: 674
+  y2: f(t) = 355 - 70 * cos(9 * 0.524)
+
+line cosS10 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 674
+  y1: f(t) = 355 - 70 * cos(9 * 0.524)
+  x2: 710
+  y2: f(t) = 355 - 70 * cos(10 * 0.524)
+
+line cosS11 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 710
+  y1: f(t) = 355 - 70 * cos(10 * 0.524)
+  x2: 746
+  y2: f(t) = 355 - 70 * cos(11 * 0.524)
+
+line cosS12 stroke:$cosine strokeWidth:2 opacity:0.3 | 0s - 12s
+  x1: 746
+  y1: f(t) = 355 - 70 * cos(11 * 0.524)
+  x2: 782
+  y2: f(t) = 355 - 70 * cos(12 * 0.524)
+
+# Moving point on cosine wave
+circle cosPoint r:6 fill:$cosine | 0s - 12s
+  x: f(t) = 350 + t * 36
+  y: f(t) = 355 - 70 * cos(t * 0.524)
+
+# Vertical line at cosine point
+line cosVertical stroke:$cosine strokeWidth:1 opacity:0.5 | 0s - 12s
+  x1: f(t) = 350 + t * 36
+  y1: 355
+  x2: f(t) = 350 + t * 36
+  y2: f(t) = 355 - 70 * cos(t * 0.524)
+
+# === Connection lines from circle to graph dots ===
+
+# Sine: from circle y-axis marker to the moving sine point
+line connectSine stroke:$sine strokeWidth:2 opacity:0.5 | 0s - 12s
+  x1: 200
+  y1: f(t) = 250 - 80 * sin(t * 0.524)
+  x2: f(t) = 350 + t * 36
+  y2: f(t) = 145 - 70 * sin(t * 0.524)
+
+# Cosine: from circle x-axis marker to the moving cosine point
+line connectCos stroke:$cosine strokeWidth:2 opacity:0.5 | 0s - 12s
+  x1: f(t) = 200 + 80 * cos(t * 0.524)
+  y1: 250
+  x2: f(t) = 350 + t * 36
+  y2: f(t) = 355 - 70 * cos(t * 0.524)
+
+# === Formulas ===
+text formulaSin content:"y = sin(θ)" fill:$sine fontSize:14 | 0s - 12s
+  x: 120
+  y: 420
+
+text formulaCos content:"x = cos(θ)" fill:$cosine fontSize:14 | 0s - 12s
+  x: 120
+  y: 445
+
+text formulaPythag content:"sin²θ + cos²θ = 1" fill:$text fontSize:14 | 0s - 12s
+  x: 120
+  y: 475
+
+
+# === Angle readout ===
+text angleReadout content:"θ =" fill:$text fontSize:14 | 0s - 12s
+  x: 200
+  y: 380
+
+text angleValue content:"0°" fill:$point fontSize:14 | 0s - 12s
+  x: 225
+  y: 380

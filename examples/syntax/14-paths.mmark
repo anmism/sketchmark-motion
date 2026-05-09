@@ -1,0 +1,81 @@
+---
+canvas: 800x600
+bg: #0f172a
+fps: 24
+$blue: #60a5fa
+$green: #4ade80
+$orange: #f59e0b
+$pink: #ec4899
+$text: #e2e8f0
+$muted: #64748b
+---
+
+text title "Path Types" font:Roboto size:22 fill:$text weight:bold | 0s - 10s
+  x: 400
+  y: 30
+
+text sub1 "4 ways to create paths" font:Roboto size:12 fill:$muted | 0s - 10s
+  x: 400
+  y: 52
+
+text lbl1 "1. Points array" font:Roboto size:12 fill:$blue | 0.5s - 10s
+  x: 150
+  y: 100
+
+path triangle [(100,180), (200,180), (150,120)] stroke:$blue strokeWidth:2 closed:true | 0.5s - 10s
+
+text lbl2 "2. SVG d syntax" font:Roboto size:12 fill:$green | 1.5s - 10s
+  x: 400
+  y: 100
+
+path arrow d:"M 320 150 L 400 150 L 400 130 L 450 160 L 400 190 L 400 170 L 320 170 Z" fill:$green | 1.5s - 10s
+
+text lbl3 "3. fx function (y=f(x))" font:Roboto size:12 fill:$orange | 2.5s - 10s
+  x: 650
+  y: 100
+
+path wave fx:"150 - 30 * sin((x - 550) * 0.08)" xRange:"550-750" steps:40 stroke:$orange strokeWidth:2 | 2.5s - 10s
+
+text lbl4 "4. Parametric xt/yt" font:Roboto size:12 fill:$pink | 3.5s - 10s
+  x: 150
+  y: 280
+
+path circle-demo xt:"150 + 50 * cos(t)" yt:"380 + 50 * sin(t)" tRange:"0-6.28" steps:50 stroke:$pink strokeWidth:2 | 3.5s - 10s
+
+text guide "When to use:" font:Roboto size:14 fill:$text weight:bold | 5s - 10s
+  x: 500
+  y: 280
+
+text g1 "Points: simple polygons" font:Roboto size:11 fill:$blue | 5.5s - 10s
+  x: 500
+  y: 310
+
+text g2 "d: SVG from design tools" font:Roboto size:11 fill:$green | 6s - 10s
+  x: 500
+  y: 335
+
+text g3 "fx: graphs, waves (y=f(x))" font:Roboto size:11 fill:$orange | 6.5s - 10s
+  x: 500
+  y: 360
+
+text g4 "xt/yt: circles, spirals, hearts" font:Roboto size:11 fill:$pink | 7s - 10s
+  x: 500
+  y: 385
+
+path spiral xt:"150 + t * 4 * cos(t)" yt:"530 + t * 4 * sin(t)" tRange:"0-12" steps:80 stroke:$pink strokeWidth:2 | 8s - 10s
+
+text spiral-lbl "Spiral (parametric)" font:Roboto size:10 fill:$muted | 8s - 10s
+  x: 150
+  y: 470
+
+path parabola fx:"530 - 0.008 * (x - 400) * (x - 400)" xRange:"300-500" steps:30 stroke:$orange strokeWidth:2 | 8.5s - 10s
+
+text para-lbl "Parabola (fx)" font:Roboto size:10 fill:$muted | 8.5s - 10s
+  x: 400
+  y: 470
+
+path star xt:"650 + (30 + 20 * cos(t * 5)) * cos(t)" yt:"530 + (30 + 20 * cos(t * 5)) * sin(t)" tRange:"0-6.28" steps:100 stroke:$pink strokeWidth:2 | 9s - 10s
+
+text star-lbl "Star (parametric)" font:Roboto size:10 fill:$muted | 9s - 10s
+  x: 650
+  y: 470

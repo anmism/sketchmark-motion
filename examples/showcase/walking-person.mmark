@@ -1,0 +1,144 @@
+---
+canvas: 640x360
+bg: #f8fafc
+fps: 30
+$bone: #2d3436
+$joint: #636e72
+$ground: #e2e8f0
+$shadow: #94a3b8
+---
+
+# === Ground ===
+
+rect ground w:640 h:6 fill:$ground | 0s - 4s
+  x: 320
+  y: 332
+
+# === Obstacle box at jump point ===
+
+rect obstacle w:30 h:30 fill:#cbd5e1 stroke:#94a3b8 strokeWidth:2 cornerRadius:4 | 0s - 4s
+  x: 320
+  y: 317
+
+# === Root group ===
+# Walk dip + jump arc centered at t=2s
+# tuck = pow(max(0, 1 - abs(t - 2) * 3), 2) peaks at t=2
+
+@group body | 0s - 4s
+  x: f(t) = 80 + 480 * (3 * pow(t/4, 2) - 2 * pow(t/4, 3))
+  y: f(t) = 250 + 1.5 * abs(sin(t * 6.28)) - 90 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  rotation: f(t) = 6.28 * pow(max(0, min(1, (t - 1.67) * 1.5)), 2)
+
+# Shadow — stays on ground (no parent, calculates own x)
+ellipse personShadow rx:16 ry:4 fill:$shadow | 0s - 4s
+  x: f(t) = 80 + 480 * (3 * pow(t/4, 2) - 2 * pow(t/4, 3))
+  y: 322
+  opacity: f(t) = 0.3 - 0.2 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  scale: f(t) = 0.9 + 0.2 * abs(sin(t * 6.28)) - 0.3 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+
+# --- SPINE (curves forward during tuck) ---
+line spine stroke:$bone strokeWidth:4 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  y1: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  x2: 0
+  y2: 12
+
+# Hip
+circle hip r:3.5 fill:$joint parent:body | 0s - 4s
+  x: 0
+  y: 12
+
+# Shoulder (moves forward and down during tuck)
+circle shoulder r:3 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  y: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+
+# --- HEAD (tucks chin to chest) ---
+circle head r:11 fill:none stroke:$bone strokeWidth:3.5 parent:body | 0s - 4s
+  x: f(t) = 15 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  y: f(t) = -36 + 1.5 * abs(sin(t * 6.28)) + 12 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+
+# --- RIGHT LEG (pulls up to chest during tuck) ---
+# tuck factor peaks at t=2, thigh rotates from ~0 (down) to ~2 rad (up/forward)
+line thighR stroke:$bone strokeWidth:3.5 strokeCap:round parent:body | 0s - 4s
+  x1: 0
+  y1: 12
+  x2: f(t) = 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = 12 + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle kneeR r:2.5 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = 12 + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+line shinR stroke:$bone strokeWidth:3 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y1: f(t) = 12 + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  x2: f(t) = 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+  y2: f(t) = 12 + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+
+circle ankleR r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * sin(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+  y: f(t) = 12 + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * cos(0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+
+# --- LEFT LEG (pulls up to chest during tuck) ---
+line thighL stroke:$bone strokeWidth:3.5 strokeCap:round parent:body | 0s - 4s
+  x1: 0
+  y1: 12
+  x2: f(t) = 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = 12 + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle kneeL r:2.5 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = 12 + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+line shinL stroke:$bone strokeWidth:3 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y1: f(t) = 12 + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  x2: f(t) = 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+  y2: f(t) = 12 + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+
+circle ankleL r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * sin(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+  y: f(t) = 12 + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 30 * cos(-0.35 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) - 0.15 - 0.3 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) - 1.2 * pow(max(0, 1 - abs(t - 2) * 3), 2) - 0.6 * pow(max(0, 1 - abs(t - 1.5) * 4), 2))
+
+# --- RIGHT ARM (wraps around knees during tuck) ---
+line upperArmR stroke:$bone strokeWidth:3 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  y1: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  x2: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle elbowR r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+line forearmR stroke:$bone strokeWidth:2.5 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y1: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  x2: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle handR r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * sin(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * cos(-0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+# --- LEFT ARM (wraps around knees during tuck) ---
+line upperArmL stroke:$bone strokeWidth:3 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  y1: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2)
+  x2: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle elbowL r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+line forearmL stroke:$bone strokeWidth:2.5 strokeCap:round parent:body | 0s - 4s
+  x1: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y1: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  x2: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y2: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+
+circle handL r:2 fill:$joint parent:body | 0s - 4s
+  x: f(t) = 8 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 14 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * sin(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))
+  y: f(t) = -22 + 10 * pow(max(0, 1 - abs(t - 2) * 3), 2) + 18 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 1.5 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 12 * cos(0.45 * sin(t * 6.28) * (1 - 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.7 + 0.4 * max(0, -sin(t * 6.28)) * (1 - pow(max(0, 1 - abs(t - 2) * 3), 2)) + 0.9 * pow(max(0, 1 - abs(t - 2) * 3), 2))

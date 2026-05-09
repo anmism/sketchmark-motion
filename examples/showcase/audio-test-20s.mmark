@@ -1,0 +1,280 @@
+---
+canvas: 1280x720
+bg: #0a0a1a
+fps: 30
+$cyan: #06b6d4
+$purple: #8b5cf6
+$pink: #ec4899
+$orange: #f97316
+$white: #f8fafc
+$gray: #64748b
+---
+
+@motion pulse(dur=0.4s)
+  scale: 0.9 -> 1.1 over $dur ease-in-out
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion slide-up(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+audio "beat.wav" | 0s - 20s volume:0.6 fade-in:500 fade-out:1000
+audio "whoosh.wav" | 1s - 1.8s volume:0.7
+audio "impact.wav" | 4s - 4.5s volume:0.9
+audio "chime.wav" | 8s - 8.8s volume:0.5
+audio "swoosh.wav" | 12s - 12.6s volume:0.7
+audio "boom.wav" | 16s - 16.5s volume:1.0
+audio "outro.wav" | 17s - 20s volume:0.4 fade-in:300 fade-out:1500
+
+= Beat Intro | 0s - 4s =
+
+circle pulse-ring1 r:50 fill:none stroke:$cyan strokeWidth:3
+  x: 640
+  y: 360
+  scale: 0 -> 3 over 1s ease-out
+  opacity: 1 -> 0 over 1s ease-out
+
+circle pulse-ring2 r:50 fill:none stroke:$purple strokeWidth:3 | 0.3s - 4s
+  x: 640
+  y: 360
+  scale: 0 -> 3 over 1s ease-out
+  opacity: 1 -> 0 over 1s ease-out
+
+circle pulse-ring3 r:50 fill:none stroke:$pink strokeWidth:3 | 0.6s - 4s
+  x: 640
+  y: 360
+  scale: 0 -> 3 over 1s ease-out
+  opacity: 1 -> 0 over 1s ease-out
+
+circle center-dot r:8 fill:$white | 0.8s - 4s
+  x: 640
+  y: 360
+  scale: 0 -> 1 over 0.3s ease-out
+  pulse()
+
+text title "AUDIO TEST" font:Roboto size:60 fill:$white weight:bold letterSpacing:6 | 1s - 4s
+  x: 640
+  y: 360
+  opacity: 0 -> 1 over 0.3s ease-out
+  scale: 0.5 -> 1 over 0.3s ease-out
+
+text sub "20 Second Motion Graphics" font:Roboto size:20 fill:$gray | 1.5s - 4s
+  x: 640
+  y: 420
+  slide-up(0.4s)
+
+= Waveform Bars | 4s - 8s =
+
+rect bar1 w:20 h:40 fill:$cyan rx:4
+  x: 440
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 40 -> 120 -> 40 over 0.8s ease-in-out
+
+rect bar2 w:20 h:60 fill:$cyan rx:4 | 4.1s - 8s
+  x: 480
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 60 -> 160 -> 60 over 0.6s ease-in-out
+
+rect bar3 w:20 h:100 fill:$purple rx:4 | 4.2s - 8s
+  x: 520
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 100 -> 200 -> 100 over 0.5s ease-in-out
+
+rect bar4 w:20 h:140 fill:$purple rx:4 | 4.3s - 8s
+  x: 560
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 140 -> 220 -> 140 over 0.7s ease-in-out
+
+rect bar5 w:20 h:180 fill:$pink rx:4 | 4.4s - 8s
+  x: 600
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 180 -> 280 -> 180 over 0.4s ease-in-out
+
+rect bar6 w:20 h:200 fill:$pink rx:4 | 4.5s - 8s
+  x: 640
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 200 -> 300 -> 200 over 0.5s ease-in-out
+
+rect bar7 w:20 h:180 fill:$pink rx:4 | 4.4s - 8s
+  x: 680
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 180 -> 260 -> 180 over 0.6s ease-in-out
+
+rect bar8 w:20 h:140 fill:$purple rx:4 | 4.3s - 8s
+  x: 720
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 140 -> 200 -> 140 over 0.7s ease-in-out
+
+rect bar9 w:20 h:100 fill:$purple rx:4 | 4.2s - 8s
+  x: 760
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 100 -> 180 -> 100 over 0.5s ease-in-out
+
+rect bar10 w:20 h:60 fill:$cyan rx:4 | 4.1s - 8s
+  x: 800
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 60 -> 140 -> 60 over 0.8s ease-in-out
+
+rect bar11 w:20 h:40 fill:$cyan rx:4
+  x: 840
+  y: 360
+  scale: 0 -> 1 over 0.1s ease-out
+  h: 40 -> 100 -> 40 over 0.9s ease-in-out
+
+text eq-label "EQUALIZER SYNC" font:Roboto size:24 fill:$gray | 5s - 8s
+  x: 640
+  y: 550
+  fade-in(0.5s)
+
+= Rhythm Circles | 8s - 12s =
+
+circle beat1 r:30 fill:$orange | 8s - 8.5s
+  x: 340
+  y: 360
+  scale: 0 -> 1.5 over 0.2s ease-out
+  opacity: 1 -> 0 over 0.5s ease-out
+
+circle beat2 r:30 fill:$cyan | 8.5s - 9s
+  x: 490
+  y: 360
+  scale: 0 -> 1.5 over 0.2s ease-out
+  opacity: 1 -> 0 over 0.5s ease-out
+
+circle beat3 r:30 fill:$purple | 9s - 9.5s
+  x: 640
+  y: 360
+  scale: 0 -> 1.5 over 0.2s ease-out
+  opacity: 1 -> 0 over 0.5s ease-out
+
+circle beat4 r:30 fill:$pink | 9.5s - 10s
+  x: 790
+  y: 360
+  scale: 0 -> 1.5 over 0.2s ease-out
+  opacity: 1 -> 0 over 0.5s ease-out
+
+circle beat5 r:30 fill:$orange | 10s - 10.5s
+  x: 940
+  y: 360
+  scale: 0 -> 1.5 over 0.2s ease-out
+  opacity: 1 -> 0 over 0.5s ease-out
+
+text rhythm-label "BEAT MARKERS" font:Roboto size:24 fill:$white | 8.5s - 12s
+  x: 640
+  y: 250
+  fade-in(0.5s)
+
+line timeline x1:240 y1:460 x2:1040 y2:460 stroke:$gray strokeWidth:2 | 8s - 12s
+  draw: 0 -> 1 over 1s ease-out
+
+circle marker1 r:6 fill:$orange | 8.2s - 12s
+  x: 340
+  y: 460
+  scale: 0 -> 1 over 0.2s ease-out
+
+circle marker2 r:6 fill:$cyan | 8.7s - 12s
+  x: 490
+  y: 460
+  scale: 0 -> 1 over 0.2s ease-out
+
+circle marker3 r:6 fill:$purple | 9.2s - 12s
+  x: 640
+  y: 460
+  scale: 0 -> 1 over 0.2s ease-out
+
+circle marker4 r:6 fill:$pink | 9.7s - 12s
+  x: 790
+  y: 460
+  scale: 0 -> 1 over 0.2s ease-out
+
+circle marker5 r:6 fill:$orange | 10.2s - 12s
+  x: 940
+  y: 460
+  scale: 0 -> 1 over 0.2s ease-out
+
+= Volume Meter | 12s - 16s =
+
+rect meter-bg w:600 h:30 fill:#1e293b rx:15
+  x: 640
+  y: 300
+  fade-in(0.3s)
+
+rect meter-fill w:0 h:26 fill:$cyan rx:13 | 12.2s - 16s
+  x: 354
+  y: 300
+  w: 0 -> 570 over 2s ease-out
+  fill: #06b6d4 -> #8b5cf6 -> #ec4899 over 2s linear
+
+text vol-label "VOLUME" font:Roboto size:18 fill:$gray | 12s - 16s
+  x: 640
+  y: 260
+  fade-in(0.4s)
+
+text vol-value "0%" font:Roboto size:36 fill:$white weight:bold | 12.5s - 16s
+  x: 640
+  y: 400
+  fade-in(0.3s)
+
+circle speaker-icon r:20 fill:$purple | 12s - 16s
+  x: 640
+  y: 480
+  pulse()
+
+text freq-lo "20Hz" font:Roboto size:14 fill:$gray | 12.5s - 16s
+  x: 360
+  y: 340
+  fade-in(0.3s)
+
+text freq-hi "20kHz" font:Roboto size:14 fill:$gray | 12.5s - 16s
+  x: 920
+  y: 340
+  fade-in(0.3s)
+
+= Finale | 16s - 20s =
+
+circle explode1 r:10 fill:$cyan | 16s - 17s
+  x: 640
+  y: 360
+  scale: 0 -> 8 over 0.5s ease-out
+  opacity: 1 -> 0 over 0.8s ease-out
+
+circle explode2 r:10 fill:$purple | 16.1s - 17s
+  x: 640
+  y: 360
+  scale: 0 -> 6 over 0.5s ease-out
+  opacity: 1 -> 0 over 0.7s ease-out
+
+circle explode3 r:10 fill:$pink | 16.2s - 17s
+  x: 640
+  y: 360
+  scale: 0 -> 4 over 0.4s ease-out
+  opacity: 1 -> 0 over 0.6s ease-out
+
+text final "AUDIO" font:Roboto size:80 fill:$white weight:bold letterSpacing:10 | 16.5s - 20s
+  x: 640
+  y: 320
+  scale: 0.3 -> 1 over 0.4s ease-out
+  opacity: 0 -> 1 over 0.3s ease-out
+
+text final2 "VERIFIED" font:Roboto size:40 fill:$cyan letterSpacing:6 | 17s - 20s
+  x: 640
+  y: 400
+  slide-up(0.5s)
+
+line underline x1:440 y1:430 x2:840 y2:430 stroke:$purple strokeWidth:3 | 17.5s - 20s
+  draw: 0 -> 1 over 0.6s ease-out
+
+text credits "motion-mark audio test" font:Roboto size:14 fill:$gray | 18s - 20s
+  x: 640
+  y: 600
+  opacity: 0 -> 1 -> 0 over 2s ease-in-out

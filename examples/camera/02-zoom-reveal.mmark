@@ -1,0 +1,48 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+---
+
+@camera
+  scale: 8 -> 1 over 4s ease-out
+  x: 0
+  y: 0
+
+= Reveal | 0s - 5s =
+
+circle star1 r:2 fill:#fff | persist
+  x: 100
+  y: 80
+
+circle star2 r:3 fill:#fff | persist
+  x: 500
+  y: 120
+
+circle star3 r:2 fill:#fff | persist
+  x: 200
+  y: 280
+
+circle star4 r:2 fill:#fff | persist
+  x: 550
+  y: 300
+
+circle star5 r:3 fill:#fff | persist
+  x: 80
+  y: 200
+
+circle planet r:40 fill:#4a6fa5 | persist
+  x: 320
+  y: 180
+
+circle ring1 r:55 fill:transparent stroke:#7a9cc6 strokeWidth:3 | persist
+  x: 320
+  y: 180
+
+circle moon r:12 fill:#c9c9c9 | persist
+  x: 420
+  y: 140
+
+text title "SPACE" fill:#fff fontSize:48 | 3s - 5s
+  x: 320
+  y: 320
+  opacity: 0 -> 1 over 1s ease-out

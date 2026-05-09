@@ -1,0 +1,181 @@
+---
+canvas: 800x450
+bg: #0a0e1a
+fps: 30
+$sky1: #0a0e1a
+$sky2: #1a1e3a
+$sky3: #2d1b4e
+$cloud: #1e2540
+$bgBuilding: #0f1525
+$midBuilding: #0b0f1a
+$fgBuilding: #060810
+$window: #fbbf24
+$windowDim: #78716c
+$fog: #1e293b
+$moon: #f1f5f9
+---
+
+# === Sky gradient background ===
+
+rect sky w:800 h:450 fill:linear(0, 0, 0, 450, #0a0e1a, 0, #1a1e3a, 0.5, #2d1b4e, 1) | 0s - 10s
+  x: 400
+  y: 225
+
+# === Moon ===
+
+circle moon r:30 fill:$moon | 0s - 10s
+  x: f(t) = 650 - 8 * t
+  y: 80
+  opacity: 0.8
+  shadow: 0 0 40 #f1f5f9
+
+# === Clouds (slow drift) ===
+
+ellipse cloud1 rx:80 ry:20 fill:$cloud | 0s - 10s
+  x: f(t) = 200 - 12 * t
+  y: 90
+  opacity: 0.4
+
+ellipse cloud2 rx:60 ry:15 fill:$cloud | 0s - 10s
+  x: f(t) = 500 - 10 * t
+  y: 120
+  opacity: 0.3
+
+ellipse cloud3 rx:100 ry:18 fill:$cloud | 0s - 10s
+  x: f(t) = 700 - 14 * t
+  y: 70
+  opacity: 0.25
+
+ellipse cloud4 rx:50 ry:12 fill:$cloud | 0s - 10s
+  x: f(t) = 350 - 9 * t
+  y: 140
+  opacity: 0.35
+
+# === Background layer (slowest: 20px/s drift left) ===
+
+path bgSkyline d:"M -100 450 L -100 320 L -50 320 L -50 280 L -20 280 L -20 300 L 20 300 L 20 250 L 60 250 L 60 270 L 100 270 L 100 220 L 130 220 L 130 240 L 160 240 L 160 290 L 200 290 L 200 230 L 240 230 L 240 260 L 280 260 L 280 200 L 310 200 L 310 180 L 340 180 L 340 210 L 380 210 L 380 270 L 420 270 L 420 240 L 460 240 L 460 190 L 490 190 L 490 220 L 530 220 L 530 260 L 570 260 L 570 230 L 610 230 L 610 200 L 650 200 L 650 250 L 700 250 L 700 280 L 750 280 L 750 310 L 800 310 L 800 290 L 850 290 L 850 260 L 900 260 L 900 450 Z" fill:$bgBuilding | 0s - 10s
+  x: f(t) = 0 - 20 * t
+  y: 0
+  anchor: top-left
+
+# Background windows (tiny dots)
+circle bgWin1 r:1.5 fill:$windowDim | 0s - 10s
+  x: f(t) = 310 - 20 * t
+  y: 200
+  opacity: f(t) = 0.4 + 0.3 * sin(t * 3)
+
+circle bgWin2 r:1.5 fill:$windowDim | 0s - 10s
+  x: f(t) = 320 - 20 * t
+  y: 210
+  opacity: 0.5
+
+circle bgWin3 r:1.5 fill:$windowDim | 0s - 10s
+  x: f(t) = 465 - 20 * t
+  y: 205
+  opacity: f(t) = 0.3 + 0.4 * sin(t * 2.5)
+
+circle bgWin4 r:1.5 fill:$windowDim | 0s - 10s
+  x: f(t) = 105 - 20 * t
+  y: 240
+  opacity: 0.6
+
+# === Midground layer (medium: 45px/s drift left) ===
+
+path midSkyline d:"M -100 450 L -100 350 L -60 350 L -60 300 L -30 300 L -30 260 L 10 260 L 10 310 L 50 310 L 50 270 L 80 270 L 80 230 L 110 230 L 110 200 L 140 200 L 140 230 L 170 230 L 170 280 L 220 280 L 220 240 L 250 240 L 250 210 L 290 210 L 290 260 L 330 260 L 330 220 L 360 220 L 360 180 L 390 180 L 390 160 L 410 160 L 410 180 L 440 180 L 440 230 L 480 230 L 480 270 L 520 270 L 520 230 L 560 230 L 560 200 L 590 200 L 590 240 L 630 240 L 630 280 L 680 280 L 680 310 L 730 310 L 730 260 L 770 260 L 770 290 L 820 290 L 820 250 L 860 250 L 860 300 L 900 300 L 900 450 Z" fill:$midBuilding | 0s - 10s
+  x: f(t) = 0 - 45 * t
+  y: 0
+  anchor: top-left
+
+# Midground windows
+rect midWin1 w:3 h:4 fill:$window | 0s - 10s
+  x: f(t) = 395 - 45 * t
+  y: 175
+  opacity: 0.9
+
+rect midWin2 w:3 h:4 fill:$window | 0s - 10s
+  x: f(t) = 400 - 45 * t
+  y: 185
+  opacity: 0.7
+
+rect midWin3 w:3 h:4 fill:$windowDim | 0s - 10s
+  x: f(t) = 115 - 45 * t
+  y: 215
+  opacity: f(t) = 0.5 + 0.3 * sin(t * 4)
+
+rect midWin4 w:3 h:4 fill:$window | 0s - 10s
+  x: f(t) = 255 - 45 * t
+  y: 225
+  opacity: 0.8
+
+rect midWin5 w:3 h:4 fill:$windowDim | 0s - 10s
+  x: f(t) = 365 - 45 * t
+  y: 195
+  opacity: 0.6
+
+rect midWin6 w:3 h:4 fill:$window | 0s - 10s
+  x: f(t) = 530 - 45 * t
+  y: 245
+  opacity: f(t) = 0.4 + 0.4 * sin(t * 3.2)
+
+# === Foreground layer (fastest: 80px/s drift left) ===
+
+path fgSkyline d:"M -100 450 L -100 380 L -50 380 L -50 320 L -20 320 L -20 280 L 20 280 L 20 250 L 50 250 L 50 220 L 80 220 L 80 250 L 120 250 L 120 300 L 160 300 L 160 260 L 200 260 L 200 220 L 230 220 L 230 190 L 260 190 L 260 220 L 300 220 L 300 280 L 350 280 L 350 240 L 380 240 L 380 200 L 420 200 L 420 170 L 450 170 L 450 200 L 490 200 L 490 250 L 540 250 L 540 290 L 580 290 L 580 250 L 620 250 L 620 210 L 660 210 L 660 240 L 710 240 L 710 280 L 760 280 L 760 320 L 820 320 L 820 270 L 870 270 L 870 310 L 920 310 L 920 350 L 980 350 L 980 450 Z" fill:$fgBuilding | 0s - 10s
+  x: f(t) = 0 - 80 * t
+  y: 0
+  anchor: top-left
+
+# Foreground windows (larger, brighter)
+rect fgWin1 w:5 h:6 fill:$window | 0s - 10s
+  x: f(t) = 235 - 80 * t
+  y: 205
+  opacity: 0.95
+  shadow: 0 0 6 #fbbf24
+
+rect fgWin2 w:5 h:6 fill:$window | 0s - 10s
+  x: f(t) = 245 - 80 * t
+  y: 220
+  opacity: 0.8
+
+rect fgWin3 w:5 h:6 fill:$windowDim | 0s - 10s
+  x: f(t) = 425 - 80 * t
+  y: 185
+  opacity: f(t) = 0.6 + 0.3 * sin(t * 5)
+
+rect fgWin4 w:5 h:6 fill:$window | 0s - 10s
+  x: f(t) = 435 - 80 * t
+  y: 200
+  opacity: 0.9
+  shadow: 0 0 4 #fbbf24
+
+rect fgWin5 w:5 h:6 fill:$window | 0s - 10s
+  x: f(t) = 55 - 80 * t
+  y: 235
+  opacity: 0.7
+
+rect fgWin6 w:5 h:6 fill:$windowDim | 0s - 10s
+  x: f(t) = 625 - 80 * t
+  y: 225
+  opacity: f(t) = 0.5 + 0.4 * sin(t * 2.8)
+
+rect fgWin7 w:5 h:6 fill:$window | 0s - 10s
+  x: f(t) = 655 - 80 * t
+  y: 240
+  opacity: 0.85
+
+# === Fog overlays ===
+
+rect fogLow w:800 h:120 fill:linear(0, 0, 0, 120, #1e293b, 0, #0a0e1a, 1) | 0s - 10s
+  x: 400
+  y: 400
+  opacity: f(t) = 0.3 + 0.1 * sin(t * 0.8)
+
+rect fogMid w:800 h:80 fill:$fog | 0s - 10s
+  x: 400
+  y: 340
+  opacity: f(t) = 0.12 + 0.05 * sin(t * 1.2)
+
+# Upper atmospheric haze
+rect haze w:800 h:160 fill:linear(0, 0, 0, 160, #2d1b4e, 0, #0a0e1a, 1) | 0s - 10s
+  x: 400
+  y: 80
+  opacity: 0.2

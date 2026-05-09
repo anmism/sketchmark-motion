@@ -1,0 +1,49 @@
+---
+canvas: 780x440
+bg: #0d1321
+fps: 60
+perspective: 700
+vanish: 390 205
+---
+
+# Hybrid: @view planes + line3d + poly3d + billboard
+
+@group monument | 0s - 8s
+  x: 390
+  y: 220
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view pedestalTop parent:monument | 0s - 8s
+  at: 0 -10 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect pedestalTopFace w:160 h:90 fill:#94a3b8 parent:pedestalTop | 0s - 8s
+
+@view pedestalFront parent:monument | 0s - 8s
+  at: 0 35 45
+  normal: 0 0 1
+rect pedestalFrontFace w:160 h:90 fill:#64748b parent:pedestalFront | 0s - 8s
+
+line3d spire stroke:#f8fafc strokeWidth:4 parent:monument | 0s - 8s
+  from: (0, -10, 0)
+  to: (0, -130, 0)
+
+poly3d capA fill:#f59e0b stroke:#fde68a strokeWidth:2 parent:monument | 0s - 8s
+  points: [(-30,-110,30), (30,-110,30), (0,-170,0)]
+poly3d capB fill:#d97706 stroke:#fde68a strokeWidth:2 parent:monument | 0s - 8s
+  points: [(30,-110,30), (30,-110,-30), (0,-170,0)]
+poly3d capC fill:#b45309 stroke:#fde68a strokeWidth:2 parent:monument | 0s - 8s
+  points: [(30,-110,-30), (-30,-110,-30), (0,-170,0)]
+poly3d capD fill:#92400e stroke:#fde68a strokeWidth:2 parent:monument | 0s - 8s
+  points: [(-30,-110,-30), (-30,-110,30), (0,-170,0)]
+
+text title "MONUMENT" font:Roboto size:18 fill:#f8fafc weight:bold parent:monument | 0s - 8s
+  y: -70
+  z: 65
+  billboard: screen
+  depthBias: 40
+
+text label "62 hybrid monument" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 390
+  y: 388

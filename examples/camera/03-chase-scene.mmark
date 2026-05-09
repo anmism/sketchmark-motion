@@ -1,0 +1,52 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+---
+
+@camera
+  x: f(t) = 200 * t
+  y: f(t) = 30 * sin(t * 2)
+  scale: 1.2
+
+= Chase | 0s - 6s =
+
+rect road w:2000 h:100 fill:#333 | persist
+  x: 600
+  y: 310
+
+line roadLine from:(0,260) to:(2000,260) stroke:#ff0 strokeWidth:3 | persist
+
+circle runner r:20 fill:#e94560 | persist
+  x: f(t) = 150 + 220 * t
+  y: f(t) = 240
+circle chaser r:25 fill:#4ecdc4 | persist
+  x: f(t) = 80 + 200 * t
+  y: f(t) = 235 
+
+rect building1 w:80 h:150 fill:#2d3436 | persist
+  x: 100
+  y: 135
+
+rect building2 w:60 h:200 fill:#2d3436 | persist
+  x: 300
+  y: 110
+
+rect building3 w:100 h:120 fill:#2d3436 | persist
+  x: 500
+  y: 150
+
+rect building4 w:70 h:180 fill:#2d3436 | persist
+  x: 700
+  y: 120
+
+rect building5 w:90 h:140 fill:#2d3436 | persist
+  x: 900
+  y: 140
+
+rect building6 w:60 h:160 fill:#2d3436 | persist
+  x: 1100
+  y: 130
+
+rect building7 w:80 h:190 fill:#2d3436 | persist
+  x: 1300
+  y: 115

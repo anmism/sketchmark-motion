@@ -1,0 +1,27 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+@camera
+  x: 0 -> 100 over 4s ease-in-out
+  y: 0 -> -50 over 4s ease-in-out
+  scale: 1 -> 1.5 over 4s ease-out
+  rotation: 0 -> 0.1 over 4s ease-in-out
+
+circle target r:30 fill:#e74c5c | 0s - 5s
+  x: 320
+  y: 180
+
+rect box1 w:40 h:40 fill:#4ecdc4 | 0s - 5s
+  x: 150
+  y: 100
+
+rect box2 w:40 h:40 fill:#f7dc6f | 0s - 5s
+  x: 490
+  y: 250
+
+text label "Camera Demo" font:Roboto size:20 fill:#fff | 0s - 5s
+  x: 320
+  y: 320

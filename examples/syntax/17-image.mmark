@@ -1,0 +1,24 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+fps: 24
+---
+
+image photo "image.jpg" w:200 h:150 | 0s - 4s
+  x: 320
+  y: 150
+  opacity: 0 -> 1 over 1s ease-out
+  scale: 0.8 -> 1 over 1s ease-out
+
+image icon "image.jpg" w:48 h:48 | 1s - 4s
+  x: 500
+  y: 150
+  rotation: 0 -> 360deg over 3s linear
+
+text note "(place image.jpg & image.jpg in same folder)" font:Roboto size:12 fill:#666 | 0s - 4s
+  x: 320
+  y: 280
+
+text caption "Image Elements" font:Roboto size:24 fill:#fff | 0s - 4s
+  x: 320
+  y: 320

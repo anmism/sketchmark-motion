@@ -1,0 +1,224 @@
+---
+canvas: 600x500
+bg: #000000
+fps: 30
+$bg: #16181c
+$border: #2f3336
+$text: #e7e9ea
+$gray: #71767b
+$blue: #1d9bf0
+$pink: #f91880
+$green: #00ba7c
+---
+
+= Compose Tweet | 0s - 5s =
+
+rect composeBox w:520 h:200 fill:$bg cornerRadius:16 stroke:$border strokeWidth:1 | 0s - 5s
+  x: 300
+  y: 130
+  opacity: 0 -> 1 over 0.3s
+
+circle composeAvatar r:20 fill:#1d9bf0 | 0.2s - 5s
+  x: 70
+  y: 60
+  scale: 0 -> 1 over 0.2s
+
+text composeAvatarLetter "A" font:Roboto size:20 fill:#fff weight:bold | 0.2s - 5s
+  x: 70
+  y: 64
+
+text placeholder "What's happening?" font:Roboto size:18 fill:$gray anchor:top-left | 0.3s - 0.8s
+  x: 105
+  y: 50
+  opacity: 0 -> 1 over 0.2s
+
+text typingLine1 "Introducing Claude 4 — our most" font:Roboto size:18 fill:$text anchor:top-left | 0.8s - 5s
+  x: 105
+  y: 50
+  draw: 0 -> 1 over 1.5s linear
+
+text typingLine2 "capable AI assistant yet!" font:Roboto size:18 fill:$text anchor:top-left | 2.3s - 5s
+  x: 105
+  y: 78
+  draw: 0 -> 1 over 1s linear
+
+text typingHash "#Claude4 #AI" font:Roboto size:18 fill:$blue anchor:top-left | 3.3s - 5s
+  x: 105
+  y: 106
+  draw: 0 -> 1 over 0.5s linear
+
+line composeDivider from:(50, 180) to:(550, 180) stroke:$border strokeWidth:1 | 0.3s - 5s
+
+rect postBtn w:80 h:36 fill:$gray cornerRadius:18 | 0.3s - 3.8s
+  x: 510
+  y: 205
+
+text postBtnText "Post" font:Roboto size:14 fill:#ffffff88 weight:bold | 0.3s - 3.8s
+  x: 510
+  y: 210
+
+rect postBtnActive w:80 h:36 fill:$blue cornerRadius:18 | 3.8s - 5s
+  x: 510
+  y: 205
+  opacity: 0 -> 1 over 0.2s
+
+text postBtnTextActive "Post" font:Roboto size:14 fill:#fff weight:bold | 3.8s - 5s
+  x: 510
+  y: 210
+  opacity: 0 -> 1 over 0.2s
+
+circle clickRipple r:40 fill:$blue | 4.3s - 4.8s
+  x: 510
+  y: 205
+  scale: 0 -> 1.5 over 0.3s ease-out
+  opacity: 0.5 -> 0 over 0.3s
+
+text charCount "48/280" font:Roboto size:12 fill:$gray | 3.5s - 5s
+  x: 420
+  y: 210
+  opacity: 0 -> 1 over 0.2s
+
+= Posted Tweet | 5s - 12s =
+
+rect card w:520 h:260 fill:$bg cornerRadius:16 stroke:$border strokeWidth:1 | 5s - 12s
+  x: 300
+  y: 160
+  scale: 0.9 -> 1 over 0.4s ease-out
+  opacity: 0 -> 1 over 0.3s
+
+circle avatar r:22 fill:#1d9bf0 | 5.2s - 12s
+  x: 80
+  y: 75
+  scale: 0 -> 1 over 0.3s ease-out
+
+text avatarLetter "A" font:Roboto size:22 fill:#fff weight:bold | 5.3s - 12s
+  x: 80
+  y: 80
+  opacity: 0 -> 1 over 0.2s
+
+text displayName "Anthropic" font:Roboto size:15 fill:$text weight:bold anchor:top-left | 5.3s - 12s
+  x: 115
+  y: 58
+  opacity: 0 -> 1 over 0.2s
+
+circle verified r:7 fill:$blue | 5.4s - 12s
+  x: 192
+  y: 66
+  scale: 0 -> 1 over 0.2s ease-out
+
+text checkmark "✓" font:Roboto size:9 fill:#fff weight:bold | 5.4s - 12s
+  x: 192
+  y: 70
+  opacity: 0 -> 1 over 0.1s
+
+text handle "@AnthropicAI · now" font:Roboto size:13 fill:$gray anchor:top-left | 5.35s - 12s
+  x: 115
+  y: 80
+  opacity: 0 -> 1 over 0.2s
+
+text tweet1 "Introducing Claude 4 — our most" font:Roboto size:15 fill:$text anchor:top-left | 5.5s - 12s
+  x: 60
+  y: 115
+  opacity: 0 -> 1 over 0.3s
+
+text tweet2 "capable AI assistant yet!" font:Roboto size:15 fill:$text anchor:top-left | 5.6s - 12s
+  x: 60
+  y: 138
+  opacity: 0 -> 1 over 0.3s
+
+text hashtag "#Claude4 #AI" font:Roboto size:15 fill:$blue anchor:top-left | 5.7s - 12s
+  x: 60
+  y: 168
+  opacity: 0 -> 1 over 0.3s
+
+line divider from:(60, 210) to:(540, 210) stroke:$border strokeWidth:1 | 5.8s - 12s
+  opacity: 0 -> 1 over 0.2s
+
+text commentIcon "💬" font:Roboto size:16 fill:$gray | 6s - 12s
+  x: 100
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text commentCount "0" font:Roboto size:12 fill:$gray | 6s - 12s
+  x: 130
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text retweetIcon "🔄" font:Roboto size:16 fill:$gray | 6.1s - 12s
+  x: 200
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text retweetCount "0" font:Roboto size:12 fill:$gray | 6.1s - 12s
+  x: 230
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text likeIcon "♡" font:Roboto size:18 fill:$gray | 6.2s - 7.5s
+  x: 310
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text likeCount "0" font:Roboto size:12 fill:$gray | 6.2s - 7.5s
+  x: 340
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+circle likeRipple r:18 fill:none stroke:$pink strokeWidth:2 | 7.5s - 8s
+  x: 310
+  y: 240
+  scale: 0 -> 2 over 0.4s ease-out
+  opacity: 0.8 -> 0 over 0.4s
+
+text likeIconFilled "❤️" font:Roboto size:16 fill:$pink | 7.5s - 12s
+  x: 310
+  y: 245
+  scale: 0 -> 1.3 -> 1 over 0.3s ease-out
+  opacity: 0 -> 1 over 0.1s
+
+text likeCountNew "1" font:Roboto size:12 fill:$pink | 7.6s - 12s
+  x: 340
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text viewIcon "📊" font:Roboto size:14 fill:$gray | 6.3s - 12s
+  x: 420
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text viewCount "0" font:Roboto size:12 fill:$gray | 6.3s - 12s
+  x: 448
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text shareIcon "↗" font:Roboto size:18 fill:$gray | 6.4s - 12s
+  x: 510
+  y: 245
+  opacity: 0 -> 1 over 0.2s
+
+text heart1 "❤️" font:Roboto size:14 fill:$pink | 7.7s - 9s
+  x: 310
+  y: 240
+  y: 240 -> 180 over 1s ease-out
+  x: 310 -> 270 over 1s
+  opacity: 1 -> 0 over 1s
+  scale: 1 -> 0.5 over 1s
+
+text heart2 "❤️" font:Roboto size:12 fill:$pink | 7.9s - 9.2s
+  x: 310
+  y: 240
+  y: 240 -> 170 over 1s ease-out
+  x: 310 -> 350 over 1s
+  opacity: 1 -> 0 over 1s
+  scale: 1 -> 0.4 over 1s
+
+rect notification w:220 h:50 fill:$blue cornerRadius:12 | 8.5s - 11s
+  x: 300
+  y: 380
+  y: 440 at 0s, 380 at 0.3s ease-out, 380 at 2s, 440 at 2.5s ease-in
+  opacity: 0 at 0s, 1 at 0.2s, 1 at 2.1s, 0 at 2.5s
+
+text notifText "✓ Your post was sent" font:Roboto size:14 fill:#fff weight:bold | 8.6s - 10.9s
+  x: 300
+  y: 383
+  opacity: 0 -> 1 over 0.2s

@@ -1,0 +1,31 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+---
+
+# Wave Mask - fx function mask demo
+
+rect ocean w:600 h:200 fill:#0ea5e9 | 0s - 5s
+  x: 320
+  y: 230
+  mask: fx("130 + 20 * sin((x - 20) * 0.04) + 10 * sin((x - 20) * 0.08)", 20, 620, 330, 80)
+  fill: #0ea5e9 -> #0284c7 -> #0ea5e9 over 3s ease-in-out
+
+rect sky w:600 h:150 fill:#1e3a5f | 0s - 5s
+  x: 320
+  y: 75
+
+circle sun r:40 fill:#fbbf24 | 0s - 5s
+  x: 500
+  y: 80
+  fill: #fbbf24 -> #f59e0b -> #fbbf24 over 2s ease-in-out
+  scale: 1 -> 1.05 -> 1 over 2s ease-in-out
+
+text title "Ocean Waves" font:Roboto size:28 fill:#fff weight:bold | 0s - 5s
+  x: 320
+  y: 320
+
+text subtitle "fx mask: sine wave function" font:Roboto size:12 fill:#64748b | 0s - 5s
+  x: 320
+  y: 345

@@ -1,0 +1,84 @@
+---
+canvas: 800x500
+bg: #0a0a1a
+fps: 24
+$h1: #60a5fa
+$h3: #4ade80
+$h5: #f59e0b
+$h7: #ec4899
+$sum: #ffffff
+$axis: #334155
+$text: #e2e8f0
+$muted: #64748b
+---
+
+@motion fade-in(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+text title "Fourier Series: Square Wave" font:Roboto size:22 fill:$text weight:bold | 0s - 12s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text subtitle "Adding sine harmonics to build a square wave" font:Roboto size:12 fill:$muted | 0.3s - 12s
+  x: 400
+  y: 52
+  fade-in(0.4s)
+
+rect x-axis w:700 h:1 fill:$axis | 0s - 12s
+  x: 400
+  y: 280
+
+rect y-axis w:1 h:200 fill:$axis | 0s - 12s
+  x: 50
+  y: 280
+
+path h1-curve fx:"280 - 80 * sin(x * 0.031)" xRange:"50-750" steps:80 stroke:$h1 strokeWidth:2 | 1s - 12s
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text h1-label "sin(x)" font:Roboto size:11 fill:$h1 | 1.5s - 12s
+  x: 100
+  y: 400
+  fade-in(0.3s)
+
+path h3-curve fx:"280 - 80 * (sin(x * 0.031) + sin(x * 0.093)/3)" xRange:"50-750" steps:100 stroke:$h3 strokeWidth:2 | 3s - 12s
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text h3-label "+ sin(3x)/3" font:Roboto size:11 fill:$h3 | 3.5s - 12s
+  x: 220
+  y: 400
+  fade-in(0.3s)
+
+path h5-curve fx:"280 - 80 * (sin(x * 0.031) + sin(x * 0.093)/3 + sin(x * 0.155)/5)" xRange:"50-750" steps:120 stroke:$h5 strokeWidth:2 | 5s - 12s
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text h5-label "+ sin(5x)/5" font:Roboto size:11 fill:$h5 | 5.5s - 12s
+  x: 360
+  y: 400
+  fade-in(0.3s)
+
+path h7-curve fx:"280 - 80 * (sin(x * 0.031) + sin(x * 0.093)/3 + sin(x * 0.155)/5 + sin(x * 0.217)/7)" xRange:"50-750" steps:140 stroke:$h7 strokeWidth:2 | 7s - 12s
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text h7-label "+ sin(7x)/7" font:Roboto size:11 fill:$h7 | 7.5s - 12s
+  x: 500
+  y: 400
+  fade-in(0.3s)
+
+path sum-curve fx:"280 - 80 * (sin(x * 0.031) + sin(x * 0.093)/3 + sin(x * 0.155)/5 + sin(x * 0.217)/7 + sin(x * 0.279)/9 + sin(x * 0.341)/11)" xRange:"50-750" steps:200 stroke:$sum strokeWidth:3 | 9s - 12s
+  opacity: 0 -> 1 over 0.8s ease-out
+
+text sum-label "= Square Wave" font:Roboto size:12 fill:$sum weight:bold | 9.5s - 12s
+  x: 650
+  y: 400
+  fade-in(0.3s)
+
+text formula "f(x) = sin(x) + sin(3x)/3 + sin(5x)/5 + ..." font:Roboto size:13 fill:$muted | 10s - 12s
+  x: 400
+  y: 450
+  fade-in(0.5s)
+
+text note "More harmonics = sharper edges" font:Roboto size:11 fill:$muted | 10.5s - 12s
+  x: 400
+  y: 475
+  fade-in(0.5s)

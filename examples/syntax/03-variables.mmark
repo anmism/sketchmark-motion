@@ -1,0 +1,28 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+$primary: #e74c5c
+$accent: #4ecdc4
+$text: #f1f5f9
+$muted: #64748b
+$size: 60
+---
+
+rect card w:200 h:120 fill:#1e293b | 0s - 4s
+  x: 320
+  y: 160
+
+circle badge r:20 fill:$primary | 0s - 4s
+  x: 320
+  y: 120
+
+text title "Variables" font:Roboto size:28 fill:$text | 0s - 4s
+  x: 320
+  y: 180
+
+text sub "Reuse colors & values" font:Roboto size:14 fill:$muted | 0s - 4s
+  x: 320
+  y: 210
+
+line underline from:(240,230) to:(400,230) stroke:$accent strokeWidth:2 | 0s - 4s

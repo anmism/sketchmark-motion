@@ -1,0 +1,95 @@
+{
+  "name": "@sketchmark/motion",
+  "version": "0.0.1",
+  "description": "Markdown for Motion Graphics. Text-in, video-out. A DSL for creating animations.",
+  "author": "Bapun Hansdah",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/packages/parser/src/index.js",
+  "types": "dist/packages/parser/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/packages/parser/src/index.d.ts",
+      "require": "./dist/packages/parser/src/index.js",
+      "default": "./dist/packages/parser/src/index.js"
+    },
+    "./schema": {
+      "types": "./dist/packages/schema/src/index.d.ts",
+      "require": "./dist/packages/schema/src/index.js",
+      "default": "./dist/packages/schema/src/index.js"
+    },
+    "./engine": {
+      "types": "./dist/packages/engine/src/index.d.ts",
+      "require": "./dist/packages/engine/src/index.js",
+      "default": "./dist/packages/engine/src/index.js"
+    },
+    "./renderer": {
+      "types": "./dist/packages/renderer/src/index.d.ts",
+      "require": "./dist/packages/renderer/src/index.js",
+      "default": "./dist/packages/renderer/src/index.js"
+    },
+    "./player": {
+      "types": "./dist/packages/player/src/index.d.ts",
+      "require": "./dist/packages/player/src/index.js",
+      "default": "./dist/packages/player/src/index.js"
+    },
+    "./exporter": {
+      "types": "./dist/packages/exporter/src/index.d.ts",
+      "require": "./dist/packages/exporter/src/index.js",
+      "default": "./dist/packages/exporter/src/index.js"
+    },
+    "./validator": {
+      "types": "./dist/packages/validator/src/index.d.ts",
+      "require": "./dist/packages/validator/src/index.js",
+      "default": "./dist/packages/validator/src/index.js"
+    }
+  },
+  "bin": {
+    "mmark": "./bin/mmark.js"
+  },
+  "files": [
+    "dist/packages",
+    "bin",
+    "scripts/preview-server.js",
+    "scripts/preview.html",
+    "scripts/preview-client.js",
+    "stdlib",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node dist/tests/run.js",
+    "preview": "npm run build && node scripts/preview-server.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "motion-graphics",
+    "animation",
+    "dsl",
+    "video",
+    "mp4",
+    "declarative",
+    "text-to-video"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anmism/motionmark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anmism/motionmark/issues"
+  },
+  "homepage": "https://github.com/anmism/motionmark#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "h264-mp4-encoder": "^1.0.12",
+    "skia-canvas": "^3.0.8"
+  }
+}

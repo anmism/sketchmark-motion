@@ -1,0 +1,23 @@
+---
+canvas: 400x400
+bg: #1a1a2e
+fps: 30
+---
+
+# Heart Mask Reveal - parametric mask on image
+
+rect bg w:300 h:300 fill:#e74c5c | 0s - 5s
+  x: 200
+  y: 200
+  mask: xt("200 + 80 * sin(t) * sin(t) * sin(t)", "200 - 65 * cos(t) + 22 * cos(2*t) + 10 * cos(3*t) + 4 * cos(4*t)", 0, 6.28, 80)
+  fill: #e74c5c -> #ec4899 -> #e74c5c over 2s ease-in-out
+
+circle glow r:120 fill:none stroke:#e74c5c strokeWidth:2 | 0s - 5s
+  x: 200
+  y: 200
+  opacity: 0.3 -> 0.6 -> 0.3 over 1s ease-in-out
+  scale: 0.9 -> 1.1 -> 0.9 over 1s ease-in-out
+
+text label "Heart Mask" font:Roboto size:20 fill:#fff weight:bold | 0s - 5s
+  x: 200
+  y: 350

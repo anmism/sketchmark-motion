@@ -1,0 +1,137 @@
+---
+canvas: 600x400
+bg: #0b1120
+fps: 60
+perspective: 520
+vanish: 300 190
+$radius: 60
+$height: 120
+$halfH: 60
+$panelW: 24
+---
+
+# 2.5D Cylinder
+# Built from circular caps and 16 vertical side panels.
+
+@group cylinder | 0s - 8s
+  x: 300
+  y: 200
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+# Bottom cap, drawn first because it sits behind most of the side wall.
+circle bottomCap r:$radius fill:#075985 stroke:#0ea5e9 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 0
+  y: $halfH
+  z: 0
+  rotateX: 90deg
+  opacity: 0.95
+
+# Side wall panels around the cylinder.
+rect side00 w:$panelW h:$height fill:#38bdf8 stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 0
+  y: 0
+  z: 60
+  rotateY: 0deg
+
+rect side01 w:$panelW h:$height fill:#35b8f0 stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 23
+  y: 0
+  z: 55
+  rotateY: 22.5deg
+
+rect side02 w:$panelW h:$height fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 42
+  y: 0
+  z: 42
+  rotateY: 45deg
+
+rect side03 w:$panelW h:$height fill:#2296ca stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 55
+  y: 0
+  z: 23
+  rotateY: 67.5deg
+
+rect side04 w:$panelW h:$height fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 60
+  y: 0
+  z: 0
+  rotateY: 90deg
+
+rect side05 w:$panelW h:$height fill:#0f6c8f stroke:#ffffff18 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 55
+  y: 0
+  z: -23
+  rotateY: 112.5deg
+
+rect side06 w:$panelW h:$height fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 42
+  y: 0
+  z: -42
+  rotateY: 135deg
+
+rect side07 w:$panelW h:$height fill:#1a485e stroke:#ffffff14 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 23
+  y: 0
+  z: -55
+  rotateY: 157.5deg
+
+rect side08 w:$panelW h:$height fill:#1f3a4d stroke:#ffffff12 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: 0
+  y: 0
+  z: -60
+  rotateY: 180deg
+
+rect side09 w:$panelW h:$height fill:#1a485e stroke:#ffffff14 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -23
+  y: 0
+  z: -55
+  rotateY: 202.5deg
+
+rect side10 w:$panelW h:$height fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -42
+  y: 0
+  z: -42
+  rotateY: 225deg
+
+rect side11 w:$panelW h:$height fill:#0f6c8f stroke:#ffffff18 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -55
+  y: 0
+  z: -23
+  rotateY: 247.5deg
+
+rect side12 w:$panelW h:$height fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -60
+  y: 0
+  z: 0
+  rotateY: 270deg
+
+rect side13 w:$panelW h:$height fill:#2296ca stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -55
+  y: 0
+  z: 23
+  rotateY: 292.5deg
+
+rect side14 w:$panelW h:$height fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -42
+  y: 0
+  z: 42
+  rotateY: 315deg
+
+rect side15 w:$panelW h:$height fill:#35b8f0 stroke:#ffffff22 strokeWidth:1 parent:cylinder | 0s - 8s
+  x: -23
+  y: 0
+  z: 55
+  rotateY: 337.5deg
+
+# Top cap, slightly brighter so the tilt reads clearly.
+circle topCap r:$radius fill:#7dd3fc stroke:#bae6fd strokeWidth:2 parent:cylinder | 0s - 8s
+  x: 0
+  y: -60
+  z: 0
+  rotateX: 90deg
+  opacity: 0.96
+
+text label "2.5D Cylinder" font:Roboto size:22 fill:#dbeafe weight:bold | 0s - 8s
+  x: 300
+  y: 370

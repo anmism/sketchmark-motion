@@ -1,0 +1,21 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+fps: 24
+$snow: #ffffff
+---
+
+text title "Snow" font:Roboto size:24 fill:$snow weight:bold | 0s - 12s
+  x: 320
+  y: 30
+
+@emitter snow | 0s - 12s
+  template: circle r:3 fill:$snow
+  spawn: 25/s
+  lifetime: 4s
+  x: random(0, 640)
+  y: -20
+  vx: random(-10, 10)
+  vy: random(60, 100)
+  opacity: random(0.4, 0.9)
+  scale: random(0.5, 1.2)

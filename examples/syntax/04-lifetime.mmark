@@ -1,0 +1,47 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+$c1: #e74c5c
+$c2: #4ecdc4
+$c3: #f39c12
+$c4: #9b59b6
+---
+
+text label "Elements appear in sequence" font:Roboto size:20 fill:#94a3b8 | 0s - 5s
+  x: 320
+  y: 60
+
+rect a w:80 h:80 fill:$c1 | 0s - 5s
+  x: 140
+  y: 180
+
+rect b w:80 h:80 fill:$c2 | 1s - 5s
+  x: 260
+  y: 180
+
+rect c w:80 h:80 fill:$c3 | 2s - 5s
+  x: 380
+  y: 180
+
+rect d w:80 h:80 fill:$c4 | 3s - 5s
+  x: 500
+  y: 180
+
+line timeline from:(100,280) to:(540,280) stroke:#334155 strokeWidth:2 | 0s - 5s
+
+text t0 "0s" font:Roboto size:12 fill:#64748b | 0s - 5s
+  x: 140
+  y: 300
+
+text t1 "1s" font:Roboto size:12 fill:#64748b | 1s - 5s
+  x: 260
+  y: 300
+
+text t2 "2s" font:Roboto size:12 fill:#64748b | 2s - 5s
+  x: 380
+  y: 300
+
+text t3 "3s" font:Roboto size:12 fill:#64748b | 3s - 5s
+  x: 500
+  y: 300

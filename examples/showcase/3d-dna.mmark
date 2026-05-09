@@ -1,0 +1,376 @@
+---
+canvas: 1920x1080
+bg: linear(960, 0, 960, 1080, #1e1b4b, 0, #0f172a, 1)
+fps: 60
+perspective: 800
+vanish: 960 540
+$pink: #ec4899
+$blue: #3b82f6
+$bond: #a78bfa
+---
+
+# DNA Double Helix
+
+@group helix | 0s - 10s
+  x: 960
+  y: 540
+  rotateY: 0deg -> 360deg over 10s linear
+
+# Strand 1 (Pink helix)
+line3d s1_1 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (120, -450, 0)
+  to: (87.8, -412.5, 81.8)
+  opacity: 0.9
+
+line3d s1_2 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (87.8, -412.5, 81.8)
+  to: (8.5, -375, 119.7)
+  opacity: 0.9
+
+line3d s1_3 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (8.5, -375, 119.7)
+  to: (-75.4, -337.5, 93.4)
+  opacity: 0.9
+
+line3d s1_4 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-75.4, -337.5, 93.4)
+  to: (-118.8, -300, 16.9)
+  opacity: 0.9
+
+line3d s1_5 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-118.8, -300, 16.9)
+  to: (-98.5, -262.5, -68.6)
+  opacity: 0.9
+
+line3d s1_6 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-98.5, -262.5, -68.6)
+  to: (-25.3, -225, -117.3)
+  opacity: 0.9
+
+line3d s1_7 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-25.3, -225, -117.3)
+  to: (61.5, -187.5, -103.1)
+  opacity: 0.9
+
+line3d s1_8 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (61.5, -187.5, -103.1)
+  to: (115.2, -150, -33.5)
+  opacity: 0.9
+
+line3d s1_9 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (115.2, -150, -33.5)
+  to: (107.2, -112.5, 54)
+  opacity: 0.9
+
+line3d s1_10 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (107.2, -112.5, 54)
+  to: (41.6, -75, 112.6)
+  opacity: 0.9
+
+line3d s1_11 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (41.6, -75, 112.6)
+  to: (-46.3, -37.5, 110.7)
+  opacity: 0.9
+
+line3d s1_12 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-46.3, -37.5, 110.7)
+  to: (-109.3, 0, 49.5)
+  opacity: 0.9
+
+line3d s1_13 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-109.3, 0, 49.5)
+  to: (-113.7, 37.5, -38.3)
+  opacity: 0.9
+
+line3d s1_14 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-113.7, 37.5, -38.3)
+  to: (-57.1, 75, -105.6)
+  opacity: 0.9
+
+line3d s1_15 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-57.1, 75, -105.6)
+  to: (30.2, 112.5, -116.1)
+  opacity: 0.9
+
+line3d s1_16 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (30.2, 112.5, -116.1)
+  to: (101.3, 150, -64.4)
+  opacity: 0.9
+
+line3d s1_17 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (101.3, 150, -64.4)
+  to: (118, 187.5, 21.9)
+  opacity: 0.9
+
+line3d s1_18 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (118, 187.5, 21.9)
+  to: (71.4, 225, 96.5)
+  opacity: 0.9
+
+line3d s1_19 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (71.4, 225, 96.5)
+  to: (-13.5, 262.5, 119.2)
+  opacity: 0.9
+
+line3d s1_20 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-13.5, 262.5, 119.2)
+  to: (-91.2, 300, 78)
+  opacity: 0.9
+
+line3d s1_21 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-91.2, 300, 78)
+  to: (-119.9, 337.5, -5)
+  opacity: 0.9
+
+line3d s1_22 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-119.9, 337.5, -5)
+  to: (-84.3, 375, -85.4)
+  opacity: 0.9
+
+line3d s1_23 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-84.3, 375, -85.4)
+  to: (-3.5, 412.5, -120)
+  opacity: 0.9
+
+line3d s1_24 stroke:$pink strokeWidth:8 parent:helix | 0s - 10s
+  from: (-3.5, 412.5, -120)
+  to: (79.2, 450, -90.1)
+  opacity: 0.9
+
+# Strand 2 (Blue helix - offset by PI)
+line3d s2_1 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-120, -450, 0)
+  to: (-87.8, -412.5, -81.8)
+  opacity: 0.9
+
+line3d s2_2 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-87.8, -412.5, -81.8)
+  to: (-8.5, -375, -119.7)
+  opacity: 0.9
+
+line3d s2_3 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-8.5, -375, -119.7)
+  to: (75.4, -337.5, -93.4)
+  opacity: 0.9
+
+line3d s2_4 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (75.4, -337.5, -93.4)
+  to: (118.8, -300, -16.9)
+  opacity: 0.9
+
+line3d s2_5 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (118.8, -300, -16.9)
+  to: (98.5, -262.5, 68.6)
+  opacity: 0.9
+
+line3d s2_6 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (98.5, -262.5, 68.6)
+  to: (25.3, -225, 117.3)
+  opacity: 0.9
+
+line3d s2_7 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (25.3, -225, 117.3)
+  to: (-61.5, -187.5, 103.1)
+  opacity: 0.9
+
+line3d s2_8 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-61.5, -187.5, 103.1)
+  to: (-115.2, -150, 33.5)
+  opacity: 0.9
+
+line3d s2_9 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-115.2, -150, 33.5)
+  to: (-107.2, -112.5, -54)
+  opacity: 0.9
+
+line3d s2_10 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-107.2, -112.5, -54)
+  to: (-41.6, -75, -112.6)
+  opacity: 0.9
+
+line3d s2_11 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-41.6, -75, -112.6)
+  to: (46.3, -37.5, -110.7)
+  opacity: 0.9
+
+line3d s2_12 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (46.3, -37.5, -110.7)
+  to: (109.3, 0, -49.5)
+  opacity: 0.9
+
+line3d s2_13 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (109.3, 0, -49.5)
+  to: (113.7, 37.5, 38.3)
+  opacity: 0.9
+
+line3d s2_14 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (113.7, 37.5, 38.3)
+  to: (57.1, 75, 105.6)
+  opacity: 0.9
+
+line3d s2_15 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (57.1, 75, 105.6)
+  to: (-30.2, 112.5, 116.1)
+  opacity: 0.9
+
+line3d s2_16 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-30.2, 112.5, 116.1)
+  to: (-101.3, 150, 64.4)
+  opacity: 0.9
+
+line3d s2_17 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-101.3, 150, 64.4)
+  to: (-118, 187.5, -21.9)
+  opacity: 0.9
+
+line3d s2_18 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-118, 187.5, -21.9)
+  to: (-71.4, 225, -96.5)
+  opacity: 0.9
+
+line3d s2_19 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (-71.4, 225, -96.5)
+  to: (13.5, 262.5, -119.2)
+  opacity: 0.9
+
+line3d s2_20 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (13.5, 262.5, -119.2)
+  to: (91.2, 300, -78)
+  opacity: 0.9
+
+line3d s2_21 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (91.2, 300, -78)
+  to: (119.9, 337.5, 5)
+  opacity: 0.9
+
+line3d s2_22 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (119.9, 337.5, 5)
+  to: (84.3, 375, 85.4)
+  opacity: 0.9
+
+line3d s2_23 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (84.3, 375, 85.4)
+  to: (3.5, 412.5, 120)
+  opacity: 0.9
+
+line3d s2_24 stroke:$blue strokeWidth:8 parent:helix | 0s - 10s
+  from: (3.5, 412.5, 120)
+  to: (-79.2, 450, 90.1)
+  opacity: 0.9
+
+# Connecting bonds
+line3d bond1 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (120, -450, 0)
+  to: (-120, -450, 0)
+  opacity: 0.5
+
+line3d bond2 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (84.85, -410, 84.85)
+  to: (-84.85, -410, -84.85)
+  opacity: 0.5
+
+line3d bond3 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, -370, 120)
+  to: (0, -370, -120)
+  opacity: 0.5
+
+line3d bond4 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, -330, 84.85)
+  to: (84.85, -330, -84.85)
+  opacity: 0.5
+
+line3d bond5 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-120, -290, 0)
+  to: (120, -290, 0)
+  opacity: 0.5
+
+line3d bond6 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, -250, -84.85)
+  to: (84.85, -250, 84.85)
+  opacity: 0.5
+
+line3d bond7 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, -210, -120)
+  to: (0, -210, 120)
+  opacity: 0.5
+
+line3d bond8 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (84.85, -170, -84.85)
+  to: (-84.85, -170, 84.85)
+  opacity: 0.5
+
+line3d bond9 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (120, -130, 0)
+  to: (-120, -130, 0)
+  opacity: 0.5
+
+line3d bond10 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (84.85, -90, 84.85)
+  to: (-84.85, -90, -84.85)
+  opacity: 0.5
+
+line3d bond11 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, -50, 120)
+  to: (0, -50, -120)
+  opacity: 0.5
+
+line3d bond12 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, -10, 84.85)
+  to: (84.85, -10, -84.85)
+  opacity: 0.5
+
+line3d bond13 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-120, 30, 0)
+  to: (120, 30, 0)
+  opacity: 0.5
+
+line3d bond14 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, 70, -84.85)
+  to: (84.85, 70, 84.85)
+  opacity: 0.5
+
+line3d bond15 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, 110, -120)
+  to: (0, 110, 120)
+  opacity: 0.5
+
+line3d bond16 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (84.85, 150, -84.85)
+  to: (-84.85, 150, 84.85)
+  opacity: 0.5
+
+line3d bond17 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (120, 190, 0)
+  to: (-120, 190, 0)
+  opacity: 0.5
+
+line3d bond18 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (84.85, 230, 84.85)
+  to: (-84.85, 230, -84.85)
+  opacity: 0.5
+
+line3d bond19 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, 270, 120)
+  to: (0, 270, -120)
+  opacity: 0.5
+
+line3d bond20 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, 310, 84.85)
+  to: (84.85, 310, -84.85)
+  opacity: 0.5
+
+line3d bond21 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-120, 350, 0)
+  to: (120, 350, 0)
+  opacity: 0.5
+
+line3d bond22 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (-84.85, 390, -84.85)
+  to: (84.85, 390, 84.85)
+  opacity: 0.5
+
+line3d bond23 stroke:$bond strokeWidth:3 parent:helix | 0s - 10s
+  from: (0, 430, -120)
+  to: (0, 430, 120)
+  opacity: 0.5
+

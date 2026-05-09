@@ -1,0 +1,47 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+$accent: #4ecdc4
+$red: #e74c5c
+---
+
+@motion fade-in(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+= Intro | 0s - 4s =
+
+text intro-title "Scene 1: Intro" font:Roboto size:32 fill:#ffffff
+  x: 320
+  y: 160
+  fade-in()
+
+circle intro-dot r:8 fill:$accent
+  x: 320
+  y: 200
+  scale: 0 -> 1 over 0.5s ease-out
+
+= Middle | 4s - 8s =
+
+text mid-title "Scene 2: Content" font:Roboto size:32 fill:#ffffff
+  x: 320
+  y: 160
+  fade-in()
+
+rect mid-bar w:0 h:6 fill:$red anchor:center-left
+  x: 220
+  y: 210
+  w: 0 -> 200 over 1s ease-out
+
+= Outro | 8s - 11s =
+
+text outro-title "Scene 3: Outro" font:Roboto size:32 fill:#ffffff
+  x: 320
+  y: 160
+  fade-in()
+
+circle outro-ring r:40 fill:none stroke:$accent | 8s - 11s
+  x: 320
+  y: 240
+  scale: 0 -> 1 over 0.8s ease-out
+  opacity: 1 -> 0 over 2s ease-in

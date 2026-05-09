@@ -1,0 +1,24 @@
+---
+canvas: 640x360
+bg: #101820
+fps: 30
+$warm: #e74c5c
+$cool: #4ecdc4
+---
+
+rect banner w:420 h:140 | 0s - 4s
+  x: 320
+  y: 160
+  fill: linear(110, 90, 530, 90, $warm, 0, #f59e0b, 0.5, $cool, 1)
+  scale: 0.95 -> 1 over 0.8s ease-out
+
+circle glow r:70 | 0s - 4s
+  x: 470
+  y: 145
+  fill: radial(470, 145, 0, 470, 145, 70, #ffffffcc, 0, #ffffff00, 1)
+  comp: lighter
+
+text title "Gradients" font:Roboto size:36 fill:#ffffff weight:bold | 0s - 4s
+  x: 320
+  y: 160
+  anchor: center

@@ -1,0 +1,43 @@
+---
+canvas: 760x420
+bg: #101418
+fps: 60
+perspective: 620
+vanish: 380 200
+---
+
+# billboard labels stay readable while the world rotates
+
+@group stage | 0s - 8s
+  x: 380
+  y: 210
+  rotateX: -20deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+line3d axisX stroke:#ef4444 strokeWidth:3 parent:stage | 0s - 8s
+  from: (-140,0,0)
+  to: (140,0,0)
+line3d axisY stroke:#22c55e strokeWidth:3 parent:stage | 0s - 8s
+  from: (0,-110,0)
+  to: (0,110,0)
+line3d axisZ stroke:#38bdf8 strokeWidth:3 parent:stage | 0s - 8s
+  from: (0,0,-140)
+  to: (0,0,140)
+
+text xTag "X+" font:Roboto size:18 fill:#fecaca weight:bold parent:stage | 0s - 8s
+  x: 150
+  y: 0
+  billboard: screen
+text yTag "Y+" font:Roboto size:18 fill:#bbf7d0 weight:bold parent:stage | 0s - 8s
+  x: 0
+  y: -120
+  billboard: screen
+text zTag "Z+" font:Roboto size:18 fill:#bae6fd weight:bold parent:stage | 0s - 8s
+  x: 0
+  y: 0
+  z: 150
+  billboard: screen
+
+text label "56 billboard labels" font:Roboto size:20 fill:#f8fafc weight:bold | 0s - 8s
+  x: 380
+  y: 372

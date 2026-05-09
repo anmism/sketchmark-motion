@@ -1,0 +1,48 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+fps: 24
+---
+
+circle base1 r:60 fill:#e74c5c | 0s - 4s
+  x: 160
+  y: 150
+
+circle blend1 r:60 fill:#4ecdc4 | 0s - 4s
+  x: 200
+  y: 150
+  comp: source-over
+
+text label1 "source-over" font:Roboto size:12 fill:#fff | 0s - 4s
+  x: 180
+  y: 230
+
+circle base2 r:60 fill:#e74c5c | 0s - 4s
+  x: 360
+  y: 150
+
+circle blend2 r:60 fill:#4ecdc4 | 0s - 4s
+  x: 400
+  y: 150
+  comp: lighter
+
+text label2 "lighter" font:Roboto size:12 fill:#fff | 0s - 4s
+  x: 380
+  y: 230
+
+circle base3 r:60 fill:#e74c5c | 0s - 4s
+  x: 560
+  y: 150
+
+circle blend3 r:60 fill:#4ecdc4 | 0s - 4s
+  x: 600
+  y: 150
+  comp: multiply
+
+text label3 "multiply" font:Roboto size:12 fill:#fff | 0s - 4s
+  x: 580
+  y: 230
+
+text title "Blend Modes" font:Roboto size:20 fill:#fff | 0s - 4s
+  x: 320
+  y: 320

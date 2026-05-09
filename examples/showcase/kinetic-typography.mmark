@@ -1,0 +1,34 @@
+---
+canvas: 640x400
+bg: #0f172a
+fps: 30
+---
+
+# Kinetic Typography - text properties showcase
+
+text line1 "MOTION" font:Roboto size:64 fill:#e74c5c weight:bold letterSpacing:8 | 0s - 6s
+  x: 320
+  y: 100
+  opacity: 0 -> 1 over 0.5s ease-out
+  fill: #e74c5c -> #f97316 -> #e74c5c over 3s linear
+
+text line2 "DESIGN" font:Roboto size:64 fill:none stroke:#4ecdc4 strokeWidth:2 weight:bold letterSpacing:8 | 0.5s - 6s
+  x: 320
+  y: 180
+  opacity: 0 -> 1 over 0.5s ease-out
+  stroke: #4ecdc4 -> #22d3ee -> #4ecdc4 over 3s linear
+  draw: 0 -> 1 over 1.5s ease-out
+
+text line3 "SYSTEM" font:Roboto size:64 fill:#8b5cf6 weight:bold letterSpacing:8 | 1s - 6s
+  x: 320
+  y: 260
+  opacity: 0 -> 1 over 0.5s ease-out
+  fill: #8b5cf6 -> #a855f7 -> #8b5cf6 over 3s linear
+
+text tagline "Create.\nAnimate.\nInspire." font:Roboto size:18 fill:#64748b align:left lineHeight:1.6 | 2s - 6s
+  x: 100
+  y: 340
+  opacity: 0 -> 1 over 1s ease-out
+
+line accent x1:80 y1:320 x2:80 y2:400 stroke:#4ecdc4 strokeWidth:3 | 2s - 6s
+  draw: 0 -> 1 over 0.8s ease-out

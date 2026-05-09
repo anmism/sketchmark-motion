@@ -1,0 +1,63 @@
+---
+canvas: 960x540
+bg: #0e1118
+fps: 60
+perspective: 780
+vanish: 480 265
+$panel: #111827
+$blue: #2563eb
+$cyan: #22d3ee
+$pink: #f472b6
+---
+
+# 3D Product Carousel
+# Product cards rotate on a stage using cuboids and billboard labels.
+
+@group stage | 0s - 9s
+  x: 480
+  y: 270
+  rotateX: -12deg
+  rotateY: 0deg -> 360deg over 9s linear
+
+torus track major:190 tube:3 segments:36 tubeSegments:4 fill:#64748b stroke:none parent:stage | 0s - 9s
+  rotateX: 90deg
+  opacity: 0.5
+
+cuboid packA w:92 h:132 d:42 fill:$blue stroke:#ffffff20 strokeWidth:1 parent:stage | 0s - 9s
+  x: 0
+  y: -32
+  z: 180
+  frontFill: #3b82f6
+  rightFill: #1d4ed8
+  topFill: #93c5fd
+
+cuboid packB w:92 h:132 d:42 fill:$cyan stroke:#ffffff20 strokeWidth:1 parent:stage | 0s - 9s
+  x: 156
+  y: -32
+  z: -90
+  rotateY: 120deg
+  frontFill: #06b6d4
+  topFill: #a5f3fc
+
+cuboid packC w:92 h:132 d:42 fill:$pink stroke:#ffffff20 strokeWidth:1 parent:stage | 0s - 9s
+  x: -156
+  y: -32
+  z: -90
+  rotateY: -120deg
+  frontFill: #ec4899
+  topFill: #fbcfe8
+
+circle glow r:28 fill:#ffffff stroke:none parent:stage | 0s - 9s
+  y: -118
+  z: 180
+  billboard: screen
+  depthBias: 80
+  opacity: 0.14 -> 0.3 -> 0.14 over 2s ease-in-out
+
+text label "PRODUCT CAROUSEL" font:Roboto size:34 fill:#ffffff weight:bold | 0s - 9s
+  x: 480
+  y: 442
+
+text caption "packaging, cards, and product mockups" font:Roboto size:15 fill:#94a3b8 | 0s - 9s
+  x: 480
+  y: 472

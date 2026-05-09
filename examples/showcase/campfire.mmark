@@ -1,0 +1,246 @@
+---
+canvas: 640x400
+bg: #0a0a12
+fps: 30
+$sky: #0d0d1a
+$treeDark: #0a1008
+$treeMid: #0f1a0d
+$ground: #1a1510
+$logDark: #2d1f14
+$logLight: #4a3525
+$flameCore: #fff4e0
+$flameYellow: #ffb833
+$flameOrange: #ff6b1a
+$flameRed: #cc2200
+$spark: #ffdd66
+$smoke: #2a2a35
+---
+
+# === Night sky gradient ===
+rect sky w:640 h:400 fill:linear(0, 0, 0, 400, #0a0a12, 0, #1a1a2e, 0.6, #0d0d1a, 1) | 0s - 8s
+  x: 320
+  y: 200
+
+# === Stars twinkling ===
+circle star1 r:1 fill:#fff | 0s - 8s
+  x: 120
+  y: 45
+  opacity: f(t) = 0.3 + 0.5 * sin(t * 2.1)
+
+circle star2 r:1.5 fill:#fff | 0s - 8s
+  x: 320
+  y: 30
+  opacity: f(t) = 0.4 + 0.4 * sin(t * 1.7 + 1)
+
+circle star3 r:1 fill:#fff | 0s - 8s
+  x: 510
+  y: 55
+  opacity: f(t) = 0.3 + 0.5 * sin(t * 2.5 + 2)
+
+circle star4 r:0.8 fill:#fff | 0s - 8s
+  x: 200
+  y: 70
+  opacity: f(t) = 0.2 + 0.4 * sin(t * 1.9 + 0.5)
+
+circle star5 r:1.2 fill:#fff | 0s - 8s
+  x: 450
+  y: 40
+  opacity: f(t) = 0.35 + 0.45 * sin(t * 2.3 + 1.5)
+
+# === Background trees (far) ===
+path treeFar1 d:"M 50 280 L 70 180 L 90 280 Z" fill:$treeDark | 0s - 8s
+  x: f(t) = 0 + 1.5 * sin(t * 0.5)
+  y: 0
+  anchor: top-left
+
+path treeFar2 d:"M 100 280 L 130 140 L 160 280 Z" fill:$treeDark | 0s - 8s
+  x: f(t) = 0 + 2 * sin(t * 0.4 + 0.5)
+  y: 0
+  anchor: top-left
+
+path treeFar3 d:"M 480 280 L 520 120 L 560 280 Z" fill:$treeDark | 0s - 8s
+  x: f(t) = 0 + 2 * sin(t * 0.45 + 1)
+  y: 0
+  anchor: top-left
+
+path treeFar4 d:"M 540 280 L 570 160 L 600 280 Z" fill:$treeDark | 0s - 8s
+  x: f(t) = 0 + 1.5 * sin(t * 0.55 + 0.3)
+  y: 0
+  anchor: top-left
+
+# === Mid trees ===
+path treeMid1 d:"M 0 300 L 40 160 L 80 300 Z" fill:$treeMid | 0s - 8s
+  x: f(t) = 0 + 3 * sin(t * 0.6 + 0.2)
+  y: 0
+  anchor: top-left
+
+path treeMid2 d:"M 560 300 L 600 140 L 640 300 Z" fill:$treeMid | 0s - 8s
+  x: f(t) = 0 + 3 * sin(t * 0.5 + 0.8)
+  y: 0
+  anchor: top-left
+
+# === Ground ===
+ellipse ground rx:400 ry:80 fill:$ground | 0s - 8s
+  x: 320
+  y: 380
+
+# === Fire pit stones ===
+ellipse stone1 rx:12 ry:8 fill:#3a3a3a stroke:#2a2a2a strokeWidth:1 | 0s - 8s
+  x: 270
+  y: 340
+
+ellipse stone2 rx:10 ry:7 fill:#404040 stroke:#2a2a2a strokeWidth:1 | 0s - 8s
+  x: 295
+  y: 348
+
+ellipse stone3 rx:11 ry:7 fill:#383838 stroke:#2a2a2a strokeWidth:1 | 0s - 8s
+  x: 320
+  y: 352
+
+ellipse stone4 rx:10 ry:8 fill:#3c3c3c stroke:#2a2a2a strokeWidth:1 | 0s - 8s
+  x: 345
+  y: 348
+
+ellipse stone5 rx:12 ry:7 fill:#3a3a3a stroke:#2a2a2a strokeWidth:1 | 0s - 8s
+  x: 370
+  y: 340
+
+# === Logs ===
+rect log1 w:60 h:12 fill:$logDark cornerRadius:4 | 0s - 8s
+  x: 300
+  y: 335
+  rotation: -0.2
+
+rect log2 w:55 h:10 fill:$logLight cornerRadius:4 | 0s - 8s
+  x: 340
+  y: 338
+  rotation: 0.25
+
+rect log3 w:50 h:11 fill:$logDark cornerRadius:3 | 0s - 8s
+  x: 320
+  y: 330
+  rotation: 0.1
+
+# === Fire glow on ground ===
+ellipse fireGlow rx:80 ry:25 fill:$flameOrange | 0s - 8s
+  x: 320
+  y: 345
+  opacity: f(t) = 0.15 + 0.05 * sin(t * 1.5)
+  comp: screen
+
+# === Main flames (varied shapes) ===
+
+# Outer red glow - wide base
+path flameRed d:"M 0 0 Q -20 -20 -15 -50 Q -8 -75 0 -85 Q 8 -75 15 -50 Q 20 -20 0 0 Z" fill:$flameRed | 0s - 8s
+  x: f(t) = 320 + 3 * sin(t * 0.5)
+  y: 340
+  scale: f(t) = 0.9 + 0.1 * sin(t * 0.7)
+  opacity: 0.5
+
+# Main orange flame - tall pointed
+path flameOrange1 d:"M 0 0 Q -14 -18 -10 -45 Q -5 -65 0 -75 Q 5 -65 10 -45 Q 14 -18 0 0 Z" fill:$flameOrange | 0s - 8s
+  x: f(t) = 320 + 2 * sin(t * 0.8 + 0.5)
+  y: 340
+  scale: f(t) = 0.85 + 0.15 * sin(t * 0.6)
+  opacity: 0.75
+
+# Left lick - curved asymmetric
+path flameLickL d:"M 0 0 Q -12 -10 -15 -30 Q -12 -50 -5 -60 Q 2 -50 5 -35 Q 6 -15 0 0 Z" fill:$flameOrange | 0s - 8s
+  x: f(t) = 310 + 2 * sin(t * 0.7 + 1)
+  y: 342
+  scale: f(t) = 0.7 + 0.25 * sin(t * 0.8 + 0.3)
+  rotation: f(t) = -0.15 + 0.1 * sin(t * 0.6)
+  opacity: 0.7
+
+# Right lick - wispy tall
+path flameLickR d:"M 0 0 Q -5 -12 -3 -35 Q 0 -55 3 -65 Q 8 -50 10 -30 Q 10 -10 0 0 Z" fill:$flameOrange | 0s - 8s
+  x: f(t) = 330 + 2 * sin(t * 0.75 + 2)
+  y: 342
+  scale: f(t) = 0.7 + 0.25 * sin(t * 0.65 + 1)
+  rotation: f(t) = 0.15 - 0.1 * sin(t * 0.7)
+  opacity: 0.7
+
+# Far left small flame
+path flameSmallL d:"M 0 0 Q -8 -8 -6 -25 Q -3 -38 0 -45 Q 3 -35 5 -22 Q 6 -8 0 0 Z" fill:$flameYellow | 0s - 8s
+  x: f(t) = 302 + 2 * sin(t * 0.9 + 0.5)
+  y: 345
+  scale: f(t) = 0.6 + 0.3 * sin(t * 0.8)
+  rotation: f(t) = -0.2 + 0.15 * sin(t * 0.6 + 0.5)
+  opacity: f(t) = 0.5 + 0.2 * sin(t * 0.7)
+
+# Far right small flame
+path flameSmallR d:"M 0 0 Q -5 -10 -4 -28 Q -1 -42 2 -48 Q 6 -38 8 -25 Q 8 -8 0 0 Z" fill:$flameYellow | 0s - 8s
+  x: f(t) = 338 + 2 * sin(t * 0.85 + 1.5)
+  y: 345
+  scale: f(t) = 0.6 + 0.3 * sin(t * 0.75 + 0.7)
+  rotation: f(t) = 0.2 - 0.15 * sin(t * 0.65 + 1)
+  opacity: f(t) = 0.5 + 0.2 * sin(t * 0.7 + 0.5)
+
+# Yellow inner flame - bulbous
+path flameYellow d:"M 0 0 Q -10 -12 -7 -35 Q -3 -52 0 -60 Q 3 -52 7 -35 Q 10 -12 0 0 Z" fill:$flameYellow | 0s - 8s
+  x: f(t) = 320 + 2 * sin(t * 1.0 + 0.3)
+  y: 340
+  scale: f(t) = 0.8 + 0.15 * sin(t * 0.8)
+  opacity: 0.85
+
+# Core white-hot flame - narrow bright
+path flameCore d:"M 0 0 Q -5 -8 -4 -25 Q -2 -40 0 -48 Q 2 -40 4 -25 Q 5 -8 0 0 Z" fill:$flameCore | 0s - 8s
+  x: f(t) = 320 + 1.5 * sin(t * 1.1)
+  y: 340
+  scale: f(t) = 0.85 + 0.1 * sin(t * 0.9)
+  opacity: 0.95
+
+# Wisp rising left - thin tendril
+path wispL d:"M 0 0 Q -3 -8 -2 -22 Q 0 -35 2 -42 Q 3 -30 2 -18 Q 2 -6 0 0 Z" fill:$flameYellow | 0s - 8s
+  x: f(t) = 312 + 3 * sin(t * 1.0 + 1)
+  y: f(t) = 325 - 8 * abs(sin(t * 0.6))
+  scale: f(t) = 0.5 + 0.4 * sin(t * 0.9)
+  opacity: f(t) = 0.3 + 0.4 * sin(t * 0.8)
+
+# Wisp rising right - thin tendril
+path wispR d:"M 0 0 Q -2 -6 -1 -20 Q 1 -32 3 -38 Q 4 -28 3 -16 Q 2 -5 0 0 Z" fill:$flameYellow | 0s - 8s
+  x: f(t) = 328 + 3 * sin(t * 0.95 + 2)
+  y: f(t) = 322 - 8 * abs(sin(t * 0.7 + 1))
+  scale: f(t) = 0.5 + 0.4 * sin(t * 1.0 + 0.5)
+  opacity: f(t) = 0.3 + 0.4 * sin(t * 0.7 + 1)
+
+# Center dancing wisp
+path wispCenter d:"M 0 0 Q -4 -10 -2 -28 Q 0 -40 2 -32 Q 3 -20 2 -8 Q 1 -3 0 0 Z" fill:$flameCore | 0s - 8s
+  x: f(t) = 320 + 4 * sin(t * 1.1 + 0.8)
+  y: f(t) = 305 - 10 * abs(sin(t * 0.6))
+  scale: f(t) = 0.4 + 0.5 * sin(t * 0.85)
+  opacity: f(t) = 0.4 + 0.4 * sin(t * 0.9)
+
+# === Sparks emitter ===
+@emitter sparks | 0s - 8s
+  template: circle r:2 fill:$spark
+  spawn: 8/s
+  lifetime: 1.5s
+  x: random(305, 335)
+  y: 290
+  vx: random(-20, 20)
+  vy: random(-80, -40)
+  gravity: -10
+  turbulence: 15
+  opacity: 1 -> 0 over life
+  scale: 1 -> 0.3 over life
+
+# === Smoke emitter ===
+@emitter smoke | 0s - 8s
+  template: circle r:20 fill:$smoke
+  spawn: 3/s
+  lifetime: 4s
+  x: random(310, 330)
+  y: 260
+  vx: random(-8, 8)
+  vy: random(-25, -15)
+  turbulence: 12
+  opacity: 0.3 -> 0 over life
+  scale: 0.5 -> 2.5 over life
+
+# === Light flicker overlay ===
+rect lightOverlay w:640 h:400 fill:$flameOrange | 0s - 8s
+  x: 320
+  y: 200
+  comp: screen
+  opacity: f(t) = 0.03 + 0.02 * sin(t * 1.2) + 0.01 * sin(t * 1.8)

@@ -1,0 +1,168 @@
+---
+canvas: 800x500
+bg: #0a1a0a
+fps: 24
+$leaf: #22c55e
+$sun: #fbbf24
+$water: #38bdf8
+$co2: #94a3b8
+$o2: #4ade80
+$glucose: #f59e0b
+$text: #e2e8f0
+$muted: #64748b
+$chloro: #16a34a
+---
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion float-up(dur=2s)
+  y: 350 -> 100 over $dur ease-out
+  opacity: 1 -> 0 over $dur ease-out
+
+text title "Photosynthesis" font:Roboto size:24 fill:$text weight:bold | 0s - 10s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text equation "6CO₂ + 6H₂O + Light → C₆H₁₂O₆ + 6O₂" font:Roboto size:14 fill:$muted | 0.3s - 10s
+  x: 400
+  y: 58
+  fade-in(0.4s)
+
+rect leaf-body w:200 h:120 fill:#15803d rx:60 | 0s - 10s
+  x: 400
+  y: 280
+
+rect leaf-vein w:160 h:2 fill:$leaf | 0s - 10s
+  x: 400
+  y: 280
+
+rect vein-v w:2 h:80 fill:$leaf | 0s - 10s
+  x: 400
+  y: 280
+
+circle chloroplast1 r:12 fill:$chloro | 0.5s - 10s
+  x: 360
+  y: 265
+  opacity: 0.7
+
+circle chloroplast2 r:10 fill:$chloro | 0.5s - 10s
+  x: 420
+  y: 290
+  opacity: 0.7
+
+circle chloroplast3 r:11 fill:$chloro | 0.5s - 10s
+  x: 440
+  y: 260
+  opacity: 0.7
+
+circle sunray r:20 fill:$sun | 0s - 10s
+  x: 400
+  y: 120
+  opacity: f(t) = 0.7 + 0.3 * sin(t * 3)
+
+line ray1 x1:400 y1:140 x2:370 y2:220 stroke:$sun stroke-width:2 | 0.5s - 10s
+line ray2 x1:400 y1:140 x2:400 y2:220 stroke:$sun stroke-width:2 | 0.5s - 10s
+line ray3 x1:400 y1:140 x2:430 y2:220 stroke:$sun stroke-width:2 | 0.5s - 10s
+
+text sun-label "Sunlight" font:Roboto size:12 fill:$sun | 0.5s - 10s
+  x: 400
+  y: 95
+  fade-in(0.3s)
+
+circle co2-1 r:6 fill:$co2 | 1s - 10s
+  x: f(t) = 200 + 30 * t
+  y: f(t) = 260 + 10 * sin(t * 3)
+  opacity: 0.8
+
+circle co2-2 r:6 fill:$co2 | 1.5s - 10s
+  x: f(t) = 190 + 25 * t
+  y: f(t) = 290 + 8 * sin(t * 4)
+  opacity: 0.8
+
+circle co2-3 r:6 fill:$co2 | 2s - 10s
+  x: f(t) = 195 + 28 * t
+  y: f(t) = 275 + 12 * sin(t * 2.5)
+  opacity: 0.8
+
+text co2-label "CO₂" font:Roboto size:13 fill:$co2 | 1s - 10s
+  x: 180
+  y: 260
+  fade-in(0.3s)
+
+circle h2o-1 r:5 fill:$water | 1s - 10s
+  x: 380
+  y: f(t) = 420 - 20 * t
+  opacity: 0.8
+
+circle h2o-2 r:5 fill:$water | 1.5s - 10s
+  x: 400
+  y: f(t) = 430 - 18 * t
+  opacity: 0.8
+
+circle h2o-3 r:5 fill:$water | 2s - 10s
+  x: 420
+  y: f(t) = 425 - 22 * t
+  opacity: 0.8
+
+text h2o-label "H₂O" font:Roboto size:13 fill:$water | 1s - 10s
+  x: 400
+  y: 450
+  fade-in(0.3s)
+
+circle o2-1 r:5 fill:$o2 | 3s - 10s
+  x: f(t) = 450 + 20 * t
+  y: f(t) = 250 - 15 * t
+  opacity: 0.7
+
+circle o2-2 r:5 fill:$o2 | 3.5s - 10s
+  x: f(t) = 440 + 18 * t
+  y: f(t) = 270 - 12 * t
+  opacity: 0.7
+
+circle o2-3 r:5 fill:$o2 | 4s - 10s
+  x: f(t) = 460 + 22 * t
+  y: f(t) = 260 - 18 * t
+  opacity: 0.7
+
+text o2-label "O₂" font:Roboto size:13 fill:$o2 | 3s - 10s
+  x: 560
+  y: 180
+  fade-in(0.3s)
+
+circle glucose1 r:8 fill:$glucose | 4s - 10s
+  x: 400
+  y: 280
+  scale: 0 -> 1 over 0.5s ease-out
+  opacity: f(t) = 0.6 + 0.4 * sin(t * 4)
+
+text glucose-label "C₆H₁₂O₆" font:Roboto size:13 fill:$glucose | 4s - 10s
+  x: 400
+  y: 380
+  fade-in(0.5s)
+
+text glucose-name "Glucose" font:Roboto size:11 fill:$muted | 4s - 10s
+  x: 400
+  y: 398
+  fade-in(0.5s)
+
+text step1 "1. Light absorbed by chlorophyll" font:Roboto size:11 fill:$text | 1s - 10s
+  x: 120
+  y: 120
+  fade-in(0.3s)
+
+text step2 "2. Water split (photolysis)" font:Roboto size:11 fill:$text | 2.5s - 10s
+  x: 120
+  y: 142
+  fade-in(0.3s)
+
+text step3 "3. CO₂ fixed (Calvin cycle)" font:Roboto size:11 fill:$text | 4s - 10s
+  x: 120
+  y: 164
+  fade-in(0.3s)
+
+text step4 "4. Glucose produced" font:Roboto size:11 fill:$text | 5.5s - 10s
+  x: 120
+  y: 186
+  fade-in(0.3s)

@@ -1,0 +1,36 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+$orange: #f97316
+$yellow: #fbbf24
+$white: #e2e8f0
+---
+
+text title "Explosion" font:Roboto size:24 fill:$white weight:bold | 0s - 5s
+  x: 320
+  y: 30
+
+@emitter explosion | 0.5s - 2s
+  template: circle r:6 fill:$orange
+  spawn: 100/s
+  lifetime: 0.8s
+  x: 320
+  y: 180
+  vx: random(-200, 200)
+  vy: random(-200, 200)
+  gravity: 150
+  opacity: 1 -> 0 over life
+  scale: 1 -> 0.1 over life
+  fill: #f97316 -> #fbbf24 over life
+
+@emitter debris | 0.5s - 2.5s
+  template: rect w:4 h:4 fill:#374151
+  spawn: 40/s
+  lifetime: 1.2s
+  x: 320
+  y: 180
+  vx: random(-150, 150)
+  vy: random(-180, -50)
+  gravity: 300
+  opacity: random(0.6, 1)

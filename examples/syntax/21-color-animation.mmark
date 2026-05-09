@@ -1,0 +1,43 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+text title "Color Animation" font:Roboto size:20 fill:#94a3b8 | 0s - 5s
+  x: 320
+  y: 40
+
+rect color-box w:120 h:80 | 0s - 5s
+  x: 160
+  y: 180
+  fill: #e74c5c -> #4ecdc4 over 2.5s ease-in-out
+
+circle color-ball r:40 | 0s - 5s
+  x: 320
+  y: 180
+  fill: #f39c12 -> #9b59b6 -> #3498db over 5s linear
+
+line color-line from:(420,140) to:(560,220) strokeWidth:6 | 0s - 5s
+  stroke: #e74c5c -> #4ecdc4 over 2.5s ease-in-out
+
+rect stroke-box w:100 h:60 fill:none stroke:#ffffff | 0s - 5s
+  x: 490
+  y: 280
+  strokeWidth: 2 -> 10 -> 2 over 5s ease-in-out
+
+text lbl1 "fill animation" font:Roboto size:11 fill:#94a3b8 | 0s - 5s
+  x: 160
+  y: 260
+
+text lbl2 "multi-color" font:Roboto size:11 fill:#94a3b8 | 0s - 5s
+  x: 320
+  y: 260
+
+text lbl3 "stroke color" font:Roboto size:11 fill:#94a3b8 | 0s - 5s
+  x: 490
+  y: 260
+
+text lbl4 "strokeWidth" font:Roboto size:11 fill:#94a3b8 | 0s - 5s
+  x: 490
+  y: 330

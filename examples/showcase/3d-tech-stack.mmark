@@ -1,0 +1,60 @@
+---
+canvas: 960x540
+bg: #0b1120
+fps: 60
+perspective: 760
+vanish: 480 285
+$panel: #1e293b
+$cyan: #22d3ee
+$green: #34d399
+$amber: #f59e0b
+---
+
+# 3D Tech Stack
+# Layered cuboids and billboard labels for architecture diagrams.
+
+@group stack | 0s - 9s
+  x: 480
+  y: 300
+  rotateX: -22deg
+  rotateY: -28deg -> 28deg -> -28deg over 9s ease-in-out
+
+cuboid layer1 w:280 h:34 d:150 fill:$panel stroke:#ffffff18 strokeWidth:1 parent:stack | 0s - 9s
+  y: 70
+  topFill: #334155
+  frontFill: #1e293b
+
+cuboid layer2 w:230 h:34 d:120 fill:$cyan stroke:#ffffff18 strokeWidth:1 parent:stack | 0.2s - 9s
+  y: 16
+  topFill: #a5f3fc
+  frontFill: #0891b2
+
+cuboid layer3 w:180 h:34 d:96 fill:$green stroke:#ffffff18 strokeWidth:1 parent:stack | 0.4s - 9s
+  y: -38
+  topFill: #bbf7d0
+  frontFill: #059669
+
+cuboid layer4 w:130 h:34 d:72 fill:$amber stroke:#ffffff18 strokeWidth:1 parent:stack | 0.6s - 9s
+  y: -92
+  topFill: #fde68a
+  frontFill: #d97706
+
+line3d connectorA stroke:#ffffff55 strokeWidth:3 parent:stack | 1s - 9s
+  from: (-140, 52, 75)
+  to: (-90, -104, 36)
+  depthBias: -80
+line3d connectorB stroke:#ffffff55 strokeWidth:3 parent:stack | 1s - 9s
+  from: (140, 52, 75)
+  to: (90, -104, 36)
+  depthBias: -80
+
+text labelA "CLIENT" font:Roboto size:15 fill:#ffffff parent:stack | 1s - 9s
+  x: 0
+  y: -118
+  z: 80
+  billboard: screen
+  depthBias: 60
+
+text title "3D TECH STACK" font:Roboto size:36 fill:#e0f2fe weight:bold | 0s - 9s
+  x: 480
+  y: 70

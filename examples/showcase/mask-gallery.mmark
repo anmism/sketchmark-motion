@@ -1,0 +1,110 @@
+---
+canvas: 800x500
+bg: #0a0a0f
+fps: 30
+$pink: #ec4899
+$blue: #3b82f6
+$green: #22c55e
+$orange: #f59e0b
+$purple: #8b5cf6
+$cyan: #06b6d4
+---
+
+# Mask Gallery - all mask types
+
+text title "Mask Gallery" font:Roboto size:28 fill:#fff weight:bold | 0s - 6s
+  x: 400
+  y: 40
+
+# Row 1 - Basic masks
+rect m1 w:120 h:100 fill:$pink | 0s - 6s
+  x: 100
+  y: 140
+  mask: rect(40, 90, 120, 100)
+
+rect m2 w:120 h:100 fill:$blue | 0s - 6s
+  x: 250
+  y: 140
+  mask: circle(250, 140, 50)
+
+rect m3 w:120 h:100 fill:$green | 0s - 6s
+  x: 400
+  y: 140
+  mask: path("M 340,90 L 460,90 L 400,190 Z")
+
+rect m4 w:120 h:100 fill:$orange | 0s - 6s
+  x: 550
+  y: 140
+  mask: points [(550,90), (600,120), (580,180), (520,180), (500,120)]
+
+rect m5 w:120 h:100 fill:$purple | 0s - 6s
+  x: 700
+  y: 140
+  mask: circle(700, 140, 40) invert
+
+text l1 "rect" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 100
+  y: 210
+
+text l2 "circle" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 250
+  y: 210
+
+text l3 "path" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 400
+  y: 210
+
+text l4 "points" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 550
+  y: 210
+
+text l5 "inverted" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 700
+  y: 210
+
+# Row 2 - Function masks
+rect m6 w:180 h:100 fill:$cyan | 0s - 6s
+  x: 150
+  y: 320
+  mask: fx("320 + 40 * sin((x - 60) * 0.06)", 60, 240, 50)
+
+rect m7 w:150 h:120 fill:$pink | 0s - 6s
+  x: 400
+  y: 320
+  mask: xt("400 + 50 * cos(t)", "320 + 50 * sin(t)", 0, 6.28, 50)
+
+rect m8 w:150 h:120 fill:$green | 0s - 6s
+  x: 600
+  y: 320
+  mask: xt("600 + (35 + 25 * cos(t * 5)) * cos(t)", "320 + (35 + 25 * cos(t * 5)) * sin(t)", 0, 6.28, 80)
+
+text l6 "fx (sine wave)" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 150
+  y: 400
+
+text l7 "xt (circle)" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 400
+  y: 400
+
+text l8 "xt (star)" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 600
+  y: 400
+
+# Row 3 - Creative masks
+rect m9 w:150 h:120 fill:$orange | 0s - 6s
+  x: 200
+  y: 450
+  mask: xt("200 + 35 * sin(t) * sin(t) * sin(t)", "450 - 28 * cos(t) + 10 * cos(2*t) + 5 * cos(3*t)", 0, 6.28, 60)
+
+rect m10 w:200 h:100 fill:$purple | 0s - 6s
+  x: 450
+  y: 450
+  mask: xt("450 + t * 4 * cos(t)", "450 + t * 4 * sin(t)", 0, 12, 100)
+
+text l9 "heart" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 200
+  y: 520
+
+text l10 "spiral" font:Roboto size:11 fill:#666 | 0s - 6s
+  x: 450
+  y: 520

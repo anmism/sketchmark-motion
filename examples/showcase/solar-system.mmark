@@ -1,0 +1,51 @@
+---
+canvas: 640x640
+bg: #030014
+fps: 24
+$sun: #fbbf24
+$mercury: #9ca3af
+$venus: #f97316
+$earth: #3b82f6
+$mars: #ef4444
+---
+
+circle sun r:30 fill:$sun | 0s - 10s
+  x: 320
+  y: 320
+  opacity: f(t) = 0.85 + 0.15 * sin(t * 2)
+
+circle orbit1 r:70 fill:none stroke:#1e293b stroke-width:1 | 0s - 10s
+  x: 320
+  y: 320
+
+circle orbit2 r:120 fill:none stroke:#1e293b stroke-width:1 | 0s - 10s
+  x: 320
+  y: 320
+
+circle orbit3 r:180 fill:none stroke:#1e293b stroke-width:1 | 0s - 10s
+  x: 320
+  y: 320
+
+circle orbit4 r:240 fill:none stroke:#1e293b stroke-width:1 | 0s - 10s
+  x: 320
+  y: 320
+
+circle mercury r:5 fill:$mercury | 0s - 10s
+  x: f(t) = 320 + 70 * cos(t * 4)
+  y: f(t) = 320 + 70 * sin(t * 4)
+
+circle venus r:8 fill:$venus | 0s - 10s
+  x: f(t) = 320 + 120 * cos(t * 2.5)
+  y: f(t) = 320 + 120 * sin(t * 2.5)
+
+circle earth r:9 fill:$earth | 0s - 10s
+  x: f(t) = 320 + 180 * cos(t * 1.5)
+  y: f(t) = 320 + 180 * sin(t * 1.5)
+
+circle mars r:7 fill:$mars | 0s - 10s
+  x: f(t) = 320 + 240 * cos(t * 1)
+  y: f(t) = 320 + 240 * sin(t * 1)
+
+text label "Solar System" font:Roboto size:16 fill:#475569 | 0s - 10s
+  x: 320
+  y: 600

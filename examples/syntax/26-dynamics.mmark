@@ -1,0 +1,44 @@
+---
+canvas: 800x500
+bg: #101820
+fps: 24
+$white: #e2e8f0
+$muted: #94a3b8
+$cyan: #22d3ee
+$pink: #fb7185
+$yellow: #facc15
+---
+
+text title "Wiggle + Spring" font:Roboto size:22 fill:$white weight:bold | 0s - 6s
+  x: 400
+  y: 34
+
+text sub "deterministic noise and spring easing" font:Roboto size:12 fill:$muted | 0s - 6s
+  x: 400
+  y: 58
+
+rect card w:220 h:120 fill:#1f2937 stroke:$cyan strokeWidth:2 | 0s - 6s
+  x: 290 -> 400 over 1.2s spring(stiffness:180, damping:12)
+  y: 190
+  scale: 0.7 -> 1 over 1s spring(140, 11)
+  shadow: 0 10 24 #00000066
+
+text label "spring()" font:Roboto size:24 fill:$white weight:bold | 0s - 6s
+  x: 400
+  y: 185
+  opacity: 0 -> 1 over 0.6s ease-out
+
+circle float-a r:14 fill:$pink | 0s - 6s
+  x: wiggle(2, 44, base:180, seed:1)
+  y: wiggle(3, 26, base:360, seed:2)
+  shadow: 0 0 18 $pink
+
+circle float-b r:10 fill:$cyan | 0s - 6s
+  x: wiggle(freq:2.6, amp:50, base:610, seed:3)
+  y: wiggle(freq:1.8, amp:30, base:340, seed:4)
+  shadow: 0 0 18 $cyan
+
+circle float-c r:8 fill:$yellow | 0s - 6s
+  x: wiggle(3.4, 34, base:510, seed:5)
+  y: wiggle(2.2, 24, base:410, seed:6)
+  shadow: 0 0 18 $yellow

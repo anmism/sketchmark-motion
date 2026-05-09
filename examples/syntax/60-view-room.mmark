@@ -1,0 +1,48 @@
+---
+canvas: 760x440
+bg: #111827
+fps: 60
+perspective: 700
+vanish: 380 210
+---
+
+# Build a room from view planes
+
+@group room | 0s - 8s
+  x: 380
+  y: 215
+  rotateX: -12deg
+  rotateY: 0deg -> 360deg over 10s linear
+
+@view floor parent:room | 0s - 8s
+  at: 0 70 0
+  normal: 0 1 0
+  up: 0 0 1
+rect floorFace w:220 h:220 fill:#374151 parent:floor | 0s - 8s
+
+@view ceiling parent:room | 0s - 8s
+  at: 0 -70 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect ceilingFace w:220 h:220 fill:#1f2937 parent:ceiling | 0s - 8s
+
+@view backWall parent:room | 0s - 8s
+  at: 0 0 -110
+  normal: 0 0 -1
+rect backWallFace w:220 h:140 fill:#475569 parent:backWall | 0s - 8s
+rect painting w:70 h:40 fill:#f97316 parent:backWall | 0s - 8s
+  y: -20
+
+@view leftWall parent:room | 0s - 8s
+  at: -110 0 0
+  normal: -1 0 0
+rect leftWallFace w:220 h:140 fill:#334155 parent:leftWall | 0s - 8s
+
+@view rightWall parent:room | 0s - 8s
+  at: 110 0 0
+  normal: 1 0 0
+rect rightWallFace w:220 h:140 fill:#334155 parent:rightWall | 0s - 8s
+
+text label "60 @view room" font:Roboto size:20 fill:#e5e7eb weight:bold | 0s - 8s
+  x: 380
+  y: 386

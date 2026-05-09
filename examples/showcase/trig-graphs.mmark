@@ -1,0 +1,139 @@
+---
+canvas: 800x500
+bg: #0a0a1a
+fps: 24
+$sin: #60a5fa
+$cos: #4ade80
+$tan: #f87171
+$axis: #334155
+$text: #e2e8f0
+$muted: #64748b
+$grid: #1e293b
+---
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion draw-line(dur=1.5s)
+  opacity: 0 -> 1 over 0.3s ease-out
+
+text title "Trigonometric Functions" font:Roboto size:24 fill:$text weight:bold | 0s - 10s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text subtitle "y = sin(x), y = cos(x)" font:Roboto size:13 fill:$muted | 0.3s - 10s
+  x: 400
+  y: 55
+  fade-in(0.4s)
+
+rect x-axis w:680 h:1 fill:$axis | 0s - 10s
+  x: 400
+  y: 280
+
+rect y-axis w:1 h:340 fill:$axis | 0s - 10s
+  x: 80
+  y: 280
+
+text y-top "1" font:Roboto size:10 fill:$muted | 0s - 10s
+  x: 65
+  y: 180
+
+text y-bot "-1" font:Roboto size:10 fill:$muted | 0s - 10s
+  x: 65
+  y: 380
+
+text origin "0" font:Roboto size:10 fill:$muted | 0s - 10s
+  x: 70
+  y: 290
+
+text x-pi "π" font:Roboto size:11 fill:$muted | 0s - 10s
+  x: 280
+  y: 295
+
+text x-2pi "2π" font:Roboto size:11 fill:$muted | 0s - 10s
+  x: 480
+  y: 295
+
+text x-3pi "3π" font:Roboto size:11 fill:$muted | 0s - 10s
+  x: 680
+  y: 295
+
+rect grid-pi w:1 h:340 fill:$grid | 0s - 10s
+  x: 280
+  y: 280
+
+rect grid-2pi w:1 h:340 fill:$grid | 0s - 10s
+  x: 480
+  y: 280
+
+rect grid-3pi w:1 h:340 fill:$grid | 0s - 10s
+  x: 680
+  y: 280
+
+rect grid-top w:680 h:1 fill:$grid | 0s - 10s
+  x: 400
+  y: 180
+
+rect grid-bot w:680 h:1 fill:$grid | 0s - 10s
+  x: 400
+  y: 380
+
+
+path sin-curve fx:"280 - 100 * sin((x - 80) / 600 * 3 * pi)" xRange:"80-680" steps:60 stroke:$sin strokeWidth:2 | 0s - 10s
+
+path cos-curve fx:"280 - 100 * cos((x - 80) / 600 * 3 * pi)" xRange:"80-680" steps:60 stroke:$cos strokeWidth:2 | 0s - 10s
+
+circle sin-dot r:5 fill:$sin | 0s - 10s
+  x: f(t) = 80 + 60 * t
+  y: f(t) = 280 - 100 * sin(t * 0.942)
+
+circle cos-dot r:5 fill:$cos | 0s - 10s
+  x: f(t) = 80 + 60 * t
+  y: f(t) = 280 - 100 * cos(t * 0.942)
+
+rect legend-bg w:120 h:70 fill:#1e293b rx:6 | 0.5s - 10s
+  x: 720
+  y: 90
+  opacity: 0.8
+
+rect leg-sin w:20 h:3 fill:$sin | 0.5s - 10s
+  x: 680
+  y: 75
+
+text leg-sin-t "sin(x)" font:Roboto size:11 fill:$sin | 0.5s - 10s
+  x: 730
+  y: 75
+
+rect leg-cos w:20 h:3 fill:$cos | 1s - 10s
+  x: 680
+  y: 100
+
+text leg-cos-t "cos(x)" font:Roboto size:11 fill:$cos | 1s - 10s
+  x: 730
+  y: 100
+
+text prop1 "Period: 2π" font:Roboto size:11 fill:$text | 4s - 10s
+  x: 400
+  y: 440
+  fade-in(0.3s)
+
+text prop2 "sin(0) = 0, cos(0) = 1" font:Roboto size:11 fill:$muted | 5s - 10s
+  x: 400
+  y: 460
+  fade-in(0.3s)
+
+text prop3 "sin²(x) + cos²(x) = 1" font:Roboto size:11 fill:$muted | 6s - 10s
+  x: 400
+  y: 480
+  fade-in(0.3s)
+
+circle unit-circle r:40 fill:none stroke:#334155 stroke-width:1 | 2s - 10s
+  x: 400
+  y: 280
+  opacity: 0.3
+
+circle unit-dot r:4 fill:$text | 2s - 10s
+  x: f(t) = 400 + 40 * cos(t * 1.5)
+  y: f(t) = 280 - 40 * sin(t * 1.5)
+  opacity: 0.6

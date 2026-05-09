@@ -1,0 +1,379 @@
+---
+canvas: 960x540
+bg: #0a0a0a
+fps: 60
+perspective: 600
+vanish: 480 350
+$stroke: #ffffff
+$ground: #1a1a1a
+---
+
+# 3D Falling Boxes
+# Wireframe boxes dropping with bounce
+
+= Ground | 0s - 10s =
+
+@group scene | 0s - 10s
+  x: 480
+  y: 300
+  rotateX: -25deg
+  rotateY: -15deg -> 15deg -> -15deg over 8s ease-in-out
+
+@view groundPlane parent:scene | 0s - 10s
+  at: 0 100 0
+  normal: 0 -1 0
+  up: 0 0 -1
+
+rect ground w:500 h:400 fill:none stroke:$stroke strokeWidth:1 parent:groundPlane | 0s - 10s
+  opacity: 0.2
+
+# Grid
+line g1 stroke:$stroke strokeWidth:1 parent:groundPlane | 0s - 10s
+  x1: -250
+  y1: 0
+  x2: 250
+  y2: 0
+  opacity: 0.1
+
+line g2 stroke:$stroke strokeWidth:1 parent:groundPlane | 0s - 10s
+  x1: 0
+  y1: -200
+  x2: 0
+  y2: 200
+  opacity: 0.1
+
+# === BOX 1 ===
+
+@group box1 parent:scene | 0.2s - 10s
+  x: 0
+  y: -300 at 0s, 80 at 0.6s ease-in, 42 at 0.8s ease-out, 80 at 1s ease-in, 64 at 1.1s ease-out, 80 at 1.2s
+  z: 0
+  rotateX: 0deg -> 45deg over 0.6s linear
+  rotateY: 0deg -> 90deg over 0.6s linear
+
+@view b1Top parent:box1 | 0.2s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b1t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Top | 0.2s - 10s
+
+@view b1Front parent:box1 | 0.2s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b1f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Front | 0.2s - 10s
+
+@view b1Back parent:box1 | 0.2s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b1b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Back | 0.2s - 10s
+
+@view b1Left parent:box1 | 0.2s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b1l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Left | 0.2s - 10s
+
+@view b1Right parent:box1 | 0.2s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b1r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Right | 0.2s - 10s
+
+@view b1Bottom parent:box1 | 0.2s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b1bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b1Bottom | 0.2s - 10s
+
+# === BOX 2 ===
+
+@group box2 parent:scene | 0.6s - 10s
+  x: -100
+  y: -350 at 0s, 80 at 0.7s ease-in, 36 at 0.9s ease-out, 80 at 1.1s ease-in, 60 at 1.2s ease-out, 80 at 1.3s
+  z: 80
+  rotateX: 0deg -> -30deg over 0.7s linear
+  rotateY: 0deg -> 120deg over 0.7s linear
+
+@view b2Top parent:box2 | 0.6s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b2t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Top | 0.6s - 10s
+
+@view b2Front parent:box2 | 0.6s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b2f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Front | 0.6s - 10s
+
+@view b2Back parent:box2 | 0.6s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b2b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Back | 0.6s - 10s
+
+@view b2Left parent:box2 | 0.6s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b2l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Left | 0.6s - 10s
+
+@view b2Right parent:box2 | 0.6s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b2r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Right | 0.6s - 10s
+
+@view b2Bottom parent:box2 | 0.6s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b2bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b2Bottom | 0.6s - 10s
+
+# === BOX 3 ===
+
+@group box3 parent:scene | 1s - 10s
+  x: 110
+  y: -400 at 0s, 80 at 0.8s ease-in, 32 at 1s ease-out, 80 at 1.2s ease-in, 56 at 1.3s ease-out, 80 at 1.4s
+  z: -60
+  rotateX: 0deg -> 60deg over 0.8s linear
+  rotateY: 0deg -> -45deg over 0.8s linear
+
+@view b3Top parent:box3 | 1s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b3t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Top | 1s - 10s
+
+@view b3Front parent:box3 | 1s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b3f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Front | 1s - 10s
+
+@view b3Back parent:box3 | 1s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b3b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Back | 1s - 10s
+
+@view b3Left parent:box3 | 1s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b3l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Left | 1s - 10s
+
+@view b3Right parent:box3 | 1s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b3r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Right | 1s - 10s
+
+@view b3Bottom parent:box3 | 1s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b3bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b3Bottom | 1s - 10s
+
+# === BOX 4 ===
+
+@group box4 parent:scene | 1.4s - 10s
+  x: 80
+  y: -320 at 0s, 80 at 0.65s ease-in, 40 at 0.85s ease-out, 80 at 1.05s ease-in, 62 at 1.15s ease-out, 80 at 1.25s
+  z: 100
+  rotateX: 0deg -> -50deg over 0.65s linear
+  rotateY: 0deg -> 60deg over 0.65s linear
+
+@view b4Top parent:box4 | 1.4s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b4t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Top | 1.4s - 10s
+
+@view b4Front parent:box4 | 1.4s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b4f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Front | 1.4s - 10s
+
+@view b4Back parent:box4 | 1.4s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b4b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Back | 1.4s - 10s
+
+@view b4Left parent:box4 | 1.4s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b4l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Left | 1.4s - 10s
+
+@view b4Right parent:box4 | 1.4s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b4r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Right | 1.4s - 10s
+
+@view b4Bottom parent:box4 | 1.4s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b4bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b4Bottom | 1.4s - 10s
+
+# === BOX 5 ===
+
+@group box5 parent:scene | 1.8s - 10s
+  x: -120
+  y: -380 at 0s, 80 at 0.75s ease-in, 34 at 0.95s ease-out, 80 at 1.15s ease-in, 58 at 1.25s ease-out, 80 at 1.35s
+  z: -80
+  rotateX: 0deg -> 40deg over 0.75s linear
+  rotateY: 0deg -> -80deg over 0.75s linear
+
+@view b5Top parent:box5 | 1.8s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b5t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Top | 1.8s - 10s
+
+@view b5Front parent:box5 | 1.8s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b5f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Front | 1.8s - 10s
+
+@view b5Back parent:box5 | 1.8s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b5b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Back | 1.8s - 10s
+
+@view b5Left parent:box5 | 1.8s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b5l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Left | 1.8s - 10s
+
+@view b5Right parent:box5 | 1.8s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b5r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Right | 1.8s - 10s
+
+@view b5Bottom parent:box5 | 1.8s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b5bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b5Bottom | 1.8s - 10s
+
+# === BOX 6 ===
+
+@group box6 parent:scene | 2.2s - 10s
+  x: -50
+  y: -450 at 0s, 80 at 0.85s ease-in, 30 at 1.05s ease-out, 80 at 1.25s ease-in, 54 at 1.35s ease-out, 80 at 1.45s
+  z: -120
+  rotateX: 0deg -> 70deg over 0.85s linear
+  rotateY: 0deg -> 150deg over 0.85s linear
+
+@view b6Top parent:box6 | 2.2s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b6t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Top | 2.2s - 10s
+
+@view b6Front parent:box6 | 2.2s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b6f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Front | 2.2s - 10s
+
+@view b6Back parent:box6 | 2.2s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b6b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Back | 2.2s - 10s
+
+@view b6Left parent:box6 | 2.2s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b6l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Left | 2.2s - 10s
+
+@view b6Right parent:box6 | 2.2s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b6r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Right | 2.2s - 10s
+
+@view b6Bottom parent:box6 | 2.2s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b6bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b6Bottom | 2.2s - 10s
+
+# === BOX 7 ===
+
+@group box7 parent:scene | 2.6s - 10s
+  x: 150
+  y: -340 at 0s, 80 at 0.68s ease-in, 38 at 0.88s ease-out, 80 at 1.08s ease-in, 60 at 1.18s ease-out, 80 at 1.28s
+  z: 0
+  rotateX: 0deg -> -35deg over 0.68s linear
+  rotateY: 0deg -> 100deg over 0.68s linear
+
+@view b7Top parent:box7 | 2.6s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b7t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Top | 2.6s - 10s
+
+@view b7Front parent:box7 | 2.6s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b7f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Front | 2.6s - 10s
+
+@view b7Back parent:box7 | 2.6s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b7b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Back | 2.6s - 10s
+
+@view b7Left parent:box7 | 2.6s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b7l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Left | 2.6s - 10s
+
+@view b7Right parent:box7 | 2.6s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b7r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Right | 2.6s - 10s
+
+@view b7Bottom parent:box7 | 2.6s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b7bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b7Bottom | 2.6s - 10s
+
+# === BOX 8 ===
+
+@group box8 parent:scene | 3s - 10s
+  x: -160
+  y: -420 at 0s, 80 at 0.8s ease-in, 32 at 1s ease-out, 80 at 1.2s ease-in, 56 at 1.3s ease-out, 80 at 1.4s
+  z: 40
+  rotateX: 0deg -> 55deg over 0.8s linear
+  rotateY: 0deg -> -110deg over 0.8s linear
+
+@view b8Top parent:box8 | 3s - 10s
+  at: 0 -20 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect b8t w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Top | 3s - 10s
+
+@view b8Front parent:box8 | 3s - 10s
+  at: 0 0 20
+  normal: 0 0 1
+rect b8f w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Front | 3s - 10s
+
+@view b8Back parent:box8 | 3s - 10s
+  at: 0 0 -20
+  normal: 0 0 -1
+rect b8b w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Back | 3s - 10s
+
+@view b8Left parent:box8 | 3s - 10s
+  at: -20 0 0
+  normal: -1 0 0
+rect b8l w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Left | 3s - 10s
+
+@view b8Right parent:box8 | 3s - 10s
+  at: 20 0 0
+  normal: 1 0 0
+rect b8r w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Right | 3s - 10s
+
+@view b8Bottom parent:box8 | 3s - 10s
+  at: 0 20 0
+  normal: 0 1 0
+  up: 0 0 1
+rect b8bt w:40 h:40 fill:none stroke:$stroke strokeWidth:2 parent:b8Bottom | 3s - 10s
+
+= UI | 0s - 10s =
+
+text title "FALLING BOXES" font:Roboto size:32 fill:$stroke weight:bold | 0.5s - 10s
+  x: 480
+  y: 45
+  opacity: 0 -> 1 over 0.8s ease-out
+  letterSpacing: 6

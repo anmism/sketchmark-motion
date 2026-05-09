@@ -1,0 +1,22 @@
+---
+canvas: 640x360
+bg: #1c1917
+fps: 24
+$dust: #a8a29e
+$white: #e2e8f0
+---
+
+text title "Dust Particles" font:Roboto size:24 fill:$white weight:bold | 0s - 15s
+  x: 320
+  y: 30
+
+@emitter dust | 0s - 15s
+  template: circle r:2 fill:$dust
+  spawn: 15/s
+  lifetime: 6s
+  x: random(0, 640)
+  y: random(60, 360)
+  vx: random(-5, 5)
+  vy: random(-3, 3)
+  opacity: random(0.1, 0.35)
+  scale: random(0.3, 1.5)

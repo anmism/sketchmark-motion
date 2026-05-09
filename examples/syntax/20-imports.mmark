@@ -1,0 +1,29 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+use "shared-motions.mmark"
+
+circle dot1 r:30 fill:#e74c5c | 0s - 4s
+  x: 160
+  y: 180
+  fadeIn(0.5s)
+
+circle dot2 r:30 fill:#4ecdc4 | 0.5s - 4s
+  x: 320
+  y: 180
+  pulse(0.8, 1.2, 0.4s)
+
+rect dot3 w:60 h:60 fill:#f7dc6f | 1s - 4s
+  x: 480
+  y: 180
+  spin(2s)
+
+text title "Imported Motions & Draws" font:Roboto size:18 fill:#fff | 0s - 4s
+  x: 320
+  y: 300
+  fadeIn(1s)
+
+badge alert color:#e74c5c x:100 y:100 | 0s - 4s

@@ -1,0 +1,212 @@
+---
+canvas: 700x400
+bg: #1a1a2e
+fps: 30
+$bar: #4ecdc4
+$comparing: #ffe66d
+$sorted: #2ecc71
+$text: #e0e0e0
+$axis: #3a3a5a
+---
+
+# === Title ===
+text title content:"Bubble Sort Visualization" fill:$text fontSize:22 fontWeight:bold | 0s - 16s
+  x: 350
+  y: 35
+
+text subtitle content:"Comparing adjacent elements, swapping if out of order" fill:$text fontSize:12 opacity:0.7 | 0s - 16s
+  x: 350
+  y: 60
+
+# === Ground line ===
+line ground stroke:$axis strokeWidth:2 | 0s - 16s
+  x1: 100
+  y1: 320
+  x2: 600
+  y2: 320
+
+# === Array: [4, 2, 5, 1, 3] ===
+# Positions: 150, 250, 350, 450, 550 (100px apart)
+# Heights: value * 45
+
+# Timeline:
+# t=0-1.5: Compare pos0,pos1 → SWAP 4,2
+# t=1.5-3: Compare pos1,pos2 → no swap 4,5
+# t=3-4.5: Compare pos2,pos3 → SWAP 5,1
+# t=4.5-6: Compare pos3,pos4 → SWAP 5,3 (5 sorted)
+# t=6-7.5: Compare pos0,pos1 → no swap 2,4
+# t=7.5-9: Compare pos1,pos2 → SWAP 4,1
+# t=9-10.5: Compare pos2,pos3 → SWAP 4,3 (4 sorted)
+# t=10.5-12: Compare pos0,pos1 → SWAP 2,1
+# t=12-13.5: Compare pos1,pos2 → no swap 2,3 (3 sorted)
+# t=13.5-15: Compare pos0,pos1 → no swap 1,2 (all sorted)
+
+# Bar for value 4 (h=180): pos0→pos1→pos2→pos3
+rect bar4 w:60 h:180 fill:$bar cornerRadius:6 | 0s - 16s
+  y: 230
+  x: f(t) = 150 + 100 * min(1, max(0, (t - 0.5) * 2)) + 100 * min(1, max(0, (t - 8) * 2)) + 100 * min(1, max(0, (t - 9.5) * 2))
+
+# Bar for value 2 (h=90): pos1→pos0→pos1
+rect bar2 w:60 h:90 fill:$bar cornerRadius:6 | 0s - 16s
+  y: 275
+  x: f(t) = 250 - 100 * min(1, max(0, (t - 0.5) * 2)) + 100 * min(1, max(0, (t - 11) * 2))
+
+# Bar for value 5 (h=225): pos2→pos3→pos4
+rect bar5 w:60 h:225 fill:$bar cornerRadius:6 | 0s - 16s
+  y: 207
+  x: f(t) = 350 + 100 * min(1, max(0, (t - 3.5) * 2)) + 100 * min(1, max(0, (t - 5) * 2))
+
+# Bar for value 1 (h=45): pos3→pos2→pos1→pos0
+rect bar1 w:60 h:45 fill:$bar cornerRadius:6 | 0s - 16s
+  y: 297
+  x: f(t) = 450 - 100 * min(1, max(0, (t - 3.5) * 2)) - 100 * min(1, max(0, (t - 8) * 2)) - 100 * min(1, max(0, (t - 11) * 2))
+
+# Bar for value 3 (h=135): pos4→pos3→pos2
+rect bar3 w:60 h:135 fill:$bar cornerRadius:6 | 0s - 16s
+  y: 252
+  x: f(t) = 550 - 100 * min(1, max(0, (t - 5) * 2)) - 100 * min(1, max(0, (t - 9.5) * 2))
+
+# === Comparison brackets (one per step) ===
+# Pass 1: positions 0-1, 1-2, 2-3, 3-4
+rect br1 w:130 h:8 fill:$comparing cornerRadius:4 | 0s - 1.5s
+  x: 200
+  y: 330
+
+rect br2 w:130 h:8 fill:$comparing cornerRadius:4 | 1.5s - 3s
+  x: 300
+  y: 330
+
+rect br3 w:130 h:8 fill:$comparing cornerRadius:4 | 3s - 4.5s
+  x: 400
+  y: 330
+
+rect br4 w:130 h:8 fill:$comparing cornerRadius:4 | 4.5s - 6s
+  x: 500
+  y: 330
+
+# Pass 2: positions 0-1, 1-2, 2-3
+rect br5 w:130 h:8 fill:$comparing cornerRadius:4 | 6s - 7.5s
+  x: 200
+  y: 330
+
+rect br6 w:130 h:8 fill:$comparing cornerRadius:4 | 7.5s - 9s
+  x: 300
+  y: 330
+
+rect br7 w:130 h:8 fill:$comparing cornerRadius:4 | 9s - 10.5s
+  x: 400
+  y: 330
+
+# Pass 3: positions 0-1, 1-2
+rect br8 w:130 h:8 fill:$comparing cornerRadius:4 | 10.5s - 12s
+  x: 200
+  y: 330
+
+rect br9 w:130 h:8 fill:$comparing cornerRadius:4 | 12s - 13.5s
+  x: 300
+  y: 330
+
+# Pass 4: position 0-1
+rect br10 w:130 h:8 fill:$comparing cornerRadius:4 | 13.5s - 15s
+  x: 200
+  y: 330
+
+# === Value labels (follow bars) ===
+text lbl4 content:"4" fill:$text fontSize:16 fontWeight:bold | 0s - 16s
+  y: 345
+  x: f(t) = 150 + 100 * min(1, max(0, (t - 0.5) * 2)) + 100 * min(1, max(0, (t - 8) * 2)) + 100 * min(1, max(0, (t - 9.5) * 2))
+
+text lbl2 content:"2" fill:$text fontSize:16 fontWeight:bold | 0s - 16s
+  y: 345
+  x: f(t) = 250 - 100 * min(1, max(0, (t - 0.5) * 2)) + 100 * min(1, max(0, (t - 11) * 2))
+
+text lbl5 content:"5" fill:$text fontSize:16 fontWeight:bold | 0s - 16s
+  y: 345
+  x: f(t) = 350 + 100 * min(1, max(0, (t - 3.5) * 2)) + 100 * min(1, max(0, (t - 5) * 2))
+
+text lbl1 content:"1" fill:$text fontSize:16 fontWeight:bold | 0s - 16s
+  y: 345
+  x: f(t) = 450 - 100 * min(1, max(0, (t - 3.5) * 2)) - 100 * min(1, max(0, (t - 8) * 2)) - 100 * min(1, max(0, (t - 11) * 2))
+
+text lbl3 content:"3" fill:$text fontSize:16 fontWeight:bold | 0s - 16s
+  y: 345
+  x: f(t) = 550 - 100 * min(1, max(0, (t - 5) * 2)) - 100 * min(1, max(0, (t - 9.5) * 2))
+
+# === Pass indicator ===
+text passLabel content:"Pass:" fill:$text fontSize:14 | 0s - 16s
+  x: 120
+  y: 380
+
+text pass1 content:"1" fill:$comparing fontSize:16 fontWeight:bold | 0s - 6s
+  x: 170
+  y: 380
+
+text pass2 content:"2" fill:$comparing fontSize:16 fontWeight:bold | 6s - 10.5s
+  x: 170
+  y: 380
+
+text pass3 content:"3" fill:$comparing fontSize:16 fontWeight:bold | 10.5s - 13.5s
+  x: 170
+  y: 380
+
+text pass4 content:"4" fill:$comparing fontSize:16 fontWeight:bold | 13.5s - 15s
+  x: 170
+  y: 380
+
+text passDone content:"Sorted!" fill:$sorted fontSize:16 fontWeight:bold | 15s - 16s
+  x: 170
+  y: 380
+
+# === Step descriptions ===
+text step1 content:"Swap 4 and 2" fill:$comparing fontSize:12 | 0s - 1.5s
+  x: 350
+  y: 380
+
+text step2 content:"4 < 5, no swap" fill:$text fontSize:12 | 1.5s - 3s
+  x: 350
+  y: 380
+
+text step3 content:"Swap 5 and 1" fill:$comparing fontSize:12 | 3s - 4.5s
+  x: 350
+  y: 380
+
+text step4 content:"Swap 5 and 3" fill:$comparing fontSize:12 | 4.5s - 6s
+  x: 350
+  y: 380
+
+text step5 content:"2 < 4, no swap" fill:$text fontSize:12 | 6s - 7.5s
+  x: 350
+  y: 380
+
+text step6 content:"Swap 4 and 1" fill:$comparing fontSize:12 | 7.5s - 9s
+  x: 350
+  y: 380
+
+text step7 content:"Swap 4 and 3" fill:$comparing fontSize:12 | 9s - 10.5s
+  x: 350
+  y: 380
+
+text step8 content:"Swap 2 and 1" fill:$comparing fontSize:12 | 10.5s - 12s
+  x: 350
+  y: 380
+
+text step9 content:"2 < 3, no swap" fill:$text fontSize:12 | 12s - 13.5s
+  x: 350
+  y: 380
+
+text step10 content:"1 < 2, no swap" fill:$text fontSize:12 | 13.5s - 15s
+  x: 350
+  y: 380
+
+text stepDone content:"Array is sorted!" fill:$sorted fontSize:12 | 15s - 16s
+  x: 350
+  y: 380
+
+# === Algorithm info ===
+text info1 content:"O(n²) comparisons" fill:$text fontSize:11 opacity:0.6 | 0s - 16s
+  x: 550
+  y: 370
+
+text info2 content:"Largest bubbles right" fill:$text fontSize:11 opacity:0.6 | 0s - 16s
+  x: 550
+  y: 385

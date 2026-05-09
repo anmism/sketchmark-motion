@@ -1,0 +1,66 @@
+---
+canvas: 600x400
+bg: #1a1a2e
+fps: 60
+perspective: 500
+vanish: 300 200
+---
+
+# Rotating Pyramid using origin for edge pivots
+
+@group pyramid | 0s - 8s
+  x: 300
+  y: 200
+  rotateX: -15deg
+  rotateY: 0deg -> 360deg over 6s linear
+
+# Base square (at y=50, flat on xz plane)
+rect base w:100 h:100 fill:#4a5568 parent:pyramid | 0s - 8s
+  x: 0
+  y: 50
+  z: 0
+  rotateX: 90deg
+
+# Front face - triangle with base at bottom, tilts around bottom edge
+path front fill:#e53e3e parent:pyramid | 0s - 8s
+  d: "M-50,50 L50,50 L0,-50 Z"
+  x: 0
+  y: 0
+  z: 50
+  origin: bottom
+  rotateX: 30deg
+
+# Back face
+path back fill:#3182ce parent:pyramid | 0s - 8s
+  d: "M-50,50 L50,50 L0,-50 Z"
+  x: 0
+  y: 0
+  z: -50
+  origin: bottom
+  rotateX: -30deg
+
+# Right face
+path right fill:#38a169 parent:pyramid | 0s - 8s
+  d: "M-50,50 L50,50 L0,-50 Z"
+  x: 50
+  y: 0
+  z: 0
+  origin: bottom
+  rotateOrder: yz
+  rotateY: 90deg
+  rotateZ: -30deg
+
+# Left face
+path left fill:#d69e2e parent:pyramid | 0s - 8s
+  d: "M-50,50 L50,50 L0,-50 Z"
+  x: -50
+  y: 0
+  z: 0
+  origin: bottom
+  rotateOrder: yz
+  rotateY: -90deg
+  rotateZ: 30deg
+
+text label "3D Pyramid" font:Roboto size:20 fill:#e2e8f0 weight:bold | 0s - 8s
+  x: 300
+  y: 370

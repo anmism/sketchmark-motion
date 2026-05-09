@@ -1,0 +1,41 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+---
+
+# Gradient Morph - color animation on multiple shapes
+
+rect bar1 w:80 h:200 fill:#e74c5c | 0s - 6s
+  x: 120
+  y: 180
+  fill: #e74c5c -> #f97316 -> #eab308 over 3s ease-in-out
+  scale: 1 -> 1.1 -> 1 over 1.5s ease-in-out
+
+rect bar2 w:80 h:200 fill:#f97316 | 0s - 6s
+  x: 220
+  y: 180
+  fill: #f97316 -> #eab308 -> #22c55e over 3s ease-in-out
+  scale: 1.05 -> 0.95 -> 1.05 over 1.5s ease-in-out
+
+rect bar3 w:80 h:200 fill:#eab308 | 0s - 6s
+  x: 320
+  y: 180
+  fill: #eab308 -> #22c55e -> #3b82f6 over 3s ease-in-out
+  scale: 1 -> 1.1 -> 1 over 1.5s ease-in-out
+
+rect bar4 w:80 h:200 fill:#22c55e | 0s - 6s
+  x: 420
+  y: 180
+  fill: #22c55e -> #3b82f6 -> #8b5cf6 over 3s ease-in-out
+  scale: 1.05 -> 0.95 -> 1.05 over 1.5s ease-in-out
+
+rect bar5 w:80 h:200 fill:#3b82f6 | 0s - 6s
+  x: 520
+  y: 180
+  fill: #3b82f6 -> #8b5cf6 -> #e74c5c over 3s ease-in-out
+  scale: 1 -> 1.1 -> 1 over 1.5s ease-in-out
+
+text title "Color Wave" font:Roboto size:24 fill:#fff weight:bold | 0s - 6s
+  x: 320
+  y: 320

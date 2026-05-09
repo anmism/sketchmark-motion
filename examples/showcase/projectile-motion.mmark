@@ -1,0 +1,108 @@
+---
+canvas: 800x500
+bg: #0f172a
+fps: 24
+$ball: #f59e0b
+$ground: #22c55e
+$trail: #f59e0b
+$text: #e2e8f0
+$muted: #64748b
+$axis: #334155
+---
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+text title "Projectile Motion" font:Roboto size:24 fill:$text weight:bold | 0s - 8s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text formula "y = v₀sinθ·t - ½gt²" font:Roboto size:14 fill:$muted | 0.3s - 8s
+  x: 400
+  y: 58
+  fade-in(0.4s)
+
+rect ground w:700 h:3 fill:$ground | 0s - 8s
+  x: 400
+  y: 420
+
+rect x-axis w:700 h:1 fill:$axis | 0s - 8s
+  x: 400
+  y: 420
+
+rect y-axis w:1 h:340 fill:$axis | 0s - 8s
+  x: 80
+  y: 250
+
+text x-label "x (m)" font:Roboto size:12 fill:$muted | 0s - 8s
+  x: 730
+  y: 440
+
+text y-label "y (m)" font:Roboto size:12 fill:$muted | 0s - 8s
+  x: 65
+  y: 85
+
+circle ball r:10 fill:$ball | 0.5s - 8s
+  x: f(t) = 80 + 90 * t
+  y: f(t) = 420 - (180 * t - 70 * t * t)
+
+circle trail1 r:3 fill:$trail | 1s - 8s
+  x: 170
+  y: 310
+  opacity: 0.3
+
+circle trail2 r:3 fill:$trail | 1.5s - 8s
+  x: 260
+  y: 230
+  opacity: 0.3
+
+circle trail3 r:3 fill:$trail | 2s - 8s
+  x: 350
+  y: 180
+  opacity: 0.3
+
+circle trail4 r:3 fill:$trail | 2.5s - 8s
+  x: 440
+  y: 165
+  opacity: 0.3
+
+circle trail5 r:3 fill:$trail | 3s - 8s
+  x: 530
+  y: 185
+  opacity: 0.3
+
+circle trail6 r:3 fill:$trail | 3.5s - 8s
+  x: 620
+  y: 240
+  opacity: 0.3
+
+text v0 "v₀ = 40 m/s" font:Roboto size:13 fill:$text | 0.5s - 8s
+  x: 680
+  y: 470
+
+text angle "θ = 60°" font:Roboto size:13 fill:$text | 0.5s - 8s
+  x: 680
+  y: 490
+
+text g-val "g = 9.8 m/s²" font:Roboto size:13 fill:$muted | 0.5s - 8s
+  x: 140
+  y: 470
+
+line launch x1:80 y1:420 x2:130 y2:370 stroke:$text stroke-width:2 | 0s - 8s
+
+text angle-arc "60°" font:Roboto size:11 fill:$ball | 0s - 8s
+  x: 115
+  y: 408
+
+text peak-label "Max Height" font:Roboto size:11 fill:$muted | 2.5s - 8s
+  x: 400
+  y: 140
+  fade-in(0.3s)
+
+line peak-line x1:400 y1:155 x2:400 y2:165 stroke:$muted stroke-width:1 | 2.5s - 8s
+
+text range-label "Range = v₀²sin2θ / g" font:Roboto size:12 fill:$ground | 5s - 8s
+  x: 400
+  y: 450
+  fade-in(0.5s)

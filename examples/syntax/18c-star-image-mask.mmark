@@ -1,0 +1,15 @@
+---
+canvas: 400x400
+bg: #0f172a
+fps: 24
+---
+
+# Star mask on image using parametric xt
+image photo "image.jpg" w:300 h:300 | 0s - 4s
+  x: 200
+  y: 200
+  mask: xt("200 + (80 + 50 * cos(t * 5)) * cos(t)", "200 + (80 + 50 * cos(t * 5)) * sin(t)", 0, 6.28, 100)
+
+text label "Star Mask on Image" font:Roboto size:18 fill:#fff | 0s - 4s
+  x: 200
+  y: 360

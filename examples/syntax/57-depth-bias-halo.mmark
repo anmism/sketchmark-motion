@@ -1,0 +1,43 @@
+---
+canvas: 720x420
+bg: #0a0f1f
+fps: 60
+perspective: 620
+vanish: 360 200
+---
+
+# depthBias helps keep overlays stable
+
+@group core | 0s - 8s
+  x: 360
+  y: 205
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view front parent:core | 0s - 8s
+  at: 0 0 55
+  normal: 0 0 1
+rect plate w:120 h:120 fill:#1d4ed8 parent:front | 0s - 8s
+
+@view haloView parent:core | 0s - 8s
+  at: 0 0 55
+  normal: 0 0 1
+circle halo r:74 fill:none stroke:#f8fafc88 strokeWidth:3 parent:haloView | 0s - 8s
+  depthBias: 20
+
+@view badge parent:core | 0s - 8s
+  at: 0 0 55
+  normal: 0 0 1
+rect tag w:54 h:18 fill:#f59e0b parent:badge | 0s - 8s
+  y: -34
+  depthBias: 30
+
+text tagText "BOOST" font:Roboto size:12 fill:#1f2937 weight:bold parent:core | 0s - 8s
+  y: -34
+  z: 56
+  billboard: screen
+  depthBias: 40
+
+text label "57 depthBias halo" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 360
+  y: 372

@@ -1,0 +1,194 @@
+---
+canvas: 800x450
+bg: #1a1a2e
+fps: 30
+$item: #4ecdc4
+$highlight: #ffe66d
+$pop: #ff6b6b
+$text: #e0e0e0
+$container: #2a2a4a
+$arrow: #a29bfe
+---
+
+# === Title ===
+text title content:"Stack vs Queue" fill:$text fontSize:24 fontWeight:bold | 0s - 20s
+  x: 400
+  y: 35
+
+# === STACK SIDE ===
+text stackTitle content:"STACK (LIFO)" fill:$highlight fontSize:16 fontWeight:bold | 0s - 20s
+  x: 200
+  y: 70
+
+text stackDesc content:"Last In, First Out" fill:$text fontSize:11 opacity:0.7 | 0s - 20s
+  x: 200
+  y: 90
+
+# Stack container - top y=140, bottom y=320
+rect stackContainer w:120 h:180 fill:none stroke:$container strokeWidth:3 cornerRadius:4 | 0s - 20s
+  x: 200
+  y: 230
+
+rect stackBase w:120 h:6 fill:$container cornerRadius:2 | 0s - 20s
+  x: 200
+  y: 323
+
+# === STACK ITEMS ===
+# Enter from y=50, settle inside container
+# A at y=290, B at y=235, C at y=180
+
+# Item A - bottom slot
+rect sA w:90 h:50 fill:$item cornerRadius:6 | 0s - 14s
+  x: 200
+  y: 100 -> 290 over 1s
+
+text sAl content:"A" fill:#1a1a2e fontSize:20 fontWeight:bold | 0s - 14s
+  x: 200
+  y: 100 -> 290 over 1s
+
+# Item B - middle slot
+rect sB w:90 h:50 fill:$item cornerRadius:6 | 2s - 12s
+  x: 200
+  y: 100 -> 230 over 1s
+
+text sBl content:"B" fill:#1a1a2e fontSize:20 fontWeight:bold | 2s - 12s
+  x: 200
+  y: 100 -> 230 over 1s
+
+# Item C - top slot
+rect sC w:90 h:50 fill:$item cornerRadius:6 | 4s - 10s
+  x: 200
+  y: 100 -> 170 over 1s
+
+text sCl content:"C" fill:#1a1a2e fontSize:20 fontWeight:bold | 4s - 10s
+  x: 200
+  y: 100 -> 170 over 1s
+
+# === QUEUE SIDE ===
+text queueTitle content:"QUEUE (FIFO)" fill:$highlight fontSize:16 fontWeight:bold | 0s - 20s
+  x: 600
+  y: 70
+
+text queueDesc content:"First In, First Out" fill:$text fontSize:11 opacity:0.7 | 0s - 20s
+  x: 600
+  y: 90
+
+# Queue container - left x=475, right x=725
+rect queueContainer w:250 h:70 fill:none stroke:$container strokeWidth:3 cornerRadius:4 | 0s - 20s
+  x: 600
+  y: 230
+
+# === QUEUE ITEMS ===
+# Enter from x=780, settle at x=690, 620, 550 (right to left)
+# Exit to x=400
+
+# Item A - ends at left position x=550
+rect qA w:60 h:50 fill:$item cornerRadius:6 | 0s - 10s
+  x: 720 -> 510 over 1s
+  y: 230
+
+text qAl content:"A" fill:#1a1a2e fontSize:18 fontWeight:bold | 0s - 10s
+  x: 720 -> 510 over 1s
+  y: 230
+
+# Item B - ends at middle position x=620
+rect qB w:60 h:50 fill:$item cornerRadius:6 | 2s - 12s
+  x: 720 -> 580 over 1s
+  y: 230
+
+text qBl content:"B" fill:#1a1a2e fontSize:18 fontWeight:bold | 2s - 12s
+  x: 720 -> 580 over 1s
+  y: 230
+
+# Item C - ends at right position x=690
+rect qC w:60 h:50 fill:$item cornerRadius:6 | 4s - 14s
+  x: 720 -> 650 over 1s
+  y: 230
+
+text qCl content:"C" fill:#1a1a2e fontSize:18 fontWeight:bold | 4s - 14s
+  x: 720 -> 650 over 1s
+  y: 230
+
+# === Labels ===
+text pushLbl content:"push()" fill:$arrow fontSize:11 | 0s - 20s
+  x: 100
+  y: 140
+
+text popLbl content:"pop()" fill:$pop fontSize:11 | 0s - 20s
+  x: 300
+  y: 140
+
+text enqLbl content:"enqueue()" fill:$arrow fontSize:11 | 0s - 20s
+  x: 730
+  y: 190
+
+text deqLbl content:"dequeue()" fill:$pop fontSize:11 | 0s - 20s
+  x: 480
+  y: 190
+
+# === Phase labels ===
+text phase1 content:"Push A" fill:$arrow fontSize:14 | 0s - 2s
+  x: 200
+  y: 380
+
+text phase2 content:"Push B" fill:$arrow fontSize:14 | 2s - 4s
+  x: 200
+  y: 380
+
+text phase3 content:"Push C" fill:$arrow fontSize:14 | 4s - 6s
+  x: 200
+  y: 380
+
+text phase4 content:"A, B, C in stack" fill:$text fontSize:14 | 6s - 10s
+  x: 200
+  y: 380
+
+text phase5 content:"Pop C (last in)" fill:$pop fontSize:14 | 10s - 12s
+  x: 200
+  y: 380
+
+text phase6 content:"Pop B" fill:$pop fontSize:14 | 12s - 14s
+  x: 200
+  y: 380
+
+text phase7 content:"Pop A (first in)" fill:$pop fontSize:14 | 14s - 16s
+  x: 200
+  y: 380
+
+# Queue phase labels
+text qphase1 content:"Enqueue A" fill:$arrow fontSize:14 | 0s - 2s
+  x: 600
+  y: 380
+
+text qphase2 content:"Enqueue B" fill:$arrow fontSize:14 | 2s - 4s
+  x: 600
+  y: 380
+
+text qphase3 content:"Enqueue C" fill:$arrow fontSize:14 | 4s - 6s
+  x: 600
+  y: 380
+
+text qphase4 content:"A, B, C in queue" fill:$text fontSize:14 | 6s - 10s
+  x: 600
+  y: 380
+
+text qphase5 content:"Dequeue A (first in)" fill:$pop fontSize:14 | 10s - 12s
+  x: 600
+  y: 380
+
+text qphase6 content:"Dequeue B" fill:$pop fontSize:14 | 12s - 14s
+  x: 600
+  y: 380
+
+text qphase7 content:"Dequeue C (last in)" fill:$pop fontSize:14 | 14s - 16s
+  x: 600
+  y: 380
+
+# === Summary ===
+text sum1 content:"LIFO: Last In First Out" fill:$text fontSize:12 opacity:0.7 | 0s - 20s
+  x: 200
+  y: 420
+
+text sum2 content:"FIFO: First In First Out" fill:$text fontSize:12 opacity:0.7 | 0s - 20s
+  x: 600
+  y: 420

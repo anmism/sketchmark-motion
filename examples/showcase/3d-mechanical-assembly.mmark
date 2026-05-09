@@ -1,0 +1,475 @@
+---
+canvas: 960x540
+bg: #1a1a2e
+fps: 60
+perspective: 800
+vanish: 480 270
+$steel: #64748b
+$steelDark: #475569
+$steelLight: #94a3b8
+$brass: #d97706
+$brassLight: #fbbf24
+$copper: #b45309
+$accent: #06b6d4
+$shadow: #0f172a
+---
+
+# 3D Mechanical Assembly
+# Exploded view parts animate into assembled position
+
+= Title | 0s - 2s =
+
+text title "MECHANICAL ASSEMBLY" font:Roboto size:32 fill:#ffffff weight:bold | 0s - 15s
+  x: 480
+  y: 40
+  opacity: 0 -> 1 over 0.8s ease-out
+  letterSpacing: 3
+
+text subtitle "Precision Engineering" font:Roboto size:14 fill:#64748b | 0.5s - 15s
+  x: 480
+  y: 70
+  opacity: 0 -> 0.8 over 0.6s ease-out
+
+= Assembly Group | 0s - 15s =
+
+@group assembly | 0s - 15s
+  x: 480
+  y: 280
+  rotateX: -15deg
+  rotateY: -20deg -> 20deg -> -20deg over 12s ease-in-out
+
+# === BASE PLATE ===
+# Starts below, slides up into position
+
+@group basePlate parent:assembly | 0s - 15s
+  y: 150 -> 60 over 1.5s ease-out
+  z: 0 -> 0 over 1s
+  opacity: 0 -> 1 over 0.5s
+
+rect baseTop w:280 h:160 fill:$steel parent:basePlate | 0s - 15s
+  rotateX: -90deg
+  cornerRadius: 8
+
+rect baseFront w:280 h:20 fill:$steelDark parent:basePlate | 0s - 15s
+  y: 10
+  z: 80
+  cornerRadius: 4
+
+rect baseBack w:280 h:20 fill:$steelDark parent:basePlate | 0s - 15s
+  y: 10
+  z: -80
+  rotateY: 180deg
+  cornerRadius: 4
+
+rect baseLeft w:160 h:20 fill:$steelLight parent:basePlate | 0s - 15s
+  x: -140
+  y: 10
+  rotateY: -90deg
+  cornerRadius: 4
+
+rect baseRight w:160 h:20 fill:$steelLight parent:basePlate | 0s - 15s
+  x: 140
+  y: 10
+  rotateY: 90deg
+  cornerRadius: 4
+
+# Mounting holes on base
+circle baseHole1 r:8 fill:$shadow parent:basePlate | 0s - 15s
+  x: -100
+  z: 50
+  y: -1
+  rotateX: -90deg
+
+circle baseHole2 r:8 fill:$shadow parent:basePlate | 0s - 15s
+  x: 100
+  z: 50
+  y: -1
+  rotateX: -90deg
+
+circle baseHole3 r:8 fill:$shadow parent:basePlate | 0s - 15s
+  x: -100
+  z: -50
+  y: -1
+  rotateX: -90deg
+
+circle baseHole4 r:8 fill:$shadow parent:basePlate | 0s - 15s
+  x: 100
+  z: -50
+  y: -1
+  rotateX: -90deg
+
+# === LEFT SUPPORT PILLAR ===
+
+@group leftPillar parent:assembly | 1s - 15s
+  x: -80 -> -80 over 1s
+  y: -150 -> 0 over 1.5s ease-out
+  z: 0
+  opacity: 0 -> 1 over 0.3s
+
+rect leftPillarBody w:30 h:120 fill:$steelDark parent:leftPillar | 1s - 15s
+  y: -60
+
+rect leftPillarTop w:50 h:30 fill:$steel parent:leftPillar | 1s - 15s
+  y: -135
+  rotateX: -90deg
+
+rect leftPillarFront w:30 h:120 fill:$steelLight parent:leftPillar | 1s - 15s
+  y: -60
+  z: 15
+  opacity: 0.9
+
+# === RIGHT SUPPORT PILLAR ===
+
+@group rightPillar parent:assembly | 1.3s - 15s
+  x: 80
+  y: -180 -> 0 over 1.5s ease-out
+  z: 0
+  opacity: 0 -> 1 over 0.3s
+
+rect rightPillarBody w:30 h:120 fill:$steelDark parent:rightPillar | 1.3s - 15s
+  y: -60
+
+rect rightPillarTop w:50 h:30 fill:$steel parent:rightPillar | 1.3s - 15s
+  y: -135
+  rotateX: -90deg
+
+rect rightPillarFront w:30 h:120 fill:$steelLight parent:rightPillar | 1.3s - 15s
+  y: -60
+  z: 15
+  opacity: 0.9
+
+# === MAIN AXLE (horizontal rod) ===
+
+@group mainAxle parent:assembly | 2.5s - 15s
+  y: -120
+  x: 200 -> 0 over 1.8s ease-out
+  z: 100 -> 0 over 1.8s ease-out
+  opacity: 0 -> 1 over 0.4s
+
+rect axleBody w:200 h:16 fill:$brass parent:mainAxle | 2.5s - 15s
+  rotateZ: 90deg
+  cornerRadius: 8
+
+circle axleEndL r:12 fill:$brassLight parent:mainAxle | 2.5s - 15s
+  x: -100
+  rotateY: 90deg
+
+circle axleEndR r:12 fill:$brassLight parent:mainAxle | 2.5s - 15s
+  x: 100
+  rotateY: 90deg
+
+# === LARGE GEAR (left side) ===
+
+@group largeGear parent:assembly | 3.5s - 15s
+  x: -60
+  y: -120
+  z: -150 -> 0 over 1.5s ease-out
+  rotateY: 180deg -> 0deg over 1.5s ease-out
+  opacity: 0 -> 1 over 0.4s
+
+# Gear body
+circle gearLBody r:50 fill:$copper parent:largeGear | 3.5s - 15s
+  rotateY: 90deg
+
+circle gearLInner r:35 fill:$brass parent:largeGear | 3.5s - 15s
+  x: 1
+  rotateY: 90deg
+
+circle gearLHub r:15 fill:$brassLight parent:largeGear | 3.5s - 15s
+  x: 2
+  rotateY: 90deg
+
+circle gearLHole r:8 fill:$shadow parent:largeGear | 3.5s - 15s
+  x: 3
+  rotateY: 90deg
+
+# Gear teeth (simplified as rectangles around edge)
+rect gearLT1 w:12 h:15 fill:$copper parent:largeGear | 3.5s - 15s
+  y: -55
+  rotateY: 90deg
+
+rect gearLT2 w:12 h:15 fill:$copper parent:largeGear | 3.5s - 15s
+  y: 55
+  rotateY: 90deg
+
+rect gearLT3 w:15 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  z: -55
+  rotateY: 90deg
+
+rect gearLT4 w:15 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  z: 55
+  rotateY: 90deg
+
+rect gearLT5 w:12 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  y: -40
+  z: 40
+  rotateY: 90deg
+
+rect gearLT6 w:12 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  y: 40
+  z: -40
+  rotateY: 90deg
+
+rect gearLT7 w:12 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  y: -40
+  z: -40
+  rotateY: 90deg
+
+rect gearLT8 w:12 h:12 fill:$copper parent:largeGear | 3.5s - 15s
+  y: 40
+  z: 40
+  rotateY: 90deg
+
+# === SMALL GEAR (right side) ===
+
+@group smallGear parent:assembly | 4s - 15s
+  x: 60
+  y: -120
+  z: 150 -> 0 over 1.5s ease-out
+  rotateY: -180deg -> 0deg over 1.5s ease-out
+  opacity: 0 -> 1 over 0.4s
+
+circle gearSBody r:30 fill:$copper parent:smallGear | 4s - 15s
+  rotateY: 90deg
+
+circle gearSInner r:20 fill:$brass parent:smallGear | 4s - 15s
+  x: -1
+  rotateY: 90deg
+
+circle gearSHub r:10 fill:$brassLight parent:smallGear | 4s - 15s
+  x: -2
+  rotateY: 90deg
+
+circle gearSHole r:6 fill:$shadow parent:smallGear | 4s - 15s
+  x: -3
+  rotateY: 90deg
+
+# Small gear teeth
+rect gearST1 w:10 h:10 fill:$copper parent:smallGear | 4s - 15s
+  y: -35
+  rotateY: 90deg
+
+rect gearST2 w:10 h:10 fill:$copper parent:smallGear | 4s - 15s
+  y: 35
+  rotateY: 90deg
+
+rect gearST3 w:10 h:10 fill:$copper parent:smallGear | 4s - 15s
+  z: -35
+  rotateY: 90deg
+
+rect gearST4 w:10 h:10 fill:$copper parent:smallGear | 4s - 15s
+  z: 35
+  rotateY: 90deg
+
+rect gearST5 w:8 h:8 fill:$copper parent:smallGear | 4s - 15s
+  y: -25
+  z: 25
+  rotateY: 90deg
+
+rect gearST6 w:8 h:8 fill:$copper parent:smallGear | 4s - 15s
+  y: 25
+  z: -25
+  rotateY: 90deg
+
+# === TOP COVER PLATE ===
+
+@group topCover parent:assembly | 5.5s - 15s
+  y: -300 -> -135 over 2s ease-out
+  opacity: 0 -> 1 over 0.5s
+
+rect coverTop w:220 h:100 fill:$steelLight parent:topCover | 5.5s - 15s
+  rotateX: -90deg
+  cornerRadius: 6
+
+rect coverFront w:220 h:15 fill:$steel parent:topCover | 5.5s - 15s
+  y: 7
+  z: 50
+  cornerRadius: 3
+
+rect coverBack w:220 h:15 fill:$steel parent:topCover | 5.5s - 15s
+  y: 7
+  z: -50
+  rotateY: 180deg
+  cornerRadius: 3
+
+# Ventilation slots
+rect vent1 w:40 h:8 fill:$shadow parent:topCover | 5.5s - 15s
+  x: -60
+  y: -1
+  rotateX: -90deg
+
+rect vent2 w:40 h:8 fill:$shadow parent:topCover | 5.5s - 15s
+  y: -1
+  rotateX: -90deg
+
+rect vent3 w:40 h:8 fill:$shadow parent:topCover | 5.5s - 15s
+  x: 60
+  y: -1
+  rotateX: -90deg
+
+# === BOLTS ===
+
+# Bolt 1 - front left
+@group bolt1 parent:assembly | 7s - 15s
+  x: -100
+  y: -200 -> 55 over 1s ease-in
+  z: 50
+  opacity: 0 -> 1 over 0.2s
+
+circle bolt1Head r:10 fill:$steelLight parent:bolt1 | 7s - 15s
+  rotateX: -90deg
+
+rect bolt1Shaft w:6 h:20 fill:$steel parent:bolt1 | 7s - 15s
+  y: 10
+
+# Bolt 2 - front right
+@group bolt2 parent:assembly | 7.2s - 15s
+  x: 100
+  y: -220 -> 55 over 1s ease-in
+  z: 50
+  opacity: 0 -> 1 over 0.2s
+
+circle bolt2Head r:10 fill:$steelLight parent:bolt2 | 7.2s - 15s
+  rotateX: -90deg
+
+rect bolt2Shaft w:6 h:20 fill:$steel parent:bolt2 | 7.2s - 15s
+  y: 10
+
+# Bolt 3 - back left
+@group bolt3 parent:assembly | 7.4s - 15s
+  x: -100
+  y: -240 -> 55 over 1s ease-in
+  z: -50
+  opacity: 0 -> 1 over 0.2s
+
+circle bolt3Head r:10 fill:$steelLight parent:bolt3 | 7.4s - 15s
+  rotateX: -90deg
+
+rect bolt3Shaft w:6 h:20 fill:$steel parent:bolt3 | 7.4s - 15s
+  y: 10
+
+# Bolt 4 - back right
+@group bolt4 parent:assembly | 7.6s - 15s
+  x: 100
+  y: -260 -> 55 over 1s ease-in
+  z: -50
+  opacity: 0 -> 1 over 0.2s
+
+circle bolt4Head r:10 fill:$steelLight parent:bolt4 | 7.6s - 15s
+  rotateX: -90deg
+
+rect bolt4Shaft w:6 h:20 fill:$steel parent:bolt4 | 7.6s - 15s
+  y: 10
+
+# === CONNECTING ROD ===
+
+@group connectRod parent:assembly | 6s - 15s
+  x: 0
+  y: -80
+  z: -200 -> 60 over 1.5s ease-out
+  rotateX: -90deg -> -90deg over 1s
+  opacity: 0 -> 1 over 0.4s
+
+rect rodBody w:120 h:20 fill:$brass parent:connectRod | 6s - 15s
+  cornerRadius: 10
+
+circle rodEnd1 r:14 fill:$brassLight parent:connectRod | 6s - 15s
+  x: -50
+
+circle rodHole1 r:6 fill:$shadow parent:connectRod | 6s - 15s
+  x: -50
+
+circle rodEnd2 r:14 fill:$brassLight parent:connectRod | 6s - 15s
+  x: 50
+
+circle rodHole2 r:6 fill:$shadow parent:connectRod | 6s - 15s
+  x: 50
+
+= Assembly Progress | 0s - 15s =
+
+# Progress bar background
+rect progressBg w:300 h:8 fill:#0f172a cornerRadius:4 | 0s - 15s
+  x: 480
+  y: 500
+  stroke: #334155
+  strokeWidth: 1
+
+# Progress bar fill
+rect progressFill w:0 h:8 fill:$accent cornerRadius:4 | 0s - 9s
+  x: 330
+  y: 500
+  anchor: left
+  scale: 0 -> 1 over 8s linear
+
+# Step indicators
+text step1 "Base" font:Roboto size:10 fill:#64748b | 0s - 15s
+  x: 200
+  y: 520
+
+text step2 "Pillars" font:Roboto size:10 fill:#64748b | 1s - 15s
+  x: 300
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+text step3 "Axle" font:Roboto size:10 fill:#64748b | 2.5s - 15s
+  x: 400
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+text step4 "Gears" font:Roboto size:10 fill:#64748b | 3.5s - 15s
+  x: 500
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+text step5 "Cover" font:Roboto size:10 fill:#64748b | 5.5s - 15s
+  x: 600
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+text step6 "Bolts" font:Roboto size:10 fill:#64748b | 7s - 15s
+  x: 700
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+# Completion checkmark
+text complete "ASSEMBLY COMPLETE" font:Roboto size:16 fill:$accent weight:bold | 9s - 15s
+  x: 480
+  y: 470
+  opacity: 0 -> 1 over 0.5s ease-out
+
+= Parts Counter | 0s - 15s =
+
+rect counterBg w:120 h:60 fill:#0f172a cornerRadius:8 | 0s - 15s
+  x: 80
+  y: 100
+  opacity: 0.9
+  stroke: #334155
+  strokeWidth: 1
+
+text counterLabel "PARTS" font:Roboto size:10 fill:#64748b | 0s - 15s
+  x: 80
+  y: 82
+
+text counterValue "0" font:Roboto size:28 fill:#ffffff weight:bold | 0s - 1s
+  x: 80
+  y: 110
+
+text counterValue2 "5" font:Roboto size:28 fill:#ffffff weight:bold | 1s - 2.5s
+  x: 80
+  y: 110
+
+text counterValue3 "8" font:Roboto size:28 fill:#ffffff weight:bold | 2.5s - 3.5s
+  x: 80
+  y: 110
+
+text counterValue4 "12" font:Roboto size:28 fill:#ffffff weight:bold | 3.5s - 5.5s
+  x: 80
+  y: 110
+
+text counterValue5 "16" font:Roboto size:28 fill:#ffffff weight:bold | 5.5s - 7s
+  x: 80
+  y: 110
+
+text counterValue6 "20" font:Roboto size:28 fill:#ffffff weight:bold | 7s - 15s
+  x: 80
+  y: 110

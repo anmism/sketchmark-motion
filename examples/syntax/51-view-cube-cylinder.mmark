@@ -1,0 +1,109 @@
+---
+canvas: 760x420
+bg: #08111f
+fps: 60
+perspective: 560
+vanish: 380 190
+---
+
+# 2.5D views: cube and cylinder without per-face Euler rotation tuning.
+
+@group cube | 0s - 8s
+  x: 210
+  y: 190
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view cubeFront parent:cube | 0s - 8s
+  at: 0 0 45
+  normal: 0 0 1
+rect cubeFrontFace w:90 h:90 fill:#3b82f6 parent:cubeFront | 0s - 8s
+
+@view cubeBack parent:cube | 0s - 8s
+  at: 0 0 -45
+  normal: 0 0 -1
+rect cubeBackFace w:90 h:90 fill:#1e3a8a parent:cubeBack | 0s - 8s
+
+@view cubeRight parent:cube | 0s - 8s
+  at: 45 0 0
+  normal: 1 0 0
+rect cubeRightFace w:90 h:90 fill:#0891b2 parent:cubeRight | 0s - 8s
+
+@view cubeLeft parent:cube | 0s - 8s
+  at: -45 0 0
+  normal: -1 0 0
+rect cubeLeftFace w:90 h:90 fill:#22d3ee parent:cubeLeft | 0s - 8s
+
+@view cubeTop parent:cube | 0s - 8s
+  at: 0 -45 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect cubeTopFace w:90 h:90 fill:#a855f7 parent:cubeTop | 0s - 8s
+
+@view cubeBottom parent:cube | 0s - 8s
+  at: 0 45 0
+  normal: 0 1 0
+  up: 0 0 1
+rect cubeBottomFace w:90 h:90 fill:#6d28d9 parent:cubeBottom | 0s - 8s
+
+text cubeLabel "Cube via @view" font:Roboto size:18 fill:#dbeafe weight:bold | 0s - 8s
+  x: 210
+  y: 330
+
+@group cylinder | 0s - 8s
+  x: 550
+  y: 190
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+circle cylinderBottom r:58 fill:#075985 stroke:#0ea5e9 strokeWidth:1 parent:cylinder | 0s - 8s
+  y: 58
+  rotateX: 90deg
+
+@view cylSide0 parent:cylinder | 0s - 8s
+  at: 0 0 58
+  normal: 0 0 1
+rect cylPanel0 w:32 h:116 fill:#38bdf8 stroke:#ffffff22 strokeWidth:1 parent:cylSide0 | 0s - 8s
+
+@view cylSide1 parent:cylinder | 0s - 8s
+  at: 41 0 41
+  normal: 0.707 0 0.707
+rect cylPanel1 w:32 h:116 fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylSide1 | 0s - 8s
+
+@view cylSide2 parent:cylinder | 0s - 8s
+  at: 58 0 0
+  normal: 1 0 0
+rect cylPanel2 w:32 h:116 fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylSide2 | 0s - 8s
+
+@view cylSide3 parent:cylinder | 0s - 8s
+  at: 41 0 -41
+  normal: 0.707 0 -0.707
+rect cylPanel3 w:32 h:116 fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylSide3 | 0s - 8s
+
+@view cylSide4 parent:cylinder | 0s - 8s
+  at: 0 0 -58
+  normal: 0 0 -1
+rect cylPanel4 w:32 h:116 fill:#1f3a4d stroke:#ffffff12 strokeWidth:1 parent:cylSide4 | 0s - 8s
+
+@view cylSide5 parent:cylinder | 0s - 8s
+  at: -41 0 -41
+  normal: -0.707 0 -0.707
+rect cylPanel5 w:32 h:116 fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylSide5 | 0s - 8s
+
+@view cylSide6 parent:cylinder | 0s - 8s
+  at: -58 0 0
+  normal: -1 0 0
+rect cylPanel6 w:32 h:116 fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylSide6 | 0s - 8s
+
+@view cylSide7 parent:cylinder | 0s - 8s
+  at: -41 0 41
+  normal: -0.707 0 0.707
+rect cylPanel7 w:32 h:116 fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylSide7 | 0s - 8s
+
+circle cylinderTop r:58 fill:#7dd3fc stroke:#bae6fd strokeWidth:2 parent:cylinder | 0s - 8s
+  y: -58
+  rotateX: 90deg
+
+text cylinderLabel "Cylinder via @view" font:Roboto size:18 fill:#dbeafe weight:bold | 0s - 8s
+  x: 550
+  y: 330

@@ -1,0 +1,387 @@
+---
+canvas: 700x500
+bg: #0f0f1a
+fps: 30
+$metal: #8892a0
+$metalDark: #4a5568
+$piston: #a0aec0
+$cylinder: #1e2530
+$cylinderStroke: #2d3a4a
+$fire: #ff6b6b
+$fireInner: #ffdd66
+$intake: #4ecdc4
+$exhaust: #e57373
+$text: #e0e0e0
+$textDim: #8892a0
+$crank: #f6ad55
+$crankDark: #dd8833
+$spark: #fff176
+$airFuel: #81d4fa
+---
+
+# === Title ===
+text title content:"4-Stroke Engine Cycle" fill:$text fontSize:24 fontWeight:bold | 0s - 16s
+  x: 200
+  y: 40
+
+# === Engine Block Outer ===
+rect engineBlock w:180 h:280 fill:$cylinder stroke:$cylinderStroke strokeWidth:3 cornerRadius:8 | 0s - 16s
+  x: 200
+  y: 230
+
+# === Cylinder Bore (inner chamber) ===
+rect bore w:120 h:180 fill:#141820 stroke:$cylinderStroke strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 200
+  y: 190
+
+# === Cylinder Head ===
+rect cylHead w:180 h:35 fill:$metalDark stroke:$cylinderStroke strokeWidth:2 cornerRadius:6 | 0s - 16s
+  x: 200
+  y: 82
+
+# === Valve Ports ===
+rect intakePort w:35 h:25 fill:$intake cornerRadius:4 | 0s - 16s
+  x: 160
+  y: 68
+  opacity: 0.3
+
+rect exhaustPort w:35 h:25 fill:$exhaust cornerRadius:4 | 0s - 16s
+  x: 240
+  y: 68
+  opacity: 0.3
+
+# === Intake Valve ===
+rect intakeValveStem w:8 h:30 fill:$metal cornerRadius:2 | 0s - 16s
+  x: 160
+  y: f(t) = 82 + 20 * min(1, max(0, t * 2)) * min(1, max(0, (4 - t) * 2))
+
+ellipse intakeValveHead rx:18 ry:6 fill:$intake stroke:$metalDark strokeWidth:2 | 0s - 16s
+  x: 160
+  y: f(t) = 100 + 20 * min(1, max(0, t * 2)) * min(1, max(0, (4 - t) * 2))
+
+# === Exhaust Valve ===
+rect exhaustValveStem w:8 h:30 fill:$metal cornerRadius:2 | 0s - 16s
+  x: 240
+  y: f(t) = 82 + 20 * min(1, max(0, (t - 12) * 2)) * min(1, max(0, (16 - t) * 2))
+
+ellipse exhaustValveHead rx:18 ry:6 fill:$exhaust stroke:$metalDark strokeWidth:2 | 0s - 16s
+  x: 240
+  y: f(t) = 100 + 20 * min(1, max(0, (t - 12) * 2)) * min(1, max(0, (16 - t) * 2))
+
+# === Spark Plug ===
+rect sparkPlugBody w:12 h:20 fill:$metal cornerRadius:3 | 0s - 16s
+  x: 200
+  y: 75
+
+rect sparkPlugTip w:4 h:15 fill:#666 cornerRadius:1 | 0s - 16s
+  x: 200
+  y: 95
+
+# === Spark Flash ===
+circle sparkFlash r:12 fill:$spark | 7.8s - 8.2s
+  x: 200
+  y: 115
+  opacity: 0.9
+
+# === Air-Fuel Mixture Entering (Intake Stroke) ===
+circle airFuel1 r:6 fill:$airFuel | 0.5s - 3.5s
+  x: 160
+  y: f(t) = 90 + (t - 0.5) * 40
+  opacity: f(t) = 0.7 - (t - 0.5) * 0.2
+
+circle airFuel2 r:5 fill:$airFuel | 1s - 3.5s
+  x: 165
+  y: f(t) = 90 + (t - 1) * 35
+  opacity: f(t) = 0.6 - (t - 1) * 0.15
+
+circle airFuel3 r:4 fill:$airFuel | 1.5s - 3.5s
+  x: 155
+  y: f(t) = 90 + (t - 1.5) * 38
+  opacity: f(t) = 0.5 - (t - 1.5) * 0.15
+
+# === Combustion Fire ===
+ellipse fireOuter rx:45 ry:35 fill:$fire | 8s - 10s
+  x: 200
+  y: 160
+  opacity: f(t) = 0.8 - (t - 8) * 0.3
+
+ellipse fireMid rx:30 ry:25 fill:#ff9933 | 8s - 9.5s
+  x: 200
+  y: 155
+  opacity: f(t) = 0.9 - (t - 8) * 0.4
+
+ellipse fireInner rx:15 ry:12 fill:$fireInner | 8s - 9s
+  x: 200
+  y: 150
+
+# === Exhaust Gases ===
+circle exhaust1 r:8 fill:$textDim | 12.5s - 15s
+  x: 240
+  y: f(t) = 110 - (t - 12.5) * 25
+  opacity: f(t) = 0.5 - (t - 12.5) * 0.15
+
+circle exhaust2 r:6 fill:$textDim | 13s - 15.5s
+  x: 245
+  y: f(t) = 110 - (t - 13) * 22
+  opacity: f(t) = 0.4 - (t - 13) * 0.12
+
+circle exhaust3 r:5 fill:$textDim | 13.5s - 15.5s
+  x: 235
+  y: f(t) = 110 - (t - 13.5) * 20
+  opacity: f(t) = 0.35 - (t - 13.5) * 0.1
+
+# === Piston ===
+rect piston w:110 h:35 fill:$piston stroke:$metalDark strokeWidth:2 cornerRadius:6 | 0s - 16s
+  x: 200
+  y: f(t) = 220 + 60 * cos(t * 0.393)
+
+rect pistonRings w:114 h:4 fill:$metalDark cornerRadius:1 | 0s - 16s
+  x: 200
+  y: f(t) = 208 + 60 * cos(t * 0.393)
+
+rect pistonRings2 w:114 h:4 fill:$metalDark cornerRadius:1 | 0s - 16s
+  x: 200
+  y: f(t) = 216 + 60 * cos(t * 0.393)
+
+# === Connecting Rod ===
+rect conRod w:18 h:100 fill:$metal stroke:$metalDark strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 200
+  y: f(t) = 295 + 60 * cos(t * 0.393)
+
+# === Wrist Pin ===
+ellipse wristPin rx:12 ry:8 fill:$metalDark stroke:#333 strokeWidth:1 | 0s - 16s
+  x: 200
+  y: f(t) = 238 + 60 * cos(t * 0.393)
+
+# === Crankcase ===
+rect crankcase w:200 h:80 fill:$cylinder stroke:$cylinderStroke strokeWidth:3 cornerRadius:10 | 0s - 16s
+  x: 200
+  y: 410
+
+# === Crankshaft ===
+circle crankMain r:25 fill:$crankDark stroke:$crank strokeWidth:3 | 0s - 16s
+  x: 200
+  y: 410
+
+circle crankMainInner r:10 fill:$metalDark | 0s - 16s
+  x: 200
+  y: 410
+
+# === Crank Arm ===
+line crankArm stroke:$crank strokeWidth:12 strokeCap:round | 0s - 16s
+  x1: 200
+  y1: 410
+  x2: f(t) = 200 + 45 * sin(t * 0.393)
+  y2: f(t) = 410 - 45 * cos(t * 0.393)
+
+# === Crank Pin ===
+circle crankPin r:14 fill:$metal stroke:$metalDark strokeWidth:2 | 0s - 16s
+  x: f(t) = 200 + 45 * sin(t * 0.393)
+  y: f(t) = 410 - 45 * cos(t * 0.393)
+
+circle crankPinInner r:6 fill:$metalDark | 0s - 16s
+  x: f(t) = 200 + 45 * sin(t * 0.393)
+  y: f(t) = 410 - 45 * cos(t * 0.393)
+
+# === Counterweight (fan-shaped) ===
+path counterweight d:"M -10 0 L -45 -25 A 50 50 0 0 1 -45 25 Z" fill:$crankDark stroke:$crank strokeWidth:2 | 0s - 16s
+  x: 200
+  y: 410
+  rotation: f(t) = t * 0.393
+
+# === Info Panel ===
+rect infoPanel w:250 h:320 fill:#151520 stroke:#2a2a3a strokeWidth:2 cornerRadius:12 | 0s - 16s
+  x: 530
+  y: 200
+
+# === Phase Display ===
+text phaseLabel content:"CURRENT PHASE" fill:$textDim fontSize:11 | 0s - 16s
+  x: 530
+  y: 70
+
+# Phase 1: Intake
+rect phase1Bg w:220 h:80 fill:$intake cornerRadius:8 | 0s - 4s
+  x: 530
+  y: 120
+  opacity: 0.15
+
+text phase1Title content:"1. INTAKE" fill:$intake fontSize:20 fontWeight:bold | 0s - 4s
+  x: 530
+  y: 105
+
+text phase1Desc1 content:"Piston moves DOWN" fill:$text fontSize:13 | 0s - 4s
+  x: 530
+  y: 130
+
+text phase1Desc2 content:"Intake valve OPEN" fill:$intake fontSize:12 | 0s - 4s
+  x: 530
+  y: 150
+
+# Phase 2: Compression
+rect phase2Bg w:220 h:80 fill:$crank cornerRadius:8 | 4s - 8s
+  x: 530
+  y: 120
+  opacity: 0.15
+
+text phase2Title content:"2. COMPRESSION" fill:$crank fontSize:20 fontWeight:bold | 4s - 8s
+  x: 530
+  y: 105
+
+text phase2Desc1 content:"Piston moves UP" fill:$text fontSize:13 | 4s - 8s
+  x: 530
+  y: 130
+
+text phase2Desc2 content:"Both valves CLOSED" fill:$textDim fontSize:12 | 4s - 8s
+  x: 530
+  y: 150
+
+# Phase 3: Power
+rect phase3Bg w:220 h:80 fill:$fire cornerRadius:8 | 8s - 12s
+  x: 530
+  y: 120
+  opacity: 0.15
+
+text phase3Title content:"3. POWER" fill:$fire fontSize:20 fontWeight:bold | 8s - 12s
+  x: 530
+  y: 105
+
+text phase3Desc1 content:"Spark IGNITES fuel" fill:$spark fontSize:13 | 8s - 12s
+  x: 530
+  y: 130
+
+text phase3Desc2 content:"Explosion pushes piston" fill:$text fontSize:12 | 8s - 12s
+  x: 530
+  y: 150
+
+# Phase 4: Exhaust
+rect phase4Bg w:220 h:80 fill:$exhaust cornerRadius:8 | 12s - 16s
+  x: 530
+  y: 120
+  opacity: 0.15
+
+text phase4Title content:"4. EXHAUST" fill:$exhaust fontSize:20 fontWeight:bold | 12s - 16s
+  x: 530
+  y: 105
+
+text phase4Desc1 content:"Piston moves UP" fill:$text fontSize:13 | 12s - 16s
+  x: 530
+  y: 130
+
+text phase4Desc2 content:"Exhaust valve OPEN" fill:$exhaust fontSize:12 | 12s - 16s
+  x: 530
+  y: 150
+
+# === Progress Bar ===
+rect progressBg w:220 h:12 fill:#1a1a2a cornerRadius:6 | 0s - 16s
+  x: 530
+  y: 185
+
+rect progressFill w:55 h:12 fill:$intake cornerRadius:6 | 0s - 4s
+  x: 448
+  y: 185
+
+rect progressFill2 w:110 h:12 fill:$crank cornerRadius:6 | 4s - 8s
+  x: 475
+  y: 185
+
+rect progressFill3 w:165 h:12 fill:$fire cornerRadius:6 | 8s - 12s
+  x: 503
+  y: 185
+
+rect progressFill4 w:220 h:12 fill:$exhaust cornerRadius:6 | 12s - 16s
+  x: 530
+  y: 185
+
+# === Phase Indicators ===
+text ind1 content:"1" fill:$text fontSize:11 fontWeight:bold | 0s - 16s
+  x: 448
+  y: 210
+
+text ind2 content:"2" fill:$text fontSize:11 fontWeight:bold | 0s - 16s
+  x: 503
+  y: 210
+
+text ind3 content:"3" fill:$text fontSize:11 fontWeight:bold | 0s - 16s
+  x: 558
+  y: 210
+
+text ind4 content:"4" fill:$text fontSize:11 fontWeight:bold | 0s - 16s
+  x: 612
+  y: 210
+
+# === Component Labels ===
+text labelIntake content:"Intake" fill:$intake fontSize:10 | 0s - 16s
+  x: 95
+  y: 90
+
+line labelIntakeLine stroke:$intake strokeWidth:1 opacity:0.5 | 0s - 16s
+  x1: 115
+  y1: 90
+  x2: 142
+  y2: 90
+
+text labelExhaust content:"Exhaust" fill:$exhaust fontSize:10 | 0s - 16s
+  x: 305
+  y: 90
+
+line labelExhaustLine stroke:$exhaust strokeWidth:1 opacity:0.5 | 0s - 16s
+  x1: 258
+  y1: 90
+  x2: 280
+  y2: 90
+
+text labelSpark content:"Spark Plug" fill:$textDim fontSize:9 | 0s - 16s
+  x: 200
+  y: 58
+
+line labelSparkLine stroke:$textDim strokeWidth:1 opacity:0.5 | 0s - 16s
+  x1: 200
+  y1: 62
+  x2: 200
+  y2: 70
+
+# === Legend ===
+text legendTitle content:"COMPONENTS" fill:$textDim fontSize:11 | 0s - 16s
+  x: 530
+  y: 245
+
+circle legendPiston r:6 fill:$piston | 0s - 16s
+  x: 445
+  y: 270
+
+text legendPistonTxt content:"Piston" fill:$text fontSize:11 | 0s - 16s
+  x: 490
+  y: 270
+
+circle legendCrank r:6 fill:$crank | 0s - 16s
+  x: 545
+  y: 270
+
+text legendCrankTxt content:"Crankshaft" fill:$text fontSize:11 | 0s - 16s
+  x: 595
+  y: 270
+
+circle legendIntake r:6 fill:$intake | 0s - 16s
+  x: 445
+  y: 295
+
+text legendIntakeTxt content:"Intake Valve" fill:$text fontSize:11 | 0s - 16s
+  x: 500
+  y: 295
+
+circle legendExhaust r:6 fill:$exhaust | 0s - 16s
+  x: 545
+  y: 295
+
+text legendExhaustTxt content:"Exhaust Valve" fill:$text fontSize:11 | 0s - 16s
+  x: 605
+  y: 295
+
+# === Bottom Info ===
+text infoText content:"Internal Combustion Engine" fill:$textDim fontSize:12 | 0s - 16s
+  x: 200
+  y: 475
+
+text cycleInfo content:"2 crankshaft rotations = 1 complete cycle" fill:$textDim fontSize:10 opacity:0.6 | 0s - 16s
+  x: 530
+  y: 330

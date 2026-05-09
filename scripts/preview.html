@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MotionMark Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(360px, 42vw) 1fr;
+      background: #0b1020;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid #26324a;
+      background: #111827;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .file {
+      color: #94a3b8;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .editor-pane, .preview-pane {
+      min-width: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-pane {
+      border-right: 1px solid #26324a;
+      background: #0f172a;
+    }
+
+    textarea {
+      flex: 1;
+      width: 100%;
+      resize: none;
+      border: 0;
+      outline: 0;
+      padding: 18px;
+      background: #0f172a;
+      color: #dbeafe;
+      font: 13px/1.55 "Cascadia Code", Consolas, monospace;
+      tab-size: 2;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-top: 1px solid #26324a;
+      background: #111827;
+    }
+
+    button {
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 7px 12px;
+      background: #1f2937;
+      color: #f8fafc;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:hover { background: #263244; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #exportBtn { background: #1a4d3e; border-color: #4ecdc4; }
+    #exportBtn:hover:not(:disabled) { background: #245e4c; }
+
+    input[type="range"] {
+      flex: 1;
+      min-width: 140px;
+      accent-color: #4ecdc4;
+    }
+
+    .time {
+      min-width: 96px;
+      text-align: right;
+      color: #cbd5e1;
+      font-variant-numeric: tabular-nums;
+      font-size: 12px;
+    }
+
+    .stage-wrap {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px),
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        #0b1020;
+      background-size: 32px 32px;
+      overflow: auto;
+    }
+
+    canvas {
+      max-width: 100%;
+      max-height: calc(100vh - 128px);
+      background: transparent;
+      box-shadow: 0 18px 48px #00000066;
+      image-rendering: auto;
+    }
+
+    .status {
+      min-height: 32px;
+      padding: 8px 18px;
+      border-top: 1px solid #26324a;
+      color: #94a3b8;
+      font-size: 12px;
+      background: #111827;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status.error { color: #fca5a5; }
+
+    @media (max-width: 900px) {
+      body { grid-template-columns: 1fr; }
+      .editor-pane { min-height: 46vh; border-right: 0; border-bottom: 1px solid #26324a; }
+      .preview-pane { min-height: 54vh; }
+    }
+  </style>
+</head>
+<body>
+  <section class="editor-pane">
+    <header>
+      <h1>MotionMark</h1>
+      <div class="file" id="fileName"></div>
+    </header>
+    <textarea id="editor" spellcheck="false"></textarea>
+  </section>
+  <section class="preview-pane">
+    <header>
+      <h1>Preview</h1>
+      <div class="file">canvas 2d</div>
+    </header>
+    <div class="stage-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="toolbar">
+      <button id="play">Play</button>
+      <input id="scrub" type="range" min="0" max="1" step="1" value="0" />
+      <div class="time" id="time">0.00s / 0.00s</div>
+      <button id="exportBtn">Export MP4</button>
+    </div>
+    <div id="status" class="status">Ready</div>
+  </section>
+  <script src="/motionmark-player.js"></script>
+  <script src="/preview-client.js"></script>
+</body>
+</html>

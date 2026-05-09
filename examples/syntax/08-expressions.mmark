@@ -1,0 +1,29 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+---
+
+text title "Expression Mode f(t)" font:Roboto size:20 fill:#94a3b8 | 0s - 6s
+  x: 320
+  y: 40
+
+circle orbit r:12 fill:#4ecdc4 | 0s - 6s
+  x: f(t) = 320 + 120 * cos(t * 2)
+  y: f(t) = 180 + 120 * sin(t * 2)
+
+circle center r:6 fill:#ffffff44 | 0s - 6s
+  x: 320
+  y: 180
+
+circle wave1 r:8 fill:#e74c5c | 0s - 6s
+  x: f(t) = 100 + 40 * t
+  y: f(t) = 300 + 30 * sin(t * 4)
+
+circle wave2 r:8 fill:#f39c12 | 0s - 6s
+  x: f(t) = 100 + 40 * t
+  y: f(t) = 300 + 30 * sin(t * 4 + 2)
+
+circle wave3 r:8 fill:#9b59b6 | 0s - 6s
+  x: f(t) = 100 + 40 * t
+  y: f(t) = 300 + 30 * sin(t * 4 + 4)

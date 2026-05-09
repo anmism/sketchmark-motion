@@ -1,0 +1,429 @@
+---
+canvas: 900x520
+bg: #090d18
+fps: 60
+perspective: 720
+vanish: 450 250
+---
+
+# 2.5D @view Shape Gallery
+# Ten 3D-style forms built from oriented view planes.
+
+# 1. Cube
+@group cube | 0s - 8s
+  x: 90
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view cubeFront parent:cube | 0s - 8s
+  at: 0 0 27
+  normal: 0 0 1
+rect cubeFrontFace w:54 h:54 fill:#3b82f6 parent:cubeFront | 0s - 8s
+@view cubeBack parent:cube | 0s - 8s
+  at: 0 0 -27
+  normal: 0 0 -1
+rect cubeBackFace w:54 h:54 fill:#1e3a8a parent:cubeBack | 0s - 8s
+@view cubeRight parent:cube | 0s - 8s
+  at: 27 0 0
+  normal: 1 0 0
+rect cubeRightFace w:54 h:54 fill:#0891b2 parent:cubeRight | 0s - 8s
+@view cubeLeft parent:cube | 0s - 8s
+  at: -27 0 0
+  normal: -1 0 0
+rect cubeLeftFace w:54 h:54 fill:#22d3ee parent:cubeLeft | 0s - 8s
+@view cubeTop parent:cube | 0s - 8s
+  at: 0 -27 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect cubeTopFace w:54 h:54 fill:#a855f7 parent:cubeTop | 0s - 8s
+@view cubeBottom parent:cube | 0s - 8s
+  at: 0 27 0
+  normal: 0 1 0
+  up: 0 0 1
+rect cubeBottomFace w:54 h:54 fill:#6d28d9 parent:cubeBottom | 0s - 8s
+text cubeLabel "Cube" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 90
+  y: 225
+
+# 2. Pyramid
+@group pyramid | 0s - 8s
+  x: 270
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view pyramidBase parent:pyramid | 0s - 8s
+  at: 0 35 0
+  normal: 0 1 0
+  up: 0 0 1
+rect pyramidBaseFace w:70 h:70 fill:#475569 parent:pyramidBase | 0s - 8s
+@view pyramidFront parent:pyramid | 0s - 8s
+  at: 0 11.7 23.3
+  normal: 0 -0.447 0.894
+path pyramidFrontFace fill:#ef4444 parent:pyramidFront | 0s - 8s
+  d: "M-35,26.1 L35,26.1 L0,-52.2 Z"
+@view pyramidBack parent:pyramid | 0s - 8s
+  at: 0 11.7 -23.3
+  normal: 0 -0.447 -0.894
+path pyramidBackFace fill:#3b82f6 parent:pyramidBack | 0s - 8s
+  d: "M-35,26.1 L35,26.1 L0,-52.2 Z"
+@view pyramidRight parent:pyramid | 0s - 8s
+  at: 23.3 11.7 0
+  normal: 0.894 -0.447 0
+path pyramidRightFace fill:#22c55e parent:pyramidRight | 0s - 8s
+  d: "M-35,26.1 L35,26.1 L0,-52.2 Z"
+@view pyramidLeft parent:pyramid | 0s - 8s
+  at: -23.3 11.7 0
+  normal: -0.894 -0.447 0
+path pyramidLeftFace fill:#f59e0b parent:pyramidLeft | 0s - 8s
+  d: "M-35,26.1 L35,26.1 L0,-52.2 Z"
+text pyramidLabel "Pyramid" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 270
+  y: 225
+
+# 3. Cylinder
+@group cylinder | 0s - 8s
+  x: 450
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view cylinderBottom parent:cylinder | 0s - 8s
+  at: 0 42 0
+  normal: 0 1 0
+  up: 0 0 1
+circle cylinderBottomFace r:42 fill:#075985 parent:cylinderBottom | 0s - 8s
+@view cylSide0 parent:cylinder | 0s - 8s
+  at: 0 0 42
+  normal: 0 0 1
+rect cylPanel0 w:34 h:84 fill:#38bdf8 stroke:#ffffff22 strokeWidth:1 parent:cylSide0 | 0s - 8s
+@view cylSide1 parent:cylinder | 0s - 8s
+  at: 30 0 30
+  normal: 0.707 0 0.707
+rect cylPanel1 w:34 h:84 fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylSide1 | 0s - 8s
+@view cylSide2 parent:cylinder | 0s - 8s
+  at: 42 0 0
+  normal: 1 0 0
+rect cylPanel2 w:34 h:84 fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylSide2 | 0s - 8s
+@view cylSide3 parent:cylinder | 0s - 8s
+  at: 30 0 -30
+  normal: 0.707 0 -0.707
+rect cylPanel3 w:34 h:84 fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylSide3 | 0s - 8s
+@view cylSide4 parent:cylinder | 0s - 8s
+  at: 0 0 -42
+  normal: 0 0 -1
+rect cylPanel4 w:34 h:84 fill:#1f3a4d stroke:#ffffff12 strokeWidth:1 parent:cylSide4 | 0s - 8s
+@view cylSide5 parent:cylinder | 0s - 8s
+  at: -30 0 -30
+  normal: -0.707 0 -0.707
+rect cylPanel5 w:34 h:84 fill:#155a75 stroke:#ffffff18 strokeWidth:1 parent:cylSide5 | 0s - 8s
+@view cylSide6 parent:cylinder | 0s - 8s
+  at: -42 0 0
+  normal: -1 0 0
+rect cylPanel6 w:34 h:84 fill:#147fa9 stroke:#ffffff22 strokeWidth:1 parent:cylSide6 | 0s - 8s
+@view cylSide7 parent:cylinder | 0s - 8s
+  at: -30 0 30
+  normal: -0.707 0 0.707
+rect cylPanel7 w:34 h:84 fill:#2da9df stroke:#ffffff22 strokeWidth:1 parent:cylSide7 | 0s - 8s
+@view cylinderTop parent:cylinder | 0s - 8s
+  at: 0 -42 0
+  normal: 0 -1 0
+  up: 0 0 -1
+circle cylinderTopFace r:42 fill:#7dd3fc stroke:#bae6fd strokeWidth:2 parent:cylinderTop | 0s - 8s
+text cylinderLabel "Cylinder" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 450
+  y: 225
+
+# 4. Cone
+@group cone | 0s - 8s
+  x: 630
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view coneBase parent:cone | 0s - 8s
+  at: 0 38 0
+  normal: 0 1 0
+  up: 0 0 1
+circle coneBaseFace r:42 fill:#7c2d12 parent:coneBase | 0s - 8s
+@view coneSide0 parent:cone | 0s - 8s
+  at: 0 10 25.9
+  normal: 0 -0.419 0.908
+path coneFace0 fill:#fb923c parent:coneSide0 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide1 parent:cone | 0s - 8s
+  at: 18.3 10 18.3
+  normal: 0.642 -0.419 0.642
+path coneFace1 fill:#f97316 parent:coneSide1 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide2 parent:cone | 0s - 8s
+  at: 25.9 10 0
+  normal: 0.908 -0.419 0
+path coneFace2 fill:#ea580c parent:coneSide2 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide3 parent:cone | 0s - 8s
+  at: 18.3 10 -18.3
+  normal: 0.642 -0.419 -0.642
+path coneFace3 fill:#9a3412 parent:coneSide3 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide4 parent:cone | 0s - 8s
+  at: 0 10 -25.9
+  normal: 0 -0.419 -0.908
+path coneFace4 fill:#7c2d12 parent:coneSide4 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide5 parent:cone | 0s - 8s
+  at: -18.3 10 -18.3
+  normal: -0.642 -0.419 -0.642
+path coneFace5 fill:#9a3412 parent:coneSide5 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide6 parent:cone | 0s - 8s
+  at: -25.9 10 0
+  normal: -0.908 -0.419 0
+path coneFace6 fill:#ea580c parent:coneSide6 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+@view coneSide7 parent:cone | 0s - 8s
+  at: -18.3 10 18.3
+  normal: -0.642 -0.419 0.642
+path coneFace7 fill:#f97316 parent:coneSide7 | 0s - 8s
+  d: "M-16.1,30.9 L16.1,30.9 L0,-61.7 Z"
+text coneLabel "Cone" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 630
+  y: 225
+
+# 5. Triangular prism
+@group triPrism | 0s - 8s
+  x: 810
+  y: 145
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view triFront parent:triPrism | 0s - 8s
+  at: 0 0 35
+  normal: 0 0 1
+path triFrontFace fill:#14b8a6 parent:triFront | 0s - 8s
+  d: "M-38,30 L38,30 L0,-36 Z"
+@view triBack parent:triPrism | 0s - 8s
+  at: 0 0 -35
+  normal: 0 0 -1
+path triBackFace fill:#0f766e parent:triBack | 0s - 8s
+  d: "M-38,30 L38,30 L0,-36 Z"
+@view triBottom parent:triPrism | 0s - 8s
+  at: 0 30 0
+  normal: 0 1 0
+  up: 0 0 1
+rect triBottomFace w:70 h:76 fill:#0d9488 parent:triBottom | 0s - 8s
+@view triLeft parent:triPrism | 0s - 8s
+  at: -19 -3 0
+  normal: -0.866 -0.5 0
+rect triLeftFace w:70 h:76 fill:#2dd4bf parent:triLeft | 0s - 8s
+@view triRight parent:triPrism | 0s - 8s
+  at: 19 -3 0
+  normal: 0.866 -0.5 0
+rect triRightFace w:70 h:76 fill:#5eead4 parent:triRight | 0s - 8s
+text triPrismLabel "Tri Prism" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 810
+  y: 225
+
+# 6. Hexagonal prism
+@group hexPrism | 0s - 8s
+  x: 90
+  y: 350
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view hexFrontView parent:hexPrism | 0s - 8s
+  at: 0 0 32
+  normal: 0 0 1
+path hexFront fill:#84cc16 parent:hexFrontView | 0s - 8s
+  d: "M32,0 L16,28 L-16,28 L-32,0 L-16,-28 L16,-28 Z"
+@view hexBackView parent:hexPrism | 0s - 8s
+  at: 0 0 -32
+  normal: 0 0 -1
+path hexBack fill:#365314 parent:hexBackView | 0s - 8s
+  d: "M32,0 L16,28 L-16,28 L-32,0 L-16,-28 L16,-28 Z"
+@view hexSide0 parent:hexPrism | 0s - 8s
+  at: 24 14 0
+  normal: 0.866 0.5 0
+rect hexSideFace0 w:64 h:32 fill:#65a30d parent:hexSide0 | 0s - 8s
+@view hexSide1 parent:hexPrism | 0s - 8s
+  at: 0 28 0
+  normal: 0 1 0
+rect hexSideFace1 w:64 h:32 fill:#4d7c0f parent:hexSide1 | 0s - 8s
+@view hexSide2 parent:hexPrism | 0s - 8s
+  at: -24 14 0
+  normal: -0.866 0.5 0
+rect hexSideFace2 w:64 h:32 fill:#3f6212 parent:hexSide2 | 0s - 8s
+@view hexSide3 parent:hexPrism | 0s - 8s
+  at: -24 -14 0
+  normal: -0.866 -0.5 0
+rect hexSideFace3 w:64 h:32 fill:#365314 parent:hexSide3 | 0s - 8s
+@view hexSide4 parent:hexPrism | 0s - 8s
+  at: 0 -28 0
+  normal: 0 -1 0
+rect hexSideFace4 w:64 h:32 fill:#4d7c0f parent:hexSide4 | 0s - 8s
+@view hexSide5 parent:hexPrism | 0s - 8s
+  at: 24 -14 0
+  normal: 0.866 -0.5 0
+rect hexSideFace5 w:64 h:32 fill:#65a30d parent:hexSide5 | 0s - 8s
+text hexLabel "Hex Prism" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 90
+  y: 430
+
+# 7. Octahedron
+@group octa | 0s - 8s
+  x: 270
+  y: 350
+  rotateX: -12deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view octaTopFront parent:octa | 0s - 8s
+  at: 0 -14.7 20
+  normal: 0 -0.563 0.826
+path octaTopFrontFace fill:#e879f9 parent:octaTopFront | 0s - 8s
+  d: "M-30,17.7 L30,17.7 L0,-35.5 Z"
+@view octaTopBack parent:octa | 0s - 8s
+  at: 0 -14.7 -20
+  normal: 0 -0.563 -0.826
+path octaTopBackFace fill:#a21caf parent:octaTopBack | 0s - 8s
+  d: "M-30,17.7 L30,17.7 L0,-35.5 Z"
+@view octaTopRight parent:octa | 0s - 8s
+  at: 20 -14.7 0
+  normal: 0.826 -0.563 0
+path octaTopRightFace fill:#c026d3 parent:octaTopRight | 0s - 8s
+  d: "M-30,17.7 L30,17.7 L0,-35.5 Z"
+@view octaTopLeft parent:octa | 0s - 8s
+  at: -20 -14.7 0
+  normal: -0.826 -0.563 0
+path octaTopLeftFace fill:#f0abfc parent:octaTopLeft | 0s - 8s
+  d: "M-30,17.7 L30,17.7 L0,-35.5 Z"
+@view octaBottomFront parent:octa | 0s - 8s
+  at: 0 14.7 20
+  normal: 0 0.563 0.826
+path octaBottomFrontFace fill:#86198f parent:octaBottomFront | 0s - 8s
+  d: "M-30,-17.7 L30,-17.7 L0,35.5 Z"
+@view octaBottomBack parent:octa | 0s - 8s
+  at: 0 14.7 -20
+  normal: 0 0.563 -0.826
+path octaBottomBackFace fill:#701a75 parent:octaBottomBack | 0s - 8s
+  d: "M-30,-17.7 L30,-17.7 L0,35.5 Z"
+@view octaBottomRight parent:octa | 0s - 8s
+  at: 20 14.7 0
+  normal: 0.826 0.563 0
+path octaBottomRightFace fill:#a21caf parent:octaBottomRight | 0s - 8s
+  d: "M-30,-17.7 L30,-17.7 L0,35.5 Z"
+@view octaBottomLeft parent:octa | 0s - 8s
+  at: -20 14.7 0
+  normal: -0.826 0.563 0
+path octaBottomLeftFace fill:#c026d3 parent:octaBottomLeft | 0s - 8s
+  d: "M-30,-17.7 L30,-17.7 L0,35.5 Z"
+text octaLabel "Octahedron" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 270
+  y: 430
+
+# 8. Crystal
+@group crystal | 0s - 8s
+  x: 450
+  y: 350
+  rotateX: -12deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view crystalTopFront parent:crystal | 0s - 8s
+  at: 0 -31.3 17.3
+  normal: 0 -0.409 0.912
+path crystalTopFrontFace fill:#67e8f9 parent:crystalTopFront | 0s - 8s
+  d: "M-26,21.2 L26,21.2 L0,-42.4 Z"
+@view crystalTopRight parent:crystal | 0s - 8s
+  at: 17.3 -31.3 0
+  normal: 0.912 -0.409 0
+path crystalTopRightFace fill:#06b6d4 parent:crystalTopRight | 0s - 8s
+  d: "M-26,21.2 L26,21.2 L0,-42.4 Z"
+@view crystalTopBack parent:crystal | 0s - 8s
+  at: 0 -31.3 -17.3
+  normal: 0 -0.409 -0.912
+path crystalTopBackFace fill:#0e7490 parent:crystalTopBack | 0s - 8s
+  d: "M-26,21.2 L26,21.2 L0,-42.4 Z"
+@view crystalTopLeft parent:crystal | 0s - 8s
+  at: -17.3 -31.3 0
+  normal: -0.912 -0.409 0
+path crystalTopLeftFace fill:#22d3ee parent:crystalTopLeft | 0s - 8s
+  d: "M-26,21.2 L26,21.2 L0,-42.4 Z"
+@view crystalLowerFront parent:crystal | 0s - 8s
+  at: 0 10 17.3
+  normal: 0 0.367 0.930
+path crystalLowerFrontFace fill:#0891b2 parent:crystalLowerFront | 0s - 8s
+  d: "M-26,-23.6 L26,-23.6 L0,47.3 Z"
+@view crystalLowerRight parent:crystal | 0s - 8s
+  at: 17.3 10 0
+  normal: 0.930 0.367 0
+path crystalLowerRightFace fill:#0e7490 parent:crystalLowerRight | 0s - 8s
+  d: "M-26,-23.6 L26,-23.6 L0,47.3 Z"
+@view crystalLowerBack parent:crystal | 0s - 8s
+  at: 0 10 -17.3
+  normal: 0 0.367 -0.930
+path crystalLowerBackFace fill:#155e75 parent:crystalLowerBack | 0s - 8s
+  d: "M-26,-23.6 L26,-23.6 L0,47.3 Z"
+@view crystalLowerLeft parent:crystal | 0s - 8s
+  at: -17.3 10 0
+  normal: -0.930 0.367 0
+path crystalLowerLeftFace fill:#06b6d4 parent:crystalLowerLeft | 0s - 8s
+  d: "M-26,-23.6 L26,-23.6 L0,47.3 Z"
+text crystalLabel "Crystal" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 450
+  y: 430
+
+# 9. Wire sphere
+@group sphere | 0s - 8s
+  x: 630
+  y: 350
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view sphereOutlineView parent:sphere | 0s - 8s
+  normal: 0 0 1
+circle sphereOutline r:46 fill:none stroke:#93c5fd strokeWidth:2 parent:sphereOutlineView | 0s - 8s
+@view sphereEquatorView parent:sphere | 0s - 8s
+  normal: 0 1 0
+  up: 0 0 1
+circle sphereEquator r:46 fill:none stroke:#60a5fa strokeWidth:2 parent:sphereEquatorView | 0s - 8s
+@view sphereMeridianAView parent:sphere | 0s - 8s
+  normal: 1 0 0
+circle sphereMeridianA r:46 fill:none stroke:#38bdf8 strokeWidth:2 parent:sphereMeridianAView | 0s - 8s
+@view sphereMeridianBView parent:sphere | 0s - 8s
+  normal: 0.707 0 0.707
+circle sphereMeridianB r:46 fill:none stroke:#38bdf8 strokeWidth:2 parent:sphereMeridianBView | 0s - 8s
+text sphereLabel "Wire Sphere" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 630
+  y: 430
+
+# 10. Torus / ring
+@group torus | 0s - 8s
+  x: 810
+  y: 350
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view torusMainView parent:torus | 0s - 8s
+  normal: 0 1 0
+  up: 0 0 1
+circle torusOuter r:56 fill:none stroke:#fb923c strokeWidth:10 parent:torusMainView | 0s - 8s
+circle torusInner r:32 fill:none stroke:#fed7aa strokeWidth:4 parent:torusMainView | 0s - 8s
+@view torusCrossAView parent:torus | 0s - 8s
+  at: 44 0 0
+  normal: 1 0 0
+circle torusCrossA r:12 fill:none stroke:#fdba74 strokeWidth:3 parent:torusCrossAView | 0s - 8s
+@view torusCrossBView parent:torus | 0s - 8s
+  at: -44 0 0
+  normal: -1 0 0
+circle torusCrossB r:12 fill:none stroke:#f97316 strokeWidth:3 parent:torusCrossBView | 0s - 8s
+@view torusCrossCView parent:torus | 0s - 8s
+  at: 0 0 44
+  normal: 0 0 1
+circle torusCrossC r:12 fill:none stroke:#fdba74 strokeWidth:3 parent:torusCrossCView | 0s - 8s
+@view torusCrossDView parent:torus | 0s - 8s
+  at: 0 0 -44
+  normal: 0 0 -1
+circle torusCrossD r:12 fill:none stroke:#f97316 strokeWidth:3 parent:torusCrossDView | 0s - 8s
+text torusLabel "Torus" font:Roboto size:14 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 810
+  y: 430

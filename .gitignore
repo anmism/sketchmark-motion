@@ -1,0 +1,19 @@
+dist/
+node_modules/
+out/
+*.mp4
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+.temp
+output

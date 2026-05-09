@@ -1,0 +1,89 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+fps: 24
+$brand: #6366f1
+$white: #ffffff
+$gray: #94a3b8
+---
+
+@motion fade-in(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion scale-in(dur=0.6s)
+  scale: 0 -> 1 over $dur ease-out
+  opacity: 0 -> 1 over $dur ease-out
+
+= Intro | 0s - 3s =
+
+circle logo-bg r:40 fill:$brand
+  x: 320
+  y: 150
+  scale-in(0.8s)
+
+text logo "M" font:Roboto size:40 fill:$white weight:bold
+  x: 320
+  y: 150
+  fade-in(0.6s)
+
+text tagline "Motion Mark" font:Roboto size:28 fill:$white weight:bold
+  x: 320
+  y: 220
+  opacity: 0 -> 1 over 0.5s ease-out
+  y: 230 -> 220 over 0.5s ease-out
+
+text subtitle "Animations from text" font:Roboto size:14 fill:$gray
+  x: 320
+  y: 250
+  opacity: 0 -> 1 over 0.4s ease-out
+
+= Features | 3s - 7s =
+
+rect feature-bar w:300 h:4 fill:$brand
+  x: 320
+  y: 100
+  scale: 0 -> 1 over 0.6s ease-out
+
+text f1 "Simple DSL" font:Roboto size:18 fill:$white
+  x: 320
+  y: 150
+  fade-in(0.4s)
+
+text f2 "24fps Export" font:Roboto size:18 fill:$white
+  x: 320
+  y: 190
+  opacity: 0 -> 1 over 0.4s ease-out
+
+text f3 "Audio Support" font:Roboto size:18 fill:$white
+  x: 320
+  y: 230
+  opacity: 0 -> 1 over 0.4s ease-out
+
+circle dot1 r:4 fill:$brand
+  x: 220
+  y: 150
+
+circle dot2 r:4 fill:$brand
+  x: 220
+  y: 190
+
+circle dot3 r:4 fill:$brand
+  x: 220
+  y: 230
+
+= CTA | 7s - 10s =
+
+rect cta-bg w:200 h:50 fill:$brand rx:25
+  x: 320
+  y: 180
+  scale-in(0.5s)
+
+text cta "Get Started" font:Roboto size:18 fill:$white weight:bold
+  x: 320
+  y: 180
+  fade-in(0.6s)
+
+text url "motionmark.dev" font:Roboto size:12 fill:$gray
+  x: 320
+  y: 240
+  opacity: 0 -> 1 over 0.5s ease-out

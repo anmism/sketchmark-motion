@@ -1,0 +1,36 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+$white: #e2e8f0
+---
+
+text title "Fire Effect" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+rect log w:120 h:30 fill:#3d2817 | 0s - 10s
+  x: 320
+  y: 320
+
+@emitter fire | 0s - 10s
+  template: circle r:8 fill:#ff6b35
+  spawn: 50/s
+  lifetime: 0.8s
+  emitOn: line(280, 300, 360, 300)
+  vx: random(-20, 20)
+  vy: random(-120, -80)
+  turbulence: 15
+  opacity: 1 -> 0 over life
+  scale: 1 -> 0.2 over life
+  fill: #ff6b35 -> #ffcc00 over life
+
+@emitter sparks | 0s - 10s
+  template: circle r:2 fill:#fbbf24
+  spawn: 8/s
+  lifetime: 1s
+  emitOn: line(290, 295, 350, 295)
+  vx: random(-40, 40)
+  vy: random(-180, -120)
+  gravity: 80
+  opacity: random(0.6, 1)

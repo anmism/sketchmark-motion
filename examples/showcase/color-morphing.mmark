@@ -1,0 +1,30 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+---
+
+# Color Morphing Circles - demonstrates color animation
+
+circle c1 r:60 fill:#e74c5c | 0s - 6s
+  x: 160
+  y: 180
+  fill: #e74c5c -> #4ecdc4 -> #f7dc6f -> #e74c5c over 6s linear
+  scale: 1 -> 1.2 -> 1 over 3s ease-in-out
+
+circle c2 r:60 fill:#4ecdc4 | 0s - 6s
+  x: 320
+  y: 180
+  fill: #4ecdc4 -> #f7dc6f -> #e74c5c -> #4ecdc4 over 6s linear
+  scale: 1.2 -> 1 -> 1.2 over 3s ease-in-out
+
+circle c3 r:60 fill:#f7dc6f | 0s - 6s
+  x: 480
+  y: 180
+  fill: #f7dc6f -> #e74c5c -> #4ecdc4 -> #f7dc6f over 6s linear
+  scale: 1 -> 1.2 -> 1 over 3s ease-in-out
+
+text title "Color Morphing" font:Roboto size:28 fill:#fff weight:bold | 0s - 6s
+  x: 320
+  y: 320
+  fill: #ffffff -> #4ecdc4 -> #ffffff over 3s ease-in-out

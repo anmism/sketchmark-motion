@@ -1,0 +1,42 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+---
+
+text lbl-linear "linear" font:Roboto size:14 fill:#64748b | 0s - 4s
+  x: 60
+  y: 70
+
+text lbl-in "ease-in" font:Roboto size:14 fill:#64748b | 0s - 4s
+  x: 60
+  y: 140
+
+text lbl-out "ease-out" font:Roboto size:14 fill:#64748b | 0s - 4s
+  x: 60
+  y: 210
+
+text lbl-inout "ease-in-out" font:Roboto size:14 fill:#64748b | 0s - 4s
+  x: 60
+  y: 280
+
+circle c1 r:12 fill:#e74c5c | 0s - 4s
+  x: 140 -> 580 over 3s linear
+  y: 70
+
+circle c2 r:12 fill:#4ecdc4 | 0s - 4s
+  x: 140 -> 580 over 3s ease-in
+  y: 140
+
+circle c3 r:12 fill:#f39c12 | 0s - 4s
+  x: 140 -> 580 over 3s ease-out
+  y: 210
+
+circle c4 r:12 fill:#9b59b6 | 0s - 4s
+  x: 140 -> 580 over 3s ease-in-out
+  y: 280
+
+line track1 from:(140,70) to:(580,70) stroke:#ffffff11 strokeWidth:1 | 0s - 4s
+line track2 from:(140,140) to:(580,140) stroke:#ffffff11 strokeWidth:1 | 0s - 4s
+line track3 from:(140,210) to:(580,210) stroke:#ffffff11 strokeWidth:1 | 0s - 4s
+line track4 from:(140,280) to:(580,280) stroke:#ffffff11 strokeWidth:1 | 0s - 4s

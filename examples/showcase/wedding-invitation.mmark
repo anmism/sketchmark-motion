@@ -1,0 +1,339 @@
+---
+canvas: 1080x1920
+bg: #faf8f5
+fps: 30
+$gold: #c9a86c
+$goldLight: #e8d5b0
+$text: #2d2d2d
+$textLight: #6b6b6b
+$blush: #f5e6e0
+$sage: #9cac8b
+$cream: #fffef9
+---
+
+@motion fade-up(dur=0.8s, delay=0s)
+  opacity: 0 -> 1 over $dur ease-out
+  y: +30 -> +0 over $dur ease-out
+
+@motion fade-in(dur=0.6s)
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion scale-in(dur=0.6s)
+  scale: 0.8 -> 1 over $dur ease-out
+  opacity: 0 -> 1 over $dur ease-out
+
+@motion draw-in(dur=1.2s)
+  draw: 0 -> 1 over $dur ease-out
+
+# ============================================
+= Scene 1: Save the Date | 0s - 6s =
+# ============================================
+
+# Soft background accent
+circle bgGlow1 r:400 fill:$blush | 0s - 6s
+  x: 540
+  y: 600
+  opacity: 0.4
+  scale-in(1s)
+
+# Decorative botanical elements - top left
+path leaf1 d:"M 80 200 Q 120 150 180 180 Q 140 200 80 200" fill:$sage | 0.3s - 6s
+  opacity: 0.6
+  fade-in(0.8s)
+
+path leaf2 d:"M 60 240 Q 100 200 140 240 Q 100 250 60 240" fill:$sage | 0.5s - 6s
+  opacity: 0.5
+  fade-in(0.8s)
+
+# Top decorative line
+line topLine from:(340,280) to:(740,280) stroke:$gold strokeWidth:1 | 0.6s - 6s
+  draw-in(1s)
+
+# Save the Date text
+text saveThe "SAVE THE" font:Cormorant size:32 fill:$textLight weight:normal letterSpacing:8 | 0.8s - 6s
+  x: 540
+  y: 380
+  fade-up(0.8s)
+
+text date1 "DATE" font:Cormorant size:72 fill:$text weight:bold letterSpacing:12 | 1s - 6s
+  x: 540
+  y: 480
+  fade-up(0.8s)
+
+# Elegant divider
+path divider1 d:"M 400 540 Q 540 520 680 540" stroke:$gold strokeWidth:1.5 fill:none | 1.3s - 6s
+  draw-in(1s)
+
+# Date
+text dateNum "15" font:Didot size:120 fill:$gold weight:normal | 1.6s - 6s
+  x: 540
+  y: 720
+  scale-in(0.8s)
+
+text month "JUNE" font:Cormorant size:36 fill:$text weight:normal letterSpacing:10 | 1.8s - 6s
+  x: 540
+  y: 800
+  fade-up(0.6s)
+
+text year "2026" font:Cormorant size:28 fill:$textLight weight:normal letterSpacing:6 | 2s - 6s
+  x: 540
+  y: 860
+  fade-up(0.6s)
+
+# Bottom decorative botanical - right side
+path leaf3 d:"M 920 1600 Q 960 1550 1020 1580 Q 980 1600 920 1600" fill:$sage | 0.4s - 6s
+  opacity: 0.6
+  fade-in(0.8s)
+
+path leaf4 d:"M 940 1640 Q 980 1600 1020 1640 Q 980 1650 940 1640" fill:$sage | 0.6s - 6s
+  opacity: 0.5
+  fade-in(0.8s)
+
+# Floating particles
+@emitter sparkle1 | 1s - 6s
+  template: circle r:2 fill:$goldLight
+  spawn: 3/s
+  lifetime: 3s
+  x: random(200, 880)
+  y: random(300, 900)
+  vx: random(-5, 5)
+  vy: random(-15, -5)
+  opacity: 0 -> 0.6 -> 0 over life
+  scale: 0.5 -> 1 -> 0.5 over life
+
+# ============================================
+= Scene 2: Names | 6s - 12s =
+# ============================================
+
+# Soft background
+rect bg2 w:1080 h:1920 fill:$cream | 6s - 12s
+  x: 540
+  y: 960
+  fade-in(0.5s)
+
+circle bgGlow2 r:500 fill:$blush | 6s - 12s
+  x: 540
+  y: 960
+  opacity: 0.3
+  scale-in(1.2s)
+
+# Top ornament
+path ornamentTop d:"M 440 300 Q 490 260 540 280 Q 590 260 640 300" stroke:$gold strokeWidth:1.5 fill:none | 6.3s - 12s
+  draw-in(1s)
+
+circle dotTop r:4 fill:$gold | 6.5s - 12s
+  x: 540
+  y: 270
+  scale-in(0.5s)
+
+# Together with their families
+text together "Together with their families" font:Cormorant size:24 fill:$textLight weight:normal | 6.6s - 12s
+  x: 540
+  y: 420
+  fade-up(0.7s)
+
+# Bride name
+text bride "Sophia Grace" font:GreatVibes size:80 fill:$text weight:normal | 7s - 12s
+  x: 540
+  y: 600
+  fade-up(0.9s)
+
+# Ampersand
+text ampersand "&" font:Didot size:64 fill:$gold weight:normal | 7.4s - 12s
+  x: 540
+  y: 720
+  scale-in(0.7s)
+
+# Groom name
+text groom "Alexander James" font:GreatVibes size:80 fill:$text weight:normal | 7.8s - 12s
+  x: 540
+  y: 860
+  fade-up(0.9s)
+
+# Request the pleasure
+text request "Request the pleasure of your company" font:Cormorant size:22 fill:$textLight weight:normal | 8.3s - 12s
+  x: 540
+  y: 1000
+  fade-up(0.7s)
+
+text atCelebration "at the celebration of their marriage" font:Cormorant size:22 fill:$textLight weight:normal | 8.5s - 12s
+  x: 540
+  y: 1040
+  fade-up(0.7s)
+
+# Bottom ornament
+path ornamentBot d:"M 440 1140 Q 490 1180 540 1160 Q 590 1180 640 1140" stroke:$gold strokeWidth:1.5 fill:none | 8.8s - 12s
+  draw-in(1s)
+
+# Decorative leaves
+path leafLeft d:"M 150 900 Q 200 850 220 920 Q 180 940 150 900" fill:$sage | 6.4s - 12s
+  opacity: 0.5
+  fade-in(1s)
+
+path leafRight d:"M 930 1000 Q 880 950 860 1020 Q 900 1040 930 1000" fill:$sage | 6.6s - 12s
+  opacity: 0.5
+  fade-in(1s)
+
+# ============================================
+= Scene 3: Details | 12s - 18s =
+# ============================================
+
+rect bg3 w:1080 h:1920 fill:$faf8f5 | 12s - 18s
+  x: 540
+  y: 960
+  fade-in(0.4s)
+
+# Decorative top frame
+line frameTop from:(200,200) to:(880,200) stroke:$gold strokeWidth:1 | 12.2s - 18s
+  draw-in(0.8s)
+
+line frameLeft from:(200,200) to:(200,400) stroke:$gold strokeWidth:1 | 12.4s - 18s
+  draw-in(0.6s)
+
+line frameRight from:(880,200) to:(880,400) stroke:$gold strokeWidth:1 | 12.4s - 18s
+  draw-in(0.6s)
+
+# Ceremony section
+text ceremonyLabel "CEREMONY" font:Cormorant size:20 fill:$textLight weight:normal letterSpacing:6 | 12.6s - 18s
+  x: 540
+  y: 340
+  fade-up(0.6s)
+
+text ceremonyTime "Four o'clock in the afternoon" font:Cormorant size:32 fill:$text weight:normal | 12.9s - 18s
+  x: 540
+  y: 420
+  fade-up(0.7s)
+
+# Divider
+line div1 from:(440,480) to:(640,480) stroke:$goldLight strokeWidth:1 | 13.2s - 18s
+  draw-in(0.6s)
+
+# Venue section
+text venueLabel "VENUE" font:Cormorant size:20 fill:$textLight weight:normal letterSpacing:6 | 13.4s - 18s
+  x: 540
+  y: 560
+  fade-up(0.6s)
+
+text venue1 "The Grand Estate" font:Cormorant size:36 fill:$text weight:bold | 13.7s - 18s
+  x: 540
+  y: 640
+  fade-up(0.7s)
+
+text venue2 "1234 Garden Lane" font:Cormorant size:24 fill:$textLight weight:normal | 14s - 18s
+  x: 540
+  y: 700
+  fade-up(0.6s)
+
+text venue3 "Napa Valley, California" font:Cormorant size:24 fill:$textLight weight:normal | 14.2s - 18s
+  x: 540
+  y: 740
+  fade-up(0.6s)
+
+# Divider
+line div2 from:(440,800) to:(640,800) stroke:$goldLight strokeWidth:1 | 14.4s - 18s
+  draw-in(0.6s)
+
+# Reception section
+text receptionLabel "RECEPTION" font:Cormorant size:20 fill:$textLight weight:normal letterSpacing:6 | 14.6s - 18s
+  x: 540
+  y: 880
+  fade-up(0.6s)
+
+text reception "Dinner & Dancing to follow" font:Cormorant size:28 fill:$text weight:normal | 14.9s - 18s
+  x: 540
+  y: 960
+  fade-up(0.7s)
+
+# Dress code
+text dressLabel "ATTIRE" font:Cormorant size:20 fill:$textLight weight:normal letterSpacing:6 | 15.2s - 18s
+  x: 540
+  y: 1080
+  fade-up(0.6s)
+
+text dress "Black Tie Optional" font:Cormorant size:28 fill:$text weight:normal | 15.4s - 18s
+  x: 540
+  y: 1150
+  fade-up(0.7s)
+
+# Bottom botanical accent
+path leafBot1 d:"M 480 1400 Q 520 1350 560 1380 Q 540 1410 480 1400" fill:$sage | 15.6s - 18s
+  opacity: 0.5
+  fade-in(0.8s)
+
+path leafBot2 d:"M 520 1420 Q 560 1380 600 1410 Q 560 1440 520 1420" fill:$sage | 15.8s - 18s
+  opacity: 0.5
+  fade-in(0.8s)
+
+# ============================================
+= Scene 4: RSVP | 18s - 24s =
+# ============================================
+
+rect bg4 w:1080 h:1920 fill:$cream | 18s - 24s
+  x: 540
+  y: 960
+  fade-in(0.4s)
+
+# Large decorative circle
+circle rsvpCircle r:280 fill:none stroke:$goldLight strokeWidth:1 | 18.2s - 24s
+  x: 540
+  y: 700
+  draw-in(1.5s)
+
+circle rsvpCircleInner r:250 fill:none stroke:$gold strokeWidth:1.5 | 18.5s - 24s
+  x: 540
+  y: 700
+  draw-in(1.2s)
+
+# RSVP text
+text rsvpLabel "RSVP" font:Cormorant size:48 fill:$text weight:bold letterSpacing:10 | 19s - 24s
+  x: 540
+  y: 620
+  scale-in(0.8s)
+
+text rsvpBy "Kindly respond by" font:Cormorant size:22 fill:$textLight weight:normal | 19.4s - 24s
+  x: 540
+  y: 700
+  fade-up(0.6s)
+
+text rsvpDate "May 1st, 2026" font:Cormorant size:32 fill:$text weight:normal | 19.7s - 24s
+  x: 540
+  y: 760
+  fade-up(0.7s)
+
+# Divider
+path rsvpDiv d:"M 440 840 Q 540 860 640 840" stroke:$gold strokeWidth:1 fill:none | 20s - 24s
+  draw-in(0.8s)
+
+# Contact info
+text contact1 "sophiaandalex@wedding.com" font:Cormorant size:24 fill:$textLight weight:normal | 20.3s - 24s
+  x: 540
+  y: 1100
+  fade-up(0.6s)
+
+# Closing message
+text closing1 "We can't wait to" font:Cormorant size:28 fill:$text weight:normal | 20.6s - 24s
+  x: 540
+  y: 1250
+  fade-up(0.7s)
+
+text closing2 "celebrate with you" font:GreatVibes size:52 fill:$gold weight:normal | 20.9s - 24s
+  x: 540
+  y: 1340
+  fade-up(0.8s)
+
+# Heart
+path heart d:"M 540 1480 C 520 1460 480 1460 480 1500 C 480 1540 540 1580 540 1580 C 540 1580 600 1540 600 1500 C 600 1460 560 1460 540 1480" fill:$gold | 21.3s - 24s
+  opacity: 0 -> 0.8 over 0.8s ease-out
+  scale: 0.5 -> 1 over 0.8s ease-out
+
+# Final sparkle effect
+@emitter finalSparkle | 21s - 24s
+  template: circle r:3 fill:$gold
+  spawn: 8/s
+  lifetime: 2s
+  x: random(300, 780)
+  y: random(500, 900)
+  vx: random(-10, 10)
+  vy: random(-20, -5)
+  opacity: 0 -> 0.7 -> 0 over life
+  scale: 0.3 -> 1 -> 0.3 over life

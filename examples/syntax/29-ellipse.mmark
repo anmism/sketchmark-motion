@@ -1,0 +1,17 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+---
+
+ellipse planet rx:80 ry:40 fill:#e94560 | 0s - 4s
+  x: 320
+  y: 180
+
+ellipse orbit rx:150 ry:60 stroke:#ffffff44 strokeWidth:1 | 0s - 4s
+  x: 320
+  y: 180
+
+ellipse moon rx:12 ry:12 fill:#4ecdc4 | 0s - 4s
+  x: f(t) = 320 + 150 * cos(t * 2 * 3.14159)
+  y: f(t) = 180 + 60 * sin(t * 2 * 3.14159)

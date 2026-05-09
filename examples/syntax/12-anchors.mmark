@@ -1,0 +1,129 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+text title "Anchor Points with Rotation" font:Roboto size:20 fill:#94a3b8 | 0s - 5s
+  x: 320
+  y: 30
+
+# Row 1: top anchors
+circle dot1 r:3 fill:#ffffff | 0s - 5s
+  x: 120
+  y: 100
+
+rect r1 w:60 h:40 fill:#e74c5c anchor:top-left | 0s - 5s
+  x: 120
+  y: 100
+  rotation: 0deg -> 360deg over 5s
+
+text lbl1 "top-left" font:Roboto size:9 fill:#e74c5c | 0s - 5s
+  x: 120
+  y: 155
+
+circle dot2 r:3 fill:#ffffff | 0s - 5s
+  x: 320
+  y: 100
+
+rect r2 w:60 h:40 fill:#4ecdc4 anchor:top-center | 0s - 5s
+  x: 320
+  y: 100
+  rotation: 0deg -> 360deg over 5s
+
+text lbl2 "top-center" font:Roboto size:9 fill:#4ecdc4 | 0s - 5s
+  x: 320
+  y: 155
+
+circle dot3 r:3 fill:#ffffff | 0s - 5s
+  x: 520
+  y: 100
+
+rect r3 w:60 h:40 fill:#f39c12 anchor:top-right | 0s - 5s
+  x: 520
+  y: 100
+  rotation: 0deg -> 360deg over 5s
+
+text lbl3 "top-right" font:Roboto size:9 fill:#f39c12 | 0s - 5s
+  x: 520
+  y: 155
+
+# Row 2: center anchors
+circle dot4 r:3 fill:#ffffff | 0s - 5s
+  x: 120
+  y: 200
+
+rect r4 w:60 h:40 fill:#9b59b6 anchor:center-left | 0s - 5s
+  x: 120
+  y: 200
+  rotation: 0deg -> 360deg over 5s
+
+text lbl4 "center-left" font:Roboto size:9 fill:#9b59b6 | 0s - 5s
+  x: 120
+  y: 255
+
+circle dot5 r:3 fill:#ffffff | 0s - 5s
+  x: 320
+  y: 200
+
+rect r5 w:60 h:40 fill:#3498db anchor:center | 0s - 5s
+  x: 320
+  y: 200
+  rotation: 0deg -> 360deg over 5s
+
+text lbl5 "center" font:Roboto size:9 fill:#3498db | 0s - 5s
+  x: 320
+  y: 255
+
+circle dot6 r:3 fill:#ffffff | 0s - 5s
+  x: 520
+  y: 200
+
+rect r6 w:60 h:40 fill:#1abc9c anchor:center-right | 0s - 5s
+  x: 520
+  y: 200
+  rotation: 0deg -> 360deg over 5s
+
+text lbl6 "center-right" font:Roboto size:9 fill:#1abc9c | 0s - 5s
+  x: 520
+  y: 255
+
+# Row 3: bottom anchors
+circle dot7 r:3 fill:#ffffff | 0s - 5s
+  x: 120
+  y: 300
+
+rect r7 w:60 h:40 fill:#e67e22 anchor:bottom-left | 0s - 5s
+  x: 120
+  y: 300
+  rotation: 0deg -> 360deg over 5s
+
+text lbl7 "bottom-left" font:Roboto size:9 fill:#e67e22 | 0s - 5s
+  x: 120
+  y: 345
+
+circle dot8 r:3 fill:#ffffff | 0s - 5s
+  x: 320
+  y: 300
+
+rect r8 w:60 h:40 fill:#e91e63 anchor:bottom-center | 0s - 5s
+  x: 320
+  y: 300
+  rotation: 0deg -> 360deg over 5s
+
+text lbl8 "bottom-center" font:Roboto size:9 fill:#e91e63 | 0s - 5s
+  x: 320
+  y: 345
+
+circle dot9 r:3 fill:#ffffff | 0s - 5s
+  x: 520
+  y: 300
+
+rect r9 w:60 h:40 fill:#00bcd4 anchor:bottom-right | 0s - 5s
+  x: 520
+  y: 300
+  rotation: 0deg -> 360deg over 5s
+
+text lbl9 "bottom-right" font:Roboto size:9 fill:#00bcd4 | 0s - 5s
+  x: 520
+  y: 345

@@ -1,0 +1,26 @@
+---
+canvas: 640x360
+bg: #0f1419
+fps: 24
+$glow: #84cc16
+$white: #e2e8f0
+---
+
+text title "Fireflies" font:Roboto size:24 fill:$white weight:bold | 0s - 15s
+  x: 320
+  y: 30
+
+rect grass w:640 h:120 fill:#1a2f1a | 0s - 15s
+  x: 320
+  y: 300
+
+@emitter fireflies | 0s - 15s
+  template: circle r:4 fill:$glow
+  spawn: 3/s
+  lifetime: 5s
+  x: random(50, 590)
+  y: random(100, 280)
+  vx: random(-8, 8)
+  vy: random(-8, 8)
+  opacity: random(0.3, 0.8)
+  scale: random(0.6, 1.2)

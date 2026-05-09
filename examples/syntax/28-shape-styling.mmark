@@ -1,0 +1,90 @@
+---
+canvas: 800x600
+bg: #0b1020
+fps: 24
+$white: #e2e8f0
+$muted: #94a3b8
+$blue: #60a5fa
+$green: #34d399
+$orange: #f59e0b
+$pink: #f472b6
+---
+
+text title "Shape Styling" font:Roboto size:22 fill:$white weight:bold | persist
+  x: 400
+  y: 30
+
+text sub "cornerRadius + strokeCap + strokeJoin" font:Roboto size:12 fill:$muted | persist
+  x: 400
+  y: 52
+
+
+text lbl1 "cornerRadius: 0" font:Roboto size:11 fill:$muted | persist
+  x: 120
+  y: 100
+
+rect r1 w:120 h:80 fill:$blue x:120 y:140 anchor:top-center | persist
+
+text lbl2 "cornerRadius: 12" font:Roboto size:11 fill:$muted | persist
+  x: 300
+  y: 100
+
+rect r2 w:120 h:80 fill:$blue x:300 y:140 cornerRadius:12 anchor:top-center | persist
+
+text lbl3 "cornerRadius: 40" font:Roboto size:11 fill:$muted | persist
+  x: 480
+  y: 100
+
+rect r3 w:120 h:80 fill:$blue x:480 y:140 cornerRadius:40 anchor:top-center | persist
+
+text lbl4 "per-corner [20,0,20,0]" font:Roboto size:11 fill:$muted | persist
+  x: 660
+  y: 100
+
+rect r4 w:120 h:80 fill:$blue x:660 y:140 cornerRadius:[20, 0, 20, 0] anchor:top-center | persist
+
+
+text lbl5 "animated radius" font:Roboto size:11 fill:$green | persist
+  x: 200
+  y: 260
+
+rect r5 w:100 h:100 fill:$green x:200 y:300 anchor:top-center | 0s - 4s
+  cornerRadius: 0 -> 50 over 4s ease-in-out
+
+
+text lbl6 "butt" font:Roboto size:11 fill:$muted | persist
+  x: 150
+  y: 400
+
+line l1 x1:100 y1:430 x2:200 y2:430 stroke:$orange strokeWidth:10 strokeCap:butt | persist
+
+text lbl7 "round" font:Roboto size:11 fill:$muted | persist
+  x: 350
+  y: 400
+
+line l2 x1:300 y1:430 x2:400 y2:430 stroke:$orange strokeWidth:10 strokeCap:round | persist
+
+text lbl8 "square" font:Roboto size:11 fill:$muted | persist
+  x: 550
+  y: 400
+
+line l3 x1:500 y1:430 x2:600 y2:430 stroke:$orange strokeWidth:10 strokeCap:square | persist
+
+
+text lbl9 "miter" font:Roboto size:11 fill:$muted | persist
+  x: 150
+  y: 480
+
+path j1 d:"M 100 510 L 150 550 L 200 510" stroke:$pink strokeWidth:8 fill:none strokeJoin:miter | persist
+
+text lbl10 "round" font:Roboto size:11 fill:$muted | persist
+  x: 370
+  y: 480
+
+path j2 d:"M 320 510 L 370 550 L 420 510" stroke:$pink strokeWidth:8 fill:none strokeJoin:round | persist
+
+text lbl11 "bevel" font:Roboto size:11 fill:$muted | persist
+  x: 590
+  y: 480
+
+path j3 d:"M 540 510 L 590 550 L 640 510" stroke:$pink strokeWidth:8 fill:none strokeJoin:bevel | persist

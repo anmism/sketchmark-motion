@@ -1,0 +1,48 @@
+---
+canvas: 800x600
+bg: #0b1020
+fps: 24
+$white: #e2e8f0
+$muted: #94a3b8
+$blue: #60a5fa
+$green: #34d399
+$orange: #f59e0b
+---
+
+text title "Stroke Controls" font:Roboto size:22 fill:$white weight:bold | 0s - 6s
+  x: 400
+  y: 30
+
+text sub "drawStart/drawEnd + dashArray/dashOffset" font:Roboto size:12 fill:$muted | 0s - 6s
+  x: 400
+  y: 52
+
+text lbl1 "Trim Window (Circle)" font:Roboto size:11 fill:$blue | 0s - 6s
+  x: 200
+  y: 110
+
+circle spinner r:48 fill:none stroke:$blue strokeWidth:6 | 0s - 6s
+  x: 200
+  y: 170
+  drawStart: 0 -> 0.75 over 6s linear
+  drawEnd: 0.25 -> 1 over 6s linear
+  dashArray: [8, 6]
+  dashOffset: 0 -> 120 over 6s linear
+
+text lbl2 "Marching Ants (Rect)" font:Roboto size:11 fill:$green | 0s - 6s
+  x: 530
+  y: 110
+
+rect ants w:240 h:150 fill:none stroke:$green strokeWidth:4 anchor:top-left | 0s - 6s
+  x: 410
+  y: 130
+  dashArray: [14, 10]
+  dashOffset: 0 -> 220 over 6s linear
+
+text lbl3 "Trim Window (Path)" font:Roboto size:11 fill:$orange | 0s - 6s
+  x: 400
+  y: 310
+
+path squiggle d:"M 120 380 C 210 300, 330 460, 420 380 S 630 300, 720 380" stroke:$orange strokeWidth:6 fill:none | 0s - 6s
+  drawStart: 0 -> 0.7 over 6s linear
+  drawEnd: 0.3 -> 1 over 6s linear

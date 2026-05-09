@@ -1,0 +1,89 @@
+---
+canvas: 800x450
+bg: #0f172a
+fps: 24
+---
+
+# Row 1: Basic masks
+
+# Rect mask
+rect r1 w:120 h:80 fill:#e74c5c | 0s - 4s
+  x: 100
+  y: 70
+  mask: rect(40, 30, 120, 80)
+
+# Circle mask
+rect r2 w:120 h:80 fill:#4ecdc4 | 0s - 4s
+  x: 250
+  y: 70
+  mask: circle(250, 70, 40)
+
+# Path mask - triangle (SVG d)
+rect r3 w:120 h:80 fill:#f7dc6f | 0s - 4s
+  x: 400
+  y: 70
+  mask: path("M 340,30 L 460,30 L 400,110 Z")
+
+# Points mask - pentagon
+rect r4 w:120 h:80 fill:#9b59b6 | 0s - 4s
+  x: 550
+  y: 70
+  mask: points [(550,30), (590,55), (575,100), (525,100), (510,55)]
+
+# Inverted circle
+rect r5 w:120 h:80 fill:#3498db | 0s - 4s
+  x: 700
+  y: 70
+  mask: circle(700, 70, 30) invert
+
+text label1 "rect | circle | path | points | inverted" font:Roboto size:11 fill:#666 | 0s - 4s
+  x: 400
+  y: 135
+
+# Row 2: Function-based masks
+
+# fx mask - sine wave
+rect r6 w:200 h:100 fill:#e74c5c | 0s - 4s
+  x: 150
+  y: 220
+  mask: fx("220 + 40 * sin((x - 50) * 0.05)", 50, 250, 60)
+
+# xt mask - circle (parametric)
+rect r7 w:150 h:100 fill:#4ecdc4 | 0s - 4s
+  x: 400
+  y: 220
+  mask: xt("400 + 50 * cos(t)", "220 + 50 * sin(t)", 0, 6.28, 40)
+
+# xt mask - star (parametric)
+rect r8 w:150 h:100 fill:#f7dc6f | 0s - 4s
+  x: 600
+  y: 220
+  mask: xt("600 + (30 + 20 * cos(t * 5)) * cos(t)", "220 + (30 + 20 * cos(t * 5)) * sin(t)", 0, 6.28, 80)
+
+text label2 "fx (sine wave) | xt parametric (circle) | xt parametric (star)" font:Roboto size:11 fill:#666 | 0s - 4s
+  x: 400
+  y: 295
+
+# Row 3: More parametric examples
+
+# xt mask - heart
+rect r9 w:150 h:120 fill:#ec4899 | 0s - 4s
+  x: 200
+  y: 370
+  mask: xt("200 + 40 * sin(t) * sin(t) * sin(t)", "370 - 32 * cos(t) + 12 * cos(2*t) + 6 * cos(3*t) + 2 * cos(4*t)", 0, 6.28, 60)
+
+# xt mask - spiral
+rect r10 w:200 h:120 fill:#8b5cf6 | 0s - 4s
+  x: 450
+  y: 370
+  mask: xt("450 + t * 5 * cos(t)", "370 + t * 5 * sin(t)", 0, 10, 80)
+
+# fx mask - parabola
+rect r11 w:180 h:100 fill:#22c55e | 0s - 4s
+  x: 680
+  y: 370
+  mask: fx("420 - 0.01 * (x - 680) * (x - 680)", 590, 770, 40)
+
+text label3 "heart | spiral | parabola" font:Roboto size:11 fill:#666 | 0s - 4s
+  x: 400
+  y: 440

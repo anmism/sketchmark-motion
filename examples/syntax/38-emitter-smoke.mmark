@@ -1,0 +1,26 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+fps: 24
+$smoke: #64748b
+$white: #e2e8f0
+---
+
+text title "Smoke Effect" font:Roboto size:24 fill:$white weight:bold | 0s - 12s
+  x: 320
+  y: 30
+
+rect chimney w:40 h:80 fill:#374151 | 0s - 12s
+  x: 320
+  y: 300
+
+@emitter smoke | 0s - 12s
+  template: circle r:20 fill:$smoke
+  spawn: 8/s
+  lifetime: 4s
+  emitOn: line(305, 260, 335, 260)
+  vx: random(-5, 5)
+  vy: random(-40, -25)
+  turbulence: 25
+  opacity: 0.6 -> 0 over life
+  scale: 0.5 -> 2 over life

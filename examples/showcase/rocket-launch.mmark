@@ -1,0 +1,147 @@
+---
+canvas: 800x500
+bg: #0a0a1a
+fps: 24
+$rocket: #e2e8f0
+$flame: #f97316
+$smoke: #6b7280
+$text: #e2e8f0
+$muted: #64748b
+$sky: #1e3a5f
+---
+
+@motion fade-in(dur=0.4s)
+  opacity: 0 -> 1 over $dur ease-out
+
+text title "Rocket Launch" font:Roboto size:24 fill:$text weight:bold | 0s - 9s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text formula "v = v₀ + at, s = ½at²" font:Roboto size:14 fill:$muted | 0.3s - 9s
+  x: 400
+  y: 58
+  fade-in(0.4s)
+
+rect ground w:800 h:60 fill:#1a2e1a | 0s - 9s
+  x: 400
+  y: 470
+
+rect pad w:80 h:8 fill:#475569 | 0s - 9s
+  x: 150
+  y: 440
+
+rect tower w:6 h:120 fill:#374151 | 0s - 9s
+  x: 110
+  y: 380
+
+rect body w:20 h:60 fill:$rocket | 0.5s - 9s
+  x: 150
+  y: f(t) = 410 - 12 * t * t
+
+circle nose r:10 fill:$rocket | 0.5s - 9s
+  x: 150
+  y: f(t) = 380 - 12 * t * t
+
+circle flame1 r:8 fill:$flame | 0.8s - 9s
+  x: 150
+  y: f(t) = 445 - 12 * t * t
+  opacity: f(t) = 0.6 + 0.4 * sin(t * 20)
+
+circle flame2 r:5 fill:#fbbf24 | 0.8s - 9s
+  x: 150
+  y: f(t) = 452 - 12 * t * t
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 25)
+
+circle smoke1 r:15 fill:$smoke | 1s - 9s
+  x: 150
+  y: 450
+  opacity: 0.6 -> 0 over 3s linear
+  scale: 1 -> 4 over 3s ease-out
+
+circle smoke2 r:12 fill:$smoke | 1.3s - 9s
+  x: 140
+  y: 445
+  opacity: 0.5 -> 0 over 2.5s linear
+  scale: 1 -> 3 over 2.5s ease-out
+
+circle smoke3 r:10 fill:$smoke | 1.6s - 9s
+  x: 160
+  y: 448
+  opacity: 0.4 -> 0 over 2s linear
+  scale: 1 -> 3 over 2s ease-out
+
+rect y-axis w:1 h:350 fill:#334155 | 0s - 9s
+  x: 400
+  y: 265
+
+text y-label "Height (m)" font:Roboto size:11 fill:$muted | 0s - 9s
+  x: 400
+  y: 75
+
+rect x-axis w:350 h:1 fill:#334155 | 0s - 9s
+  x: 575
+  y: 440
+
+text x-label "Time (s)" font:Roboto size:11 fill:$muted | 0s - 9s
+  x: 740
+  y: 455
+
+circle graph-dot r:4 fill:$flame | 0.5s - 9s
+  x: f(t) = 400 + 40 * t
+  y: f(t) = 440 - 5 * t * t
+
+circle g1 r:2 fill:$flame | 1.5s - 9s
+  x: 440
+  y: 435
+  opacity: 0.4
+
+circle g2 r:2 fill:$flame | 2s - 9s
+  x: 480
+  y: 420
+  opacity: 0.4
+
+circle g3 r:2 fill:$flame | 2.5s - 9s
+  x: 520
+  y: 395
+  opacity: 0.4
+
+circle g4 r:2 fill:$flame | 3s - 9s
+  x: 560
+  y: 360
+  opacity: 0.4
+
+circle g5 r:2 fill:$flame | 3.5s - 9s
+  x: 600
+  y: 315
+  opacity: 0.4
+
+text thrust "Thrust = 3.5 × 10⁴ N" font:Roboto size:12 fill:$text | 1s - 9s
+  x: 650
+  y: 130
+  fade-in(0.4s)
+
+text mass "Mass = 1200 kg" font:Roboto size:12 fill:$text | 1s - 9s
+  x: 650
+  y: 152
+  fade-in(0.4s)
+
+text accel "a = 19.4 m/s²" font:Roboto size:12 fill:$flame | 1.5s - 9s
+  x: 650
+  y: 174
+  fade-in(0.4s)
+
+text phase1 "T+0s: Ignition" font:Roboto size:11 fill:$muted | 0.8s - 9s
+  x: 650
+  y: 220
+  fade-in(0.3s)
+
+text phase2 "T+3s: v = 58.2 m/s" font:Roboto size:11 fill:$muted | 3s - 9s
+  x: 650
+  y: 242
+  fade-in(0.3s)
+
+text phase3 "T+5s: v = 97 m/s" font:Roboto size:11 fill:$muted | 5s - 9s
+  x: 650
+  y: 264
+  fade-in(0.3s)

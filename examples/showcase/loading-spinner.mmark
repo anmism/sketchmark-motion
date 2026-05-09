@@ -1,0 +1,36 @@
+---
+canvas: 360x360
+bg: #0f172a
+fps: 24
+$accent: #38bdf8
+$dim: #1e3a5f
+---
+
+circle track r:60 fill:none stroke:$dim stroke-width:4 | 0s - 5s
+  x: 180
+  y: 180
+
+circle dot1 r:8 fill:$accent | 0s - 5s
+  x: f(t) = 180 + 60 * cos(t * 3.14)
+  y: f(t) = 180 + 60 * sin(t * 3.14)
+  opacity: 1
+
+circle dot2 r:6 fill:$accent | 0s - 5s
+  x: f(t) = 180 + 60 * cos(t * 3.14 - 0.5)
+  y: f(t) = 180 + 60 * sin(t * 3.14 - 0.5)
+  opacity: 0.7
+
+circle dot3 r:4 fill:$accent | 0s - 5s
+  x: f(t) = 180 + 60 * cos(t * 3.14 - 1.0)
+  y: f(t) = 180 + 60 * sin(t * 3.14 - 1.0)
+  opacity: 0.4
+
+circle center-glow r:20 fill:$accent | 0s - 5s
+  x: 180
+  y: 180
+  opacity: f(t) = 0.3 + 0.2 * sin(t * 4)
+
+text loading "Loading..." font:Roboto size:14 fill:#94a3b8 | 0s - 5s
+  x: 180
+  y: 270
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 2)

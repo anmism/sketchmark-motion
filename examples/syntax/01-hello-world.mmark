@@ -1,0 +1,9 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+circle dot r:40 fill:#4ecdc4 | 0s - 3s
+  x: 320
+  y: 180

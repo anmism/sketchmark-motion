@@ -1,0 +1,83 @@
+---
+canvas: 640x400
+bg: #0f172a
+fps: 24
+---
+
+text title "Text Properties" font:Roboto size:22 fill:#ffffff weight:bold | 0s - 6s
+  x: 320
+  y: 30
+
+# Weight
+text weight-demo "Bold Text" font:Roboto size:18 fill:#4ecdc4 weight:bold | 0s - 6s
+  x: 120
+  y: 80
+
+text weight-label "weight:bold" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 120
+  y: 105
+
+# Stroke (outline)
+text stroke-demo "Outlined" font:Roboto size:24 fill:#0f172a stroke:#e74c5c strokeWidth:2 weight:bold | 0s - 6s
+  x: 320
+  y: 80
+
+text stroke-label "stroke + strokeWidth" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 320
+  y: 110
+
+# Letter spacing
+text spacing-demo "SPACED" font:Roboto size:18 fill:#f39c12 weight:bold letterSpacing:8 | 0s - 6s
+  x: 520
+  y: 80
+
+text spacing-label "letterSpacing:8" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 520
+  y: 105
+
+# Animated letter spacing
+text spacing-anim "EXPAND" font:Roboto size:20 fill:#9b59b6 weight:bold | 0s - 6s
+  x: 120
+  y: 170
+  letterSpacing: 0 -> 15 -> 0 over 3s ease-in-out
+
+text spacing-anim-label "letterSpacing animated" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 120
+  y: 200
+
+# Animated stroke width
+text stroke-anim "PULSE" font:Roboto size:24 fill:#1abc9c stroke:#ffffff weight:bold | 0s - 6s
+  x: 320
+  y: 170
+  strokeWidth: 0 -> 3 -> 0 over 2s ease-in-out
+
+text stroke-anim-label "strokeWidth animated" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 320
+  y: 200
+
+# Animated weight (variable fonts)
+text weight-anim "Variable" font:Roboto size:20 fill:#3498db | 0s - 6s
+  x: 520
+  y: 170
+  weight: 300 -> 700 -> 300 over 3s ease-in-out
+
+text weight-anim-label "weight animated" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 520
+  y: 200
+
+# Multiline with alignment
+text multi-left "Left\nAligned\nText" font:Roboto size:14 fill:#4ecdc4 align:left lineHeight:1.4 | 0s - 6s
+  x: 100
+  y: 270
+
+text multi-center "Center\nAligned\nText" font:Roboto size:14 fill:#e74c5c align:center lineHeight:1.4 | 0s - 6s
+  x: 320
+  y: 270
+
+text multi-right "Right\nAligned\nText" font:Roboto size:14 fill:#f39c12 align:right lineHeight:1.4 | 0s - 6s
+  x: 540
+  y: 270
+
+text align-label "align: left / center / right" font:Roboto size:10 fill:#64748b | 0s - 6s
+  x: 320
+  y: 380

@@ -1,0 +1,167 @@
+---
+canvas: 600x400
+bg: #18181b
+fps: 60
+perspective: 500
+vanish: 300 200
+$s: 60
+$h: 30
+---
+
+# Tumbling Dice - stress test for cube with dots
+
+@group dice | 0s - 6s
+  x: 300
+  y: 200
+  rotateX: 0deg -> 720deg over 3s ease-out
+  rotateY: 0deg -> 540deg over 3s ease-out
+  rotateZ: 0deg -> 360deg over 3s ease-out
+
+# Face 1 (front - one dot)
+rect f1 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: 0
+  y: 0
+  z: $h
+circle d1 r:8 fill:#171717 parent:dice | 0s - 6s
+  x: 0
+  y: 0
+  z: 31
+
+# Face 6 (back - six dots)
+rect f6 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: 0
+  y: 0
+  z: -30
+  rotateY: 180deg
+circle d6a r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: -15
+  z: -31
+  rotateY: 180deg
+circle d6b r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: 0
+  z: -31
+  rotateY: 180deg
+circle d6c r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: 15
+  z: -31
+  rotateY: 180deg
+circle d6d r:5 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: -15
+  z: -31
+  rotateY: 180deg
+circle d6e r:5 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: 0
+  z: -31
+  rotateY: 180deg
+circle d6f r:5 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: 15
+  z: -31
+  rotateY: 180deg
+
+# Face 2 (right)
+rect f2 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: $h
+  y: 0
+  z: 0
+  rotateY: 90deg
+circle d2a r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 31
+  y: -12
+  z: 12
+  rotateY: 90deg
+circle d2b r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 31
+  y: 12
+  z: -12
+  rotateY: 90deg
+
+# Face 5 (left)
+rect f5 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: -30
+  y: 0
+  z: 0
+  rotateY: -90deg
+circle d5a r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -31
+  y: -15
+  z: -15
+  rotateY: -90deg
+circle d5b r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -31
+  y: -15
+  z: 15
+  rotateY: -90deg
+circle d5c r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -31
+  y: 0
+  z: 0
+  rotateY: -90deg
+circle d5d r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -31
+  y: 15
+  z: -15
+  rotateY: -90deg
+circle d5e r:5 fill:#171717 parent:dice | 0s - 6s
+  x: -31
+  y: 15
+  z: 15
+  rotateY: -90deg
+
+# Face 3 (top)
+rect f3 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: 0
+  y: -30
+  z: 0
+  rotateX: -90deg
+circle d3a r:6 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: -31
+  z: -15
+  rotateX: -90deg
+circle d3b r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 0
+  y: -31
+  z: 0
+  rotateX: -90deg
+circle d3c r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: -31
+  z: 15
+  rotateX: -90deg
+
+# Face 4 (bottom)
+rect f4 w:$s h:$s fill:#fafafa cornerRadius:6 parent:dice | 0s - 6s
+  x: 0
+  y: $h
+  z: 0
+  rotateX: 90deg
+circle d4a r:6 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: 31
+  z: -15
+  rotateX: 90deg
+circle d4b r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: 31
+  z: -15
+  rotateX: 90deg
+circle d4c r:6 fill:#171717 parent:dice | 0s - 6s
+  x: -15
+  y: 31
+  z: 15
+  rotateX: 90deg
+circle d4d r:6 fill:#171717 parent:dice | 0s - 6s
+  x: 15
+  y: 31
+  z: 15
+  rotateX: 90deg
+
+text label "Tumbling Dice" font:Roboto size:20 fill:#a1a1aa weight:bold | 0s - 6s
+  x: 300
+  y: 370

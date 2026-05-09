@@ -1,0 +1,134 @@
+---
+canvas: 980x560
+bg: #0b1020
+fps: 60
+perspective: 780
+vanish: 490 260
+---
+
+# Basic 3D shape primitives
+# These compile into generated poly3d faces, so each face can be customized.
+
+plane ground w:860 h:320 fill:#111827 stroke:#334155 strokeWidth:1 | 0s - 8s
+  x: 490
+  y: 285
+  z: -40
+  rotateX: 90deg
+  faceFill: #0f172a
+
+cuboid crate w:92 h:70 d:78 fill:#38bdf8 stroke:#ffffff22 strokeWidth:1 | 0s - 8s
+  x: 110
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  frontFill: #3b82f6
+  rightFill: #0891b2
+  topFill: #a855f7
+  leftFill: #22d3ee
+  backFill: #1e3a8a
+  bottomFill: #6d28d9
+
+sphere planet r:48 segments:14 rings:8 fill:#34d399 stroke:#ffffff14 strokeWidth:1 | 0s - 8s
+  x: 295
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  topFill: #bbf7d0
+  upperFill: #86efac
+  middleFill: #34d399
+  lowerFill: #059669
+  bottomFill: #065f46
+  face8Fill: #ffffff
+
+cylinder can r:42 h:88 segments:14 fill:#38bdf8 stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 490
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  topFill: #bae6fd
+  bottomFill: #075985
+  side0Fill: #7dd3fc
+
+cone marker r:46 h:98 segments:14 fill:#f97316 stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 685
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  baseFill: #7c2d12
+  side0Fill: #fed7aa
+
+pyramid roof r:54 h:90 sides:4 fill:#ef4444 stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 870
+  y: 145
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  baseFill: #475569
+  side0Fill: #ef4444
+  side1Fill: #22c55e
+  side2Fill: #3b82f6
+  side3Fill: #f59e0b
+
+prism triPrism r:52 d:86 sides:3 fill:#14b8a6 stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 205
+  y: 370
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+  frontFill: #5eead4
+  backFill: #0f766e
+  side0Fill: #14b8a6
+  side1Fill: #2dd4bf
+  side2Fill: #0d9488
+
+prism hexPrism r:48 d:78 sides:6 fill:#84cc16 stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 405
+  y: 370
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+  frontFill: #a3e635
+  backFill: #365314
+  side0Fill: #84cc16
+
+torus ring major:52 tube:12 segments:18 tubeSegments:6 fill:#fb923c stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 610
+  y: 370
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  face0Fill: #fed7aa
+  face1Fill: #fdba74
+
+sphere lowPoly r:48 segments:8 rings:5 fill:#22d3ee stroke:#ffffff22 strokeWidth:1 | 0s - 8s
+  x: 805
+  y: 370
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  topFill: #e0f2fe
+  middleFill: #22d3ee
+  bottomFill: #0f4c5c
+
+text label1 "cuboid" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 110
+  y: 235
+text label2 "sphere" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 295
+  y: 235
+text label3 "cylinder" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 490
+  y: 235
+text label4 "cone" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 685
+  y: 235
+text label5 "pyramid" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 870
+  y: 235
+text label6 "tri prism" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 205
+  y: 462
+text label7 "hex prism" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 405
+  y: 462
+text label8 "torus" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 610
+  y: 462
+text label9 "low-poly sphere" font:Roboto size:14 fill:#dbeafe weight:bold | 0s - 8s
+  x: 805
+  y: 462

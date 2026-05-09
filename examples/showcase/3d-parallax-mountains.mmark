@@ -1,0 +1,393 @@
+---
+canvas: 960x540
+bg: #0f172a
+fps: 60
+perspective: 1200
+vanish: 480 400
+$sky1: #1e3a5f
+$sky2: #0c4a6e
+$sky3: #0369a1
+$mountain1: #1e293b
+$mountain2: #334155
+$mountain3: #475569
+$mountain4: #64748b
+$mountain5: #94a3b8
+$fog: #cbd5e1
+$sun: #fbbf24
+$sunGlow: #f59e0b
+$snow: #f1f5f9
+$tree: #14532d
+$water: #0ea5e9
+---
+
+# 3D Parallax Mountain Landscape
+# Layered mountains with depth-based movement
+
+= Sky | 0s - 15s =
+
+# Gradient sky layers
+rect skyTop w:960 h:200 fill:$sky1 | 0s - 15s
+  x: 480
+  y: 100
+
+rect skyMid w:960 h:180 fill:$sky2 | 0s - 15s
+  x: 480
+  y: 290
+
+rect skyLow w:960 h:160 fill:$sky3 | 0s - 15s
+  x: 480
+  y: 460
+
+# Sun with glow
+circle sunGlow r:80 fill:$sunGlow | 0s - 15s
+  x: 750
+  y: 120
+  opacity: 0.3
+  blur: 40
+
+circle sun r:45 fill:$sun | 0s - 15s
+  x: 750
+  y: 120
+  opacity: 0.95
+
+# Stars (visible in darker sky)
+circle star1 r:1.5 fill:#ffffff | 0s - 15s
+  x: 100
+  y: 60
+  opacity: f(t) = 0.3 + 0.3 * sin(t * 2)
+
+circle star2 r:1 fill:#ffffff | 0s - 15s
+  x: 200
+  y: 90
+  opacity: f(t) = 0.4 + 0.3 * sin(t * 2.5 + 1)
+
+circle star3 r:1.5 fill:#ffffff | 0s - 15s
+  x: 350
+  y: 45
+  opacity: f(t) = 0.35 + 0.25 * sin(t * 1.8 + 0.5)
+
+circle star4 r:1 fill:#ffffff | 0s - 15s
+  x: 550
+  y: 70
+  opacity: f(t) = 0.3 + 0.35 * sin(t * 2.2 + 2)
+
+circle star5 r:1.2 fill:#ffffff | 0s - 15s
+  x: 880
+  y: 55
+  opacity: f(t) = 0.4 + 0.3 * sin(t * 1.9 + 1.5)
+
+= Parallax Scene | 0s - 15s =
+
+@group scene | 0s - 15s
+  x: 480
+  y: 270
+  rotateY: -8deg -> 8deg -> -8deg over 12s ease-in-out
+  rotateX: -3deg
+
+# === LAYER 6: Far distant mountains (slowest parallax) ===
+
+@group layer6 parent:scene | 0s - 15s
+  z: -400
+  y: 80
+
+path mountain6a fill:$mountain1 parent:layer6 | 0s - 15s
+  d: "M-600,200 L-400,50 L-200,180 L0,30 L200,150 L400,20 L600,200 Z"
+  opacity: 0.5
+
+# Snow caps on distant peaks
+path snow6a fill:$snow parent:layer6 | 0s - 15s
+  d: "M-400,50 L-350,80 L-450,80 Z"
+  opacity: 0.3
+
+path snow6b fill:$snow parent:layer6 | 0s - 15s
+  d: "M0,30 L50,70 L-50,70 Z"
+  opacity: 0.3
+
+path snow6c fill:$snow parent:layer6 | 0s - 15s
+  d: "M400,20 L450,60 L350,60 Z"
+  opacity: 0.3
+
+# === LAYER 5: Distant mountains ===
+
+@group layer5 parent:scene | 0s - 15s
+  z: -300
+  y: 100
+
+path mountain5a fill:$mountain2 parent:layer5 | 0s - 15s
+  d: "M-600,200 L-450,80 L-300,160 L-150,60 L0,140 L150,40 L300,130 L450,70 L600,200 Z"
+  opacity: 0.6
+
+path snow5a fill:$snow parent:layer5 | 0s - 15s
+  d: "M-450,80 L-400,110 L-500,110 Z"
+  opacity: 0.4
+
+path snow5b fill:$snow parent:layer5 | 0s - 15s
+  d: "M-150,60 L-100,100 L-200,100 Z"
+  opacity: 0.4
+
+path snow5c fill:$snow parent:layer5 | 0s - 15s
+  d: "M150,40 L200,85 L100,85 Z"
+  opacity: 0.4
+
+path snow5d fill:$snow parent:layer5 | 0s - 15s
+  d: "M450,70 L500,110 L400,110 Z"
+  opacity: 0.4
+
+# === LAYER 4: Mid-distance mountains ===
+
+@group layer4 parent:scene | 0s - 15s
+  z: -200
+  y: 110
+
+path mountain4a fill:$mountain3 parent:layer4 | 0s - 15s
+  d: "M-600,200 L-480,100 L-350,170 L-200,70 L-50,150 L100,50 L250,140 L400,80 L550,160 L600,200 Z"
+  opacity: 0.75
+
+path snow4a fill:$snow parent:layer4 | 0s - 15s
+  d: "M-200,70 L-150,110 L-250,110 Z"
+  opacity: 0.5
+
+path snow4b fill:$snow parent:layer4 | 0s - 15s
+  d: "M100,50 L150,95 L50,95 Z"
+  opacity: 0.5
+
+path snow4c fill:$snow parent:layer4 | 0s - 15s
+  d: "M400,80 L450,120 L350,120 Z"
+  opacity: 0.5
+
+# === LAYER 3: Closer mountains with more detail ===
+
+@group layer3 parent:scene | 0s - 15s
+  z: -100
+  y: 120
+
+path mountain3a fill:$mountain4 parent:layer3 | 0s - 15s
+  d: "M-600,200 L-500,120 L-380,180 L-250,90 L-100,160 L50,70 L200,150 L350,100 L500,170 L600,200 Z"
+  opacity: 0.85
+
+path snow3a fill:$snow parent:layer3 | 0s - 15s
+  d: "M-250,90 L-200,130 L-300,130 Z"
+  opacity: 0.6
+
+path snow3b fill:$snow parent:layer3 | 0s - 15s
+  d: "M50,70 L100,115 L0,115 Z"
+  opacity: 0.6
+
+# Ridge detail
+path ridge3 fill:$mountain3 parent:layer3 | 0s - 15s
+  d: "M-250,90 L-200,130 L-250,160 L-300,130 Z"
+  opacity: 0.5
+
+# === LAYER 2: Foreground mountains ===
+
+@group layer2 parent:scene | 0s - 15s
+  z: 0
+  y: 130
+
+path mountain2a fill:$mountain5 parent:layer2 | 0s - 15s
+  d: "M-600,200 L-450,110 L-300,180 L-150,100 L0,170 L150,90 L300,160 L450,120 L600,200 Z"
+
+# Tree line silhouettes
+path trees2a fill:$tree parent:layer2 | 0s - 15s
+  d: "M-500,200 L-490,170 L-480,200 L-470,165 L-460,200 L-450,175 L-440,200 L-430,168 L-420,200 Z"
+  opacity: 0.7
+
+path trees2b fill:$tree parent:layer2 | 0s - 15s
+  d: "M-200,200 L-190,172 L-180,200 L-170,168 L-160,200 L-150,175 L-140,200 L-130,170 L-120,200 Z"
+  opacity: 0.7
+
+path trees2c fill:$tree parent:layer2 | 0s - 15s
+  d: "M100,200 L110,175 L120,200 L130,170 L140,200 L150,178 L160,200 L170,172 L180,200 Z"
+  opacity: 0.7
+
+path trees2d fill:$tree parent:layer2 | 0s - 15s
+  d: "M350,200 L360,168 L370,200 L380,173 L390,200 L400,170 L410,200 L420,175 L430,200 Z"
+  opacity: 0.7
+
+# === LAYER 1: Closest foreground hills (fastest parallax) ===
+
+@group layer1 parent:scene | 0s - 15s
+  z: 100
+  y: 150
+
+path hill1a fill:#1e293b parent:layer1 | 0s - 15s
+  d: "M-700,200 L-550,140 L-400,180 L-250,130 L-100,170 L50,120 L200,160 L350,130 L500,170 L650,140 L700,200 Z"
+
+# Dense tree line
+path trees1a fill:#0f2417 parent:layer1 | 0s - 15s
+  d: "M-600,200 L-590,160 L-580,200 L-570,155 L-560,200 L-550,165 L-540,200 L-530,158 L-520,200 L-510,162 L-500,200 Z"
+
+path trees1b fill:#0f2417 parent:layer1 | 0s - 15s
+  d: "M-300,200 L-290,158 L-280,200 L-270,152 L-260,200 L-250,160 L-240,200 L-230,155 L-220,200 L-210,162 L-200,200 Z"
+
+path trees1c fill:#0f2417 parent:layer1 | 0s - 15s
+  d: "M0,200 L10,155 L20,200 L30,150 L40,200 L50,158 L60,200 L70,152 L80,200 L90,160 L100,200 Z"
+
+path trees1d fill:#0f2417 parent:layer1 | 0s - 15s
+  d: "M250,200 L260,158 L270,200 L280,152 L290,200 L300,162 L310,200 L320,155 L330,200 L340,160 L350,200 Z"
+
+path trees1e fill:#0f2417 parent:layer1 | 0s - 15s
+  d: "M480,200 L490,155 L500,200 L510,150 L520,200 L530,160 L540,200 L550,153 L560,200 L570,158 L580,200 Z"
+
+# === GROUND LAYER: Lake reflection ===
+
+@group ground parent:scene | 0s - 15s
+  z: 150
+  y: 180
+
+# Lake water
+ellipse lake rx:400 ry:60 fill:$water parent:ground | 0s - 15s
+  y: 30
+  rotateX: -80deg
+  opacity: 0.7
+
+# Water shimmer
+ellipse shimmer1 rx:80 ry:8 fill:#ffffff parent:ground | 0s - 15s
+  x: -100
+  y: 25
+  rotateX: -80deg
+  opacity: f(t) = 0.15 + 0.1 * sin(t * 3)
+
+ellipse shimmer2 rx:60 ry:6 fill:#ffffff parent:ground | 0s - 15s
+  x: 80
+  y: 35
+  rotateX: -80deg
+  opacity: f(t) = 0.12 + 0.08 * sin(t * 2.5 + 1)
+
+ellipse shimmer3 rx:40 ry:5 fill:#ffffff parent:ground | 0s - 15s
+  x: -50
+  y: 40
+  rotateX: -80deg
+  opacity: f(t) = 0.1 + 0.1 * sin(t * 2.8 + 2)
+
+# Shore line
+path shore fill:#1e293b parent:ground | 0s - 15s
+  d: "M-500,80 Q-250,60 0,80 Q250,100 500,80 L500,150 L-500,150 Z"
+  opacity: 0.9
+
+= Atmosphere | 0s - 15s =
+
+# Fog layers
+rect fog1 w:960 h:80 fill:$fog | 0s - 15s
+  x: 480
+  y: 380
+  opacity: f(t) = 0.08 + 0.04 * sin(t * 0.5)
+  blur: 20
+
+rect fog2 w:960 h:60 fill:$fog | 0s - 15s
+  x: 480
+  y: 420
+  opacity: f(t) = 0.12 + 0.05 * sin(t * 0.7 + 1)
+  blur: 30
+
+rect fog3 w:960 h:40 fill:$fog | 0s - 15s
+  x: 480
+  y: 460
+  opacity: f(t) = 0.15 + 0.05 * sin(t * 0.6 + 2)
+  blur: 25
+
+# Floating clouds
+ellipse cloud1 rx:80 ry:25 fill:#ffffff | 0s - 15s
+  x: f(t) = 150 + 30 * sin(t * 0.3)
+  y: 150
+  opacity: 0.3
+  blur: 15
+
+ellipse cloud2 rx:60 ry:20 fill:#ffffff | 0s - 15s
+  x: f(t) = 600 + 25 * sin(t * 0.25 + 1)
+  y: 180
+  opacity: 0.25
+  blur: 12
+
+ellipse cloud3 rx:100 ry:30 fill:#ffffff | 0s - 15s
+  x: f(t) = 380 + 35 * sin(t * 0.35 + 2)
+  y: 130
+  opacity: 0.2
+  blur: 18
+
+= Birds | 2s - 15s =
+
+# Flying birds silhouettes
+path bird1 fill:#1e293b | 2s - 15s
+  d: "M-8,0 Q-4,-4 0,0 Q4,-4 8,0"
+  x: f(t) = 200 + t * 30
+  y: f(t) = 200 + 15 * sin(t * 2)
+  scale: 0.8
+  opacity: 0.6
+
+path bird2 fill:#1e293b | 2.5s - 15s
+  d: "M-8,0 Q-4,-4 0,0 Q4,-4 8,0"
+  x: f(t) = 180 + t * 28
+  y: f(t) = 210 + 12 * sin(t * 2.2 + 0.5)
+  scale: 0.6
+  opacity: 0.5
+
+path bird3 fill:#1e293b | 3s - 15s
+  d: "M-8,0 Q-4,-4 0,0 Q4,-4 8,0"
+  x: f(t) = 220 + t * 32
+  y: f(t) = 195 + 18 * sin(t * 1.8 + 1)
+  scale: 0.7
+  opacity: 0.55
+
+= UI | 0s - 15s =
+
+text title "MOUNTAIN VISTA" font:Roboto size:36 fill:#ffffff weight:bold | 0.5s - 15s
+  x: 480
+  y: 50
+  opacity: 0 -> 1 over 1s ease-out
+  letterSpacing: 6
+
+text subtitle "Parallax Depth" font:Roboto size:14 fill:#94a3b8 | 1s - 15s
+  x: 480
+  y: 85
+  opacity: 0 -> 0.8 over 0.8s ease-out
+
+# Depth indicator
+rect depthBg w:120 h:180 fill:#0f172a cornerRadius:8 | 1.5s - 15s
+  x: 70
+  y: 200
+  opacity: 0.85
+  stroke: #334155
+  strokeWidth: 1
+
+text depthTitle "LAYERS" font:Roboto size:10 fill:#64748b | 1.7s - 15s
+  x: 70
+  y: 125
+
+rect layer6Ind w:60 h:8 fill:$mountain1 cornerRadius:2 | 1.9s - 15s
+  x: 70
+  y: 150
+  opacity: 0 -> 0.5 over 0.3s
+
+rect layer5Ind w:60 h:8 fill:$mountain2 cornerRadius:2 | 2.1s - 15s
+  x: 70
+  y: 165
+  opacity: 0 -> 0.6 over 0.3s
+
+rect layer4Ind w:60 h:8 fill:$mountain3 cornerRadius:2 | 2.3s - 15s
+  x: 70
+  y: 180
+  opacity: 0 -> 0.75 over 0.3s
+
+rect layer3Ind w:60 h:8 fill:$mountain4 cornerRadius:2 | 2.5s - 15s
+  x: 70
+  y: 195
+  opacity: 0 -> 0.85 over 0.3s
+
+rect layer2Ind w:60 h:8 fill:$mountain5 cornerRadius:2 | 2.7s - 15s
+  x: 70
+  y: 210
+  opacity: 0 -> 1 over 0.3s
+
+rect layer1Ind w:60 h:8 fill:#1e293b cornerRadius:2 | 2.9s - 15s
+  x: 70
+  y: 225
+  opacity: 0 -> 1 over 0.3s
+
+text depthFar "Far" font:Roboto size:8 fill:#64748b | 2s - 15s
+  x: 70
+  y: 245
+
+text depthNear "Near" font:Roboto size:8 fill:#94a3b8 | 2s - 15s
+  x: 70
+  y: 260

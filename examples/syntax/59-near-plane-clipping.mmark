@@ -1,0 +1,29 @@
+---
+canvas: 720x420
+bg: #09111b
+fps: 60
+perspective: 240
+vanish: 360 200
+---
+
+# Near-plane clipping keeps geometry alive near camera
+
+@group clipDemo | 0s - 8s
+  x: 360
+  y: 205
+  rotateX: -10deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+poly3d fan fill:#fb7185 stroke:#fecdd3 strokeWidth:2 parent:clipDemo | 0s - 8s
+  points: [(-90,-50,-20), (90,-50,-20), (0,60,260)]
+
+path3d arc d:"M-120,0,-10 C-40,-80,130 40,80,180 120,0,-10" fill:none stroke:#38bdf8 strokeWidth:8 parent:clipDemo | 0s - 8s
+  strokeCap: round
+
+line3d marker stroke:#f8fafc strokeWidth:3 parent:clipDemo | 0s - 8s
+  from: (0,-70,0)
+  to: (0,80,230)
+
+text label "59 near-plane clipping" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 360
+  y: 372

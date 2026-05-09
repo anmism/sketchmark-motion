@@ -1,0 +1,138 @@
+---
+canvas: 640x640
+bg: #0a0a0f
+fps: 30
+$gold: #d4af37
+$silver: #c0c0c0
+$face: #1a1a24
+$tick: #e5e5e5
+$secondHand: #e74c5c
+$minuteHand: #f5f5f5
+$hourHand: #f5f5f5
+---
+
+= Watch Animation | 0s - 12s =
+
+circle outerRing r:260 fill:#2a2a35 stroke:$gold strokeWidth:8 | 0s - 12s
+  x: 320
+  y: 320
+  scale: 0 -> 1 over 0.6s ease-out
+
+circle innerRing r:240 fill:$face stroke:$silver strokeWidth:2 | 0.2s - 12s
+  x: 320
+  y: 320
+  scale: 0 -> 1 over 0.5s ease-out
+
+circle hourMark12 r:4 fill:$tick | 0.4s - 12s
+  x: 320
+  y: 100
+  opacity: 0 -> 1 over 0.3s
+
+circle hourMark3 r:4 fill:$tick | 0.5s - 12s
+  x: 440
+  y: 320
+  opacity: 0 -> 1 over 0.3s
+
+circle hourMark6 r:4 fill:$tick | 0.6s - 12s
+  x: 320
+  y: 540
+  opacity: 0 -> 1 over 0.3s
+
+circle hourMark9 r:4 fill:$tick | 0.7s - 12s
+  x: 200
+  y: 320
+  opacity: 0 -> 1 over 0.3s
+
+line tick1 from:(320, 85) to:(320, 100) stroke:$tick strokeWidth:3 | 0.4s - 12s
+  opacity: 0 -> 1 over 0.3s
+
+line tick2 from:(435, 320) to:(455, 320) stroke:$tick strokeWidth:3 | 0.5s - 12s
+  opacity: 0 -> 1 over 0.3s
+
+line tick3 from:(320, 540) to:(320, 555) stroke:$tick strokeWidth:3 | 0.6s - 12s
+  opacity: 0 -> 1 over 0.3s
+
+line tick4 from:(185, 320) to:(205, 320) stroke:$tick strokeWidth:3 | 0.7s - 12s
+  opacity: 0 -> 1 over 0.3s
+
+text num12 "12" font:Roboto size:28 fill:$tick weight:bold | 0.4s - 12s
+  x: 320
+  y: 130
+  opacity: 0 -> 1 over 0.3s
+
+text num3 "3" font:Roboto size:28 fill:$tick weight:bold | 0.5s - 12s
+  x: 420
+  y: 330
+  opacity: 0 -> 1 over 0.3s
+
+text num6 "6" font:Roboto size:28 fill:$tick weight:bold | 0.6s - 12s
+  x: 320
+  y: 520
+  opacity: 0 -> 1 over 0.3s
+
+text num9 "9" font:Roboto size:28 fill:$tick weight:bold | 0.7s - 12s
+  x: 220
+  y: 330
+  opacity: 0 -> 1 over 0.3s
+
+@group hourHand | 1s - 12s
+  x: 320
+  y: 320
+  rotation: f(t) = -1.57 + (t * 0.0145)
+  opacity: 0 -> 1 over 0.4s
+
+rect hourHandBody w:10 h:90 fill:$hourHand cornerRadius:5 parent:hourHand | 1s - 12s
+  x: 0
+  y: -45
+  anchor: center
+
+@group minuteHand | 1.2s - 12s
+  x: 320
+  y: 320
+  rotation: f(t) = -1.57 + (t * 0.175)
+  opacity: 0 -> 1 over 0.4s
+
+rect minuteHandBody w:6 h:130 fill:$minuteHand cornerRadius:3 parent:minuteHand | 1.2s - 12s
+  x: 0
+  y: -65
+  anchor: center
+
+@group secondHand | 1.5s - 12s
+  x: 320
+  y: 320
+  rotation: f(t) = -1.57 + (t * 0.524)
+  opacity: 0 -> 1 over 0.3s
+
+rect secondHandBody w:3 h:160 fill:$secondHand cornerRadius:2 parent:secondHand | 1.5s - 12s
+  x: 0
+  y: -80
+  anchor: center
+
+circle secondHandTail r:8 fill:$secondHand parent:secondHand | 1.5s - 12s
+  x: 0
+  y: 40
+
+circle centerCap r:12 fill:$gold | 1s - 12s
+  x: 320
+  y: 320
+  scale: 0 -> 1 over 0.3s ease-out
+
+circle centerDot r:5 fill:#1a1a24 | 1.2s - 12s
+  x: 320
+  y: 320
+  scale: 0 -> 1 over 0.2s ease-out
+
+text brand "MOTION" font:Roboto size:14 fill:#888 | 2s - 12s
+  x: 320
+  y: 240
+  opacity: 0 -> 1 over 0.5s
+
+text mark "MARK" font:Roboto size:10 fill:#666 | 2.2s - 12s
+  x: 320
+  y: 258
+  opacity: 0 -> 1 over 0.5s
+
+circle subtlePulse r:250 fill:none stroke:$gold strokeWidth:1 | 2s - 12s
+  x: 320
+  y: 320
+  opacity: f(t) = 0.2 + 0.1 * sin(t * 2)

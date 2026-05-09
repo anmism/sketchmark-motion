@@ -1,0 +1,60 @@
+---
+canvas: 640x360
+bg: #f8fafc
+fps: 24
+$success: #10b981
+$card: #ffffff
+$text: #1e293b
+$muted: #64748b
+---
+
+@motion slide-in(dur=0.4s)
+  x: 700 -> 480 over $dur ease-out
+  opacity: 0 -> 1 over 0.2s ease-out
+
+@motion slide-out(dur=0.3s)
+  x: 480 -> 700 over $dur ease-in
+  opacity: 1 -> 0 over $dur ease-in
+
+rect toast-bg w:280 h:70 fill:$card rx:12 | 0.5s - 4s
+  x: 480
+  y: 60
+  slide-in(0.4s)
+
+rect toast-accent w:4 h:50 fill:$success rx:2 | 0.5s - 4s
+  x: 355
+  y: 60
+  slide-in(0.4s)
+
+circle icon-bg r:16 fill:#d1fae5 | 0.5s - 4s
+  x: 390
+  y: 52
+  slide-in(0.4s)
+
+text check "✓" font:Roboto size:16 fill:$success | 0.5s - 4s
+  x: 390
+  y: 52
+  slide-in(0.4s)
+
+text toast-title "File uploaded" font:Roboto size:14 fill:$text weight:bold | 0.5s - 4s
+  x: 490
+  y: 48
+  slide-in(0.4s)
+
+text toast-desc "report-q4.pdf saved" font:Roboto size:12 fill:$muted | 0.5s - 4s
+  x: 490
+  y: 68
+  slide-in(0.4s)
+
+rect progress w:260 h:3 fill:#d1fae5 rx:2 | 0.9s - 3.8s
+  x: 480
+  y: 88
+  w: 260 -> 0 over 2.9s linear
+
+text demo-label "Toast Notification" font:Roboto size:20 fill:$text weight:bold | 0s - 4.5s
+  x: 320
+  y: 200
+
+text demo-sub "Slide-in with progress bar" font:Roboto size:13 fill:$muted | 0s - 4.5s
+  x: 320
+  y: 230

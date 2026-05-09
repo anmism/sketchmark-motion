@@ -1,0 +1,75 @@
+---
+canvas: 600x400
+bg: #0f172a
+fps: 60
+perspective: 500
+vanish: 300 200
+$size: 80
+$half: 40
+$front: #3b82f6
+$back: #1e40af
+$left: #22d3ee
+$right: #0891b2
+$top: #a855f7
+$bottom: #7c3aed
+---
+
+# Spinning Cube
+# Each face is a rect positioned and rotated in 3D space
+
+@group cube | 0s - 6s
+  x: 300
+  y: 200
+  rotateY: 0deg -> 360deg over 6s linear
+  rotateX: 0deg -> 360deg over 8s linear
+
+# Front face (z = +half)
+rect front w:$size h:$size fill:$front parent:cube | 0s - 6s
+  x: 0
+  y: 0
+  z: 40
+  opacity: 0.9
+
+# Back face (z = -half, rotated 180 to face outward)
+rect back w:$size h:$size fill:$back parent:cube | 0s - 6s
+  x: 0
+  y: 0
+  z: -40
+  rotateY: 180deg
+  opacity: 0.9
+
+
+rect right w:$size h:$size fill:$right parent:cube | 0s - 6s
+  x: 40
+  y: 0
+  z: 0
+  rotateY: 90deg
+  opacity: 0.9
+
+# Left face (rotateY -90, offset -x)
+rect left w:$size h:$size fill:$left parent:cube | 0s - 6s
+  x: -40
+  y: 0
+  z: 0
+  rotateY: -90deg
+  opacity: 0.9
+
+# Top face (rotateX -90, offset -y)
+rect top w:$size h:$size fill:$top parent:cube | 0s - 6s
+  x: 0
+  y: -40
+  z: 0
+  rotateX: -90deg
+  opacity: 0.9
+
+# Bottom face (rotateX 90, offset y)
+rect bottom w:$size h:$size fill:$bottom parent:cube | 0s - 6s
+  x: 0
+  y: 40
+  z: 0
+  rotateX: 90deg
+  opacity: 0.9
+
+text label "2.5D Cube" font:Roboto size:24 fill:#e2e8f0 weight:bold | 0s - 6s
+  x: 300
+  y: 360

@@ -1,0 +1,14 @@
+import "./phase0/expression.test";
+import "./phase0/pipeline.test";
+import "./phase1/easing.test";
+import "./phase1/animation.test";
+import "./phase2/header-shapes.test";
+import "./phase3/motion.test";
+import "./phase4/validator.test";
+import "./phase5/scenes-expression.test";
+import "./phase6/exporter.test";
+import "./phase7/ai.test";
+import "./phase8/composition.test";
+import "./phase9/stdlib.test";
+import "./phase10/animation-primitives.test";
+import "./phase11/2_5d.test";

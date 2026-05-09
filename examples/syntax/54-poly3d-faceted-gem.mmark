@@ -1,0 +1,37 @@
+---
+canvas: 720x420
+bg: #11091d
+fps: 60
+perspective: 620
+vanish: 360 200
+---
+
+# poly3d gemstone
+
+@group gem | 0s - 8s
+  x: 360
+  y: 210
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+poly3d topFront fill:#c084fc stroke:#ffffff22 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(-40,0,40), (40,0,40), (0,-75,0)]
+poly3d topRight fill:#a855f7 stroke:#ffffff22 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(40,0,40), (40,0,-40), (0,-75,0)]
+poly3d topBack fill:#7e22ce stroke:#ffffff22 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(40,0,-40), (-40,0,-40), (0,-75,0)]
+poly3d topLeft fill:#9333ea stroke:#ffffff22 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(-40,0,-40), (-40,0,40), (0,-75,0)]
+
+poly3d bottomFront fill:#7c3aed stroke:#ffffff18 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(-40,0,40), (40,0,40), (0,75,0)]
+poly3d bottomRight fill:#6d28d9 stroke:#ffffff18 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(40,0,40), (40,0,-40), (0,75,0)]
+poly3d bottomBack fill:#581c87 stroke:#ffffff18 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(40,0,-40), (-40,0,-40), (0,75,0)]
+poly3d bottomLeft fill:#6b21a8 stroke:#ffffff18 strokeWidth:2 parent:gem | 0s - 8s
+  points: [(-40,0,-40), (-40,0,40), (0,75,0)]
+
+text label "54 poly3d faceted gem" font:Roboto size:20 fill:#eadcff weight:bold | 0s - 8s
+  x: 360
+  y: 372

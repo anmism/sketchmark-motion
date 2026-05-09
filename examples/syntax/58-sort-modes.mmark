@@ -1,0 +1,51 @@
+---
+canvas: 760x440
+bg: #0e1118
+fps: 60
+perspective: 620
+vanish: 380 200
+---
+
+# Compare depth sort and manual sort
+
+@group depthStack | 0s - 8s
+  x: 220
+  y: 210
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+  sort: depth
+
+@view depthBack parent:depthStack | 0s - 8s
+  at: 0 0 -35
+  normal: 0 0 1
+rect depthBackFace w:90 h:90 fill:#1d4ed8 parent:depthBack | 0s - 8s
+
+@view depthFront parent:depthStack | 0s - 8s
+  at: 0 0 35
+  normal: 0 0 1
+rect depthFrontFace w:70 h:70 fill:#f97316 parent:depthFront | 0s - 8s
+
+text leftLabel "sort: depth" font:Roboto size:18 fill:#dbeafe weight:bold | 0s - 8s
+  x: 220
+  y: 360
+
+@group manualStack | 0s - 8s
+  x: 540
+  y: 210
+  rotateX: -16deg
+  rotateY: 0deg -> 360deg over 8s linear
+  sort: manual
+
+@view manualBack parent:manualStack | 0s - 8s
+  at: 0 0 -35
+  normal: 0 0 1
+rect manualBackFace w:90 h:90 fill:#1d4ed8 parent:manualBack | 0s - 8s
+
+@view manualFront parent:manualStack | 0s - 8s
+  at: 0 0 35
+  normal: 0 0 1
+rect manualFrontFace w:70 h:70 fill:#f97316 parent:manualFront | 0s - 8s
+
+text rightLabel "sort: manual" font:Roboto size:18 fill:#dbeafe weight:bold | 0s - 8s
+  x: 540
+  y: 360

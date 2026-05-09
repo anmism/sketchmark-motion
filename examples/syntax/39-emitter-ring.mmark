@@ -1,0 +1,25 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+fps: 30
+$magic: #a855f7
+$white: #e2e8f0
+---
+
+text title "Ring Emitter" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+circle center r:8 fill:$magic | 0s - 10s
+  x: 320
+  y: 180
+
+@emitter ring | 0s - 10s
+  template: circle r:4 fill:$magic
+  spawn: 20/s
+  lifetime: 1.5s
+  emitOn: circle(320, 180, 60)
+  vx: random(-10, 10)
+  vy: random(-10, 10)
+  opacity: 0.8 -> 0 over life
+  scale: 1 -> 0.3 over life

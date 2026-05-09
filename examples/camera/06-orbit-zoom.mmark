@@ -1,0 +1,58 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+---
+
+@camera
+  rotation: f(t) = t * 0.3
+  scale: 1 -> 2 over 5s ease-in-out
+
+= Orbit | 0s - 6s =
+
+circle center-star r:30 fill:#ffd700 | persist
+  x: 320
+  y: 180
+
+circle planet1 r:12 fill:#e74c3c | persist
+  x: f(t) = 320 + 80 * cos(t * 2)
+  y: f(t) = 180 + 80 * sin(t * 2)
+
+circle planet2 r:18 fill:#3498db | persist
+  x: f(t) = 320 + 130 * cos(t * 1.2 + 2)
+  y: f(t) = 180 + 130 * sin(t * 1.2 + 2)
+
+circle planet3 r:8 fill:#9b59b6 | persist
+  x: f(t) = 320 + 50 * cos(t * 3.5)
+  y: f(t) = 180 + 50 * sin(t * 3.5)
+
+circle orbit1 r:80 fill:transparent stroke:#ffffff22 strokeWidth:1 | persist
+  x: 320
+  y: 180
+
+circle orbit2 r:130 fill:transparent stroke:#ffffff22 strokeWidth:1 | persist
+  x: 320
+  y: 180
+
+circle orbit3 r:50 fill:transparent stroke:#ffffff22 strokeWidth:1 | persist
+  x: 320
+  y: 180
+
+circle star1 r:1 fill:#fff | persist
+  x: 50
+  y: 40
+
+circle star2 r:2 fill:#fff | persist
+  x: 580
+  y: 60
+
+circle star3 r:1 fill:#fff | persist
+  x: 100
+  y: 300
+
+circle star4 r:2 fill:#fff | persist
+  x: 550
+  y: 280
+
+circle star5 r:1 fill:#fff | persist
+  x: 200
+  y: 50

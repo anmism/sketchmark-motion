@@ -1,0 +1,75 @@
+---
+canvas: 960x540
+bg: #07111f
+fps: 60
+perspective: 820
+vanish: 480 285
+$land: #16a34a
+$cliff: #854d0e
+$water: #0ea5e9
+---
+
+# 3D Terrain Map
+# Cuboid tiles and pyramids make a stylized map/isometric terrain.
+
+@group map | 0s - 10s
+  x: 480
+  y: 295
+  rotateX: -28deg
+  rotateY: -22deg -> 22deg -> -22deg over 10s ease-in-out
+
+cuboid tile0 w:110 h:24 d:110 fill:$land stroke:#ffffff12 strokeWidth:1 parent:map | 0s - 10s
+  x: -120
+  z: -60
+  topFill: #22c55e
+  frontFill: $cliff
+
+cuboid tile1 w:110 h:46 d:110 fill:$land stroke:#ffffff12 strokeWidth:1 parent:map | 0.1s - 10s
+  x: 0
+  z: -60
+  y: -11
+  topFill: #4ade80
+  frontFill: #92400e
+
+cuboid tile2 w:110 h:30 d:110 fill:$land stroke:#ffffff12 strokeWidth:1 parent:map | 0.2s - 10s
+  x: 120
+  z: -60
+  y: -3
+  topFill: #22c55e
+  frontFill: #713f12
+
+cuboid tile3 w:110 h:24 d:110 fill:$water stroke:#ffffff12 strokeWidth:1 parent:map | 0s - 10s
+  x: -120
+  z: 60
+  topFill: #38bdf8
+  frontFill: #0369a1
+
+cuboid tile4 w:110 h:38 d:110 fill:$land stroke:#ffffff12 strokeWidth:1 parent:map | 0.3s - 10s
+  x: 0
+  z: 60
+  y: -7
+  topFill: #65a30d
+  frontFill: #78350f
+
+cuboid tile5 w:110 h:58 d:110 fill:$land stroke:#ffffff12 strokeWidth:1 parent:map | 0.4s - 10s
+  x: 120
+  z: 60
+  y: -17
+  topFill: #84cc16
+  frontFill: #713f12
+
+pyramid mountainA r:38 h:82 sides:4 fill:#78716c stroke:#ffffff14 strokeWidth:1 parent:map | 0.6s - 10s
+  x: 120
+  y: -86
+  z: 60
+  topFill: #e7e5e4
+  side0Fill: #a8a29e
+
+path3d river d:"M-170,-30,80 C-110,-38,44 -60,-18,16 0,-34,-8 C70,-60,-28 120,-42,-70 170,-50,-88" fill:none stroke:#7dd3fc strokeWidth:10 parent:map | 0.8s - 10s
+  depthBias: 80
+  strokeCap: round
+  opacity: 0.75
+
+text title "TERRAIN MAP" font:Roboto size:36 fill:#ffffff weight:bold | 0s - 10s
+  x: 480
+  y: 70

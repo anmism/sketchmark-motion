@@ -1,0 +1,72 @@
+---
+canvas: 720x420
+bg: #08111f
+fps: 60
+perspective: 620
+vanish: 360 190
+---
+
+# 3D Primitive Controls
+# Demonstrates depthBias, sort modes, line3d, poly3d, path3d, near clipping, and billboard.
+
+@group world sort:depth | 0s - 8s
+  x: 360
+  y: 205
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+# Wire axes use true 3D endpoints.
+line3d xAxis stroke:#ef4444 strokeWidth:3 parent:world | 0s - 8s
+  from: (-120, 0, 0)
+  to: (120, 0, 0)
+
+line3d yAxis stroke:#22c55e strokeWidth:3 parent:world | 0s - 8s
+  from: (0, -90, 0)
+  to: (0, 90, 0)
+
+line3d zAxis stroke:#38bdf8 strokeWidth:3 parent:world | 0s - 8s
+  from: (0, 0, -120)
+  to: (0, 0, 120)
+
+# A closed 3D polygon. One point comes very close to the camera and is clipped.
+poly3d shard fill:#f97316 stroke:#fed7aa strokeWidth:2 parent:world | 0s - 8s
+  points: [(-45,-35,10), (50,-30,20), (15,45,560), (-55,35,60)]
+  opacity: 0.9
+
+# A curved 3D path. path3d reads M/L/Q/C/Z with x,y,z coordinates.
+path3d ribbon d:"M-100,55,-80 C-35,20,120 35,90,-120 100,45,80" fill:none stroke:#a78bfa strokeWidth:5 parent:world | 0s - 8s
+  strokeCap: round
+
+# Manual sort is useful for coplanar UI-like pieces where depth ties would flicker.
+@group manualStack sort:manual parent:world | 0s - 8s
+  x: 0
+  y: -15
+  z: 35
+
+@view backPlate parent:manualStack | 0s - 8s
+  at: 0 0 -8
+  normal: 0 0 1
+rect backPanel w:92 h:34 fill:#1d4ed8 parent:backPlate | 0s - 8s
+
+@view frontPlate parent:manualStack | 0s - 8s
+  at: 0 0 8
+  normal: 0 0 1
+rect frontPanel w:70 h:24 fill:#facc15 parent:frontPlate | 0s - 8s
+
+# depthBias nudges draw ordering without moving the geometry.
+@view haloPlane parent:world | 0s - 8s
+  at: 0 0 0
+  normal: 0 0 1
+circle halo r:64 fill:none stroke:#ffffff88 strokeWidth:2 parent:haloPlane | 0s - 8s
+  depthBias: -30
+
+# Billboard keeps text readable while it rides inside the rotating 3D group.
+text label "billboard" font:Roboto size:18 fill:#e2e8f0 weight:bold parent:world | 0s - 8s
+  x: 0
+  y: -120
+  z: 60
+  billboard: screen
+
+text caption "line3d / poly3d / path3d" font:Roboto size:18 fill:#cbd5e1 weight:bold | 0s - 8s
+  x: 360
+  y: 385

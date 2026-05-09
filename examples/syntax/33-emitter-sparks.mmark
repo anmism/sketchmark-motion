@@ -1,0 +1,27 @@
+---
+canvas: 640x360
+bg: #0a0a0f
+fps: 30
+$spark: #fbbf24
+$white: #e2e8f0
+---
+
+text title "Sparks" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+circle source r:20 fill:#f97316 | 0s - 10s
+  x: 320
+  y: 300
+
+@emitter sparks | 0s - 10s
+  template: circle r:2 fill:$spark
+  spawn: 40/s
+  lifetime: 1.2s
+  x: random(300, 340)
+  y: 290
+  vx: random(-100, 100)
+  vy: random(-250, -180)
+  gravity: 350
+  opacity: random(0.6, 1)
+  scale: random(0.5, 1.5)

@@ -1,0 +1,20 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+fps: 24
+$star: #ffffff
+$white: #e2e8f0
+---
+
+text title "Twinkling Stars" font:Roboto size:24 fill:$white weight:bold | 0s - 15s
+  x: 320
+  y: 30
+
+@emitter stars | 0s - 15s
+  template: circle r:2 fill:$star
+  spawn: 8/s
+  lifetime: 4s
+  x: random(20, 620)
+  y: random(60, 340)
+  opacity: random(0.2, 0.8)
+  scale: random(0.4, 1.2)

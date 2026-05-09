@@ -1,0 +1,58 @@
+---
+canvas: 720x420
+bg: #07131e
+fps: 60
+perspective: 640
+vanish: 360 200
+---
+
+# line3d wireframe cube
+
+@group rig | 0s - 8s
+  x: 360
+  y: 205
+  rotateX: -22deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+line3d e1 stroke:#67e8f9 strokeWidth:3 parent:rig | 0s - 8s
+  from: (-60,-60,60)
+  to: (60,-60,60)
+line3d e2 stroke:#67e8f9 strokeWidth:3 parent:rig | 0s - 8s
+  from: (60,-60,60)
+  to: (60,60,60)
+line3d e3 stroke:#67e8f9 strokeWidth:3 parent:rig | 0s - 8s
+  from: (60,60,60)
+  to: (-60,60,60)
+line3d e4 stroke:#67e8f9 strokeWidth:3 parent:rig | 0s - 8s
+  from: (-60,60,60)
+  to: (-60,-60,60)
+
+line3d e5 stroke:#1d4ed8 strokeWidth:3 parent:rig | 0s - 8s
+  from: (-60,-60,-60)
+  to: (60,-60,-60)
+line3d e6 stroke:#1d4ed8 strokeWidth:3 parent:rig | 0s - 8s
+  from: (60,-60,-60)
+  to: (60,60,-60)
+line3d e7 stroke:#1d4ed8 strokeWidth:3 parent:rig | 0s - 8s
+  from: (60,60,-60)
+  to: (-60,60,-60)
+line3d e8 stroke:#1d4ed8 strokeWidth:3 parent:rig | 0s - 8s
+  from: (-60,60,-60)
+  to: (-60,-60,-60)
+
+line3d e9 stroke:#94a3b8 strokeWidth:2 parent:rig | 0s - 8s
+  from: (-60,-60,-60)
+  to: (-60,-60,60)
+line3d e10 stroke:#94a3b8 strokeWidth:2 parent:rig | 0s - 8s
+  from: (60,-60,-60)
+  to: (60,-60,60)
+line3d e11 stroke:#94a3b8 strokeWidth:2 parent:rig | 0s - 8s
+  from: (60,60,-60)
+  to: (60,60,60)
+line3d e12 stroke:#94a3b8 strokeWidth:2 parent:rig | 0s - 8s
+  from: (-60,60,-60)
+  to: (-60,60,60)
+
+text label "53 line3d wireframe" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 360
+  y: 372

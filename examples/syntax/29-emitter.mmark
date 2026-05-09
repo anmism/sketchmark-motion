@@ -1,0 +1,26 @@
+---
+canvas: 640x360
+bg: #0b1628
+fps: 24
+$rain: #6688bb
+$white: #e2e8f0
+---
+
+text title "Particle Emitter" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+text sub "30 particles/sec with gravity and random velocity" font:Roboto size:12 fill:#94a3b8 | 0s - 10s
+  x: 320
+  y: 55
+
+@emitter rain | 0s - 10s
+  template: line from:(0,0) to:(-8,60) stroke:$rain strokeWidth:1.5
+  spawn: 30/s
+  lifetime: 1.5s
+  x: random(20, 620)
+  y: -50
+  vx: random(-30, 30)
+  vy: random(200, 400)
+  gravity: 150
+  opacity: random(0.3, 0.7)

@@ -1,0 +1,21 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+rect box w:80 h:80 fill:#e74c5c | 0s - 4s
+  x: 120
+  y: 180
+
+circle ball r:40 fill:#4ecdc4 | 0s - 4s
+  x: 280
+  y: 180
+
+text label "Hello" font:Roboto size:36 fill:#ffffff | 0s - 4s
+  x: 420
+  y: 180
+
+line divider from:(80,300) to:(560,300) stroke:#ffffff44 strokeWidth:2 | 0s - 4s
+
+path tri [(480,120), (540,220), (420,220)] fill:#f39c12 | 0s - 4s

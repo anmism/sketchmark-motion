@@ -1,0 +1,39 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+$blue: #3b82f6
+$cyan: #06b6d4
+$green: #22c55e
+---
+
+# Stroke Animation - demonstrates strokeWidth and stroke color animation
+
+circle c1 r:50 fill:none stroke:$blue strokeWidth:2 | 0s - 5s
+  x: 160
+  y: 180
+  stroke: #3b82f6 -> #06b6d4 -> #3b82f6 over 2s ease-in-out
+  strokeWidth: 2 -> 8 -> 2 over 2s ease-in-out
+  draw: 0 -> 1 over 1.5s ease-out
+
+circle c2 r:50 fill:none stroke:$cyan strokeWidth:2 | 0.3s - 5s
+  x: 320
+  y: 180
+  stroke: #06b6d4 -> #22c55e -> #06b6d4 over 2s ease-in-out
+  strokeWidth: 2 -> 8 -> 2 over 2s ease-in-out
+  draw: 0 -> 1 over 1.5s ease-out
+
+circle c3 r:50 fill:none stroke:$green strokeWidth:2 | 0.6s - 5s
+  x: 480
+  y: 180
+  stroke: #22c55e -> #3b82f6 -> #22c55e over 2s ease-in-out
+  strokeWidth: 2 -> 8 -> 2 over 2s ease-in-out
+  draw: 0 -> 1 over 1.5s ease-out
+
+text title "Stroke Animation" font:Roboto size:24 fill:#fff weight:bold | 0s - 5s
+  x: 320
+  y: 300
+
+line underline x1:200 y1:320 x2:440 y2:320 stroke:#334155 strokeWidth:2 | 1s - 5s
+  draw: 0 -> 1 over 1s ease-out
+  stroke: #334155 -> #3b82f6 -> #334155 over 2s linear

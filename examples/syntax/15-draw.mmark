@@ -1,0 +1,84 @@
+---
+canvas: 800x600
+bg: #0f172a
+fps: 24
+$blue: #60a5fa
+$green: #4ade80
+$orange: #f59e0b
+$pink: #ec4899
+$white: #e2e8f0
+$muted: #64748b
+---
+
+text title "Draw Animation" font:Roboto size:22 fill:$white weight:bold | 0s - 10s
+  x: 400
+  y: 30
+
+text sub "draw: 0 -> 1 reveals elements progressively" font:Roboto size:12 fill:$muted | 0s - 10s
+  x: 400
+  y: 52
+
+text lbl1 "Line" font:Roboto size:11 fill:$blue | 0s - 10s
+  x: 100
+  y: 100
+
+line demo-line x1:50 y1:130 x2:200 y2:180 stroke:$blue strokeWidth:3 | 0s - 10s
+  draw: 0 -> 1 over 2s ease-out
+
+text lbl2 "Circle" font:Roboto size:11 fill:$green | 0s - 10s
+  x: 300
+  y: 100
+
+circle demo-circle r:40 fill:none stroke:$green strokeWidth:3 | 0.5s - 10s
+  x: 300
+  y: 160
+  draw: 0 -> 1 over 2s ease-out
+
+text lbl3 "Rect" font:Roboto size:11 fill:$orange | 0s - 10s
+  x: 500
+  y: 100
+
+rect demo-rect w:100 h:60 stroke:$orange strokeWidth:3 | 1s - 10s
+  x: 450
+  y: 130
+  draw: 0 -> 1 over 2s ease-out
+
+text lbl4 "Text" font:Roboto size:11 fill:$pink | 0s - 10s
+  x: 700
+  y: 100
+
+text demo-text "Typewriter" font:Roboto size:20 fill:$pink | 1.5s - 10s
+  x: 700
+  y: 160
+  draw: 0 -> 1 over 2s linear
+
+text lbl5 "Path (fx)" font:Roboto size:11 fill:$blue | 0s - 10s
+  x: 150
+  y: 250
+
+path demo-wave fx:"320 - 30 * sin((x - 50) * 0.08)" xRange:"50-250" steps:40 stroke:$blue strokeWidth:3 | 2s - 10s
+  draw: 0 -> 1 over 2s ease-out
+
+text lbl6 "Path (parametric)" font:Roboto size:11 fill:$green | 0s - 10s
+  x: 450
+  y: 250
+
+path demo-spiral xt:"450 + t * 5 * cos(t)" yt:"350 + t * 5 * sin(t)" tRange:"0-10" steps:80 stroke:$green strokeWidth:2 | 2.5s - 10s
+  draw: 0 -> 1 over 2.5s ease-out
+
+text lbl7 "Path (heart)" font:Roboto size:11 fill:$pink | 0s - 10s
+  x: 700
+  y: 250
+
+path demo-heart xt:"700 + 30 * sin(t) * sin(t) * sin(t)" yt:"370 - 25 * cos(t) + 8 * cos(t*2) + 5 * cos(t*3) + 2 * cos(t*4)" tRange:"0-6.28" steps:60 stroke:$pink strokeWidth:2 | 3s - 10s
+  draw: 0 -> 1 over 2s ease-out
+
+text note "All elements support draw: 0 -> 1" font:Roboto size:13 fill:$white | 5s - 10s
+  x: 400
+  y: 480
+  opacity: 0 -> 1 over 0.5s ease-out
+
+text note2 "line, circle, rect, text, path, image" font:Roboto size:11 fill:$muted | 5.5s - 10s
+  x: 400
+  y: 505
+  opacity: 0 -> 1 over 0.5s ease-out

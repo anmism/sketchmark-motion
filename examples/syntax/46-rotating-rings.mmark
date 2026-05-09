@@ -1,0 +1,52 @@
+---
+canvas: 600x400
+bg: #0f0f23
+fps: 60
+perspective: 500
+vanish: 300 200
+---
+
+# Interlocking 3D Rotating Rings
+
+# Ring 1 - rotates on X axis
+@group ring1 | 0s - 10s
+  x: 300
+  y: 200
+  rotateX: 0deg -> 360deg over 3s linear
+  rotateY: 0deg -> 360deg over 3s linear
+
+circle r1 r:80 stroke:#06b6d4 strokeWidth:8 fill:transparent parent:ring1 | 0s - 10s
+  x: 0
+  y: 0
+  z: 0
+
+# Ring 2 - rotates on Y axis
+@group ring2 | 0s - 10s
+  x: 300
+  y: 200
+  rotateY: 0deg -> 360deg over 4s linear
+
+circle r2 r:80 stroke:#8b5cf6 strokeWidth:8 fill:transparent parent:ring2 | 0s - 10s
+  x: 0
+  y: 0
+  z: 0
+
+# Ring 3 - rotates on Z axis
+@group ring3 | 0s - 10s
+  x: 300
+  y: 200
+  rotateZ: 0deg -> 360deg over 5s linear
+
+circle r3 r:80 stroke:#f59e0b strokeWidth:8 fill:transparent parent:ring3 | 0s - 10s
+  x: 0
+  y: 0
+  z: 0
+
+# Inner sphere
+circle core r:25 fill:#ec4899 | 0s - 10s
+  x: 300
+  y: 200
+
+text label "Gyroscope Rings" font:Roboto size:18 fill:#6b7280 | 0s - 10s
+  x: 300
+  y: 370

@@ -1,0 +1,68 @@
+---
+canvas: 960x540
+bg: #0f172a
+fps: 60
+perspective: 900
+vanish: 480 250
+$blue: #3b82f6
+$cyan: #22d3ee
+$pink: #f472b6
+$white: #f8fafc
+$muted: #94a3b8
+---
+
+@motion flip-in(delay=0s)
+  rotateY: -75deg -> 0deg over 0.7s ease-out
+  z: -120 -> 0 over 0.7s ease-out
+  opacity: 0 -> 1 over 0.25s ease-out
+
+text title "2.5D Cards" font:Roboto size:34 fill:$white weight:bold | 0s - 4s
+  x: 480
+  y: 72
+
+text subtitle "z is depth, zIndex is layer order" font:Roboto size:16 fill:$muted | 0s - 4s
+  x: 480
+  y: 108
+
+rect floor w:680 h:120 fill:#111827 stroke:#334155 strokeWidth:2 | 0s - 4s
+  x: 480
+  y: 390
+  rotateX: 65deg
+  z: -180deg
+  scaleY: 1.4
+
+rect card1 w:170 h:230 fill:$blue stroke:#bfdbfe strokeWidth:2 cornerRadius:12 zIndex:2 | 0s - 4s
+  x: 270
+  y: 275
+  rotateX: 6deg
+  flip-in(0s)
+
+rect card2 w:170 h:230 fill:$cyan stroke:#cffafe strokeWidth:2 cornerRadius:12 zIndex:3 | 0.15s - 4s
+  x: 480
+  y: 275
+  rotateX: 6deg
+  flip-in(0.15s)
+
+rect card3 w:170 h:230 fill:$pink stroke:#fbcfe8 strokeWidth:2 cornerRadius:12 zIndex:4 | 0.3s - 4s
+  x: 690
+  y: 275
+  rotateX: 6deg
+  flip-in(0.3s)
+
+text label1 "rotateY" font:Roboto size:20 fill:$white weight:bold zIndex:5 | 0s - 4s
+  x: 270
+  y: 275
+  rotateX: 6deg
+  rotateY: -75deg -> 0deg over 0.7s ease-out
+
+text label2 "z depth" font:Roboto size:20 fill:$white weight:bold zIndex:6 | 0.15s - 4s
+  x: 480
+  y: 275
+  rotateX: 6deg
+  rotateY: -75deg -> 0deg over 0.7s ease-out
+
+text label3 "zIndex" font:Roboto size:20 fill:$white weight:bold zIndex:7 | 0.3s - 4s
+  x: 690
+  y: 275
+  rotateX: 6deg
+  rotateY: -75deg -> 0deg over 0.7s ease-out

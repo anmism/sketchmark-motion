@@ -1,0 +1,159 @@
+---
+canvas: 640x640
+bg: #0a0a0f
+fps: 30
+$ring: #1e293b
+$active: #22d3ee
+$danger: #ef4444
+$panel: #0f172a
+---
+
+= Countdown Stopwatch | 0s - 12s =
+
+circle outerRing r:280 fill:none stroke:$ring strokeWidth:12 | 0s - 12s
+  x: 320
+  y: 320
+  scale: 0.8 -> 1 over 0.5s ease-out
+  opacity: 0 -> 1 over 0.4s
+
+circle progressRing r:280 fill:none stroke:$active strokeWidth:12 | 0.5s - 12s
+  x: 320
+  y: 320
+  drawEnd: 1 -> 0 over 10s linear
+  rotation: -1.57
+
+circle innerGlow r:240 fill:radial(0, 0, 0, 0, 0, 240, #22d3ee08, 0, #22d3ee00, 1) | 0.5s - 12s
+  x: 320
+  y: 320
+
+rect displayBg w:280 h:120 fill:$panel cornerRadius:12 | 0.3s - 12s
+  x: 320
+  y: 320
+  opacity: 0 -> 1 over 0.3s
+
+text d10 "10" font:Roboto size:90 fill:$active weight:bold | 1s - 2s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d09 "09" font:Roboto size:90 fill:$active weight:bold | 2s - 3s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d08 "08" font:Roboto size:90 fill:$active weight:bold | 3s - 4s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d07 "07" font:Roboto size:90 fill:$active weight:bold | 4s - 5s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d06 "06" font:Roboto size:90 fill:$active weight:bold | 5s - 6s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d05 "05" font:Roboto size:90 fill:#fbbf24 weight:bold | 6s - 7s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d04 "04" font:Roboto size:90 fill:#fbbf24 weight:bold | 7s - 8s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.1 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d03 "03" font:Roboto size:90 fill:$danger weight:bold | 8s - 9s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.15 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d02 "02" font:Roboto size:90 fill:$danger weight:bold | 9s - 10s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.15 at 0s, 1 at 0.1s, 1 at 0.9s, 0.9 at 1s
+
+text d01 "01" font:Roboto size:90 fill:$danger weight:bold | 10s - 11s
+  x: 320
+  y: 340
+  opacity: 0 at 0s, 1 at 0.05s, 1 at 0.9s, 0 at 1s
+  scale: 1.2 at 0s, 1 at 0.1s, 1 at 0.9s, 0.85 at 1s
+
+text d00 "00" font:Roboto size:90 fill:$danger weight:bold | 11s - 12s
+  x: 320
+  y: 340
+  opacity: 0 -> 1 over 0.1s
+  scale: 1.3 -> 1 over 0.2s ease-out
+
+circle pulseRing r:300 fill:none stroke:$danger strokeWidth:4 | 11s - 12s
+  x: 320
+  y: 320
+  scale: 0.9 -> 1.2 over 0.5s ease-out
+  opacity: 0.8 -> 0 over 0.5s
+
+circle pulseRing2 r:300 fill:none stroke:$danger strokeWidth:4 | 11.2s - 12s
+  x: 320
+  y: 320
+  scale: 0.9 -> 1.3 over 0.6s ease-out
+  opacity: 0.6 -> 0 over 0.6s
+
+text labelTimer "TIMER" font:Roboto size:16 fill:#475569 | 0.5s - 12s
+  x: 320
+  y: 420
+  opacity: 0 -> 1 over 0.3s
+
+circle tickDot r:6 fill:$active | 0.8s - 12s
+  x: 320
+  y: 60
+  opacity: f(t) = 0.5 + 0.5 * abs(sin(t * 6.28))
+
+line tickMark1 from:(320, 50) to:(320, 70) stroke:#334155 strokeWidth:2 | 0.4s - 12s
+  opacity: 0 -> 1 over 0.2s
+
+line tickMark2 from:(570, 320) to:(590, 320) stroke:#334155 strokeWidth:2 | 0.4s - 12s
+  opacity: 0 -> 1 over 0.2s
+
+line tickMark3 from:(320, 570) to:(320, 590) stroke:#334155 strokeWidth:2 | 0.4s - 12s
+  opacity: 0 -> 1 over 0.2s
+
+line tickMark4 from:(50, 320) to:(70, 320) stroke:#334155 strokeWidth:2 | 0.4s - 12s
+  opacity: 0 -> 1 over 0.2s
+
+rect startBtn w:100 h:36 fill:#16a34a cornerRadius:18 | 0.6s - 1s
+  x: 240
+  y: 540
+  opacity: 1 -> 0 over 0.3s
+  scale: 1 -> 0.8 over 0.3s
+
+text startTxt "START" font:Roboto size:14 fill:#fff weight:bold | 0.6s - 1s
+  x: 240
+  y: 545
+  opacity: 1 -> 0 over 0.3s
+
+rect resetBtn w:100 h:36 fill:#334155 cornerRadius:18 | 0.6s - 12s
+  x: 400
+  y: 540
+  opacity: 0 -> 1 over 0.3s
+
+text resetTxt "RESET" font:Roboto size:14 fill:#94a3b8 weight:bold | 0.6s - 12s
+  x: 400
+  y: 545
+  opacity: 0 -> 1 over 0.3s
+
+text finishedTxt "TIME'S UP!" font:Roboto size:24 fill:$danger weight:bold | 11.3s - 12s
+  x: 320
+  y: 240
+  opacity: 0 -> 1 over 0.3s
+  scale: 0.8 -> 1 over 0.3s ease-out

@@ -1,0 +1,110 @@
+---
+canvas: 760x440
+bg: #08121f
+fps: 60
+perspective: 720
+vanish: 380 205
+---
+
+# 3D sphere approximation
+# Built from circular slices plus meridian rings.
+
+@group orb | 0s - 8s
+  x: 380
+  y: 210
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+# Back-to-front volume slices
+@view slice0 parent:orb | 0s - 8s
+  at: 0 0 -70
+  normal: 0 0 1
+circle slice0Face r:20 fill:#0f172a stroke:none parent:slice0 | 0s - 8s
+  opacity: 0.92
+
+@view slice1 parent:orb | 0s - 8s
+  at: 0 0 -52
+  normal: 0 0 1
+circle slice1Face r:42 fill:#12324d stroke:none parent:slice1 | 0s - 8s
+  opacity: 0.86
+
+@view slice2 parent:orb | 0s - 8s
+  at: 0 0 -34
+  normal: 0 0 1
+circle slice2Face r:56 fill:#164e63 stroke:none parent:slice2 | 0s - 8s
+  opacity: 0.8
+
+@view slice3 parent:orb | 0s - 8s
+  at: 0 0 -18
+  normal: 0 0 1
+circle slice3Face r:66 fill:#0f766e stroke:none parent:slice3 | 0s - 8s
+  opacity: 0.76
+
+@view slice4 parent:orb | 0s - 8s
+  at: 0 0 0
+  normal: 0 0 1
+circle slice4Face r:74 fill:#22d3ee stroke:#bae6fd33 strokeWidth:2 parent:slice4 | 0s - 8s
+  opacity: 0.7
+
+@view slice5 parent:orb | 0s - 8s
+  at: 0 0 18
+  normal: 0 0 1
+circle slice5Face r:66 fill:#38bdf8 stroke:none parent:slice5 | 0s - 8s
+  opacity: 0.62
+
+@view slice6 parent:orb | 0s - 8s
+  at: 0 0 34
+  normal: 0 0 1
+circle slice6Face r:56 fill:#7dd3fc stroke:none parent:slice6 | 0s - 8s
+  opacity: 0.48
+
+@view slice7 parent:orb | 0s - 8s
+  at: 0 0 52
+  normal: 0 0 1
+circle slice7Face r:42 fill:#bae6fd stroke:none parent:slice7 | 0s - 8s
+  opacity: 0.34
+
+@view slice8 parent:orb | 0s - 8s
+  at: 0 0 70
+  normal: 0 0 1
+circle slice8Face r:20 fill:#e0f2fe stroke:none parent:slice8 | 0s - 8s
+  opacity: 0.24
+
+# Wire structure
+@view equator parent:orb | 0s - 8s
+  normal: 0 1 0
+  up: 0 0 1
+circle equatorFace r:74 fill:none stroke:#38bdf8 strokeWidth:3 parent:equator | 0s - 8s
+  opacity: 0.9
+
+@view meridianA parent:orb | 0s - 8s
+  normal: 1 0 0
+circle meridianAFace r:74 fill:none stroke:#7dd3fc strokeWidth:2 parent:meridianA | 0s - 8s
+  opacity: 0.8
+
+@view meridianB parent:orb | 0s - 8s
+  normal: 0.707 0 0.707
+circle meridianBFace r:74 fill:none stroke:#67e8f9 strokeWidth:2 parent:meridianB | 0s - 8s
+  opacity: 0.72
+
+@view meridianC parent:orb | 0s - 8s
+  normal: -0.5 0 0.866
+circle meridianCFace r:74 fill:none stroke:#a5f3fc strokeWidth:2 parent:meridianC | 0s - 8s
+  opacity: 0.56
+
+# Highlight
+text flare "●" font:Roboto size:20 fill:#ffffff weight:bold parent:orb | 0s - 8s
+  x: 26
+  y: -24
+  z: 78
+  billboard: screen
+  depthBias: 40
+  opacity: 0.75
+
+text label "64 sphere" font:Roboto size:22 fill:#dbeafe weight:bold | 0s - 8s
+  x: 380
+  y: 390
+
+text subtitle "slices + meridians" font:Roboto size:14 fill:#93c5fd | 0s - 8s
+  x: 380
+  y: 418

@@ -1,0 +1,42 @@
+---
+canvas: 600x400
+bg: #111827
+fps: 60
+perspective: 600
+vanish: 300 200
+---
+
+# 3D Card Flip Animation
+
+@group card | 0s - 4s
+  x: 300
+  y: 200
+  rotateY: 0deg -> 180deg -> 0deg over 4s ease-in-out
+
+# Card front (visible when rotateY near 0)
+rect cardFront w:150 h:200 fill:#3b82f6 cornerRadius:12 parent:card | 0s - 4s
+  x: 0
+  y: 0
+  z: 2
+
+text frontText "FRONT" font:Roboto size:24 fill:#ffffff weight:bold parent:card | 0s - 4s
+  x: 0
+  y: 0
+  z: 3
+
+# Card back (visible when rotateY near 180)
+rect cardBack w:150 h:200 fill:#ef4444 cornerRadius:12 parent:card | 0s - 4s
+  x: 0
+  y: 0
+  z: -2
+  rotateY: 180deg
+
+text backText "BACK" font:Roboto size:24 fill:#ffffff weight:bold parent:card | 0s - 4s
+  x: 0
+  y: 0
+  z: -3
+  rotateY: 180deg
+
+text label "Card Flip" font:Roboto size:18 fill:#6b7280 | 0s - 4s
+  x: 300
+  y: 360

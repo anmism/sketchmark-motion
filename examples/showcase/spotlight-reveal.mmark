@@ -1,0 +1,20 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+---
+
+# Spotlight Reveal - demonstrates circle mask with animation
+
+rect background w:640 h:360 fill:#1e293b | 0s - 5s
+  x: 320
+  y: 180
+
+text secret "WELCOME" font:Roboto size:72 fill:#e74c5c weight:bold | 0s - 5s
+  x: 320
+  y: 180
+  mask: circle(320, 180, 80)
+
+text hint "Moving spotlight reveals text" font:Roboto size:14 fill:#64748b | 0s - 5s
+  x: 320
+  y: 320

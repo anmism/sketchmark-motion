@@ -1,0 +1,190 @@
+---
+canvas: 960x540
+bg: #0f1d33
+fps: 60
+perspective: 820
+vanish: 480 290
+$sky: #27496d
+$cloud: #ffffff
+$grass: #22c55e
+$grassDark: #16a34a
+$dirt: #92400e
+$dirtDark: #78350f
+$water: #0ea5e9
+$waterLight: #7dd3fc
+$stone: #57534e
+$tree: #166534
+$treeDark: #14532d
+$trunk: #7c3f13
+---
+
+# 3D Floating Island
+
+= Sky | 0s - 12s =
+
+rect sky w:960 h:420 fill:$sky | 0s - 12s
+  x: 480
+  y: 210
+
+ellipse cloud1 rx:90 ry:24 fill:$cloud | 0s - 12s
+  x: f(t) = 170 + 26 * sin(t * 0.18)
+  y: 92
+  opacity: 0.34
+  blur: 11
+
+ellipse cloud2 rx:120 ry:30 fill:$cloud | 0s - 12s
+  x: f(t) = 520 + 20 * sin(t * 0.23 + 1)
+  y: 64
+  opacity: 0.3
+  blur: 13
+
+ellipse cloud3 rx:85 ry:22 fill:$cloud | 0s - 12s
+  x: f(t) = 836 + 24 * sin(t * 0.2 + 2)
+  y: 118
+  opacity: 0.3
+  blur: 10
+
+= Island | 0s - 12s =
+
+@group island | 0s - 12s
+  x: 480
+  y: 285
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 14s linear
+
+@view topSurface parent:island | 0s - 12s
+  at: 0 -44 0
+  normal: 0 -1 0
+  up: 0 0 -1
+path grassTop fill:$grass parent:topSurface | 0s - 12s
+  d: "M-100,-62 L78,-58 L112,-20 L96,46 L26,72 L-54,66 L-110,24 L-120,-18 Z"
+path patchA fill:$grassDark parent:topSurface | 0s - 12s
+  d: "M-72,-18 Q-44,-34 -18,-18 Q-40,2 -72,-18 Z"
+  opacity: 0.4
+ellipse pond rx:24 ry:13 fill:$water parent:topSurface | 0s - 12s
+  x: 48
+  y: -26
+ellipse pondShine rx:9 ry:4 fill:$waterLight parent:topSurface | 0s - 12s
+  x: 42
+  y: -31
+  opacity: 0.45
+
+@view frontCliff parent:island | 0s - 12s
+  at: 0 18 66
+  normal: 0 0 1
+path frontCliffFace fill:$dirt parent:frontCliff | 0s - 12s
+  d: "M-104,-62 L102,-58 L96,-24 Q84,42 18,82 L-56,72 Q-96,28 -110,-24 Z"
+path frontGrassLip fill:$grass parent:frontCliff | 0s - 12s
+  d: "M-106,-62 L104,-58 L104,-48 L-106,-50 Z"
+circle frontRock r:12 fill:$stone parent:frontCliff | 0s - 12s
+  x: -32
+  y: 18
+  opacity: 0.75
+
+@view backCliff parent:island | 0s - 12s
+  at: 0 18 -60
+  normal: 0 0 -1
+path backCliffFace fill:$dirtDark parent:backCliff | 0s - 12s
+  d: "M-90,-56 L88,-52 L78,-18 Q64,30 18,62 L-46,58 Q-74,18 -94,-22 Z"
+
+@view leftCliff parent:island | 0s - 12s
+  at: -108 12 0
+  normal: -1 0 0
+path leftCliffFace fill:$dirt parent:leftCliff | 0s - 12s
+  d: "M-62,-56 L58,-56 L50,-24 Q42,26 16,66 L-30,58 Q-54,12 -62,-26 Z"
+
+@view rightCliff parent:island | 0s - 12s
+  at: 108 12 0
+  normal: 1 0 0
+path rightCliffFace fill:$dirtDark parent:rightCliff | 0s - 12s
+  d: "M-60,-56 L62,-56 L58,-24 Q48,30 26,70 L-24,62 Q-50,18 -62,-28 Z"
+
+poly3d bottomSpikeA fill:$dirtDark stroke:#00000018 strokeWidth:1 parent:island | 0s - 12s
+  points: [(-50,76,24), (8,74,18), (-24,180,8)]
+poly3d bottomSpikeB fill:$dirt stroke:#00000018 strokeWidth:1 parent:island | 0s - 12s
+  points: [(8,74,18), (62,70,-16), (22,176,-6)]
+poly3d bottomSpikeC fill:#7c3f13 stroke:#00000018 strokeWidth:1 parent:island | 0s - 12s
+  points: [(-10,80,-34), (48,72,-18), (10,168,-26)]
+
+# Trees
+line3d tree1Trunk stroke:$trunk strokeWidth:8 parent:island | 0s - 12s
+  from: (-36,-66,12)
+  to: (-36,-126,12)
+@view tree1Canopy parent:island | 0s - 12s
+  at: -36 -138 12
+  normal: 0 0 1
+circle tree1A r:30 fill:$tree parent:tree1Canopy | 0s - 12s
+circle tree1B r:22 fill:$treeDark parent:tree1Canopy | 0s - 12s
+  x: 14
+  y: 10
+  opacity: 0.88
+
+line3d tree2Trunk stroke:$trunk strokeWidth:6 parent:island | 0s - 12s
+  from: (44,-56,-18)
+  to: (44,-106,-18)
+@view tree2Canopy parent:island | 0s - 12s
+  at: 44 -114 -18
+  normal: 0 0 1
+circle tree2A r:22 fill:$treeDark parent:tree2Canopy | 0s - 12s
+circle tree2B r:16 fill:$tree parent:tree2Canopy | 0s - 12s
+  x: 12
+  y: 8
+
+# House
+@view houseFront parent:island | 0s - 12s
+  at: 8 -58 42
+  normal: 0 0 1
+rect houseWall w:38 h:30 fill:#fef3c7 parent:houseFront | 0s - 12s
+rect door w:10 h:18 fill:#7c3f13 parent:houseFront | 0s - 12s
+  y: 6
+rect window parent:houseFront w:8 h:8 fill:#7dd3fc | 0s - 12s
+  x: 11
+  y: -4
+
+poly3d roofA fill:#dc2626 stroke:#00000022 strokeWidth:1 parent:island | 0s - 12s
+  points: [(-12,-74,36), (28,-74,36), (8,-96,18)]
+poly3d roofB fill:#b91c1c stroke:#00000022 strokeWidth:1 parent:island | 0s - 12s
+  points: [(28,-74,36), (28,-74,8), (8,-96,18)]
+
+# Waterfall
+@view waterfall parent:island | 0s - 12s
+  at: 76 26 28
+  normal: 0.78 0 0.62
+rect waterStrip w:16 h:84 fill:$water parent:waterfall | 0s - 12s
+  opacity: f(t) = 0.58 + 0.18 * sin(t * 4)
+rect waterShine w:5 h:84 fill:$waterLight parent:waterfall | 0s - 12s
+  x: -4
+  opacity: f(t) = 0.28 + 0.18 * sin(t * 4.8 + 1)
+
+circle mist1 r:11 fill:$waterLight | 0s - 12s
+  x: 574
+  y: 352
+  opacity: f(t) = 0.18 + 0.12 * sin(t * 2.8)
+  blur: 8
+
+= Particles | 0s - 12s =
+
+circle particle1 r:3 fill:#fbbf24 | 0s - 12s
+  x: f(t) = 480 + 130 * cos(t * 0.7)
+  y: f(t) = 285 + 60 * sin(t * 0.7) - 52
+  opacity: f(t) = 0.35 + 0.35 * sin(t * 2)
+  blur: 2
+
+circle particle2 r:2.5 fill:#a78bfa | 0s - 12s
+  x: f(t) = 480 + 96 * cos(t * 0.6 + 1.8)
+  y: f(t) = 285 + 46 * sin(t * 0.6 + 1.8) - 26
+  opacity: f(t) = 0.3 + 0.3 * sin(t * 2.3 + 1)
+  blur: 2
+
+= UI | 0s - 12s =
+
+text title "FLOATING ISLAND" font:Roboto size:38 fill:#ffffff weight:bold | 0.5s - 12s
+  x: 480
+  y: 46
+  opacity: 0 -> 1 over 1s ease-out
+  letterSpacing: 5
+
+text subtitle "Views for terrain, poly3d for the under-structure" font:Roboto size:15 fill:#cbd5e1 | 1s - 12s
+  x: 480
+  y: 82
+  opacity: 0 -> 0.82 over 0.8s ease-out

@@ -1,0 +1,176 @@
+---
+canvas: 960x540
+bg: #0c1626
+fps: 60
+perspective: 820
+vanish: 480 300
+$sky: #23446d
+$seaFar: #0f3154
+$seaNear: #143e67
+$foam: #dbeafe
+$wood: #996633
+$woodDark: #7c4a21
+$sail: #f6f1dc
+$sailShadow: #dad3ba
+$rope: #4b3425
+$flag: #ef4444
+---
+
+# 3D Ship at Sea
+
+= Sky | 0s - 15s =
+
+rect sky w:960 h:310 fill:$sky | 0s - 15s
+  x: 480
+  y: 155
+
+ellipse cloud1 rx:90 ry:24 fill:#ffffff | 0s - 15s
+  x: f(t) = 160 + 28 * sin(t * 0.18)
+  y: 84
+  opacity: 0.35
+  blur: 10
+
+ellipse cloud2 rx:110 ry:28 fill:#ffffff | 0s - 15s
+  x: f(t) = 520 + 24 * sin(t * 0.21 + 1)
+  y: 62
+  opacity: 0.3
+  blur: 12
+
+ellipse cloud3 rx:80 ry:22 fill:#ffffff | 0s - 15s
+  x: f(t) = 820 + 22 * sin(t * 0.2 + 2)
+  y: 102
+  opacity: 0.34
+  blur: 9
+
+= Water | 0s - 15s =
+
+rect seaFar w:960 h:110 fill:$seaFar | 0s - 15s
+  x: 480
+  y: 315
+
+rect seaNear w:960 h:230 fill:$seaNear | 0s - 15s
+  x: 480
+  y: 425
+
+path swell fill:#1d4f7c | 0s - 15s
+  d: "M0,410 Q120,390 240,410 Q360,430 480,410 Q600,390 720,410 Q840,430 960,410 L960,540 L0,540 Z"
+
+= Ship | 0s - 15s =
+
+@group ship | 0s - 15s
+  x: 480
+  y: 308
+  rotateX: -8deg
+  rotateY: -12deg -> 12deg -> -12deg over 10s ease-in-out
+  y: f(t) = 308 + 8 * sin(t * 1.15)
+  rotateZ: f(t) = 0.05 * sin(t * 0.9)
+
+# Hull
+poly3d hullFront fill:$wood stroke:#00000022 strokeWidth:2 parent:ship | 0s - 15s
+  points: [(-140,0,42), (120,0,42), (90,52,10), (-115,52,10)]
+poly3d hullBack fill:$woodDark stroke:#00000022 strokeWidth:2 parent:ship | 0s - 15s
+  points: [(-140,0,-42), (120,0,-42), (90,52,-10), (-115,52,-10)]
+poly3d hullLeft fill:#875022 stroke:#00000022 strokeWidth:2 parent:ship | 0s - 15s
+  points: [(-140,0,-42), (-140,0,42), (-115,52,10), (-115,52,-10)]
+poly3d hullRight fill:#a46a33 stroke:#00000022 strokeWidth:2 parent:ship | 0s - 15s
+  points: [(120,0,42), (120,0,-42), (90,52,-10), (90,52,10)]
+poly3d hullBottom fill:$woodDark stroke:#00000022 strokeWidth:2 parent:ship | 0s - 15s
+  points: [(-115,52,10), (90,52,10), (90,52,-10), (-115,52,-10)]
+
+@view deck parent:ship | 0s - 15s
+  at: -10 -2 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect deckFace w:240 h:72 fill:#b17a47 parent:deck | 0s - 15s
+
+# Masts and rigging
+line3d mainMast stroke:$rope strokeWidth:7 parent:ship | 0s - 15s
+  from: (-10, -2, 0)
+  to: (-10, -200, 0)
+line3d foreMast stroke:$rope strokeWidth:6 parent:ship | 0s - 15s
+  from: (90, 0, 0)
+  to: (90, -160, 0)
+line3d aftMast stroke:$rope strokeWidth:5 parent:ship | 0s - 15s
+  from: (-95, 0, 0)
+  to: (-95, -145, 0)
+
+line3d rig1 stroke:#ffffff44 strokeWidth:2 parent:ship | 0s - 15s
+  from: (-10,-200,0)
+  to: (125,8,32)
+line3d rig2 stroke:#ffffff44 strokeWidth:2 parent:ship | 0s - 15s
+  from: (-10,-200,0)
+  to: (-145,8,-28)
+line3d rig3 stroke:#ffffff33 strokeWidth:2 parent:ship | 0s - 15s
+  from: (90,-160,0)
+  to: (125,8,-26)
+
+# Sails
+@view mainSail parent:ship | 0s - 15s
+  at: -4 -126 26
+  normal: 0.24 0 0.97
+path mainSailFace fill:$sail parent:mainSail | 0s - 15s
+  d: "M-66,-60 L62,-74 L58,56 L-60,70 Z"
+path mainSailShade fill:$sailShadow parent:mainSail | 0s - 15s
+  d: "M-50,-40 L-8,-46 L-2,46 L-42,52 Z"
+  opacity: 0.6
+
+@view foreSail parent:ship | 0s - 15s
+  at: 88 -102 20
+  normal: 0.3 0 0.95
+path foreSailFace fill:$sail parent:foreSail | 0s - 15s
+  d: "M-46,-48 L38,-56 L36,38 L-40,52 Z"
+
+@view aftSail parent:ship | 0s - 15s
+  at: -94 -90 16
+  normal: 0.26 0 0.97
+path aftSailFace fill:$sail parent:aftSail | 0s - 15s
+  d: "M-34,-42 L28,-48 L24,30 L-30,40 Z"
+
+# Flag
+path3d flagTrail d:"M-10,-205,0 C10,-214,4 26,-200,-5 52,-196,2" fill:none stroke:$flag strokeWidth:9 parent:ship | 0s - 15s
+  strokeCap: round
+
+# Cabin
+@view cabinFront parent:ship | 0s - 15s
+  at: -108 -18 26
+  normal: 0 0 1
+rect cabinFace w:52 h:34 fill:$woodDark parent:cabinFront | 0s - 15s
+rect cabinWindowA w:10 h:12 fill:#fbbf24 parent:cabinFront | 0s - 15s
+  x: -12
+  y: -3
+  opacity: f(t) = 0.65 + 0.15 * sin(t * 2.1)
+rect cabinWindowB w:10 h:12 fill:#fbbf24 parent:cabinFront | 0s - 15s
+  x: 12
+  y: -3
+  opacity: f(t) = 0.7 + 0.15 * sin(t * 2.4 + 1)
+
+# Reflection and wake
+path wakeA fill:none stroke:$foam strokeWidth:5 parent:ship | 0s - 15s
+  d: "M-150,54 Q-210,52 -265,70"
+  opacity: 0.4
+path wakeB fill:none stroke:$foam strokeWidth:4 parent:ship | 0s - 15s
+  d: "M-140,68 Q-200,68 -248,84"
+  opacity: 0.32
+
+= Foreground | 0s - 15s =
+
+path foamFront fill:none stroke:$foam strokeWidth:4 | 0s - 15s
+  d: "M40,478 Q110,466 180,478 Q250,490 320,478"
+  opacity: f(t) = 0.25 + 0.12 * sin(t * 2.6)
+
+path foamFront2 fill:none stroke:$foam strokeWidth:4 | 0s - 15s
+  d: "M520,482 Q590,470 660,482 Q730,494 800,482"
+  opacity: f(t) = 0.22 + 0.12 * sin(t * 2.2 + 1)
+
+= UI | 0s - 15s =
+
+text title "VOYAGE" font:Roboto size:42 fill:#ffffff weight:bold | 0.5s - 15s
+  x: 480
+  y: 52
+  opacity: 0 -> 1 over 1s ease-out
+  letterSpacing: 8
+
+text subtitle "Hull via poly3d, rig via line3d, wind via path3d" font:Roboto size:15 fill:#cbd5e1 | 1s - 15s
+  x: 480
+  y: 87
+  opacity: 0 -> 0.82 over 0.8s ease-out

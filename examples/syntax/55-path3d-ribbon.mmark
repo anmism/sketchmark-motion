@@ -1,0 +1,29 @@
+---
+canvas: 720x420
+bg: #07121a
+fps: 60
+perspective: 700
+vanish: 360 200
+---
+
+# path3d curve
+
+@group ribbon | 0s - 8s
+  x: 360
+  y: 210
+  rotateX: -10deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+path3d loopA d:"M-150,-20,-40 C-80,-90,100 30,80,-110 130,-10,50" fill:none stroke:#38bdf8 strokeWidth:10 parent:ribbon | 0s - 8s
+  strokeCap: round
+
+path3d loopB d:"M-120,35,60 Q-25,-35,-120 90,45,90" fill:none stroke:#f97316 strokeWidth:7 parent:ribbon | 0s - 8s
+  strokeCap: round
+
+line3d spine stroke:#ffffff44 strokeWidth:2 parent:ribbon | 0s - 8s
+  from: (-160, 0, 0)
+  to: (160, 0, 0)
+
+text label "55 path3d ribbon" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 360
+  y: 372

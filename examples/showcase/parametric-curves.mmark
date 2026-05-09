@@ -1,0 +1,92 @@
+---
+canvas: 800x600
+bg: #0a0a1a
+fps: 24
+$circle: #60a5fa
+$spiral: #4ade80
+$heart: #ec4899
+$lissajous: #f59e0b
+$text: #e2e8f0
+$muted: #64748b
+---
+
+@motion fade-in(dur=0.5s)
+  opacity: 0 -> 1 over $dur ease-out
+
+text title "Parametric Curves" font:Roboto size:24 fill:$text weight:bold | 0s - 12s
+  x: 400
+  y: 30
+  fade-in(0.3s)
+
+text subtitle "x(t) and y(t) functions" font:Roboto size:13 fill:$muted | 0.3s - 12s
+  x: 400
+  y: 55
+  fade-in(0.4s)
+
+path circle xt:"150 + 60 * cos(t)" yt:"180 + 60 * sin(t)" tRange:"0-6.28" steps:60 stroke:$circle strokeWidth:2 | 1s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text circle-label "Circle" font:Roboto size:12 fill:$circle | 1.5s - 12s
+  x: 150
+  y: 260
+  fade-in(0.3s)
+
+text circle-eq "x = cos(t), y = sin(t)" font:Roboto size:10 fill:$muted | 1.5s - 12s
+  x: 150
+  y: 278
+  fade-in(0.3s)
+
+path spiral xt:"400 + t * 4 * cos(t)" yt:"180 + t * 4 * sin(t)" tRange:"0-12.56" steps:100 stroke:$spiral strokeWidth:2 | 3s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text spiral-label "Spiral" font:Roboto size:12 fill:$spiral | 3.5s - 12s
+  x: 400
+  y: 260
+  fade-in(0.3s)
+
+text spiral-eq "x = t*cos(t), y = t*sin(t)" font:Roboto size:10 fill:$muted | 3.5s - 12s
+  x: 400
+  y: 278
+  fade-in(0.3s)
+
+path lissajous xt:"650 + 60 * sin(t * 3)" yt:"180 + 60 * sin(t * 2)" tRange:"0-6.28" steps:80 stroke:$lissajous strokeWidth:2 | 5s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text lissajous-label "Lissajous 3:2" font:Roboto size:12 fill:$lissajous | 5.5s - 12s
+  x: 650
+  y: 260
+  fade-in(0.3s)
+
+text lissajous-eq "x = sin(3t), y = sin(2t)" font:Roboto size:10 fill:$muted | 5.5s - 12s
+  x: 650
+  y: 278
+  fade-in(0.3s)
+
+path heart xt:"150 + 50 * sin(t) * sin(t) * sin(t)" yt:"430 - 40 * cos(t) + 12 * cos(t*2) + 8 * cos(t*3) + 4 * cos(t*4)" tRange:"0-6.28" steps:80 stroke:$heart strokeWidth:2 closed:true | 7s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text heart-label "Heart" font:Roboto size:12 fill:$heart | 7.5s - 12s
+  x: 150
+  y: 540
+  fade-in(0.3s)
+
+path ellipse xt:"400 + 80 * cos(t)" yt:"430 + 40 * sin(t)" tRange:"0-6.28" steps:60 stroke:$circle strokeWidth:2 | 8s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text ellipse-label "Ellipse" font:Roboto size:12 fill:$circle | 8.5s - 12s
+  x: 400
+  y: 540
+  fade-in(0.3s)
+
+path rose xt:"650 + 50 * cos(t*3) * cos(t)" yt:"430 + 50 * cos(t*3) * sin(t)" tRange:"0-6.28" steps:100 stroke:$spiral strokeWidth:2 | 9s - 12s
+  opacity: 0 -> 1 over 0.6s ease-out
+
+text rose-label "Rose (3 petals)" font:Roboto size:12 fill:$spiral | 9.5s - 12s
+  x: 650
+  y: 540
+  fade-in(0.3s)
+
+text note "Parametric: xt, yt, tRange" font:Roboto size:11 fill:$muted | 10s - 12s
+  x: 400
+  y: 580
+  fade-in(0.5s)

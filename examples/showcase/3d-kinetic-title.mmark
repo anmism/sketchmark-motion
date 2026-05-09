@@ -1,0 +1,55 @@
+---
+canvas: 960x540
+bg: #08080f
+fps: 60
+perspective: 760
+vanish: 480 260
+$cyan: #22d3ee
+$pink: #f472b6
+$amber: #f59e0b
+---
+
+# 3D Kinetic Title
+# Motion-graphics title card using shape primitives as animated typography blocks.
+
+@group titleRig | 0s - 8s
+  x: 480
+  y: 260
+  rotateX: -12deg
+  rotateY: -18deg -> 18deg -> -18deg over 8s ease-in-out
+
+cuboid blockM w:48 h:160 d:34 fill:$cyan parent:titleRig | 0s - 8s
+  x: -150
+  y: 0
+  rotateZ: -12deg
+  scaleY: 0.05 -> 1 over 0.7s spring(stiffness:170, damping:14)
+
+cuboid blockO w:48 h:160 d:34 fill:$pink parent:titleRig | 0.1s - 8s
+  x: -76
+  y: 0
+  scaleY: 0.05 -> 1 over 0.75s spring(stiffness:170, damping:14)
+
+torus letterO major:50 tube:8 segments:28 tubeSegments:5 fill:$pink parent:titleRig | 0.4s - 8s
+  x: 4
+  rotateX: 90deg
+  scale: 0 -> 1 over 0.8s spring(stiffness:170, damping:12)
+
+cuboid blockT w:122 h:34 d:34 fill:$amber parent:titleRig | 0.2s - 8s
+  x: 104
+  y: -62
+  scaleX: 0.1 -> 1 over 0.7s ease-out
+
+cuboid blockI w:40 h:154 d:34 fill:$amber parent:titleRig | 0.3s - 8s
+  x: 104
+  y: 8
+  scaleY: 0.1 -> 1 over 0.75s ease-out
+
+sphere dot r:18 segments:12 rings:6 fill:#ffffff parent:titleRig | 0.6s - 8s
+  x: 185
+  y: -86
+  scale: 0 -> 1 over 0.5s spring(stiffness:220, damping:12)
+
+text title "KINETIC 3D TYPE" font:Roboto size:36 fill:#ffffff weight:bold | 1s - 8s
+  x: 480
+  y: 440
+  opacity: 0 -> 1 over 0.6s ease-out

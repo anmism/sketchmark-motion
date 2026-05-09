@@ -1,0 +1,156 @@
+---
+canvas: 820x460
+bg: #0a1020
+fps: 60
+perspective: 760
+vanish: 410 220
+---
+
+# Falling cubes
+# A small stress test for repeated @view cubes, staggered motion, and floor depth.
+
+@view floor | 0s - 8s
+  at: 410 380 0
+  normal: 0 1 0
+  up: 0 0 1
+rect floorFace w:920 h:340 fill:#111827 parent:floor | 0s - 8s
+
+path laneA fill:none stroke:#1f2937 strokeWidth:2 parent:floor | 0s - 8s
+  d: "M-280,-170 L-280,170"
+path laneB fill:none stroke:#1f2937 strokeWidth:2 parent:floor | 0s - 8s
+  d: "M0,-170 L0,170"
+path laneC fill:none stroke:#1f2937 strokeWidth:2 parent:floor | 0s - 8s
+  d: "M280,-170 L280,170"
+
+# Cube A
+@group cubeA | 0s - 8s
+  x: 210
+  y: 40 at 0s, 352 at 1.1s ease-in, 336 at 1.32s ease-out, 352 at 1.5s ease-in
+  z: -80
+  rotateX: 0deg -> 300deg over 1.5s ease-in-out
+  rotateY: 0deg -> 210deg over 1.5s ease-in-out
+
+@view cubeAFront parent:cubeA | 0s - 8s
+  at: 0 0 28
+  normal: 0 0 1
+rect cubeAFrontFace w:56 h:56 fill:#38bdf8 parent:cubeAFront | 0s - 8s
+@view cubeABack parent:cubeA | 0s - 8s
+  at: 0 0 -28
+  normal: 0 0 -1
+rect cubeABackFace w:56 h:56 fill:#1d4ed8 parent:cubeABack | 0s - 8s
+@view cubeARight parent:cubeA | 0s - 8s
+  at: 28 0 0
+  normal: 1 0 0
+rect cubeARightFace w:56 h:56 fill:#0f766e parent:cubeARight | 0s - 8s
+@view cubeALeft parent:cubeA | 0s - 8s
+  at: -28 0 0
+  normal: -1 0 0
+rect cubeALeftFace w:56 h:56 fill:#14b8a6 parent:cubeALeft | 0s - 8s
+@view cubeATop parent:cubeA | 0s - 8s
+  at: 0 -28 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect cubeATopFace w:56 h:56 fill:#7dd3fc parent:cubeATop | 0s - 8s
+@view cubeABottom parent:cubeA | 0s - 8s
+  at: 0 28 0
+  normal: 0 1 0
+  up: 0 0 1
+rect cubeABottomFace w:56 h:56 fill:#155e75 parent:cubeABottom | 0s - 8s
+
+# Cube B
+@group cubeB | 0.35s - 8s
+  x: 410
+  y: 10 at 0s, 346 at 1.2s ease-in, 326 at 1.44s ease-out, 346 at 1.64s ease-in
+  z: 10
+  rotateX: 0deg -> -260deg over 1.6s ease-in-out
+  rotateY: 0deg -> 320deg over 1.6s ease-in-out
+  rotateZ: 0deg -> 110deg over 1.6s ease-in-out
+
+@view cubeBFront parent:cubeB | 0.35s - 8s
+  at: 0 0 34
+  normal: 0 0 1
+rect cubeBFrontFace w:68 h:68 fill:#fb7185 parent:cubeBFront | 0.35s - 8s
+@view cubeBBack parent:cubeB | 0.35s - 8s
+  at: 0 0 -34
+  normal: 0 0 -1
+rect cubeBBackFace w:68 h:68 fill:#be123c parent:cubeBBack | 0.35s - 8s
+@view cubeBRight parent:cubeB | 0.35s - 8s
+  at: 34 0 0
+  normal: 1 0 0
+rect cubeBRightFace w:68 h:68 fill:#ea580c parent:cubeBRight | 0.35s - 8s
+@view cubeBLeft parent:cubeB | 0.35s - 8s
+  at: -34 0 0
+  normal: -1 0 0
+rect cubeBLeftFace w:68 h:68 fill:#f97316 parent:cubeBLeft | 0.35s - 8s
+@view cubeBTop parent:cubeB | 0.35s - 8s
+  at: 0 -34 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect cubeBTopFace w:68 h:68 fill:#fda4af parent:cubeBTop | 0.35s - 8s
+@view cubeBBottom parent:cubeB | 0.35s - 8s
+  at: 0 34 0
+  normal: 0 1 0
+  up: 0 0 1
+rect cubeBBottomFace w:68 h:68 fill:#9f1239 parent:cubeBBottom | 0.35s - 8s
+
+# Cube C
+@group cubeC | 0.7s - 8s
+  x: 610
+  y: -30 at 0s, 356 at 1.35s ease-in, 334 at 1.59s ease-out, 350 at 1.81s ease-in, 356 at 1.99s ease-out
+  z: 95
+  rotateX: 0deg -> 390deg over 1.8s ease-in-out
+  rotateY: 0deg -> -260deg over 1.8s ease-in-out
+
+@view cubeCFront parent:cubeC | 0.7s - 8s
+  at: 0 0 24
+  normal: 0 0 1
+rect cubeCFrontFace w:48 h:48 fill:#a78bfa parent:cubeCFront | 0.7s - 8s
+@view cubeCBack parent:cubeC | 0.7s - 8s
+  at: 0 0 -24
+  normal: 0 0 -1
+rect cubeCBackFace w:48 h:48 fill:#6d28d9 parent:cubeCBack | 0.7s - 8s
+@view cubeCRight parent:cubeC | 0.7s - 8s
+  at: 24 0 0
+  normal: 1 0 0
+rect cubeCRightFace w:48 h:48 fill:#7c3aed parent:cubeCRight | 0.7s - 8s
+@view cubeCLeft parent:cubeC | 0.7s - 8s
+  at: -24 0 0
+  normal: -1 0 0
+rect cubeCLeftFace w:48 h:48 fill:#8b5cf6 parent:cubeCLeft | 0.7s - 8s
+@view cubeCTop parent:cubeC | 0.7s - 8s
+  at: 0 -24 0
+  normal: 0 -1 0
+  up: 0 0 -1
+rect cubeCTopFace w:48 h:48 fill:#c4b5fd parent:cubeCTop | 0.7s - 8s
+@view cubeCBottom parent:cubeC | 0.7s - 8s
+  at: 0 24 0
+  normal: 0 1 0
+  up: 0 0 1
+rect cubeCBottomFace w:48 h:48 fill:#5b21b6 parent:cubeCBottom | 0.7s - 8s
+
+# Soft landing rings
+@view ringA parent:floor | 0s - 8s
+  at: -200 0 -80
+  normal: 0 -1 0
+  up: 0 0 -1
+circle ringAFace r:40 fill:none stroke:#38bdf866 strokeWidth:2 parent:ringA | 0s - 8s
+
+@view ringB parent:floor | 0s - 8s
+  at: 0 0 10
+  normal: 0 -1 0
+  up: 0 0 -1
+circle ringBFace r:46 fill:none stroke:#fb718566 strokeWidth:2 parent:ringB | 0s - 8s
+
+@view ringC parent:floor | 0s - 8s
+  at: 200 0 95
+  normal: 0 -1 0
+  up: 0 0 -1
+circle ringCFace r:34 fill:none stroke:#a78bfa66 strokeWidth:2 parent:ringC | 0s - 8s
+
+text title "63 falling cubes" font:Roboto size:24 fill:#e2e8f0 weight:bold | 0s - 8s
+  x: 410
+  y: 404
+
+text subtitle "staggered drops with @view cubes" font:Roboto size:14 fill:#93c5fd | 0s - 8s
+  x: 410
+  y: 432

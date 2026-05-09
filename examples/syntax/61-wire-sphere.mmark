@@ -1,0 +1,36 @@
+---
+canvas: 720x420
+bg: #07131a
+fps: 60
+perspective: 620
+vanish: 360 200
+---
+
+# Mixed @view circles for a wire sphere
+
+@group sphere | 0s - 8s
+  x: 360
+  y: 205
+  rotateX: -20deg
+  rotateY: 0deg -> 360deg over 8s linear
+
+@view ringFront parent:sphere | 0s - 8s
+  normal: 0 0 1
+circle ringFrontFace r:74 fill:none stroke:#93c5fd strokeWidth:2 parent:ringFront | 0s - 8s
+
+@view equator parent:sphere | 0s - 8s
+  normal: 0 1 0
+  up: 0 0 1
+circle equatorFace r:74 fill:none stroke:#38bdf8 strokeWidth:3 parent:equator | 0s - 8s
+
+@view meridianA parent:sphere | 0s - 8s
+  normal: 1 0 0
+circle meridianAFace r:74 fill:none stroke:#60a5fa strokeWidth:3 parent:meridianA | 0s - 8s
+
+@view meridianB parent:sphere | 0s - 8s
+  normal: 0.707 0 0.707
+circle meridianBFace r:74 fill:none stroke:#7dd3fc strokeWidth:2 parent:meridianB | 0s - 8s
+
+text label "61 wire sphere" font:Roboto size:20 fill:#dbeafe weight:bold | 0s - 8s
+  x: 360
+  y: 372

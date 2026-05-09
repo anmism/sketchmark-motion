@@ -1,0 +1,75 @@
+---
+canvas: 640x360
+bg: #1e3a5f
+---
+
+@camera
+  x: -200 -> 200 over 6s ease-in-out
+  y: 0
+  scale: 1.3
+
+= Landscape | 0s - 7s =
+
+rect sky-grad w:1200 h:200 fill:#2d5a87 | persist
+  x: 320
+  y: 100
+
+circle sun r:40 fill:#ffd93d | persist
+  x: 150
+  y: 80
+
+path mountain1 d:"M0,200 L150,50 L300,200 Z" fill:#2d3436 | persist
+  x: 50
+  y: 160
+
+path mountain2 d:"M0,200 L120,80 L240,200 Z" fill:#3d4f5f | persist
+  x: 250
+  y: 160
+
+path mountain3 d:"M0,200 L100,100 L200,200 Z" fill:#2d3436 | persist
+  x: 450
+  y: 160
+
+rect ground w:1200 h:120 fill:#228B22 | persist
+  x: 320
+  y: 300
+
+rect tree1-trunk w:15 h:50 fill:#8B4513 | persist
+  x: 100
+  y: 275
+
+path tree1-top d:"M0,50 L30,-30 L60,50 Z" fill:#006400 | persist
+  x: 70
+  y: 200
+
+rect tree2-trunk w:12 h:40 fill:#8B4513 | persist
+  x: 300
+  y: 280
+
+path tree2-top d:"M0,40 L25,-25 L50,40 Z" fill:#006400 | persist
+  x: 275
+  y: 215
+
+rect tree3-trunk w:18 h:60 fill:#8B4513 | persist
+  x: 500
+  y: 270
+
+path tree3-top d:"M0,60 L35,-35 L70,60 Z" fill:#006400 | persist
+  x: 465
+  y: 175
+
+rect house w:80 h:60 fill:#d35400 | persist
+  x: 380
+  y: 270
+
+path roof d:"M0,0 L50,-40 L100,0 Z" fill:#c0392b | persist
+  x: 330
+  y: 240
+
+rect window w:15 h:20 fill:#f1c40f | persist
+  x: 370
+  y: 265
+
+rect door w:20 h:35 fill:#7f4a23 | persist
+  x: 400
+  y: 283

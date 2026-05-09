@@ -1,0 +1,298 @@
+---
+canvas: 900x600
+bg: #0a0f1a
+fps: 30
+$green: #22c55e
+$red: #ef4444
+$grid: #1e293b
+$text: #64748b
+$accent: #3b82f6
+---
+
+= Stock Market | 0s - 10s =
+
+rect panel w:840 h:520 fill:#0f172a cornerRadius:12 | 0s - 10s
+  x: 450
+  y: 310
+  opacity: 0 -> 1 over 0.4s
+
+text ticker "AAPL" font:Roboto size:32 fill:#fff weight:bold | 0.2s - 10s
+  x: 100
+  y: 70
+  opacity: 0 -> 1 over 0.3s
+
+text price "182.63" font:Roboto size:28 fill:$green weight:bold | 0.3s - 10s
+  x: 220
+  y: 70
+  opacity: 0 -> 1 over 0.3s
+
+text change "+2.47 (1.37%)" font:Roboto size:16 fill:$green | 0.4s - 10s
+  x: 340
+  y: 70
+  opacity: 0 -> 1 over 0.3s
+
+line gridH1 from:(60, 150) to:(840, 150) stroke:$grid strokeWidth:1 | 0.3s - 10s
+  opacity: 0 -> 0.5 over 0.2s
+
+line gridH2 from:(60, 250) to:(840, 250) stroke:$grid strokeWidth:1 | 0.35s - 10s
+  opacity: 0 -> 0.5 over 0.2s
+
+line gridH3 from:(60, 350) to:(840, 350) stroke:$grid strokeWidth:1 | 0.4s - 10s
+  opacity: 0 -> 0.5 over 0.2s
+
+line gridH4 from:(60, 450) to:(840, 450) stroke:$grid strokeWidth:1 | 0.45s - 10s
+  opacity: 0 -> 0.5 over 0.2s
+
+text labelHigh "190" font:Roboto size:12 fill:$text | 0.5s - 10s
+  x: 40
+  y: 155
+  opacity: 0 -> 1 over 0.2s
+
+text labelMid "180" font:Roboto size:12 fill:$text | 0.5s - 10s
+  x: 40
+  y: 305
+  opacity: 0 -> 1 over 0.2s
+
+text labelLow "170" font:Roboto size:12 fill:$text | 0.5s - 10s
+  x: 40
+  y: 455
+  opacity: 0 -> 1 over 0.2s
+
+path priceLine d:"M 80 380 C 120 360, 160 340, 200 320 S 280 350, 320 300 S 400 260, 440 280 S 520 320, 560 240 S 640 200, 680 220 S 760 180, 800 160" stroke:$accent strokeWidth:3 fill:none | 0.8s - 10s
+  draw: 0 -> 1 over 3s ease-out
+
+path areaFill d:"M 80 380 C 120 360, 160 340, 200 320 S 280 350, 320 300 S 400 260, 440 280 S 520 320, 560 240 S 640 200, 680 220 S 760 180, 800 160 L 800 480 L 80 480 Z" fill:linear(0, 150, 0, 480, #3b82f633, 0, #3b82f600, 1) | 0.8s - 10s
+  opacity: 0 -> 1 over 3s
+
+circle dot1 r:6 fill:$accent | 3.8s - 10s
+  x: 800
+  y: 160
+  scale: 0 -> 1 over 0.3s ease-out
+  opacity: f(t) = 0.7 + 0.3 * sin(t * 4)
+
+rect candle1 w:12 h:40 fill:$green | 1.2s - 10s
+  x: 100
+  y: 370
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle2 w:12 h:30 fill:$red | 1.4s - 10s
+  x: 140
+  y: 355
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle3 w:12 h:50 fill:$green | 1.6s - 10s
+  x: 180
+  y: 330
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle4 w:12 h:25 fill:$green | 1.8s - 10s
+  x: 220
+  y: 310
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle5 w:12 h:35 fill:$red | 2s - 10s
+  x: 260
+  y: 335
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle6 w:12 h:45 fill:$green | 2.2s - 10s
+  x: 300
+  y: 295
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle7 w:12 h:20 fill:$red | 2.4s - 10s
+  x: 340
+  y: 285
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle8 w:12 h:55 fill:$green | 2.6s - 10s
+  x: 380
+  y: 255
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle9 w:12 h:30 fill:$red | 2.8s - 10s
+  x: 420
+  y: 275
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle10 w:12 h:40 fill:$green | 3s - 10s
+  x: 460
+  y: 250
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle11 w:12 h:60 fill:$green | 3.2s - 10s
+  x: 500
+  y: 210
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle12 w:12 h:25 fill:$red | 3.4s - 10s
+  x: 540
+  y: 225
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle13 w:12 h:35 fill:$green | 3.6s - 10s
+  x: 580
+  y: 195
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+rect candle14 w:12 h:30 fill:$green | 3.8s - 10s
+  x: 620
+  y: 175
+  opacity: 0 -> 1 over 0.15s
+  scale: 0 -> 1 over 0.2s ease-out
+
+text time1 "9:30" font:Roboto size:11 fill:$text | 1s - 10s
+  x: 100
+  y: 510
+  opacity: 0 -> 1 over 0.2s
+
+text time2 "10:30" font:Roboto size:11 fill:$text | 1.5s - 10s
+  x: 260
+  y: 510
+  opacity: 0 -> 1 over 0.2s
+
+text time3 "11:30" font:Roboto size:11 fill:$text | 2s - 10s
+  x: 420
+  y: 510
+  opacity: 0 -> 1 over 0.2s
+
+text time4 "12:30" font:Roboto size:11 fill:$text | 2.5s - 10s
+  x: 580
+  y: 510
+  opacity: 0 -> 1 over 0.2s
+
+text time5 "1:30" font:Roboto size:11 fill:$text | 3s - 10s
+  x: 740
+  y: 510
+  opacity: 0 -> 1 over 0.2s
+
+rect volBar1 w:20 h:30 fill:#3b82f666 | 4s - 10s
+  x: 100
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar2 w:20 h:45 fill:#3b82f666 | 4.1s - 10s
+  x: 140
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar3 w:20 h:60 fill:#3b82f666 | 4.2s - 10s
+  x: 180
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar4 w:20 h:35 fill:#3b82f666 | 4.3s - 10s
+  x: 220
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar5 w:20 h:50 fill:#3b82f666 | 4.4s - 10s
+  x: 260
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar6 w:20 h:70 fill:#3b82f666 | 4.5s - 10s
+  x: 300
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar7 w:20 h:40 fill:#3b82f666 | 4.6s - 10s
+  x: 340
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar8 w:20 h:85 fill:#3b82f666 | 4.7s - 10s
+  x: 380
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar9 w:20 h:55 fill:#3b82f666 | 4.8s - 10s
+  x: 420
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar10 w:20 h:75 fill:#3b82f666 | 4.9s - 10s
+  x: 460
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar11 w:20 h:95 fill:#3b82f666 | 5s - 10s
+  x: 500
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar12 w:20 h:50 fill:#3b82f666 | 5.1s - 10s
+  x: 540
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar13 w:20 h:65 fill:#3b82f666 | 5.2s - 10s
+  x: 580
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+rect volBar14 w:20 h:45 fill:#3b82f666 | 5.3s - 10s
+  x: 620
+  y: 555
+  anchor: bottom-center
+  scale: 0 -> 1 over 0.1s
+
+text volLabel "VOL" font:Roboto size:10 fill:$text | 4s - 10s
+  x: 40
+  y: 545
+  opacity: 0 -> 1 over 0.2s
+
+rect tooltip w:90 h:50 fill:#1e293b cornerRadius:6 | 5.5s - 10s
+  x: 500
+  y: 165
+  opacity: 0 -> 1 over 0.2s
+  scale: 0.9 -> 1 over 0.2s ease-out
+
+text tooltipPrice "182.63" font:Roboto size:14 fill:#fff weight:bold | 5.6s - 10s
+  x: 500
+  y: 158
+  opacity: 0 -> 1 over 0.2s
+
+text tooltipTime "12:45 PM" font:Roboto size:10 fill:$text | 5.7s - 10s
+  x: 500
+  y: 178
+  opacity: 0 -> 1 over 0.2s
+
+line tooltipLine from:(500, 190) to:(500, 210) stroke:#3b82f6 strokeWidth:1 | 5.5s - 10s
+  opacity: 0 -> 0.6 over 0.2s
+
+circle liveIndicator r:5 fill:$green | 0.5s - 10s
+  x: 820
+  y: 60
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 4)
+
+text liveText "LIVE" font:Roboto size:11 fill:$green | 0.5s - 10s
+  x: 800
+  y: 65
+  opacity: 0 -> 1 over 0.3s

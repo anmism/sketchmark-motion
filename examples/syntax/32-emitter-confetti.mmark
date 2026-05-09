@@ -1,0 +1,46 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+fps: 24
+$white: #e2e8f0
+---
+
+text title "Confetti" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+@emitter confetti | 0s - 10s
+  template: rect w:8 h:12 fill:#e74c5c
+  spawn: 30/s
+  lifetime: 3s
+  x: random(100, 540)
+  y: 50
+  vx: random(-80, 80)
+  vy: random(50, 150)
+  gravity: 120
+  opacity: random(0.7, 1)
+  scale: random(0.6, 1.2)
+
+@emitter confetti2 | 0s - 10s
+  template: rect w:8 h:12 fill:#4ecdc4
+  spawn: 25/s
+  lifetime: 3s
+  x: random(100, 540)
+  y: 50
+  vx: random(-80, 80)
+  vy: random(50, 150)
+  gravity: 120
+  opacity: random(0.7, 1)
+  scale: random(0.6, 1.2)
+
+@emitter confetti3 | 0s - 10s
+  template: rect w:8 h:12 fill:#fbbf24
+  spawn: 20/s
+  lifetime: 3s
+  x: random(100, 540)
+  y: 50
+  vx: random(-80, 80)
+  vy: random(50, 150)
+  gravity: 120
+  opacity: random(0.7, 1)
+  scale: random(0.6, 1.2)

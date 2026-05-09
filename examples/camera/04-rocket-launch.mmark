@@ -1,0 +1,71 @@
+---
+canvas: 640x480
+bg: #000022
+---
+
+@camera
+  y: f(t) = -80 * t * t
+  scale: 1 -> 0.6 over 5s ease-in
+
+= Launch | 0s - 5s =
+
+rect launchpad w:200 h:30 fill:#555 | persist
+  x: 320
+  y: 465
+
+rect tower w:20 h:150 fill:#888 | persist
+  x: 250
+  y: 390
+
+rect rocket-body w:40 h:100 fill:#ddd | persist
+  x: 320
+  y: f(t) = 400 - 80 * t * t
+
+path rocket-nose d:"M0,0 L20,-40 L40,0 Z" fill:#e74c3c | persist
+  x: f(t) = 300
+  y: f(t) = 350 - 80 * t * t
+
+rect fin-left w:15 h:30 fill:#e74c3c | persist
+  x: f(t) = 295
+  y: f(t) = 440 - 80 * t * t
+  rotation: 0.3
+
+rect fin-right w:15 h:30 fill:#e74c3c | persist
+  x: f(t) = 345
+  y: f(t) = 440 - 80 * t * t
+  rotation: -0.3
+
+circle flame1 r:15 fill:#ff6b35 | persist
+  x: 320
+  y: f(t) = 470 - 80 * t * t
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 20)
+
+circle flame2 r:20 fill:#f7c242 | persist
+  x: 320
+  y: f(t) = 485 - 80 * t * t
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 25)
+
+circle flame3 r:12 fill:#fff | persist
+  x: 320
+  y: f(t) = 465 - 80 * t * t
+  opacity: f(t) = 0.3 + 0.3 * sin(t * 30)
+
+circle star1 r:2 fill:#fff | persist
+  x: 100
+  y: 50
+
+circle star2 r:2 fill:#fff | persist
+  x: 500
+  y: 80
+
+circle star3 r:3 fill:#fff | persist
+  x: 200
+  y: 120
+
+circle star4 r:2 fill:#fff | persist
+  x: 550
+  y: 180
+
+circle star5 r:2 fill:#fff | persist
+  x: 80
+  y: 200

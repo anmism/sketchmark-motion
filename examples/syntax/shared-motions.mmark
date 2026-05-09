@@ -1,0 +1,26 @@
+---
+canvas: 100x100
+---
+
+@motion fadeIn(duration=0.5s)
+  opacity: 0 -> 1 over $duration ease-out
+
+@motion fadeOut(duration=0.5s)
+  opacity: 1 -> 0 over $duration ease-in
+
+@motion slideUp(distance=50, duration=0.5s)
+  y: f(t) = $distance * (1 - t / ($duration / 1000))
+
+@motion pulse(min=0.9, max=1.1, speed=0.3s)
+  scale: $min -> $max over $speed ease-in-out
+
+@motion spin(duration=1s)
+  rotation: 0 -> 360deg over $duration linear
+
+@draw badge(color=#4ecdc4, size=40, x=0, y=0)
+  circle bg r:$size fill:$color
+    x: $x
+    y: $y
+  text label "!" font:Roboto size:24 fill:#fff
+    x: $x
+    y: $y

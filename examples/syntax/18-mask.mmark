@@ -1,0 +1,28 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+rect gradient w:400 h:200 fill:#e74c5c | 0s - 4s
+  x: 320
+  y: 180
+  mask: rect(170, 80, 300, 200)
+
+circle masked-circle r:80 fill:#4ecdc4 | 0s - 4s
+  x: 320
+  y: 180
+  mask: rect(320, 100, 200, 160)
+
+rect reveal w:300 h:150 fill:#f7dc6f | 0s - 4s
+  x: 320
+  y: 180
+  mask: rect(220, 105, 200, 150) invert
+
+text label "Rectangular Masks" font:Roboto size:18 fill:#fff | 0s - 4s
+  x: 320
+  y: 320
+
+text inverted "invert hides inside" font:Roboto size:12 fill:#888 | 0s - 4s
+  x: 320
+  y: 345

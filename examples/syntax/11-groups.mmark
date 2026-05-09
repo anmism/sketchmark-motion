@@ -1,0 +1,25 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 24
+---
+
+@group card | 0s - 4s
+  x: 200 -> 440 over 3s ease-in-out
+  y: 180
+
+rect card-bg w:120 h:80 fill:#1e293b parent:card | 0s - 4s
+  x: 0
+  y: 0
+
+circle card-icon r:12 fill:#4ecdc4 parent:card | 0s - 4s
+  x: 0
+  y: -20
+
+text card-label "Grouped" font:Roboto size:14 fill:#e2e8f0 parent:card | 0s - 4s
+  x: 0
+  y: 15
+
+text explain "Group moves children together" font:Roboto size:16 fill:#64748b | 0s - 4s
+  x: 320
+  y: 320

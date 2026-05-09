@@ -1,0 +1,26 @@
+---
+canvas: 640x360
+bg: #0a1628
+fps: 24
+$bubble: #60a5fa
+$white: #e2e8f0
+---
+
+text title "Bubbles" font:Roboto size:24 fill:$white weight:bold | 0s - 10s
+  x: 320
+  y: 30
+
+rect water w:640 h:280 fill:#0c2444 | 0s - 10s
+  x: 320
+  y: 220
+
+@emitter bubbles | 0s - 10s
+  template: circle r:8 fill:none stroke:$bubble strokeWidth:1.5
+  spawn: 12/s
+  lifetime: 3s
+  x: random(80, 560)
+  y: 360
+  vx: random(-15, 15)
+  vy: random(-80, -120)
+  opacity: random(0.4, 0.8)
+  scale: random(0.5, 1.5)

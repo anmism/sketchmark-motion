@@ -1,0 +1,38 @@
+---
+canvas: 760x440
+bg: #08111c
+fps: 60
+perspective: 720
+vanish: 380 205
+---
+
+# Low poly sphere
+# Uses the sphere primitive, which expands to generated poly3d faces.
+
+sphere orb r:74 segments:14 rings:8 fill:#22d3ee stroke:#ffffff18 strokeWidth:1 | 0s - 8s
+  x: 380
+  y: 210
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 8s linear
+  topFill: #a5f3fc
+  upperFill: #67e8f9
+  middleFill: #22d3ee
+  lowerFill: #0891b2
+  bottomFill: #0f4c5c
+  face0Fill: #e0f2fe
+  face1Fill: #bae6fd
+
+text sparkle "●" font:Roboto size:18 fill:#ffffff weight:bold | 0s - 8s
+  x: 405
+  y: 180
+  billboard: screen
+  depthBias: 30
+  opacity: 0.66
+
+text label "65 sphere primitive" font:Roboto size:22 fill:#dbeafe weight:bold | 0s - 8s
+  x: 380
+  y: 390
+
+text subtitle "sphere expands into customizable faces" font:Roboto size:14 fill:#93c5fd | 0s - 8s
+  x: 380
+  y: 418

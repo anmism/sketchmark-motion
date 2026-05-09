@@ -1,0 +1,68 @@
+---
+canvas: 960x540
+bg: #07131f
+fps: 60
+perspective: 820
+vanish: 480 255
+$atomA: #38bdf8
+$atomB: #f472b6
+$atomC: #a7f3d0
+---
+
+# 3D Medical Molecule
+# Spheres and line3d bonds for healthcare, chemistry, and explainer graphics.
+
+@group molecule | 0s - 10s
+  x: 480
+  y: 260
+  rotateX: -18deg
+  rotateY: 0deg -> 360deg over 10s linear
+
+sphere atom0 r:42 segments:16 rings:8 fill:$atomA stroke:#ffffff14 strokeWidth:1 parent:molecule | 0s - 10s
+  topFill: #bae6fd
+  bottomFill: #075985
+
+sphere atom1 r:28 segments:14 rings:7 fill:$atomB parent:molecule | 0s - 10s
+  x: 150
+  y: -50
+  z: 80
+
+sphere atom2 r:28 segments:14 rings:7 fill:$atomC parent:molecule | 0s - 10s
+  x: -160
+  y: 45
+  z: -70
+
+sphere atom3 r:24 segments:12 rings:6 fill:#facc15 parent:molecule | 0s - 10s
+  x: 50
+  y: 120
+  z: -110
+
+sphere atom4 r:22 segments:12 rings:6 fill:#c4b5fd parent:molecule | 0s - 10s
+  x: -90
+  y: -120
+  z: -80
+
+line3d bond1 stroke:#ffffff88 strokeWidth:6 parent:molecule | 0s - 10s
+  from: (0,0,0)
+  to: (150,-50,80)
+  depthBias: -160
+line3d bond2 stroke:#ffffff77 strokeWidth:6 parent:molecule | 0s - 10s
+  from: (0,0,0)
+  to: (-160,45,-70)
+  depthBias: -160
+line3d bond3 stroke:#ffffff66 strokeWidth:7 parent:molecule | 0s - 10s
+  from: (0,0,0)
+  to: (50,120,-110)
+  depthBias: -160
+line3d bond4 stroke:#ffffff55 strokeWidth:7 parent:molecule | 0s - 10s
+  from: (0,0,0)
+  to: (-90,-120,-80)
+  depthBias: -160
+
+text title "MOLECULE MODEL" font:Roboto size:36 fill:#ffffff weight:bold | 0s - 10s
+  x: 480
+  y: 68
+
+text subtitle "spheres + line3d bonds" font:Roboto size:16 fill:#94a3b8 | 0s - 10s
+  x: 480
+  y: 98

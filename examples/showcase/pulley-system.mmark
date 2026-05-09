@@ -1,0 +1,436 @@
+---
+canvas: 800x500
+bg: #0f0f1a
+fps: 30
+$metal: #8892a0
+$metalDark: #4a5568
+$rope: #d4a574
+$ropeHighlight: #e8c9a0
+$weight: #e57373
+$weightDark: #c62828
+$effort: #4ecdc4
+$frame: #2d3748
+$frameStroke: #4a5568
+$text: #e0e0e0
+$textDim: #8892a0
+$panel: #151520
+$panelStroke: #2a2a3a
+$arrow: #4ecdc4
+---
+
+# === Title ===
+text title content:"Pulley Systems" fill:$text fontSize:24 fontWeight:bold | 0s - 16s
+  x: 400
+  y: 35
+
+text subtitle content:"Mechanical Advantage Comparison" fill:$textDim fontSize:13 | 0s - 16s
+  x: 400
+  y: 58
+
+# ============================================
+# SYSTEM 1: Fixed Pulley (MA = 1)
+# ============================================
+
+text sys1Title content:"Fixed Pulley" fill:$effort fontSize:14 fontWeight:bold | 0s - 16s
+  x: 130
+  y: 90
+
+text sys1MA content:"MA = 1" fill:$textDim fontSize:11 | 0s - 16s
+  x: 130
+  y: 108
+
+# Support beam
+rect beam1 w:80 h:10 fill:$frame stroke:$frameStroke strokeWidth:2 cornerRadius:2 | 0s - 16s
+  x: 130
+  y: 125
+
+# Pulley wheel
+circle pulley1outer r:20 fill:$metalDark stroke:$metal strokeWidth:3 | 0s - 16s
+  x: 130
+  y: 150
+
+circle pulley1inner r:8 fill:$frame | 0s - 16s
+  x: 130
+  y: 150
+
+# Rope - left side (effort) goes up as weight goes down
+line rope1Left stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 110
+  y1: 150
+  x2: 110
+  y2: f(t) = 280 - 80 * sin(t * 0.393)
+
+# Rope over pulley (arc simulation with lines)
+line rope1Top1 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 110
+  y1: 150
+  x2: 120
+  y2: 132
+
+line rope1Top2 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 120
+  y1: 132
+  x2: 140
+  y2: 132
+
+line rope1Top3 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 140
+  y1: 132
+  x2: 150
+  y2: 150
+
+# Rope - right side (weight)
+line rope1Right stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 150
+  y1: 150
+  x2: 150
+  y2: f(t) = 280 + 80 * sin(t * 0.393)
+
+# Weight box
+rect weight1 w:50 h:50 fill:$weight stroke:$weightDark strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 150
+  y: f(t) = 310 + 80 * sin(t * 0.393)
+
+text weight1Label content:"10kg" fill:$text fontSize:12 fontWeight:bold | 0s - 16s
+  x: 150
+  y: f(t) = 310 + 80 * sin(t * 0.393)
+
+# Effort hand/grip
+circle grip1 r:10 fill:$effort | 0s - 16s
+  x: 110
+  y: f(t) = 290 - 80 * sin(t * 0.393)
+
+# Force arrows
+text force1 content:"10kg" fill:$effort fontSize:10 | 0s - 16s
+  x: 80
+  y: f(t) = 290 - 80 * sin(t * 0.393)
+
+# ============================================
+# SYSTEM 2: Movable Pulley (MA = 2)
+# ============================================
+
+text sys2Title content:"Movable Pulley" fill:$effort fontSize:14 fontWeight:bold | 0s - 16s
+  x: 310
+  y: 90
+
+text sys2MA content:"MA = 2" fill:$textDim fontSize:11 | 0s - 16s
+  x: 310
+  y: 108
+
+# Support beam
+rect beam2 w:100 h:10 fill:$frame stroke:$frameStroke strokeWidth:2 cornerRadius:2 | 0s - 16s
+  x: 310
+  y: 125
+
+# Fixed anchor point
+circle anchor2 r:8 fill:$metal stroke:$metalDark strokeWidth:2 | 0s - 16s
+  x: 270
+  y: 130
+
+# Rope - left side fixed to anchor
+line rope2Left stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 270
+  y1: 138
+  x2: 270
+  y2: f(t) = 230 + 40 * sin(t * 0.393)
+
+# Movable pulley (goes up and down)
+circle pulley2outer r:20 fill:$metalDark stroke:$metal strokeWidth:3 | 0s - 16s
+  x: 290
+  y: f(t) = 250 + 40 * sin(t * 0.393)
+
+circle pulley2inner r:8 fill:$frame | 0s - 16s
+  x: 290
+  y: f(t) = 250 + 40 * sin(t * 0.393)
+
+# Rope under pulley
+line rope2Under1 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 270
+  y1: f(t) = 250 + 40 * sin(t * 0.393)
+  x2: 280
+  y2: f(t) = 268 + 40 * sin(t * 0.393)
+
+line rope2Under2 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 280
+  y1: f(t) = 268 + 40 * sin(t * 0.393)
+  x2: 300
+  y2: f(t) = 268 + 40 * sin(t * 0.393)
+
+line rope2Under3 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 300
+  y1: f(t) = 268 + 40 * sin(t * 0.393)
+  x2: 310
+  y2: f(t) = 250 + 40 * sin(t * 0.393)
+
+# Rope - right side goes up to fixed pulley
+line rope2Right stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 310
+  y1: f(t) = 250 + 40 * sin(t * 0.393)
+  x2: 310
+  y2: 145
+
+# Fixed top pulley for direction
+circle pulley2top r:15 fill:$metalDark stroke:$metal strokeWidth:2 | 0s - 16s
+  x: 340
+  y: 145
+
+line rope2TopOver stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 310
+  y1: 145
+  x2: 325
+  y2: 132
+
+line rope2TopOver2 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 325
+  y1: 132
+  x2: 355
+  y2: 132
+
+line rope2TopOver3 stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 355
+  y1: 132
+  x2: 355
+  y2: 145
+
+line rope2Down stroke:$rope strokeWidth:4 | 0s - 16s
+  x1: 355
+  y1: 145
+  x2: 355
+  y2: f(t) = 290 - 80 * sin(t * 0.393)
+
+# Weight attached to movable pulley
+rect weight2 w:50 h:50 fill:$weight stroke:$weightDark strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 290
+  y: f(t) = 310 + 40 * sin(t * 0.393)
+
+text weight2Label content:"10kg" fill:$text fontSize:12 fontWeight:bold | 0s - 16s
+  x: 290
+  y: f(t) = 310 + 40 * sin(t * 0.393)
+
+# Hook connecting pulley to weight
+line hook2 stroke:$metal strokeWidth:3 | 0s - 16s
+  x1: 290
+  y1: f(t) = 270 + 40 * sin(t * 0.393)
+  x2: 290
+  y2: f(t) = 285 + 40 * sin(t * 0.393)
+
+# Effort grip
+circle grip2 r:10 fill:$effort | 0s - 16s
+  x: 355
+  y: f(t) = 290 - 80 * sin(t * 0.393)
+
+text force2 content:"5kg" fill:$effort fontSize:10 | 0s - 16s
+  x: 375
+  y: f(t) = 290 - 80 * sin(t * 0.393)
+
+# ============================================
+# SYSTEM 3: Block and Tackle (MA = 4)
+# ============================================
+
+text sys3Title content:"Block & Tackle" fill:$effort fontSize:14 fontWeight:bold | 0s - 16s
+  x: 530
+  y: 90
+
+text sys3MA content:"MA = 4" fill:$textDim fontSize:11 | 0s - 16s
+  x: 530
+  y: 108
+
+# Support beam
+rect beam3 w:120 h:10 fill:$frame stroke:$frameStroke strokeWidth:2 cornerRadius:2 | 0s - 16s
+  x: 530
+  y: 125
+
+# Upper fixed block (2 pulleys)
+rect upperBlock w:60 h:30 fill:$frame stroke:$frameStroke strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 510
+  y: 150
+
+circle pulley3a r:12 fill:$metalDark stroke:$metal strokeWidth:2 | 0s - 16s
+  x: 495
+  y: 150
+
+circle pulley3b r:12 fill:$metalDark stroke:$metal strokeWidth:2 | 0s - 16s
+  x: 525
+  y: 150
+
+# Lower movable block (2 pulleys)
+rect lowerBlock w:60 h:30 fill:$frame stroke:$frameStroke strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 510
+  y: f(t) = 260 + 20 * sin(t * 0.393)
+
+circle pulley3c r:12 fill:$metalDark stroke:$metal strokeWidth:2 | 0s - 16s
+  x: 495
+  y: f(t) = 260 + 20 * sin(t * 0.393)
+
+circle pulley3d r:12 fill:$metalDark stroke:$metal strokeWidth:2 | 0s - 16s
+  x: 525
+  y: f(t) = 260 + 20 * sin(t * 0.393)
+
+# Rope segments (4 supporting strands - from bottom of upper pulleys to top of lower pulleys)
+line rope3s1 stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 483
+  y1: 162
+  x2: 483
+  y2: f(t) = 248 + 20 * sin(t * 0.393)
+
+line rope3s2 stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 507
+  y1: 162
+  x2: 507
+  y2: f(t) = 248 + 20 * sin(t * 0.393)
+
+line rope3s3 stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 513
+  y1: 162
+  x2: 513
+  y2: f(t) = 248 + 20 * sin(t * 0.393)
+
+line rope3s4 stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 537
+  y1: 162
+  x2: 537
+  y2: f(t) = 248 + 20 * sin(t * 0.393)
+
+# Effort rope - goes from last rope strand position, over top pulley, then down
+line rope3effortUp stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 537
+  y1: 162
+  x2: 537
+  y2: 138
+
+line rope3effortOver stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 537
+  y1: 138
+  x2: 565
+  y2: 138
+
+line rope3effortDown stroke:$rope strokeWidth:3 | 0s - 16s
+  x1: 565
+  y1: 138
+  x2: 565
+  y2: f(t) = 290 - 80 * sin(t * 0.393)
+
+# Weight
+rect weight3 w:50 h:50 fill:$weight stroke:$weightDark strokeWidth:2 cornerRadius:4 | 0s - 16s
+  x: 510
+  y: f(t) = 325 + 20 * sin(t * 0.393)
+
+text weight3Label content:"10kg" fill:$text fontSize:12 fontWeight:bold | 0s - 16s
+  x: 510
+  y: f(t) = 325 + 20 * sin(t * 0.393)
+
+# Hook
+line hook3 stroke:$metal strokeWidth:3 | 0s - 16s
+  x1: 510
+  y1: f(t) = 275 + 20 * sin(t * 0.393)
+  x2: 510
+  y2: f(t) = 300 + 20 * sin(t * 0.393)
+
+# Effort grip
+circle grip3 r:10 fill:$effort | 0s - 16s
+  x: 565
+  y: f(t) = 300 - 80 * sin(t * 0.393)
+
+text force3 content:"2.5kg" fill:$effort fontSize:10 | 0s - 16s
+  x: 590
+  y: f(t) = 300 - 80 * sin(t * 0.393)
+
+# ============================================
+# INFO PANEL
+# ============================================
+
+rect infoPanel w:160 h:350 fill:$panel stroke:$panelStroke strokeWidth:2 cornerRadius:10 | 0s - 16s
+  x: 720
+  y: 235
+
+text infoTitle content:"PHYSICS" fill:$effort fontSize:14 fontWeight:bold | 0s - 16s
+  x: 720
+  y: 85
+
+# MA explanation
+text maLabel content:"Mechanical" fill:$text fontSize:11 | 0s - 16s
+  x: 720
+  y: 115
+
+text maLabel2 content:"Advantage (MA)" fill:$text fontSize:11 | 0s - 16s
+  x: 720
+  y: 130
+
+rect maBg w:140 h:40 fill:#1a1a2a cornerRadius:6 | 0s - 16s
+  x: 720
+  y: 165
+
+text maFormula content:"MA = Load / Effort" fill:$textDim fontSize:10 | 0s - 16s
+  x: 720
+  y: 160
+
+text maFormula2 content:"= # of rope segments" fill:$textDim fontSize:9 | 0s - 16s
+  x: 720
+  y: 178
+
+# Tradeoff
+text tradeLabel content:"Trade-off:" fill:$text fontSize:11 | 0s - 16s
+  x: 720
+  y: 210
+
+rect tradeBg w:140 h:55 fill:#1a1a2a cornerRadius:6 | 0s - 16s
+  x: 720
+  y: 250
+
+text trade1 content:"Less force needed" fill:$effort fontSize:10 | 0s - 16s
+  x: 720
+  y: 235
+
+text trade2 content:"BUT" fill:$weight fontSize:10 fontWeight:bold | 0s - 16s
+  x: 720
+  y: 252
+
+text trade3 content:"More rope to pull" fill:$weight fontSize:10 | 0s - 16s
+  x: 720
+  y: 269
+
+# Comparison table
+text compLabel content:"Comparison:" fill:$text fontSize:11 | 0s - 16s
+  x: 720
+  y: 305
+
+rect compBg w:140 h:80 fill:#1a1a2a cornerRadius:6 | 0s - 16s
+  x: 720
+  y: 355
+
+text comp1 content:"Fixed: 10kg force" fill:$textDim fontSize:9 | 0s - 16s
+  x: 720
+  y: 330
+
+text comp2 content:"Movable: 5kg force" fill:$textDim fontSize:9 | 0s - 16s
+  x: 720
+  y: 348
+
+text comp3 content:"Block: 2.5kg force" fill:$textDim fontSize:9 | 0s - 16s
+  x: 720
+  y: 366
+
+text comp4 content:"All lift same 10kg!" fill:$effort fontSize:9 | 0s - 16s
+  x: 720
+  y: 388
+
+# ============================================
+# BOTTOM LABELS
+# ============================================
+
+text label1 content:"Changes direction only" fill:$textDim fontSize:10 | 0s - 16s
+  x: 130
+  y: 420
+
+text label2 content:"Halves the effort" fill:$textDim fontSize:10 | 0s - 16s
+  x: 310
+  y: 420
+
+text label3 content:"Quarters the effort" fill:$textDim fontSize:10 | 0s - 16s
+  x: 530
+  y: 420
+
+# Distance note
+text distNote content:"Note: Higher MA = more rope pulled for same lift distance" fill:$textDim fontSize:10 | 0s - 16s
+  x: 400
+  y: 470

@@ -1,0 +1,70 @@
+---
+canvas: 640x360
+bg: #1a1a2e
+fps: 24
+$blue: #4361ee
+$green: #06d6a0
+$orange: #f77f00
+$text: #e2e8f0
+$muted: #64748b
+---
+
+@motion grow-up(target, dur=0.8s)
+  h: 0 -> $target over $dur ease-out
+
+text title "Q4 Revenue" font:Roboto size:20 fill:$text weight:bold | 0s - 6s
+  x: 320
+  y: 40
+
+text ytick1 "0" font:Roboto size:10 fill:$muted | 0s - 6s
+  x: 100
+  y: 290
+
+text ytick2 "50k" font:Roboto size:10 fill:$muted | 0s - 6s
+  x: 100
+  y: 210
+
+text ytick3 "100k" font:Roboto size:10 fill:$muted | 0s - 6s
+  x: 100
+  y: 130
+
+rect bar1 w:40 h:0 fill:$blue anchor:bottom-center | 0.3s - 6s
+  x: 200
+  y: 290
+  grow-up(target: 120)
+
+rect bar2 w:40 h:0 fill:$green anchor:bottom-center | 0.5s - 6s
+  x: 300
+  y: 290
+  grow-up(target: 160)
+
+rect bar3 w:40 h:0 fill:$orange anchor:bottom-center | 0.7s - 6s
+  x: 400
+  y: 290
+  grow-up(target: 90)
+
+rect bar4 w:40 h:0 fill:$blue anchor:bottom-center | 0.9s - 6s
+  x: 500
+  y: 290
+  grow-up(target: 180)
+
+text lbl1 "Oct" font:Roboto size:11 fill:$muted | 0.3s - 6s
+  x: 200
+  y: 310
+
+text lbl2 "Nov" font:Roboto size:11 fill:$muted | 0.5s - 6s
+  x: 300
+  y: 310
+
+text lbl3 "Dec" font:Roboto size:11 fill:$muted | 0.7s - 6s
+  x: 400
+  y: 310
+
+text lbl4 "Jan" font:Roboto size:11 fill:$muted | 0.9s - 6s
+  x: 500
+  y: 310
+
+text counter "127,400" font:Roboto size:32 fill:$green weight:bold | 1.5s - 6s
+  x: 320
+  y: 340
+  opacity: 0 -> 1 over 0.5s ease-out

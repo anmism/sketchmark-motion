@@ -1,0 +1,25 @@
+---
+canvas: 640x400
+bg: #0f172a
+fps: 30
+---
+
+# Multiline Typography - demonstrates text properties
+
+text quote "The only way to do\ngreat work is to love\nwhat you do." font:Roboto size:32 fill:#fff weight:bold align:center lineHeight:1.4 | 0s - 5s
+  x: 320
+  y: 160
+  opacity: 0 -> 1 over 1s ease-out
+
+text author "- Steve Jobs" font:Roboto size:18 fill:#4ecdc4 align:right letterSpacing:2 | 1s - 5s
+  x: 480
+  y: 280
+  opacity: 0 -> 1 over 0.5s ease-out
+
+line divider x1:200 y1:320 x2:440 y2:320 stroke:#334155 strokeWidth:1 | 1.5s - 5s
+  draw: 0 -> 1 over 1s ease-out
+
+text footer "Typography Showcase" font:Roboto size:12 fill:#64748b letterSpacing:4 align:center | 2s - 5s
+  x: 320
+  y: 360
+  opacity: 0 -> 1 over 0.5s ease-out

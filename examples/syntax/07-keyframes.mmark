@@ -1,0 +1,21 @@
+---
+canvas: 640x360
+bg: #0f172a
+fps: 30
+$accent: #e74c5c
+---
+
+text title "Keyframe Animation" font:Roboto size:20 fill:#94a3b8 | 0s - 4s
+  x: 320
+  y: 40
+
+circle ball r:18 fill:$accent | 0s - 4s
+  x: 80 -> 560 over 4s linear
+  y: 260 at 0s, 100 at 0.6s ease-out, 260 at 1.2s ease-in, 140 at 1.8s ease-out, 260 at 2.4s ease-in, 180 at 3s ease-out, 260 at 3.6s ease-in
+
+line ground from:(40,280) to:(600,280) stroke:#334155 strokeWidth:2 | 0s - 4s
+
+circle shadow r:16 fill:#00000044 | 0s - 4s
+  x: 80 -> 560 over 4s linear
+  y: 276
+  scale: 1 at 0s, 0.5 at 0.6s ease-out, 1 at 1.2s ease-in, 0.7 at 1.8s ease-out, 1 at 2.4s ease-in

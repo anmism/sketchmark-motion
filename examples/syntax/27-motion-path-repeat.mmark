@@ -1,0 +1,36 @@
+---
+canvas: 800x500
+bg: #0b1020
+fps: 24
+$white: #e2e8f0
+$muted: #94a3b8
+$cyan: #22d3ee
+$pink: #fb7185
+---
+
+text title "Motion Path + Repeat" font:Roboto size:22 fill:$white weight:bold | 0s - 7s
+  x: 400
+  y: 34
+
+text sub "arc-length motionPath, motionRotate:auto, repeatOffset delay" font:Roboto size:12 fill:$muted | 0s - 7s
+  x: 400
+  y: 58
+
+path route d:"M 80 315 C 180 120, 360 120, 440 260 S 620 430, 720 210" stroke:#334155 strokeWidth:3 fill:none | 0s - 7s
+  dashArray: [12, 10]
+  dashOffset: 0 -> 160 over 7s linear
+
+rect comet w:34 h:14 fill:$cyan anchor:center | 0s - 7s
+  motionPath: "M 80 315 C 180 120, 360 120, 440 260 S 620 430, 720 210"
+  motionProgress: 0 -> 1 over 5s ease-in-out
+  motionRotate: auto
+  shadow: 0 0 22 $cyan
+
+circle spark r:7 fill:$pink | 1s - 7s
+  repeat: 10
+  repeatOffset: x:26 y:-10 opacity:-0.075 delay:0.06s
+  x: 285
+  y: 390
+  scale: 0 -> 1 over 0.35s spring(stiffness:140, damping:10)
+  opacity: 1 -> 0 over 1.2s ease-out
+  shadow: 0 0 14 $pink

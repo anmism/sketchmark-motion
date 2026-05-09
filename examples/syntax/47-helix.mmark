@@ -1,0 +1,123 @@
+---
+canvas: 600x500
+bg: #1e1b4b
+fps: 60
+perspective: 700
+vanish: 300 250
+---
+
+# 3D DNA Helix - rotating double helix structure
+
+@group helix | 0s - 10s
+  x: 300
+  y: 250
+  rotateY: 0deg -> 360deg over 5s linear
+
+# Strand 1 nodes
+circle h1a r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: 40
+  y: -150
+  z: 0
+
+circle h1b r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: 0
+  y: -100
+  z: 40
+
+circle h1c r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: -40
+  y: -50
+  z: 0
+
+circle h1d r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: 0
+  y: 0
+  z: -40
+
+circle h1e r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: 40
+  y: 50
+  z: 0
+
+circle h1f r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: 0
+  y: 100
+  z: 40
+
+circle h1g r:10 fill:#f472b6 parent:helix | 0s - 10s
+  x: -40
+  y: 150
+  z: 0
+
+# Strand 2 nodes (opposite phase)
+circle h2a r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: -40
+  y: -150
+  z: 0
+
+circle h2b r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: 0
+  y: -100
+  z: -40
+
+circle h2c r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: 40
+  y: -50
+  z: 0
+
+circle h2d r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: 0
+  y: 0
+  z: 40
+
+circle h2e r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: -40
+  y: 50
+  z: 0
+
+circle h2f r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: 0
+  y: 100
+  z: -40
+
+circle h2g r:10 fill:#60a5fa parent:helix | 0s - 10s
+  x: 40
+  y: 150
+  z: 0
+
+# Connecting bars (base pairs)
+line bar1 stroke:#a78bfa strokeWidth:3 parent:helix | 0s - 10s
+  x: 0
+  y: -150
+  x1: 40
+  y1: 0
+  x2: -40
+  y2: 0
+
+line bar2 stroke:#a78bfa strokeWidth:3 parent:helix | 0s - 10s
+  x: 0
+  y: -50
+  x1: -40
+  y1: 0
+  x2: 40
+  y2: 0
+
+line bar3 stroke:#a78bfa strokeWidth:3 parent:helix | 0s - 10s
+  x: 0
+  y: 50
+  x1: 40
+  y1: 0
+  x2: -40
+  y2: 0
+
+line bar4 stroke:#a78bfa strokeWidth:3 parent:helix | 0s - 10s
+  x: 0
+  y: 150
+  x1: -40
+  y1: 0
+  x2: 40
+  y2: 0
+
+text label "DNA Helix" font:Roboto size:20 fill:#c4b5fd weight:bold | 0s - 10s
+  x: 300
+  y: 470

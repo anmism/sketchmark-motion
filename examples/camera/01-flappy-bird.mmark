@@ -1,0 +1,65 @@
+---
+canvas: 800x450
+bg: #87CEEB
+---
+
+@camera
+  x: f(t) = 100 * t
+
+= Game | 0s - 8s =
+
+rect ground w:2000 h:80 fill:#8B4513 | persist
+  x: 400
+  y: 410
+
+circle bird r:18 fill:#FFD700 | persist
+  x: 150
+  y: f(t) = 200 + 40 * sin(t * 4)
+
+rect pipe1-top w:60 h:180 fill:#228B22 | persist
+  x: 350
+  y: 90
+
+rect pipe1-bot w:60 h:150 fill:#228B22 | persist
+  x: 350
+  y: 375
+
+rect pipe2-top w:60 h:120 fill:#228B22 | persist
+  x: 550
+  y: 60
+
+rect pipe2-bot w:60 h:200 fill:#228B22 | persist
+  x: 550
+  y: 350
+
+rect pipe3-top w:60 h:200 fill:#228B22 | persist
+  x: 750
+  y: 100
+
+rect pipe3-bot w:60 h:130 fill:#228B22 | persist
+  x: 750
+  y: 385
+
+rect pipe4-top w:60 h:150 fill:#228B22 | persist
+  x: 950
+  y: 75
+
+rect pipe4-bot w:60 h:180 fill:#228B22 | persist
+  x: 950
+  y: 360
+
+circle cloud1 r:30 fill:#fff | persist
+  x: 100
+  y: 60
+
+circle cloud2 r:40 fill:#fff | persist
+  x: 400
+  y: 80
+
+circle cloud3 r:35 fill:#fff | persist
+  x: 700
+  y: 50
+
+circle cloud4 r:45 fill:#fff | persist
+  x: 1000
+  y: 70

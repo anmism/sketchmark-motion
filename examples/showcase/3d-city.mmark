@@ -1,0 +1,220 @@
+---
+canvas: 960x540
+bg: #08101b
+fps: 60
+perspective: 760
+vanish: 480 290
+$skyTop: #111827
+$skyGlow: #1d4ed8
+$haze: #312e81
+$road: #05070c
+$lane: #22d3ee
+$towerA: #334155
+$towerB: #475569
+$towerC: #1f2937
+$windowOn: #fbbf24
+$windowOff: #243b53
+$neonPink: #f472b6
+$neonBlue: #38bdf8
+$neonOrange: #fb923c
+---
+
+# 3D City
+
+= Atmosphere | 0s - 12s =
+
+rect skyTop w:960 h:320 fill:$skyTop | 0s - 12s
+  x: 480
+  y: 160
+
+circle glowA r:150 fill:$skyGlow | 0s - 12s
+  x: 760
+  y: 130
+  opacity: 0.18
+  blur: 80
+
+circle glowB r:120 fill:$haze | 0s - 12s
+  x: 220
+  y: 90
+  opacity: 0.16
+  blur: 70
+
+rect hazeBand w:960 h:120 fill:$haze | 0s - 12s
+  x: 480
+  y: 260
+  opacity: 0.18
+  blur: 20
+
+= Avenue | 0s - 12s =
+
+@view roadPlane | 0s - 12s
+  at: 480 462 0
+  normal: 0 1 0
+  up: 0 0 1
+
+rect road w:1240 h:320 fill:$road parent:roadPlane | 0s - 12s
+
+path laneLeft fill:none stroke:$lane strokeWidth:4 parent:roadPlane | 0s - 12s
+  d: "M-40,-160 L-10,160"
+  opacity: 0.7
+
+path laneRight fill:none stroke:$lane strokeWidth:4 parent:roadPlane | 0s - 12s
+  d: "M40,-160 L10,160"
+  opacity: 0.7
+
+path laneCenter fill:none stroke:#ffffff22 strokeWidth:3 parent:roadPlane | 0s - 12s
+  d: "M0,-160 L0,160"
+
+= Skyline | 0s - 12s =
+
+@group city | 0s - 12s
+  x: 480
+  y: 300
+  rotateX: -10deg
+  rotateY: -10deg -> 10deg -> -10deg over 10s ease-in-out
+
+# Back towers
+@view towerA1Front parent:city | 0s - 12s
+  at: -280 -40 -180
+  normal: 0 0 1
+rect towerA1Body w:72 h:190 fill:$towerC parent:towerA1Front | 0s - 12s
+@view towerA1Side parent:city | 0s - 12s
+  at: -244 -40 -216
+  normal: 1 0 0
+rect towerA1SideFace w:72 h:190 fill:#17212f parent:towerA1Side | 0s - 12s
+
+@view towerA2Front parent:city | 0s - 12s
+  at: -100 -10 -220
+  normal: 0 0 1
+rect towerA2Body w:92 h:250 fill:$towerA parent:towerA2Front | 0s - 12s
+
+@view towerA3Front parent:city | 0s - 12s
+  at: 120 -20 -210
+  normal: 0 0 1
+rect towerA3Body w:88 h:230 fill:$towerB parent:towerA3Front | 0s - 12s
+@view towerA3Side parent:city | 0s - 12s
+  at: 164 -20 -248
+  normal: 1 0 0
+rect towerA3SideFace w:76 h:230 fill:$towerC parent:towerA3Side | 0s - 12s
+
+@view towerA4Front parent:city | 0s - 12s
+  at: 285 10 -190
+  normal: 0 0 1
+rect towerA4Body w:62 h:170 fill:$towerC parent:towerA4Front | 0s - 12s
+
+# Front towers
+@view towerB1Front parent:city | 0s - 12s
+  at: -235 25 30
+  normal: 0 0 1
+rect towerB1Body w:94 h:160 fill:$towerB parent:towerB1Front | 0s - 12s
+@view towerB1Side parent:city | 0s - 12s
+  at: -188 25 -16
+  normal: 1 0 0
+rect towerB1SideFace w:92 h:160 fill:$towerA parent:towerB1Side | 0s - 12s
+
+@view towerB2Front parent:city | 0s - 12s
+  at: 0 0 65
+  normal: 0 0 1
+rect towerB2Body w:122 h:210 fill:$towerA parent:towerB2Front | 0s - 12s
+@view towerB2Side parent:city | 0s - 12s
+  at: 61 0 6
+  normal: 1 0 0
+rect towerB2SideFace w:118 h:210 fill:$towerC parent:towerB2Side | 0s - 12s
+
+@view towerB3Front parent:city | 0s - 12s
+  at: 230 35 35
+  normal: 0 0 1
+rect towerB3Body w:86 h:150 fill:$towerB parent:towerB3Front | 0s - 12s
+@view towerB3Side parent:city | 0s - 12s
+  at: 273 35 -8
+  normal: 1 0 0
+rect towerB3SideFace w:84 h:150 fill:$towerA parent:towerB3Side | 0s - 12s
+
+# Rooftop highlights
+@view topA parent:city | 0s - 12s
+  at: 0 -105 65
+  normal: 0 -1 0
+  up: 0 0 -1
+rect roofA w:122 h:118 fill:#64748b parent:topA | 0s - 12s
+  opacity: 0.8
+
+@view topB parent:city | 0s - 12s
+  at: -235 -55 30
+  normal: 0 -1 0
+  up: 0 0 -1
+rect roofB w:94 h:92 fill:#64748b parent:topB | 0s - 12s
+  opacity: 0.78
+
+# Window bands
+@view windowsCenter parent:city | 0s - 12s
+  at: 0 0 66
+  normal: 0 0 1
+rect winRow1 w:92 h:16 fill:$windowOn parent:windowsCenter | 0s - 12s
+  y: -50
+  opacity: f(t) = 0.75 + 0.2 * sin(t * 2.1)
+rect winRow2 w:92 h:16 fill:$windowOff parent:windowsCenter | 0s - 12s
+  y: -10
+rect winRow3 w:92 h:16 fill:$windowOn parent:windowsCenter | 0s - 12s
+  y: 30
+  opacity: f(t) = 0.7 + 0.25 * sin(t * 2.5 + 0.7)
+
+@view windowsLeft parent:city | 0s - 12s
+  at: -235 25 31
+  normal: 0 0 1
+rect leftWin1 w:68 h:12 fill:$windowOn parent:windowsLeft | 0s - 12s
+  y: -35
+  opacity: f(t) = 0.65 + 0.25 * sin(t * 1.8)
+rect leftWin2 w:68 h:12 fill:$windowOff parent:windowsLeft | 0s - 12s
+  y: 0
+rect leftWin3 w:68 h:12 fill:$windowOn parent:windowsLeft | 0s - 12s
+  y: 35
+  opacity: f(t) = 0.6 + 0.25 * sin(t * 2.4 + 1)
+
+# Billboard signs
+text signA "NEON" font:Roboto size:22 fill:$neonPink weight:bold parent:city | 0s - 12s
+  x: -235
+  y: -10
+  z: 78
+  billboard: screen
+  depthBias: 45
+
+text signB "XR-9" font:Roboto size:24 fill:$neonBlue weight:bold parent:city | 0s - 12s
+  x: 0
+  y: -70
+  z: 110
+  billboard: screen
+  depthBias: 45
+
+text signC "FOOD" font:Roboto size:20 fill:$neonOrange weight:bold parent:city | 0s - 12s
+  x: 230
+  y: -5
+  z: 72
+  billboard: screen
+  depthBias: 45
+
+# Antennas
+line3d ant1 stroke:#cbd5e1 strokeWidth:3 parent:city | 0s - 12s
+  from: (-100, -135, -220)
+  to: (-100, -185, -220)
+line3d ant2 stroke:#cbd5e1 strokeWidth:3 parent:city | 0s - 12s
+  from: (120, -135, -210)
+  to: (120, -185, -210)
+
+circle blink1 r:4 fill:#fb7185 parent:city | 0s - 12s
+  x: -100
+  y: -188
+  z: -220
+  opacity: f(t) = 0.5 + 0.5 * sin(t * 4)
+
+= UI | 0s - 12s =
+
+text title "NIGHT DISTRICT" font:Roboto size:40 fill:#f8fafc weight:bold | 0.4s - 12s
+  x: 480
+  y: 54
+  opacity: 0 -> 1 over 1s ease-out
+  letterSpacing: 6
+
+text subtitle "A @view + billboard city test" font:Roboto size:16 fill:#93c5fd | 0.9s - 12s
+  x: 480
+  y: 88
+  opacity: 0 -> 0.85 over 0.8s ease-out

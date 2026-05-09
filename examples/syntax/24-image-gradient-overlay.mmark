@@ -1,0 +1,20 @@
+---
+canvas: 640x360
+bg: #0a0a1a
+fps: 24
+---
+
+image photo "image.jpg" w:500 h:300 | 0s - 5s
+  x: 320
+  y: 180
+  opacity: 0 -> 1 over 0.8s ease-out
+
+rect overlay w:500 h:300 | 0s - 5s
+  x: 320
+  y: 180
+  fill: linear(320, 30, 320, 330, #0a0a1aff, 0, #0a0a1a00, 0.4, #0a0a1a00, 0.6, #0a0a1aff, 1)
+
+text title "GRADIENT OVERLAY" font:Roboto size:32 fill:#ffffff weight:bold | 1s - 5s
+  x: 320
+  y: 310
+  opacity: 0 -> 1 over 0.5s ease-out

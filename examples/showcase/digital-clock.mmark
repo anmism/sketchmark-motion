@@ -1,0 +1,191 @@
+---
+canvas: 800x400
+bg: #0d0d0d
+fps: 30
+$bg1: #1a1a1a
+$bg2: #141414
+$digit: #ff3333
+$accent: #ff4444
+---
+
+= Flip Clock | 0s - 12s =
+
+rect backdrop w:700 h:200 fill:$bg1 cornerRadius:16 | 0s - 12s
+  x: 400
+  y: 200
+  opacity: 0 -> 1 over 0.4s ease-out
+
+rect hourPanel1 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.1s - 12s
+  x: 120
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+rect hourPanel2 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.15s - 12s
+  x: 220
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+rect minPanel1 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.2s - 12s
+  x: 360
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+rect minPanel2 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.25s - 12s
+  x: 460
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+rect secPanel1 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.3s - 12s
+  x: 600
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+rect secPanel2 w:90 h:140 fill:$bg2 cornerRadius:8 | 0.35s - 12s
+  x: 700
+  y: 200
+  opacity: 0 -> 1 over 0.3s
+
+text hourD1 "1" font:Roboto size:100 fill:$digit weight:bold | 0.5s - 12s
+  x: 120
+  y: 220
+  opacity: 0 -> 1 over 0.2s
+
+text hourD2 "0" font:Roboto size:100 fill:$digit weight:bold | 0.5s - 12s
+  x: 220
+  y: 220
+  opacity: 0 -> 1 over 0.2s
+
+text minD1 "2" font:Roboto size:100 fill:$digit weight:bold | 0.6s - 12s
+  x: 360
+  y: 220
+  opacity: 0 -> 1 over 0.2s
+
+text minD2 "4" font:Roboto size:100 fill:$digit weight:bold | 0.6s - 12s
+  x: 460
+  y: 220
+  opacity: 0 -> 1 over 0.2s
+
+text secD1 "3" font:Roboto size:100 fill:$digit weight:bold | 0.7s - 12s
+  x: 600
+  y: 220
+  opacity: 0 -> 1 over 0.2s
+
+text sec7 "7" font:Roboto size:100 fill:$digit weight:bold | 1s - 2s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec8 "8" font:Roboto size:100 fill:$digit weight:bold | 2s - 3s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec9 "9" font:Roboto size:100 fill:$digit weight:bold | 3s - 4s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec0 "0" font:Roboto size:100 fill:$digit weight:bold | 4s - 5s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec1 "1" font:Roboto size:100 fill:$digit weight:bold | 5s - 6s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec2 "2" font:Roboto size:100 fill:$digit weight:bold | 6s - 7s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec3 "3" font:Roboto size:100 fill:$digit weight:bold | 7s - 8s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec4 "4" font:Roboto size:100 fill:$digit weight:bold | 8s - 9s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec5 "5" font:Roboto size:100 fill:$digit weight:bold | 9s - 10s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec6 "6" font:Roboto size:100 fill:$digit weight:bold | 10s - 11s
+  x: 700
+  y: 220
+  opacity: 0 at 0s, 1 at 0.1s, 1 at 0.8s, 0 at 1s
+
+text sec7b "7" font:Roboto size:100 fill:$digit weight:bold | 11s - 12s
+  x: 700
+  y: 220
+  opacity: 0 -> 1 over 0.1s
+
+circle colon1 r:8 fill:$accent | 0.8s - 12s
+  x: 290
+  y: 170
+  opacity: f(t) = 0.4 + 0.6 * abs(sin(t * 3.14))
+
+circle colon2 r:8 fill:$accent | 0.8s - 12s
+  x: 290
+  y: 230
+  opacity: f(t) = 0.4 + 0.6 * abs(sin(t * 3.14))
+
+circle colon3 r:8 fill:$accent | 0.8s - 12s
+  x: 530
+  y: 170
+  opacity: f(t) = 0.4 + 0.6 * abs(sin(t * 3.14))
+
+circle colon4 r:8 fill:$accent | 0.8s - 12s
+  x: 530
+  y: 230
+  opacity: f(t) = 0.4 + 0.6 * abs(sin(t * 3.14))
+
+rect divider1 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 120
+  y: 200
+
+rect divider2 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 220
+  y: 200
+
+rect divider3 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 360
+  y: 200
+
+rect divider4 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 460
+  y: 200
+
+rect divider5 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 600
+  y: 200
+
+rect divider6 w:86 h:2 fill:#0d0d0d | 0.4s - 12s
+  x: 700
+  y: 200
+
+text labelHrs "HRS" font:Roboto size:12 fill:#444 | 1s - 12s
+  x: 170
+  y: 290
+  opacity: 0 -> 1 over 0.3s
+
+text labelMin "MIN" font:Roboto size:12 fill:#444 | 1s - 12s
+  x: 410
+  y: 290
+  opacity: 0 -> 1 over 0.3s
+
+text labelSec "SEC" font:Roboto size:12 fill:#444 | 1s - 12s
+  x: 650
+  y: 290
+  opacity: 0 -> 1 over 0.3s
+
+rect glowBar w:600 h:4 fill:$accent cornerRadius:2 | 1.2s - 12s
+  x: 400
+  y: 310
+  opacity: 0 -> 0.6 over 0.4s
+  scale: 0 -> 1 over 0.5s ease-out

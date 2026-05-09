@@ -1,0 +1,27 @@
+# Source files (dist is published)
+packages/
+tests/
+scripts/
+
+# Build artifacts not needed
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Development files
+.gitignore
+.git/
+PLAN.md
+node_modules/
+
+# Examples and docs (optional - remove these lines to include them)
+examples/
+learn/
+docs/
+prompts/
+renders/
+outputs/
+
+# Output files
+out/
+*.mp4

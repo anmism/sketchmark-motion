@@ -29,7 +29,7 @@ Open http://localhost:5175 in your browser. Edit code on the left, see live prev
 
 ### Use the Canvas Player in React / Next.js
 
-MotionMark also exposes the preview canvas as reusable browser UI via `motionmark/player`. It compiles DSL source and renders directly into a canvas, so React apps can own the surrounding UI.
+MotionMark also exposes the preview canvas as reusable browser UI via `@sketchmark/motion/player`. It compiles DSL source and renders directly into a canvas, so React apps can own the surrounding UI.
 
 ```tsx
 "use client";
@@ -61,7 +61,7 @@ export function MotionMarkCanvas({ source }: { source: string }) {
 }
 ```
 
-For lower-level control, import `compileMotionMarkScene`, `preloadBrowserImages`, and `renderFrameToCanvas` from `motionmark/player`.
+For lower-level control, import `compileMotionMarkScene`, `preloadBrowserImages`, and `renderFrameToCanvas` from `@sketchmark/motion/player`.
 
 ## File Format
 

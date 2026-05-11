@@ -102,7 +102,7 @@ export interface EmitterDefinitionAST {
   sceneName?: string;
   sceneLifetime?: LifetimeAST;
   template: EmitterTemplateAST;
-  props: Record<string, StaticValue | EmitterRandomAST | EmitterOverLifeAST>;
+  props: Record<string, StaticValue | EmitterRandomAST | EmitterOverLifeAST | AnimationAST>;
   loc: SourceLocation;
 }
 

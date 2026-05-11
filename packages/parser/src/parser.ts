@@ -13,6 +13,8 @@ import type {
   EmitterOverLifeAST,
   EmitterRandomAST,
   EmitterTemplateAST,
+  AnimationAST,
+  KeyframeAnimationAST,
   ImportAST,
   LifetimeAST,
   MotionArgumentAST,
@@ -259,7 +261,7 @@ class MotionMarkParser {
     this.consume("indent", "Expected indented @emitter body");
 
     let template: EmitterTemplateAST | undefined;
-    const props: Record<string, StaticValue | EmitterRandomAST | EmitterOverLifeAST> = {};
+    const props: Record<string, StaticValue | EmitterRandomAST | EmitterOverLifeAST | AnimationAST> = {};
 
     while (!this.check("dedent") && !this.check("eof")) {
       this.skipNewlines();
@@ -271,7 +273,7 @@ class MotionMarkParser {
       if (key.value === "template") {
         template = this.parseEmitterTemplate();
       } else {
-        props[key.value] = this.parseEmitterValue();
+        props[key.value] = this.parseEmitterValue(key.value);
       }
       this.consumeOptional("newline");
     }
@@ -328,9 +330,13 @@ class MotionMarkParser {
     return { type, props, body };
   }
 
-  private parseEmitterValue(): StaticValue | EmitterRandomAST | EmitterOverLifeAST {
+  private parseEmitterValue(propName: string): StaticValue | EmitterRandomAST | EmitterOverLifeAST | AnimationAST {
     if (this.checkIdentifier("random")) {
       return this.parseEmitterRandom();
+    }
+
+    if (propName === "x" || propName === "y") {
+      return this.parsePropertyValue();
     }
 
     // Handle spawn rate format: N/s
@@ -341,6 +347,17 @@ class MotionMarkParser {
       if (firstToken.type === "number" && this.match("slash")) {
         const unit = this.consume("identifier", "Expected unit after /");
         return `${firstToken.value}/${unit.value}`;
+      }
+
+      // Moving emitter source position. Times are local to the emitter lifetime.
+      if (this.matchKeyword("at")) {
+        if (propName !== "x" && propName !== "y") {
+          throw this.error(firstToken, "@emitter keyframes are only supported for x and y");
+        }
+        if (firstToken.type !== "number") {
+          throw this.error(firstToken, "@emitter x/y keyframes require numeric values");
+        }
+        return this.parseKeyframes(Number(firstToken.value));
       }
 
       // Check for "from -> to over life" format
@@ -760,7 +777,7 @@ class MotionMarkParser {
     };
   }
 
-  private parseKeyframes(firstValue: AnimationScalarAST): PropertyValueAST {
+  private parseKeyframes(firstValue: AnimationScalarAST): KeyframeAnimationAST {
     const points: AnimationPointAST[] = [
       {
         value: firstValue,

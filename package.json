@@ -1,6 +1,6 @@
 {
   "name": "@sketchmark/motion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Markdown for Motion Graphics. Text-in, video-out. A DSL for creating animations.",
   "author": "Bapun Hansdah",
   "license": "MIT",

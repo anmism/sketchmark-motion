@@ -204,10 +204,13 @@ path circle xt:"200 + 80 * cos(t)" yt:"200 + 80 * sin(t)" tRange:"0-6.28" steps:
 #### Image
 
 ```mmark
-image id "filename.png" w:WIDTH h:HEIGHT
+image id "filename.png" w:WIDTH h:HEIGHT fit:cover
+image remote "https://example.com/photo.jpg" w:WIDTH h:HEIGHT fit:contain
   x: VALUE
   y: VALUE
 ```
+
+Image `fit` can be `fill` (default stretch), `contain` (preserve aspect ratio inside the box), or `cover` (preserve aspect ratio and crop from center).
 
 ### Element Lifetime
 
@@ -464,6 +467,7 @@ Add independent audio elements to your animation timeline:
 ```mmark
 audio "bg-music.mp3" | 0s - end volume:0.3 fade-in:2000 fade-out:1000
 audio "whoosh.wav" | 1.5s - 2.5s volume:0.8
+audio "https://example.com/music.mp3" | 0s - end volume:0.3
 ```
 
 | Property | Description | Default |
@@ -475,7 +479,7 @@ audio "whoosh.wav" | 1.5s - 2.5s volume:0.8
 | `trim` | Skip this many ms from the start of the file | `0` |
 | `loop` | Loop the audio (`true`/`false`) | `false` |
 
-Audio files are resolved relative to the `.mmark` file's directory.
+Local audio files are resolved relative to the `.mmark` file's directory. Remote `http`/`https` audio is supported in preview and ffmpeg MP4 export; browser preview/export still depends on the remote server's CORS headers.
 
 ### Masking
 

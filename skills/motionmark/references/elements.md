@@ -9,7 +9,8 @@ ellipse id rx:N ry:N fill:#hex | 0s - 3s
 text id "content" font:Name size:N fill:#hex weight:bold | 0s - 3s
 line id from:(x,y) to:(x,y) stroke:#hex strokeWidth:N | 0s - 3s
 path id d:"M 0 0 L 100 100" fill:none stroke:#hex strokeWidth:N | 0s - 3s
-image id "file.png" w:N h:N | 0s - 3s
+image id "file.png" w:N h:N fit:cover | 0s - 3s
+image remote "https://example.com/photo.jpg" w:N h:N fit:contain | 0s - 3s
 ```
 
 ## 3D Types
@@ -60,3 +61,15 @@ Can also be set in body: `gradient: linear(...)` (overrides fill for the gradien
 - String: `"quoted text"`
 - Point: `(x,y)` or `(x,y,z)`
 - Point list: `[(0,0), (40,20)]`
+
+## Remote Assets
+
+Image sources can be local paths or remote `http`/`https` URLs. Local paths are resolved relative to the `.mmark` file. Remote URLs work in browser preview/export when CORS allows the asset, and in Node export by downloading to a temporary cache.
+
+## Image Fit
+
+Images support `fit:fill`, `fit:contain`, and `fit:cover`.
+
+- `fit:fill` stretches to `w`/`h` and is the default.
+- `fit:contain` preserves aspect ratio and fits the whole image inside the box.
+- `fit:cover` preserves aspect ratio and fills the box, cropping overflow from the center.

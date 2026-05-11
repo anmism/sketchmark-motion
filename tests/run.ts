@@ -7,6 +7,7 @@ import "./phase3/motion.test";
 import "./phase4/validator.test";
 import "./phase5/scenes-expression.test";
 import "./phase6/exporter.test";
+import "./phase6/assets.test";
 import "./phase7/composition.test";
 import "./phase8/stdlib.test";
 import "./phase9/emitter-keyframes.test";

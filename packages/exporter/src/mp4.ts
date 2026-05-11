@@ -1,5 +1,6 @@
 import type { AudioTrackIR, SceneIR } from "../../schema/src";
 import { renderFrameToRgba, preloadImages } from "./rawFrame";
+import { resolveAssetPath } from "./assets";
 import { normalizeExportSettings, type ExportSettingsInput, type ExportProgress } from "./settings";
 import { getFrameCount, getFrameTimestampMs } from "./timeline";
 import * as fs from "fs";
@@ -47,12 +48,12 @@ async function checkFfmpeg(): Promise<boolean> {
   });
 }
 
-function resolveAudioTracks(scene: SceneIR, basePath: string): { track: AudioTrackIR; resolvedPath: string }[] {
+async function resolveAudioTracks(scene: SceneIR, basePath: string): Promise<{ track: AudioTrackIR; resolvedPath: string }[]> {
   if (!scene.audioTracks || scene.audioTracks.length === 0) return [];
   const results: { track: AudioTrackIR; resolvedPath: string }[] = [];
   for (const track of scene.audioTracks) {
-    const resolved = path.isAbsolute(track.src) ? track.src : path.resolve(basePath, track.src);
-    if (fs.existsSync(resolved)) {
+    const resolved = await resolveAssetPath(track.src, basePath, "audio");
+    if (resolved) {
       results.push({ track, resolvedPath: resolved });
     }
   }
@@ -136,7 +137,7 @@ async function exportWithFfmpeg(
 
   fs.mkdirSync(path.dirname(path.resolve(outputPath)), { recursive: true });
 
-  const audioTracks = resolveAudioTracks(scene, basePath);
+  const audioTracks = await resolveAudioTracks(scene, basePath);
   const { args: audioArgs, mapArgs } = buildAudioFilterComplex(audioTracks);
 
   return new Promise((resolve, reject) => {

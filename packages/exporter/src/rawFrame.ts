@@ -12,6 +12,7 @@ import {
 import { compileNumericExpression, type NumericFn } from "../../parser/src/expression";
 import { renderStaticFrameToCommands, type DrawCommand, type RenderEffects, type StrokeControls } from "../../renderer/src";
 import type { AnchorPoint, FxMaskIR, MaskIR, SceneIR, XtMaskIR } from "../../schema/src";
+import { resolveAssetPath } from "./assets";
 import type { ExportSettings } from "./settings";
 
 type SkiaCanvasModule = typeof import("skia-canvas");
@@ -191,8 +192,6 @@ const imageCache = new Map<string, RenderableImage | null>();
 
 export async function preloadImages(scene: SceneIR, basePath: string): Promise<void> {
   const { loadImage } = loadNodeModule<SkiaCanvasModule>("skia-canvas");
-  const path = loadNodeModule<typeof import("path")>("path");
-  const fs = loadNodeModule<typeof import("fs")>("fs");
   const srcs = new Set<string>();
   for (const element of scene.elements) {
     if (element.type === "image") {
@@ -207,8 +206,8 @@ export async function preloadImages(scene: SceneIR, basePath: string): Promise<v
     Array.from(srcs).map(async (src) => {
       if (imageCache.has(src)) return;
       try {
-        const resolvedPath = path.isAbsolute(src) ? src : path.resolve(basePath, src);
-        if (fs.existsSync(resolvedPath)) {
+        const resolvedPath = await resolveAssetPath(src, basePath, "image");
+        if (resolvedPath) {
           const img = await loadImage(resolvedPath);
           imageCache.set(src, img as unknown as RenderableImage);
         } else {
@@ -857,7 +856,7 @@ export function renderFrameToContext(
       const drawW = fullW * drawProgress;
       const img = getImage(command.src);
       if (img) {
-        ctx.drawImage(img, ix, iy, drawW, drawH);
+        drawFittedImage(ctx, img, command.fit, ix, iy, drawW, drawH, fullW, drawH);
       } else {
         // Placeholder for missing images
         ctx.fillStyle = "#333";
@@ -1507,7 +1506,7 @@ function renderProjectedImage(
 
   const img = getImage(command.src);
   if (img) {
-    ctx.drawImage(img, 0, 0, drawW, drawH);
+    drawFittedImage(ctx, img, command.fit, 0, 0, drawW, drawH, fullW, drawH);
   } else {
     ctx.fillStyle = "#333";
     ctx.fillRect(0, 0, drawW, drawH);
@@ -1517,6 +1516,87 @@ function renderProjectedImage(
       ctx.strokeRect(0, 0, fullW, drawH);
     }
   }
+}
+
+function drawFittedImage(
+  ctx: CanvasRenderingContext2D,
+  img: RenderableImage,
+  fit: ImageCommand["fit"],
+  dx: number,
+  dy: number,
+  dw: number,
+  dh: number,
+  clipW: number,
+  clipH: number
+): void {
+  if (fit === "fill") {
+    ctx.drawImage(img, dx, dy, dw, dh);
+    return;
+  }
+
+  const source = fittedImageSource(img, fit, clipW, clipH);
+  if (!source) {
+    ctx.drawImage(img, dx, dy, dw, dh);
+    return;
+  }
+
+  const visibleRatio = clipW > 0 ? Math.max(0, Math.min(1, dw / clipW)) : 1;
+  const sourceW = source.sw * visibleRatio;
+  const destW = source.dw * visibleRatio;
+  if (sourceW <= 0 || destW <= 0 || source.dh <= 0) return;
+
+  ctx.drawImage(img, source.sx, source.sy, sourceW, source.sh, dx + source.dx, dy + source.dy, destW, source.dh);
+}
+
+function fittedImageSource(
+  img: RenderableImage,
+  fit: ImageCommand["fit"],
+  boxW: number,
+  boxH: number
+): { sx: number; sy: number; sw: number; sh: number; dx: number; dy: number; dw: number; dh: number } | null {
+  const intrinsicW = imageIntrinsicWidth(img);
+  const intrinsicH = imageIntrinsicHeight(img);
+  if (intrinsicW <= 0 || intrinsicH <= 0 || boxW <= 0 || boxH <= 0) return null;
+
+  if (fit === "contain") {
+    const scale = Math.min(boxW / intrinsicW, boxH / intrinsicH);
+    const dw = intrinsicW * scale;
+    const dh = intrinsicH * scale;
+    return {
+      sx: 0,
+      sy: 0,
+      sw: intrinsicW,
+      sh: intrinsicH,
+      dx: (boxW - dw) / 2,
+      dy: (boxH - dh) / 2,
+      dw,
+      dh
+    };
+  }
+
+  const scale = Math.max(boxW / intrinsicW, boxH / intrinsicH);
+  const sw = boxW / scale;
+  const sh = boxH / scale;
+  return {
+    sx: (intrinsicW - sw) / 2,
+    sy: (intrinsicH - sh) / 2,
+    sw,
+    sh,
+    dx: 0,
+    dy: 0,
+    dw: boxW,
+    dh: boxH
+  };
+}
+
+function imageIntrinsicWidth(img: RenderableImage): number {
+  const candidate = img as { naturalWidth?: number; videoWidth?: number; width?: number };
+  return Number(candidate.naturalWidth ?? candidate.videoWidth ?? candidate.width ?? 0);
+}
+
+function imageIntrinsicHeight(img: RenderableImage): number {
+  const candidate = img as { naturalHeight?: number; videoHeight?: number; height?: number };
+  return Number(candidate.naturalHeight ?? candidate.videoHeight ?? candidate.height ?? 0);
 }
 
 function prepareTextLayout(

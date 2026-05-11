@@ -133,9 +133,15 @@ let currentFile = "";
       await new Promise((resolve, reject) => {
         img.onload = resolve;
         img.onerror = reject;
-        img.src = "/image/" + encodeURIComponent(src) + "?file=" + encodeURIComponent(currentFile);
+        img.src = isRemoteAsset(src)
+          ? src
+          : "/image/" + encodeURIComponent(src) + "?file=" + encodeURIComponent(currentFile);
       });
       return img;
+    }
+
+    function isRemoteAsset(src) {
+      return /^https?:\/\//i.test(src);
     }
 
     function updateTime(time) {
@@ -369,7 +375,10 @@ let currentFile = "";
       const toLoad = tracks.filter(t => !audioBuffers.has(t.src));
       await Promise.all(toLoad.map(async (track) => {
         try {
-          const resp = await fetch("/audio/" + encodeURIComponent(track.src) + "?file=" + encodeURIComponent(currentFile));
+          const audioUrl = isRemoteAsset(track.src)
+            ? track.src
+            : "/audio/" + encodeURIComponent(track.src) + "?file=" + encodeURIComponent(currentFile);
+          const resp = await fetch(audioUrl);
           if (!resp.ok) { console.warn("Failed to load audio:", track.src); return; }
           const arrayBuf = await resp.arrayBuffer();
           const decoded = await audioCtx.decodeAudioData(arrayBuf);

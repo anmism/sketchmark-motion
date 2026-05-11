@@ -79,7 +79,7 @@ text t1 "Hi" font:Roboto size:10 fill:#0000ff
 });
 
 test("parses images and transform properties", () => {
-  const scene = compileMotionMark(`image logo "logo.png" x:10 y:20 w:40 h:30 rotation:45deg scale:2`);
+  const scene = compileMotionMark(`image logo "logo.png" x:10 y:20 w:40 h:30 rotation:45deg scale:2 fit:cover`);
   const commands = renderStaticFrameToCommands(resolveFrame(scene, 0));
   const image = commands[1];
   assert.equal(image?.op, "image");
@@ -87,8 +87,18 @@ test("parses images and transform properties", () => {
   assert.equal(image.src, "logo.png");
   assert.equal(image.width, 40);
   assert.equal(image.height, 30);
+  assert.equal(image.fit, "cover");
   assert.equal(image.scale, 2);
   assert.equal(Math.round(image.rotation * 1000), Math.round((Math.PI / 4) * 1000));
+});
+
+test("defaults image fit to fill", () => {
+  const scene = compileMotionMark(`image logo "logo.png" w:40 h:30`);
+  const commands = renderStaticFrameToCommands(resolveFrame(scene, 0));
+  const image = commands[1];
+  assert.equal(image?.op, "image");
+  if (image?.op !== "image") return;
+  assert.equal(image.fit, "fill");
 });
 
 test("@system constrains palette, fonts, durations, and easing", () => {

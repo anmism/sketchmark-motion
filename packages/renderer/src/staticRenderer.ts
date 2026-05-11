@@ -281,6 +281,7 @@ export type DrawCommand =
       y: number;
       width: number;
       height: number;
+      fit: "fill" | "contain" | "cover";
       draw: number;
       opacity: number;
       comp: string;
@@ -530,6 +531,7 @@ export function renderStaticFrameToCommands(frame: FrameState): DrawCommand[] {
         y: numeric(element.props.y, 0),
         width: numeric(element.props.w, 0),
         height: numeric(element.props.h, 0),
+        fit: imageFit(element.props.fit),
         draw: numeric(element.props.draw, 1),
         opacity: numeric(element.props.opacity, 1),
         comp: element.comp,
@@ -553,6 +555,10 @@ function numeric(value: StaticValue | undefined, fallback: number): number {
 
 function stringValue(value: StaticValue | undefined, fallback: string): string {
   return typeof value === "string" ? value : fallback;
+}
+
+function imageFit(value: StaticValue | undefined): "fill" | "contain" | "cover" {
+  return value === "contain" || value === "cover" ? value : "fill";
 }
 
 function vector3Value(value: StaticValue | undefined): [number, number, number] {
